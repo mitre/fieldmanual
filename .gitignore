@@ -1,0 +1,24 @@
+*.pyc
+*.crt
+*.exe
+*.pyd
+*.DS_Store
+*.spec
+*.pstat
+*.tokens
+*__pycache__*
+.history/*
+.idea/*
+.venv/
+venv/
+.env
+sphinx-docs/_build
+sphinx-docs/_generated
+.tox/
+
+# coverage reports
+htmlcov/
+.coverage
+.coverage.*
+*,cover
+_*/
