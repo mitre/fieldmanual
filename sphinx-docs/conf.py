@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.abspath('../../..'))
 # --implicit-namespaces: will find modules in packages without explicit __init__.py
 # --force: overwrite existing generated stubs
 # ../app/: this is the directory where caldera lives
-apidocs_argv = ['-o', '_generated', '--implicit-namespaces', '--force', '../app/']
+apidocs_argv = ['-o', '_generated', '--implicit-namespaces', '--force', '../../../app/']
 apidoc.main(apidocs_argv)
 
 # -- Project information -----------------------------------------------------

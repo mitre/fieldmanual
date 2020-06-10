@@ -1,9 +1,11 @@
 import asyncio
+import logging
 import pathlib
 
 from aiohttp import web
 
 from app.utility.base_world import BaseWorld
+
 
 name = 'fieldmanual'
 description = 'Holds and serves Caldera documentation'
@@ -21,13 +23,17 @@ async def landing(_):
 
 async def build_docs():
     process = await asyncio.create_subprocess_exec(
-        'sphinx-build', 'sphinx-docs/', str(html_docs_root), '-b', 'html', '-c', str(sphinx_docs_root),
+        'sphinx-build', '%s/' % (sphinx_docs_root,), str(html_docs_root), '-b', 'html', '-c', str(sphinx_docs_root),
         stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
-    await process.communicate()
+    stdout, stderr = await process.communicate()
+    logging.info(stdout)
+    if process.returncode:
+        logging.warning('doc generation failed: %s' % (stderr,))
 
 
 async def enable(services, loop=None):
     loop = loop if loop else asyncio.get_event_loop()
+    html_docs_root.mkdir(parents=True, exist_ok=True)
     loop.create_task(build_docs())
     app_svc = services.get('app_svc')
     app_svc.application.router.add_route('GET', address, landing)
