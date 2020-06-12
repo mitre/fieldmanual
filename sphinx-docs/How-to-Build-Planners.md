@@ -49,7 +49,7 @@ Look closer at these lines:
 
 The `__init__()` method for a planner must take and store the required arguments for the `operation` instance, `planning_svc` handle, and any supplied `stopping_conditions`.
  
-Additionally, `self.stopping_condition_met`, which is used to control when to stop bucket execution, is initially set to `False`. During bucket execution, this property will be set to `True` if any facts gathered by the operation exactly match (both trait and value) any of the facts provided in `stopping_conditions`. When this occurs, the operation will  
+Additionally, `self.stopping_condition_met`, which is used to control when to stop bucket execution, is initially set to `False`. During bucket execution, this property will be set to `True` if any facts gathered by the operation exactly match (both trait and value) any of the facts provided in `stopping_conditions`. When this occurs, the operation will stop running new abilities.
 
 ```python
         self.state_machine = ['privilege_escalation', 'persistence', 'collection', 'discovery', 'lateral_movement']
@@ -61,7 +61,7 @@ The `self.state_machine` variable is an optional list enumerating the base line 
         self.next_bucket = 'privilege_escalation'
 ```
 
-The `self.next_bucket` variable holds the next bucket to be executed. This is the next bucket that the planner will enter and whose bucket method will next control the planning logic. Initially, we set `self.next_bucket` to the first bucket the planner will begin in. We will moidfy `self.next_bucket` from within our bucket methods in order to specify the next bucket to execute.
+The `self.next_bucket` variable holds the next bucket to be executed. This is the next bucket that the planner will enter and whose bucket method will next control the planning logic. Initially, we set `self.next_bucket` to the first bucket the planner will begin in. We will modify `self.next_bucket` from within our bucket methods in order to specify the next bucket to execute.
 
 _Additional Planner class variables_
 
@@ -182,7 +182,7 @@ Within a planner, these utilities are available from `self.planning_svc`:
 * `get_cleanup_links()` - Generates cleanup links for a given operation, to be run when a operation is completed.
 * `generate_and_trim_links()` - Creates new links based on provided operation, agent, and abilities. Optionally, trim links using `trim_links()` to return only valid links with completed facts. Facts are selected from the operation using `operation.all_facts()`.
 * `check_stopping_conditions()` - Checks the collected operation facts against the stopping conditions set by the planner.
-* `update_stopping_condition_met()` - Update a planner's `stopping_condition_met` property if with the results of `check_stopping_conditions()`. 
+* `update_stopping_condition_met()` - Update a planner's `stopping_condition_met` property with the results of `check_stopping_conditions()`. 
 
 
 ## Operation Utilities
@@ -194,4 +194,4 @@ Within a planner, all public utilities are available from `self.operation`. The 
 * `all_facts()` - Return a list of all facts collected during an operation. These will include both learned and seeded (from the operation source) facts.
 * `has_fact()` - Search an operation for a fact with a particular trait and value.
 * `all_relationships()` - Return a list of all relationships collected during an operation.
-* `active_agents()` - Find all agents in the operation that have been seen since operation start.
+* `active_agents()` - Find all agents in the operation that have been active since operation start.

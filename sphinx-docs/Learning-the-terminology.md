@@ -209,7 +209,7 @@ Planners are single module Python files. Planners utilize the core system’s pl
 
 ## The Batch planner
 
-CALDERA ships with a default planner, _batch_. The _batch_ planner will retrieve all ability commands available and applicable for the operation and send them to the agents found in the operation's group. The _batch_ planner uses the planning service to retrieve ability commands based on the chosen advsersary and known agents in the operation. The abilities returned to the _batch_ planner are based on the agent matching the operating system (execution platform) of the ability and the ability command having no unsatisfied variables. The _batch_ planner will then send these ability commands to the agents and wait for them to be completed. After each batch of ability commands is completed, the _batch_ planner will again attempt to retrieve all ability commands available for the operation and attempt to repeat the cycle. This is required as once ability commands are executed, new additional ability commands may also become unlocked; e.g. required variables being present now, newly spawned agents etc... 
+CALDERA ships with a default planner, _batch_. The _batch_ planner will retrieve all ability commands available and applicable for the operation and send them to the agents found in the operation's group. The _batch_ planner uses the planning service to retrieve ability commands based on the chosen advsersary and known agents in the operation. The abilities returned to the _batch_ planner are based on the agent matching the operating system (execution platform) of the ability and the ability command having no unsatisfied facts. The _batch_ planner will then send these ability commands to the agents and wait for them to be completed. After each batch of ability commands is completed, the _batch_ planner will again attempt to retrieve all ability commands available for the operation and attempt to repeat the cycle. This is required as once ability commands are executed, new additional ability commands may also become unlocked; e.g. required facts being present now, newly spawned agents etc... 
 
 The _batch_ planner can be found in the ```mitre/stockpile``` github repository at ```app/batch.py```
 
@@ -223,7 +223,7 @@ The _buckets_ planner is example planner to demonstrate how to build a custom pl
 
 The _batch_ and _buckets_ planners can be found in the ```mitre/stockpile``` github repository at ```app/batch.py``` and ```app/buckets.py```.
 
-See **__How to Build Planners_** for full walkthrough of how to build a custom planner and incorporate any custom decision logic that is desired.
+See [How to Build Planners](How-to-Build-Planners.md) for full walkthrough of how to build a custom planner and incorporate any custom decision logic that is desired.
 
 ## What is a plugin?
 
