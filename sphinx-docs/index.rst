@@ -18,6 +18,7 @@ If you're new to CALDERA, this is a good place to start.
    Plugin-library.md
    The-REST-API.md
    How-to-Build-Plugins.md
+   How-to-Build-Planners.md
    How-to-Build-Agents.md
    How-CALDERA-makes-decisions.md
    Objectives.md
