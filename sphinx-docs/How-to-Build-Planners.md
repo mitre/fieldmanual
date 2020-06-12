@@ -129,7 +129,7 @@ Lets look at each of the bucket methods in detail:
 
 In order to use this planner inside CALDERA, we will create the following YAML file at `plugins/stockpile/data/planners/80efdb6c-bb82-4f16-92ae-6f9d855bfb0e.yml`:
 
-```yml
+```yaml
 ---
 
 id: 80efdb6c-bb82-4f16-92ae-6f9d855bfb0e
