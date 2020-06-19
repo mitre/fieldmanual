@@ -27,6 +27,7 @@ If you're new to CALDERA, this is a good place to start.
    Install-CALDERA-offline.md
    Docker-deployment.md
    CALDERA-2.0.md
+   Uninstalling-CALDERA.md
    Common-problems.md
 
 The following section contains information intended to help developers
