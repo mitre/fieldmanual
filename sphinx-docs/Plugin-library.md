@@ -126,7 +126,7 @@ The stockpile plugin adds a few components to CALDERA:
 * Planner
 * Facts
 
-These components are all loaded through the data/* directory.
+These components are all loaded through the caldera/plugins/stockpile/data/* directory.
 
 ## Response
 
