@@ -4,9 +4,9 @@ Plugin library
 Here you'll get a run-down of all open-source plugins, all of which can be found in the plugins/ directory as separate 
 GIT repositories. 
 
-To enable a plugin, add it to the ```default.yml``` file in the ```conf/``` directory. 
+To enable a plugin, add it to the `default.yml` file in the `conf/` directory. 
 
-Plugins can also be enabled through the GUI. Go to *Advanced -> Configuration* and then click on the ```enable``` button for the plugin you would like to enable.
+Plugins can also be enabled through the GUI. Go to *Advanced -> Configuration* and then click on the `enable` button for the plugin you would like to enable.
 
 ## Sandcat (54ndc47)
 
