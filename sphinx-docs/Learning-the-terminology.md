@@ -7,7 +7,7 @@ An agent is a simple software program - requiring no installation - which connec
 
 CALDERA includes the plugins Manx and Sandcat (54ndc47), which is our default agent.
 
-Agents can be deployed through the GUI by navigating to *Campaigns -> agents -> Click here to deploy an agent*. Select the proper operating system and agent, then copy and paste the command in a terminal or command prompt on your desired host to deploy the agent.
+Agents can be deployed through the GUI by navigating to *Campaigns -> agents ->* and clicking 'Click here to deploy an agent'. Select the proper operating system and agent, then copy and paste the command in a terminal or command prompt on your desired host to deploy the agent.
 
 Individual agents can be configured by clicking on the button under the *PID* column for the agent.
 
