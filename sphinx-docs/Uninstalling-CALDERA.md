@@ -11,7 +11,7 @@ CALDERA may leave behind artifacts from deployment of agents and operations. Rem
 rm [ARTIFACT_NAME]
 ```
 
-Generated reports and exfiled files are saved in ```/tmp``` on the server where CALDERA is installed.
+Generated reports and exfiled files are saved in `/tmp` on the server where CALDERA is installed.
 
 Some examples of CALDERA artifacts left by agents (on server if agent ran locally, on clients if run remotely):
 * **_sandcat.go_**: sandcat agent
