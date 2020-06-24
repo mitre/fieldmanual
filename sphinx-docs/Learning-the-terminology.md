@@ -56,7 +56,7 @@ Things to note:
 * Each ability has a random UUID id
 * Each ability requires a name, description, ATT&CK tactic and technique information
 * Each ability requires a platforms list, which should contain at least 1 block for a supported operating system (platform). Currently, abilities can be created for darwin, linux or windows.
-* Abilities can be added to an adversary through the GUI with the *add ability* button
+* Abilities can be added to an adversary through the GUI with the 'add ability' button
 
 For each platform, there should be a list of executors. Currently Darwin and Linux platforms can use sh and Windows can use psh (PowerShell), cmd (command prompt) or pwsh (open-source PowerShell core).
 
