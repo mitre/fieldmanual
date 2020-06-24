@@ -3,9 +3,13 @@ Learning the terminology
 
 ## What is an agent?
 
-An agent is a simple software program - requiring no installation - which connects to CALDERA in order to get instructions. It then executes the instructions and sends the results back.
+An agent is a simple software program - requiring no installation - which connects to CALDERA in order to get instructions. It then executes the instructions and sends the results back to the CALDERA server.
 
-CALDERA includes a plugin, Sandcat (54ndc47), which is our default agent. 
+CALDERA includes the plugins Manx and Sandcat (54ndc47), which is our default agent.
+
+Agents can be deployed through the GUI by navigating to *Campaigns -> agents -> Click here to deploy an agent*. Select the proper operating system and agent, then copy and paste the command in a terminal or command prompt on your desired host to deploy the agent.
+
+Individual agents can be configured by clicking on the button under the *PID* column for the agent.
 
 ## What is a group?
 
@@ -51,7 +55,8 @@ Here is a sample ability:
 Things to note:
 * Each ability has a random UUID id
 * Each ability requires a name, description, ATT&CK tactic and technique information
-* Each ability requires a platforms list, which should contain at least 1 block for a supported operating system (platform). Currently, abilities can be created for darwin, linux or windows. 
+* Each ability requires a platforms list, which should contain at least 1 block for a supported operating system (platform). Currently, abilities can be created for darwin, linux or windows.
+* Abilities can be added to an adversary through the GUI with the *add ability* button
 
 For each platform, there should be a list of executors. Currently Darwin and Linux platforms can use sh and Windows can use psh (PowerShell), cmd (command prompt) or pwsh (open-source PowerShell core).
 
@@ -99,7 +104,9 @@ The abilities inside an adversary can optionally be grouped into phases, which a
 
 An adversary can contain abilities which can be used on any platform (operating system). As an operation runs an adversary, CALDERA will match each ability to each agent and only send the matching ones to the agent.
 
-Adversaries can be built either through the GUI or by adding YML files into `data/adversaries/` which is in the Stockpile plugin.
+CALDERA includes multiple pre-built adversaries. They are available through the GUI and YML profiles can be found in the `plugins/stockpile/data/adversaries` directory.
+
+Adversaries can be built either through the GUI or by adding YML files into `plugins/stockpile/data/adversaries/` which is in the Stockpile plugin.
 
 An adversary YML file can include a `phases` section that lists the IDs of the abilities to execute in each phase. Here is an example of such an adversary:
 ```
