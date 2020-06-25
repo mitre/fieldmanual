@@ -5,11 +5,16 @@ Learning the terminology
 
 An agent is a simple software program - requiring no installation - which connects to CALDERA in order to get instructions. It then executes the instructions and sends the results back to the CALDERA server.
 
-CALDERA includes the plugins Manx and Sandcat (54ndc47), which is our default agent.
+CALDERA includes the following agents:
+* **Sandcat (54ndc47)**:  CALDERA's default agent, A GoLang agent that communicates through the HTTP contact.
+* **Manx**: A reverse-shell agent that communicates via the TCP contact
+* **Ragdoll**: A python agent that communicates via the HTML contact
+
+Plugins are included for the sandcat and manx agents.
 
 Agents can be deployed through the GUI by navigating to *Campaigns -> agents ->* and clicking 'Click here to deploy an agent'. Select the proper operating system and agent, then copy and paste the command in a terminal or command prompt on your desired host to deploy the agent.
 
-Individual agents can be configured by clicking on the button under the *PID* column for the agent.
+Individual agents can be configured by clicking on the button under the 'PID' column for the agent.
 
 ## What is a group?
 
