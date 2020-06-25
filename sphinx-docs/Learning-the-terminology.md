@@ -12,7 +12,7 @@ CALDERA includes the following agents:
 
 Plugins are included for the sandcat and manx agents.
 
-Agents can be deployed through the GUI by navigating to *Campaigns -> agents ->* and clicking 'Click here to deploy an agent'. Select the proper operating system and agent, then copy and paste the command in a terminal or command prompt on your desired host to deploy the agent.
+Agents can be deployed through the GUI by navigating to *Campaigns -> agents ->* and clicking 'Click here to deploy an agent'. Select the proper agent, operating system and options then copy and paste the command in a terminal or command prompt of your desired host to deploy the agent.
 
 Individual agents can be configured by clicking on the button under the 'PID' column for the agent.
 
@@ -171,10 +171,14 @@ Facts are composed of a:
 
 As hinted above, when CALDERA runs abilities, it scans the command and cleanup instructions for variables. When it finds one, it then looks at the facts it has and sees if it can replace the variables with matching facts (based on the property). It will then create new variants of each command/cleanup instruction for each possible combination of facts it has collected. Each variant will be scored based on the cumulative score of all facts inside the command. The highest scored variants will be executed first. 
 
+Facts can be added or modified through the GUI by navigating to *Advanced -> Sources* and clicking on '+ add row'. 
+
 ## What is a source?
 
 A source is a collection of facts that you have grouped together. A fact source can be applied to an operation when you start it, 
 which gives the operation facts to fill in variables with. 
+
+Sources can be added or modified through the GUI by navigating to *Advanced -> Sources*. 
 
 ## What is a rule?
 
@@ -211,7 +215,9 @@ Rules can also match against subnets.
     fact: my.host.ip
     match: 10.245.112.0/24
 ```
-In this example, the rules would permit CALDERA to only operate within the 10.245.112.1 to 10.245.112.254 range
+In this example, the rules would permit CALDERA to only operate within the 10.245.112.1 to 10.245.112.254 range.
+
+Rules can be added or modified through the GUI by navigating to *Advanced -> Sources* and clicking on '+ view rules'.
 
 ## What is a planner?
 
