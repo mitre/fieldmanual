@@ -112,7 +112,7 @@ These agents are created inside the `conf/agents.yml` file. They can be edited a
 
 After you load the mock plugin and restart CALDERA, all simulated agents will appear as normal agents in the Chain plugin GUI and can be used in any operation.
 
-## Terminal
+## Manx
 
 The terminal plugin adds reverse-shell capability to CALDERA, along with a TCP-based agent called Manx.
 
@@ -130,12 +130,14 @@ The stockpile plugin adds a few components to CALDERA:
 * Planner
 * Facts
 
-These components are all loaded through the caldera/plugins/stockpile/data/* directory.
+These components are all loaded through the `plugins/stockpile/data/*` directory.
 
 ## Response
 
 The response plugin is an autonomous incident response plugin, which can fight back against adversaries
 on a compromised host.
+
+Similar to the stockpile plugin, it contains adversaries, abilties, and facts intended for incident response. These components are all loaded through the `plugins/response/data/*` directory.
 
 ## Compass
 
@@ -171,6 +173,8 @@ The Atomic plugin imports all Red Canary Atomic tests from their open-source Git
 
 The GameBoard plugin allows you to monitor both red-and-blue team operations. The game tracks points for both sides
 and determines which one is "winning". 
+
+To begin a gameboard exercise, first log in as blue user and begin an operation. Then log in as red user and begin another operation. Open up the gameboard plugin from the GUI and select these new respective red and blue operations to monitor points for each operation. 
 
 ## Human
 
