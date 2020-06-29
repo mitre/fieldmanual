@@ -56,3 +56,28 @@ Caldera will choose the configuration file to use in the following order:
 1. A config specified with the `-E` or `--environment` command-line options.  For instance, if started with `python caldera.py -E foo`, CALDERA will load it's configuration from `conf/foo.yml`.
 2. `conf/local.yml`: Caldera will prefer the local configuration file if no other options are specified.
 3. `conf/default.yml`: If no config is specified with the `-E` option and it cannot find a `conf/local.yml` configuration file, CALDERA will use its default configuration options.
+
+
+## Enabling LDAP login
+
+CALDERA can be configured to allow users to log in using LDAP. To do so add an `ldap` section to the config with the following fields:
+
+* **dn**: the base DN under which to search for the user
+* **server**: the URL of the LDAP server, optionally including the scheme and port
+* **userattr**: the name of the attribute on the user object to match with the username, e.g. `cn` or `sAMAccountName`. Default: `uid`
+
+LDAP users must also be added to the `users` mapping in the configuration file to specify which group they belong to. Each should be added with a password of `null` since the password will be handled by LDAP.
+
+For example: 
+
+```yaml
+ldap:
+  dn: cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org
+  server: ldap://ipa.demo1.freeipa.org
+  userattr: uid  
+users:
+  red:
+    employee: null
+```
+
+This will allow the `employee` user to log in as `uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org`, a red team user.
