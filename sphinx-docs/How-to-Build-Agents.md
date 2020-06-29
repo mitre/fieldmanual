@@ -90,7 +90,7 @@ Looking at the previous response, you can see each instruction contains:
 Now, you'll want to revise your agent to loop through all the instructions, executing each command
 and POSTing the response back to the /beacon endpoint. You should pause after running each instruction, using the sleep time provided inside the instruction.
 ```
-data=$(echo '{"result":{"id":$id, "output":$output, "status": $status, "pid":$pid}}' | base64)
+data=$(echo '{"paw":"$paw","results":[{"id":$id, "output":$output, "status": $status, "pid":$pid}]}' | base64)
 curl -s -X POST -d $data localhost:8888/beacon
 sleep $instruction_sleep
 ```
