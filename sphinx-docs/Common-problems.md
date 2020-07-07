@@ -25,15 +25,16 @@ Common problems
 1. Check each ability on the adversary profile. It should show an icon for which operating system it runs on. Match this up with the operating systems of your agents. These are the only abilities an operation will attempt to run.
 2. Look at each ability command. If there is a variable inside - shown by #{} syntax - the ability will need to be ["unlocked" by another ability](What-is-an-ability.md), in a prior phase, before it can run. 
 
-### I'm getting this go error when I run my server!
+### I'm getting this GO error when I run my server!
 ```
 can't load package: package github.com/google/go-github/github: cannot find package "github.com/google/go-github/github" in any of:
 	/usr/local/go/src/github.com/google/go-github/github (from $GOROOT)
 	/home/debian/go/src/github.com/google/go-github/github (from $GOPATH)
 ```
 
-1. Check to see of go is properly installed on your system.
-2. Make sure the go environment variables are properly set.
+1. Check to see if go is properly installed on your system.
+2. Make sure the go environment variables are properly set. Add the following line to your `/etc/profile`:
+`export PATH=$PATH:/usr/local/go/bin`
 3. Run the following go commands:
 ```
 go get -u github.com/google/go-github/github
