@@ -32,10 +32,12 @@ can't load package: package github.com/google/go-github/github: cannot find pack
 	/home/debian/go/src/github.com/google/go-github/github (from $GOPATH)
 ```
 
-1. Check to see if go is properly installed on your system.
+1. Check to see if GO is properly installed on your system.
 2. Make sure the go environment variables are properly set. Add the following line to your `/etc/profile`:
-`export PATH=$PATH:/usr/local/go/bin`
-3. Run the following go commands:
+```
+export PATH=$PATH:/usr/local/go/bin
+````
+3. Run the following GO commands:
 ```
 go get -u github.com/google/go-github/github
 go get -u golang.org/x/oauth2
