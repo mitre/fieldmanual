@@ -182,3 +182,9 @@ This plugin allows a user to gain a "User Certificate" which proves their abilit
 ## Access
 
 This plugin allows you to task any agent with any ability from the database. It also allows you to conduct initial access attacks.
+
+## Builder
+
+The Builder plugin enables CALDERA to dynamically compile code segments into payloads that can be executed as abilities by implants.
+
+Currently, only C# is supported. Code is compiled in a Docker container using Mono. The resulting executable, along with any additional references, will be copied to the remote machine and executed.
