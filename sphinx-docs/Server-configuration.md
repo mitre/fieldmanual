@@ -64,7 +64,9 @@ CALDERA can be configured to allow users to log in using LDAP. To do so add an `
 
 * **dn**: the base DN under which to search for the user
 * **server**: the URL of the LDAP server, optionally including the scheme and port
-* **userattr**: the name of the attribute on the user object to match with the username, e.g. `cn` or `sAMAccountName`. Default: `uid`
+* **user_attr**: the name of the attribute on the user object to match with the username, e.g. `cn` or `sAMAccountName`. Default: `uid`
+* **group_attr**: the name of the attribute on the user object to match with the group, e.g. `MemberOf` or `group`. Default: `objectClass`
+* **red_group**: the value of the group_attr that specifies a red team user. Default: `red`
 
 LDAP users must also be added to the `users` mapping in the configuration file to specify which group they belong to. Each should be added with a password of `null` since the password will be handled by LDAP.
 
@@ -74,10 +76,15 @@ For example:
 ldap:
   dn: cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org
   server: ldap://ipa.demo1.freeipa.org
-  userattr: uid  
-users:
-  red:
-    employee: null
+  userattr: uid
+  group_attr: objectClass
+  red_group: organizationalperson
 ```
 
-This will allow the `employee` user to log in as `uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org`, a red team user.
+This will allow the `employee` user to log in as `uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org`. This
+user has an `objectClass` attribute that contains the value `organizationalperson`, so they will be logged in as a red
+team user. In contrast, the `admin` user does not have an `objectClass` of `organizationalperson` so they will be logged
+in as a blue team user.
+
+Note that adding the `ldap` section will disable any accounts listed in the `users` section of the config file;
+only LDAP will be used for logging in.
