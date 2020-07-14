@@ -27,21 +27,3 @@ Common problems
 
 ### I can't open files on the server
 1. Files are encrypted by default and can be decrypted with the following utility: https://github.com/mitre/caldera/blob/master/app/utility/file_decryptor.py 
-
-### I'm getting this GO error when I run my server!
-```
-can't load package: package github.com/google/go-github/github: cannot find package "github.com/google/go-github/github" in any of:
-	/usr/local/go/src/github.com/google/go-github/github (from $GOROOT)
-	/home/debian/go/src/github.com/google/go-github/github (from $GOPATH)
-```
-
-1. Check to see if GO is properly installed on your system.
-2. Make sure the go environment variables are properly set. Add the following line to your `/etc/profile`:
-```
-export PATH=$PATH:/usr/local/go/bin
-````
-3. Run the following GO commands:
-```
-go get -u github.com/google/go-github/github
-go get -u golang.org/x/oauth2
-```
