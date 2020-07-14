@@ -4,7 +4,7 @@ Plugin library
 Here you'll get a run-down of all open-source plugins, all of which can be found in the plugins/ directory as separate 
 GIT repositories. 
 
-To enable a plugin, add it to the `default.yml` file in the `conf/` directory. 
+To enable a plugin, add it to the `default.yml` file in the `conf/` directory. Make sure your server is stopped when editing the `default.yml` file.
 
 Plugins can also be enabled through the GUI. Go to *Advanced -> Configuration* and then click on the 'enable' button for the plugin you would like to enable.
 
@@ -174,7 +174,7 @@ The Atomic plugin imports all Red Canary Atomic tests from their open-source Git
 The GameBoard plugin allows you to monitor both red-and-blue team operations. The game tracks points for both sides
 and determines which one is "winning". 
 
-To begin a gameboard exercise, first log in as blue user and begin an operation. Then log in as red user and begin another operation. Open up the gameboard plugin from the GUI and select these new respective red and blue operations to monitor points for each operation. 
+To begin a gameboard exercise, first log in as blue user and deploy an agent. The 'Auto-Collect' operation will execute automatically. Alternatively, you can begin a different operation with the blue agent if you desire. Log in as red user and begin another operation. Open up the gameboard plugin from the GUI and select these new respective red and blue operations to monitor points for each operation. 
 
 ## Human
 
