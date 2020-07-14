@@ -28,7 +28,7 @@ During an operation, if an agent laterally moves to another computer, it will au
 
 An ability is a specific ATT&CK technique implementation (procedure). Abilities are stored in YML format and are loaded into CALDERA each time it starts. 
 
-All abilities are stored inside the Stockpile plugin, along with profiles which use them. 
+All abilities are stored inside the Stockpile plugin (`plugins/stockpile/data/abilities`), along with profiles which use them. 
 
 Here is a sample ability:
 ```
