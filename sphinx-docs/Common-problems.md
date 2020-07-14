@@ -25,6 +25,9 @@ Common problems
 1. Check each ability on the adversary profile. It should show an icon for which operating system it runs on. Match this up with the operating systems of your agents. These are the only abilities an operation will attempt to run.
 2. Look at each ability command. If there is a variable inside - shown by #{} syntax - the ability will need to be ["unlocked" by another ability](What-is-an-ability.md), in a prior phase, before it can run. 
 
+### I can't open files on the server
+1. Files are encrypted by default and can be decrypted with the following utility: https://github.com/mitre/caldera/blob/master/app/utility/file_decryptor.py 
+
 ### I'm getting this GO error when I run my server!
 ```
 can't load package: package github.com/google/go-github/github: cannot find package "github.com/google/go-github/github" in any of:
@@ -42,5 +45,3 @@ export PATH=$PATH:/usr/local/go/bin
 go get -u github.com/google/go-github/github
 go get -u golang.org/x/oauth2
 ```
-### I can't open files on the server
-1. Files are encrypted by default and can be decrypted with the following utility: https://github.com/mitre/caldera/blob/master/app/utility/file_decryptor.py
