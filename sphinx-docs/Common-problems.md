@@ -42,3 +42,5 @@ export PATH=$PATH:/usr/local/go/bin
 go get -u github.com/google/go-github/github
 go get -u golang.org/x/oauth2
 ```
+### I can't open files on the server
+1. Files are encrypted by default and can be decrypted with the following utility: https://github.com/mitre/caldera/blob/master/app/utility/file_decryptor.py
