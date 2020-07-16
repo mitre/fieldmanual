@@ -3,9 +3,18 @@ Learning the terminology
 
 ## What is an agent?
 
-An agent is a simple software program - requiring no installation - which connects to CALDERA in order to get instructions. It then executes the instructions and sends the results back.
+An agent is a simple software program - requiring no installation - which connects to CALDERA in order to get instructions. It then executes the instructions and sends the results back to the CALDERA server.
 
-CALDERA includes a plugin, Sandcat (54ndc47), which is our default agent. 
+CALDERA includes the following agents:
+* **Sandcat (54ndc47)**:  CALDERA's default agent, A GoLang agent that communicates through the HTTP contact.
+* **Manx**: A reverse-shell agent that communicates via the TCP contact
+* **Ragdoll**: A python agent that communicates via the HTML contact
+
+Plugins are included for the sandcat and manx agents.
+
+Agents can be deployed through the GUI by navigating to *Campaigns -> agents ->* and clicking 'Click here to deploy an agent'. Select the proper agent, operating system and options then copy and paste the command in a terminal or command prompt of your desired host to deploy the agent.
+
+Individual agents can be configured by clicking on the button under the 'PID' column for the agent.
 
 ## What is a group?
 
@@ -19,7 +28,7 @@ During an operation, if an agent laterally moves to another computer, it will au
 
 An ability is a specific ATT&CK technique implementation (procedure). Abilities are stored in YML format and are loaded into CALDERA each time it starts. 
 
-All abilities are stored inside the Stockpile plugin, along with profiles which use them. 
+All abilities are stored inside the Stockpile plugin (`plugins/stockpile/data/abilities`), along with profiles which use them. 
 
 Here is a sample ability:
 ```
@@ -51,7 +60,10 @@ Here is a sample ability:
 Things to note:
 * Each ability has a random UUID id
 * Each ability requires a name, description, ATT&CK tactic and technique information
-* Each ability requires a platforms list, which should contain at least 1 block for a supported operating system (platform). Currently, abilities can be created for darwin, linux or windows. 
+* Each ability requires a platforms list, which should contain at least 1 block for a supported operating system (platform). Currently, abilities can be created for darwin, linux or windows.
+* Abilities can be added to an adversary through the GUI with the 'add ability' button
+
+Bootstrap Abilities are abilities that run immediately after sending their first beacon in. A bootstrap ability can be added through the GUI by entering the ability id into the 'Bootstrap Abilities' field in the 'Agents' tab. Alternatively, you can edit the `conf/agents.yml` file and include the ability id in the bootstrap ability section of the file (ensure the server is turned off before editing any configuration files).
 
 For each platform, there should be a list of executors. Currently Darwin and Linux platforms can use sh and Windows can use psh (PowerShell), cmd (command prompt) or pwsh (open-source PowerShell core).
 
@@ -99,7 +111,9 @@ The abilities inside an adversary can optionally be grouped into phases, which a
 
 An adversary can contain abilities which can be used on any platform (operating system). As an operation runs an adversary, CALDERA will match each ability to each agent and only send the matching ones to the agent.
 
-Adversaries can be built either through the GUI or by adding YML files into `data/adversaries/` which is in the Stockpile plugin.
+CALDERA includes multiple pre-built adversaries. They are available through the GUI and YML profiles can be found in the `plugins/stockpile/data/adversaries` directory.
+
+Adversaries can be built either through the GUI or by adding YML files into `plugins/stockpile/data/adversaries/` which is in the Stockpile plugin.
 
 An adversary YML file can include a `phases` section that lists the IDs of the abilities to execute in each phase. Here is an example of such an adversary:
 ```
@@ -159,10 +173,14 @@ Facts are composed of a:
 
 As hinted above, when CALDERA runs abilities, it scans the command and cleanup instructions for variables. When it finds one, it then looks at the facts it has and sees if it can replace the variables with matching facts (based on the property). It will then create new variants of each command/cleanup instruction for each possible combination of facts it has collected. Each variant will be scored based on the cumulative score of all facts inside the command. The highest scored variants will be executed first. 
 
+Facts can be added or modified through the GUI by navigating to *Advanced -> Sources* and clicking on '+ add row'. 
+
 ## What is a source?
 
 A source is a collection of facts that you have grouped together. A fact source can be applied to an operation when you start it, 
 which gives the operation facts to fill in variables with. 
+
+Sources can be added or modified through the GUI by navigating to *Advanced -> Sources*. 
 
 ## What is a rule?
 
@@ -199,7 +217,9 @@ Rules can also match against subnets.
     fact: my.host.ip
     match: 10.245.112.0/24
 ```
-In this example, the rules would permit CALDERA to only operate within the 10.245.112.1 to 10.245.112.254 range
+In this example, the rules would permit CALDERA to only operate within the 10.245.112.1 to 10.245.112.254 range.
+
+Rules can be added or modified through the GUI by navigating to *Advanced -> Sources* and clicking on '+ view rules'.
 
 ## What is a planner?
 

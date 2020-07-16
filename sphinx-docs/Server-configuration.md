@@ -3,6 +3,8 @@ Server configuration
 
 Caldera's configuration file is located at `conf/default.yml`.
 
+If the server is run without the `--insecure` option, CALDERA will use the file located at `conf/local.yml`.
+
 ## The existing default.yml
 
 The YAML configuration file contains all the configuration CALDERA requires to boot up. An example configuration file is below:

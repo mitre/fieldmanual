@@ -12,6 +12,7 @@ If you're new to CALDERA, this is a good place to start.
    :maxdepth: 3
    :caption: Usage Guide:
 
+   Installing-CALDERA.md
    Getting-started.md
    Learning-the-terminology.md
    Server-configuration.md
@@ -26,6 +27,7 @@ If you're new to CALDERA, this is a good place to start.
    Install-CALDERA-offline.md
    Docker-deployment.md
    CALDERA-2.0.md
+   Uninstalling-CALDERA.md
    Common-problems.md
 
 The following section contains information intended to help developers
