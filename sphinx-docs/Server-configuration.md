@@ -70,8 +70,6 @@ CALDERA can be configured to allow users to log in using LDAP. To do so add an `
 * **group_attr**: the name of the attribute on the user object to match with the group, e.g. `MemberOf` or `group`. Default: `objectClass`
 * **red_group**: the value of the group_attr that specifies a red team user. Default: `red`
 
-LDAP users must also be added to the `users` mapping in the configuration file to specify which group they belong to. Each should be added with a password of `null` since the password will be handled by LDAP.
-
 For example: 
 
 ```yaml
