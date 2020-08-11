@@ -183,6 +183,25 @@ red actions by Caldera. Each human is built for a specific operating system and 
 OS applications to perform a variety of tasks.  Additionally, these humans can have various aspects of their behavior "tuned"
 to add randomization to the behaviors on the target system.
 
+On the CALDERA server, there are additional python packages required in order to use the Human plugin.
+These python packages can be installed by navigating to the `plugins/human/` directory and running the command `pip3 install -r requirements.txt`
+
+With the python package installed and the plugin enabled in the configuration file, the Human plugin is ready for use.
+When opening the plugin within CALDERA, there are a few actions that the human can perform.
+Check the box for each action you would like the human to perform. 
+Once the actions are selected, then "Generate" the human.
+
+The generated human will show a deployment command for how to run it on a target machine.
+Before deploying the human on a target machine, there are 3 requirements:
+
+1. Install python3 on the target machine
+2. Install the python package `virtualenv` on the target machine
+3. Install Google Chrome on the target machine
+
+Once the requirements above are met, then copy the human deployment command from the CALDERA server and run it on the target machine.
+The deployment command downloads a tar file from the CALDERA server, un-archives it, and starts the human using python.
+The human runs in a python virtual environment to ensure there are no package conflicts with pre-existing packages.
+
 ## Training
 
 This plugin allows a user to gain a "User Certificate" which proves their ability to use CALDERA. This is the first of several certificates planned in the future. The plugin takes you through a capture-the-flag style certification course, covering all parts CALDERA.
