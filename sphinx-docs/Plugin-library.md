@@ -1,5 +1,5 @@
 Plugin library
-============
+==============
 
 Here you'll get a run-down of all open-source plugins, all of which can be found in the plugins/ directory as separate 
 GIT repositories. 
@@ -209,6 +209,20 @@ This plugin allows a user to gain a "User Certificate" which proves their abilit
 ## Access
 
 This plugin allows you to task any agent with any ability from the database. It also allows you to conduct initial access attacks.
+
+### Metasploit Integration
+
+The Access plugin also allows for the easy creation of abilities for Metasploit exploits.
+
+Prerequisites:
+
+* An agent running on a host that has Metasploit installed
+* The `app.contact.http` option in CALDERA's configuration includes `http://`
+* A fact source that includes a `app.api_key.red` fact with a value equal to the `api_key_red` option in CALDERA's configuration
+
+Within the `build-capabilities` tactic there is an ability called `Load Metasploit Abilities`. Run this ability with an agent and fact source as described above, which will add a new ability for each Metasploit exploit. These abilities can then be found under the `metasploit` tactic. Note that this process may take 15 minutes.
+
+If the exploit has options, you'll need to set them by adding a fact for it with the `msf.` prefix. For example, to set `RHOST`, add a fact called `msf.RHOST`.
 
 ## Builder
 
