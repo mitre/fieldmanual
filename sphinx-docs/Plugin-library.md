@@ -1,5 +1,5 @@
 Plugin library
-============
+==============
 
 Here you'll get a run-down of all open-source plugins, all of which can be found in the plugins/ directory as separate 
 GIT repositories. 
@@ -183,6 +183,25 @@ red actions by Caldera. Each human is built for a specific operating system and 
 OS applications to perform a variety of tasks.  Additionally, these humans can have various aspects of their behavior "tuned"
 to add randomization to the behaviors on the target system.
 
+On the CALDERA server, there are additional python packages required in order to use the Human plugin.
+These python packages can be installed by navigating to the `plugins/human/` directory and running the command `pip3 install -r requirements.txt`
+
+With the python package installed and the plugin enabled in the configuration file, the Human plugin is ready for use.
+When opening the plugin within CALDERA, there are a few actions that the human can perform.
+Check the box for each action you would like the human to perform. 
+Once the actions are selected, then "Generate" the human.
+
+The generated human will show a deployment command for how to run it on a target machine.
+Before deploying the human on a target machine, there are 3 requirements:
+
+1. Install python3 on the target machine
+2. Install the python package `virtualenv` on the target machine
+3. Install Google Chrome on the target machine
+
+Once the requirements above are met, then copy the human deployment command from the CALDERA server and run it on the target machine.
+The deployment command downloads a tar file from the CALDERA server, un-archives it, and starts the human using python.
+The human runs in a python virtual environment to ensure there are no package conflicts with pre-existing packages.
+
 ## Training
 
 This plugin allows a user to gain a "User Certificate" which proves their ability to use CALDERA. This is the first of several certificates planned in the future. The plugin takes you through a capture-the-flag style certification course, covering all parts CALDERA.
@@ -191,8 +210,28 @@ This plugin allows a user to gain a "User Certificate" which proves their abilit
 
 This plugin allows you to task any agent with any ability from the database. It also allows you to conduct initial access attacks.
 
+### Metasploit Integration
+
+The Access plugin also allows for the easy creation of abilities for Metasploit exploits.
+
+Prerequisites:
+
+* An agent running on a host that has Metasploit installed
+* The `app.contact.http` option in CALDERA's configuration includes `http://`
+* A fact source that includes a `app.api_key.red` fact with a value equal to the `api_key_red` option in CALDERA's configuration
+
+Within the `build-capabilities` tactic there is an ability called `Load Metasploit Abilities`. Run this ability with an agent and fact source as described above, which will add a new ability for each Metasploit exploit. These abilities can then be found under the `metasploit` tactic. Note that this process may take 15 minutes.
+
+If the exploit has options, you'll need to set them by adding a fact for it with the `msf.` prefix. For example, to set `RHOST`, add a fact called `msf.RHOST`.
+
 ## Builder
 
 The Builder plugin enables CALDERA to dynamically compile code segments into payloads that can be executed as abilities by implants. Currently, only C# is supported. 
 
 See [Dynamically-Compiled Payloads](Dynamically-Compiled-Payloads.md) for examples on how to create abilities that leverage these payloads.
+
+## Debrief
+
+The Debrief plugin provides a method for gathering overall campaign information and analytics for a selected set of operations. It provides a centralized view of operation metadata and graphical displays of the operations, the techniques and tactics used, and the facts discovered by the operations. 
+
+The plugin additionally supports the export of campaign information and analytics in PDF format.
