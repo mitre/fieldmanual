@@ -74,12 +74,13 @@ Each platform block consists of a:
 * parsers (optional)
 * requirements (optional)
 
-**Command**: A command can be 1-line or many and should contain the code you would like the ability to execute. The command can (optionally) contain variables, which are identified as #{variable}. In the example above, there is one variable used, #{files}. A variable means that you are letting CALDERA fill in the actual contents. CALDERA has 3 global variables: 
+**Command**: A command can be 1-line or many and should contain the code you would like the ability to execute. The command can (optionally) contain variables, which are identified as #{variable}. In the example above, there is one variable used, #{files}. A variable means that you are letting CALDERA fill in the actual contents. CALDERA has a number of global variables:
 
 * #{server} references the FQDN of the CALDERA server itself. Because every agent may know the location of CALDERA differently, using the #{server} variable allows you to let the system determine the correct location of the server.
 * #{group} is the group a particular agent is a part of. This variable is mainly useful for lateral movement, where your command can start an agent within the context of the agent starting it. 
+* #{paw} is the unique identifier - or paw print - of the agent.
 * #{location} is the location of the agent on the client file system. 
-* #{paw} is the unique identifier - or paw print - of the agent
+* #{exe_name} is the executable name of the agent.
 
 Global variables can be identified quickly because they will be single words.
 
