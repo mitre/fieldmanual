@@ -23,7 +23,7 @@ If you're new to CALDERA, this is a good place to start.
    How-to-Build-Agents.md
    How-CALDERA-makes-decisions.md
    Objectives.md
-   Initial-access.md
+   Initial-Access-Attacks.md
    Install-CALDERA-offline.md
    Docker-deployment.md
    CALDERA-2.0.md
