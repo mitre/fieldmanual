@@ -208,7 +208,7 @@ This plugin allows a user to gain a "User Certificate" which proves their abilit
 
 ## Access
 
-This plugin allows you to task any agent with any ability from the database. It also allows you to conduct initial access attacks.
+This plugin allows you to task any agent with any ability from the database. It also allows you to conduct [Initial Access Attacks](Initial-Access-Attacks.md).
 
 ### Metasploit Integration
 

@@ -36,7 +36,7 @@ app.contact.websocket: 0.0.0.0:7012
 A few key things to note:
 
 * **Port**: the port you serve CALDERA on
-* **Plugins**: the list of all loaded [plugins](What-is-a-plugin.md). A plugin must be in this list to be available when CALDERA is running. Adding a plugin to this list will result in that plugin's hook.py file getting called when CALDERA boots up.
+* **Plugins**: the list of all loaded [plugins](Learning-the-terminology.html#what-is-a-plugin). A plugin must be in this list to be available when CALDERA is running. Adding a plugin to this list will result in that plugin's hook.py file getting called when CALDERA boots up.
 * **Users**: the username/password credentials of all accounts you want to access the CALDERA login page. Users can either be in the red or blue group.
 * **API_KEY**: a password to use when accessing CALDERA programmatically.
 * **Exfil_dir**: the directory to use when an ability exfiltrates files from the agent, sending them back to CALDERA. Any file(s) posted to the /file/upload endpoint will end up in this directory.

@@ -1,7 +1,7 @@
-Initial Access
-================
+Initial Access Attacks
+======================
 
-CALDERA allows for easy initial access attacks, by leveraging the Access plugin. This guide will walk you through how
+CALDERA allows for easy initial access attacks, by leveraging the [Access](Plugin-library.html#access) plugin. This guide will walk you through how
 to fire off an initial access attack, as well as how to build your own. 
 
 ## Run an initial access technique
@@ -63,7 +63,7 @@ the scanner.sh binary:
         payloads:
           - scanner.sh
 ```
-This is the same format that is used for other CALDERA abilities, so refer to the "Learning the terminology" doc page
+This is the same format that is used for other CALDERA abilities, so refer to the [Learning the terminology](Learning-the-terminology.md) page
 for a run-through of all the fields. 
 
 ### Run the ability
