@@ -183,7 +183,7 @@ The following example shows donut functionality using the optional `command` fie
           }
 ```
 
-Donut can also be used to read from an already-compiled executable with either a `.donut.exe` or a `.exe` extension. Payloads found with a `.donut.exe` extension will be prioritized. The following example will transform a payload named `Rubeus.donut.exe` into shellcode which will be executed in memory. Note that `Rubeus.donut` is specified in the payload and command:
+Donut can also be used to read from pre-compiled executables. .NET Framework 4 is required. Executables will be found with either a `.donut.exe` or a `.exe` extension, and `.donut.exe` extensions will be prioritized. The following example will transform a payload named `Rubeus.donut.exe` into shellcode which will be executed in memory. Note that `Rubeus.donut` is specified in the payload and command:
 
 ```yaml
 ---
