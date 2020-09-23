@@ -26,9 +26,9 @@ async def build_docs():
         'sphinx-build', '%s/' % (sphinx_docs_root,), str(html_docs_root), '-b', 'html', '-c', str(sphinx_docs_root),
         stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
     stdout, stderr = await process.communicate()
-    logging.info(stdout)
+    logging.debug(stdout)
     if process.returncode:
-        logging.warning('doc generation failed: %s' % (stderr,))
+        logging.error('doc generation failed: %s' % (stderr,))
 
 
 async def enable(services, loop=None):
