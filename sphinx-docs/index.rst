@@ -24,6 +24,7 @@ If you're new to CALDERA, this is a good place to start.
    How-CALDERA-makes-decisions.md
    Objectives.md
    Initial-Access-Attacks.md
+   Dynamically-Compiled-Payloads.md
    Install-CALDERA-offline.md
    Docker-deployment.md
    CALDERA-2.0.md

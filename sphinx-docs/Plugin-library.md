@@ -226,9 +226,9 @@ If the exploit has options, you'll need to set them by adding a fact for it with
 
 ## Builder
 
-The Builder plugin enables CALDERA to dynamically compile code segments into payloads that can be executed as abilities by implants.
+The Builder plugin enables CALDERA to dynamically compile code segments into payloads that can be executed as abilities by implants. Currently, only C# is supported. 
 
-Currently, only C# is supported. Code is compiled in a Docker container using Mono. The resulting executable, along with any additional references, will be copied to the remote machine and executed.
+See [Dynamically-Compiled Payloads](Dynamically-Compiled-Payloads.md) for examples on how to create abilities that leverage these payloads.
 
 ## Debrief
 
