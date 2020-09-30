@@ -17,7 +17,7 @@ plugin_root = pathlib.Path('plugins/%s' % (name,))
 sphinx_docs_root = plugin_root / 'sphinx-docs'
 html_docs_root = sphinx_docs_root / '_build' / 'html'
 
-logger = logging.getLogger("fieldmanual")
+logger = logging.getLogger('fieldmanual')
 
 
 async def landing(_):
@@ -52,12 +52,12 @@ async def build_docs(loop=None):
         except Exception:
             logger.warning("Encountered problem while building documentation.", exc_info=True)
 
-        if "build succeeded" in out and err:
-            logger.info("Docs built successfully with the following warnings\n%s" % err)
-        elif "build succeeded" in out:
-            logger.info("Docs built successfully.")
+        if 'build succeeded' in out and err:
+            logger.info('Docs built successfully with the following warnings\n%s' % err)
+        elif 'build succeeded' in out:
+            logger.info('Docs built successfully.')
         else:
-            logger.warning("Unable to build docs:\n%s" % err)
+            logger.warning('Unable to build docs:\n%s' % err)
 
 
 async def enable(services, loop=None):
