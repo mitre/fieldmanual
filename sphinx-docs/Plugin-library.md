@@ -216,7 +216,7 @@ The Access plugin also allows for the easy creation of abilities for Metasploit 
 
 Prerequisites:
 
-* An agent running on a host that has Metasploit installed
+* An agent running on a host that has Metasploit installed and initialized (run it once to set up Metasploit's database)
 * The `app.contact.http` option in CALDERA's configuration includes `http://`
 * A fact source that includes a `app.api_key.red` fact with a value equal to the `api_key_red` option in CALDERA's configuration
 
