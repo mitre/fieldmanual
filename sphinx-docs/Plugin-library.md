@@ -174,13 +174,12 @@ The following directions explain how to generate and install your own certificat
 ##### Directions:
 *Note: OpenSSL must be installed on your system*
 1. In the root CALDERA directory, navigate to `plugins/ssl`.
-2. Remove the file `conf/insecure_certificate.pem`.
-3. In a terminal, paste the command `openssl req -x509 -newkey rsa:4096 -keyout conf/certificate.pem.key -out conf/certificate.pem -nodes` and press enter.
-4. This will prompt you for identifying details. Enter your country code when prompted. You may leave the rest blank by pressing enter.
-5. Copy the file `haproxy.conf` from the templates directory to the `conf` directory.
-6. Open the file `conf/haproxy.conf` in a text editor. 
-7. On the line `bind *:8443 ssl crt plugins/ssl/conf/insecure_certificate.pem`, replace `insecure_certificate.pem` with `certificate.pem`.
-8. Save and close the file. Congratulations! You are now using this plugin securely.
+2. In a terminal, paste the command `openssl req -x509 -newkey rsa:4096 -keyout conf/certificate.pem.key -out conf/certificate.pem -nodes` and press enter.
+3. This will prompt you for identifying details. Enter your country code when prompted. You may leave the rest blank by pressing enter.
+4. Copy the file `haproxy.conf` from the templates directory to the `conf` directory.
+5. Open the file `conf/haproxy.conf` in a text editor. 
+6. On the line `bind *:8443 ssl crt plugins/ssl/conf/insecure_certificate.pem`, replace `insecure_certificate.pem` with `certificate.pem`.
+7. Save and close the file. Congratulations! You are now using this plugin securely.
 
 ## Atomic
 
