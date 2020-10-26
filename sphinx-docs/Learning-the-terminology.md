@@ -10,11 +10,21 @@ CALDERA includes the following agents:
 * **Manx**: A reverse-shell agent that communicates via the TCP contact
 * **Ragdoll**: A python agent that communicates via the HTML contact
 
-Plugins are included for the sandcat and manx agents.
+To deploy an agent, navigate to *Campaigns -> agents ->* and click 'Click here to deploy an agent' in the GUI. Next, select the agent, platform (operating system), and options, noting the group and C2 contact type. Then, copy and paste the command into the terminal or prompt on the target.
 
-Agents can be deployed through the GUI by navigating to *Campaigns -> agents ->* and clicking 'Click here to deploy an agent'. Select the proper agent, operating system and options then copy and paste the command in a terminal or command prompt of your desired host to deploy the agent.
+Several configuration options are available for agents:
 
-Individual agents can be configured by clicking on the button under the 'PID' column for the agent.
+* **Beacon Timers**: Set the minimum and maximum seconds the agent will take to beacon home. These timers are applied to all newly-created agents.
+* **Watchdog Timer**: Set the number of seconds to wait, once the server is unreachable, before killing an agent. This timer is applied to all newly-created agents.
+* **Untrusted Timer**: Set the number of seconds to wait before marking a missing agent as untrusted. Operations will not generate new links for untrusted agents. This is a global timer and will affect all running and newly-created agents.
+* **Implant Name**: The base name of newly-spawned agents. If necessary, an extension will be added when an agent is created (ex: `splunkd` will become `splunkd.exe` when spawning an agent on a Windows machine).
+* **Bootstrap Abilities**: A comma-separated list of ability IDs to be run on a new agent beacon. By default, this is set to run a command which clears command history.
+
+Agents have a number of agent-specific settings that can be modified by clicking on the button under the 'PID' column for the agent:
+
+* **Group**: Agent group (for additional details, see [What is a group](#what-is-a-group))
+* **Sleep**: Beacon minimum and maximum sleep timers for this specific agent, separated by a forward slash (`/`)
+* **Watchdog**: The watchdog timer setting for this specific agent
 
 ## What is a group?
 
