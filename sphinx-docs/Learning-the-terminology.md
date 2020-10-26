@@ -26,6 +26,8 @@ Agents have a number of agent-specific settings that can be modified by clicking
 * **Sleep**: Beacon minimum and maximum sleep timers for this specific agent, separated by a forward slash (`/`)
 * **Watchdog**: The watchdog timer setting for this specific agent
 
+Agents can be killed using the "Kill Agent" button under the agent-specific settings. The agent will terminate on its next beacon.
+
 ## What is a group?
 
 A group is a property applied to agents which allows an operator to run operations on multiple agents at the same time.
