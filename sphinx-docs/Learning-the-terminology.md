@@ -28,11 +28,11 @@ Agents have a number of agent-specific settings that can be modified by clicking
 
 ## What is a group?
 
-A group is a collection of agents connected to CALDERA. A group allows you to start an operation against multiple computers at the same time instead of one at a time.
+A group is a property applied to agents which allows an operator to run operations on multiple agents at the same time.
 
-When an agent is started, it automatically joins a generic group, my_group, but you can add or remove custom groups once an agent is connected. 
+The agent group can be defined in the command used to spawn the beacon. If no group if defined, the agent will automatically join the "red" group. The group can be changed at any time by editing the agent-specific settings.
 
-During an operation, if an agent laterally moves to another computer, it will automatically become associated with the same group as the agent which started it.
+A special group, "blue", is used to spawn agents which will be available for Blue operations. This group needs to be applied when the agent is created in order to appear on the Blue dashboard.
 
 ## What is an ability?
 
