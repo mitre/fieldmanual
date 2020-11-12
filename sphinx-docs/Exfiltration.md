@@ -1,5 +1,4 @@
-Exfiltration
-====================
+# Exfiltration
 
 After completing an operation a user may want to review the data retreived from the target system. This data is automatically stored on the CALDERA server in a directory specified in [/conf/default.yml](Server-configuration.html#the-existing-default-yml).
 
@@ -21,7 +20,7 @@ After the server is shut down the reports from operations are placed inside the 
 ## Unencrypting the files
 The reports and exfiltrated files are encrypted on the server. To view the file contents the user will have to decrypt the file using /app/utility/file_decryptor.py . This can be performed with:
 
-```yaml
+```shell
 python /app/utility/file_decryptor.py --config /conf/default.yml _input file path_
 ```
 
