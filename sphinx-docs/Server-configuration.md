@@ -76,7 +76,7 @@ For example:
 ldap:
   dn: cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org
   server: ldap://ipa.demo1.freeipa.org
-  userattr: uid
+  user_attr: uid
   group_attr: objectClass
   red_group: organizationalperson
 ```
