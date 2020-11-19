@@ -86,5 +86,7 @@ user has an `objectClass` attribute that contains the value `organizationalperso
 team user. In contrast, the `admin` user does not have an `objectClass` of `organizationalperson` so they will be logged
 in as a blue team user.
 
+Be sure to change these settings to match your specific LDAP environment.
+
 Note that adding the `ldap` section will disable any accounts listed in the `users` section of the config file;
 only LDAP will be used for logging in.
