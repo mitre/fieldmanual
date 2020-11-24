@@ -1,5 +1,4 @@
-How to Build Plugins
-================
+# How to Build Plugins
 
 Building your own plugin allows you to add custom functionality to CALDERA. 
 
@@ -13,6 +12,13 @@ Plugins are stored in the plugins directory. If a plugin is also listed in the l
 > however. These functions will be defined on the services' corresponding interface.
 > 2. Any c_object that implements the FirstClassObjectInterface. Only call the functions on this interface, as the others
 > are subject to changing.
+
+This guide is useful as it covers how to create a simple plugin from scratch. 
+However, if this is old news to you and you're looking for an even faster start, 
+consider trying out [Skeleton](https://github.com/mitre/skeleton)
+(a plugin for building other plugins). 
+Skeleton will generate a new plugin directory that contains all the standard
+boilerplate. 
 
 ## Creating the structure
 
