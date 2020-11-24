@@ -30,6 +30,8 @@ If you're new to CALDERA, this is a good place to start.
    CALDERA-2.0.md
    Uninstalling-CALDERA.md
    Common-problems.md
+   Exfiltration.md
+   Sandcat-Peer-to-Peer.md
    resources
 
 The following section contains information intended to help developers
