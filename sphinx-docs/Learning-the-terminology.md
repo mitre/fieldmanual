@@ -106,6 +106,10 @@ Payloads can be stored as regular files or you can xor (encode) them so the anti
 
 > The payload_encoder.py file has a docstring which explains how to use the utility.
 
+Payloads also can be ran through a packer to obfuscate them further from detection on a host machine.  To do this you would put the packer module name in front of the filename followed by a colon ':'.  This non-filename character will be passed in the agent's call to the download endpoint, and the file will be packed before sending it back to the agent. UPX is currently the only supported packer, but adding addition packers is a simple task.
+
+> an example for setting up for a packer to be used would be editing the filename in the payload section of an ability file: - upx:Akagi64.exe
+
 **Cleanup**: An instruction that will reverse the result of the command. This is intended to put the computer back into the state it was before the ability was used. For example, if your command creates a file, you can use the cleanup to remove the file. Cleanup commands run after an operation, in the reverse order they were created. Cleaning up an operation is also optional, which means you can start an operation and instruct it to skip all cleanup instructions. 
 
 Cleanup is not needed for abilities, like above, which download files through the payload block. Upon an operation completing, all payload files will be removed from the client (agent) computers.
