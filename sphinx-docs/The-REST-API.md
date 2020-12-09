@@ -104,7 +104,7 @@ Files can be dowloaded from CALDERA through the /file/download endpoint. This en
 
 Files can also be downloaded indirectly through the [payload block of an ability](What-is-an-ability.md).
 
-> Additionally, the [54ndc47 plugin](Plugins-sandcat.md) delivery commands utilize the file download endpoint to drop the agent on a host
+> Additionally, the [54ndc47 plugin](Plugin-library.md) delivery commands utilize the file download endpoint to drop the agent on a host
 
 #### Example
 ```bash
