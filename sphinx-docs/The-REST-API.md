@@ -102,7 +102,7 @@ curl -F 'data=@path/to/file' http://localhost:8888/file/upload
 
 Files can be dowloaded from CALDERA through the /file/download endpoint. This endpoint requires an HTTP header called "file" with the file name as the value. When a file is requested, CALDERA will look inside each of the payload directories listed in the local.yml file until it finds a file matching the name.
 
-Files can also be downloaded indirectly through the [payload block of an ability](What-is-an-ability.md).
+Files can also be downloaded indirectly through the [payload block of an ability](Learning-the-terminology.md).
 
 > Additionally, the [54ndc47 plugin](Plugin-library.md) delivery commands utilize the file download endpoint to drop the agent on a host
 
