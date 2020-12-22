@@ -161,25 +161,25 @@ After loading this plugin and restarting, the ATT&CK website is available from t
 The SSL plugin adds HTTPS to CALDERA. 
 > This plugin only works if CALDERA is running on a Linux or MacOS machine. It requires HaProxy (>= 1.8) to be installed prior to using it.
 
-When this plugin has been loaded, CALDERA will start the HAProxy service on the machine and then serve CALDERA at hxxps://[YOUR_IP]:8443, instead of the normal hxxp://[YOUR_IP]:8888.
+When this plugin has been loaded, CALDERA will start the HAProxy service on the machine and serve CALDERA on all interfaces on port 8443, in addition to the normal http://[YOUR_IP]:8888 (based on the value of the `host` value in the CALDERA settings).
 
-CALDERA will **only** be available at https://[YOUR_IP]:8443 when using this plugin. All deployed agents should use the correct address to connect to CALDERA. 
+Plugins and agents will not automatically update to the service at https://[YOUR_IP]:8443. All agents will need to be redeployed using the HTTPS address to use the secure protocol. The address will not automatically populate in the agent deployment menu. If a self-signed certificate is used, deploying agents may require additional commands to disable SSL certificate checks.
 
-**Warning:** This plugin uses a default self-signed ssl certificate and key which is insecure. It is highly recommended that you generate your own before using the plugin to increase the safety of the system. See directions below.
+**Warning:** This plugin uses a default self-signed ssl certificate and key which should be replaced. In order to use this plugin securely, you need to generate your own certificate. The directions below show how to generate a new self-signed certificate.
 
-#### Using your own self-signed certificate
-In order to use this plugin securely, you need to generate your own self-signed certificate.
-The following directions explain how to generate and install your own certificate on a Linux or macOS system. 
+### Setup Instructions
 
-##### Directions:
-*Note: OpenSSL must be installed on your system*
+*Note: OpenSSL must be installed on your system to generate a new self-signed certificate*
+
 1. In the root CALDERA directory, navigate to `plugins/ssl`.
-2. In a terminal, paste the command `openssl req -x509 -newkey rsa:4096  -out conf/certificate.pem -keyout conf/certificate.pem -nodes` and press enter.
-3. This will prompt you for identifying details. Enter your country code when prompted. You may leave the rest blank by pressing enter.
-4. Copy the file `haproxy.conf` from the `templates` directory to the `conf` directory.
-5. Open the file `conf/haproxy.conf` in a text editor. 
-6. On the line `bind *:8443 ssl crt plugins/ssl/conf/insecure_certificate.pem`, replace `insecure_certificate.pem` with `certificate.pem`.
-7. Save and close the file. Congratulations! You are now using this plugin securely.
+1. Place a PEM file containing SSL public and private keys in `conf/certificate.pem`. Follow the instructions below to generate a new self-signed certificate:
+   - In a terminal, paste the command `openssl req -x509 -newkey rsa:4096  -out conf/certificate.pem -keyout conf/certificate.pem -nodes` and press enter.
+   - This will prompt you for identifying details. Enter your country code when prompted. You may leave the rest blank by pressing enter.
+1. Copy the file `haproxy.conf` from the `templates` directory to the `conf` directory.
+1. Open the file `conf/haproxy.conf` in a text editor. 
+1. On the line `bind *:8443 ssl crt plugins/ssl/conf/insecure_certificate.pem`, replace `insecure_certificate.pem` with `certificate.pem`.
+1. On the line `server caldera_main 127.0.0.1:8888 cookie caldera_main`, replace `127.0.0.1:8888` with the host and port defined in CALDERA's `conf/local.yml` file. This should not be required if CALDERA's configuration has not been changed.
+1. Save and close the file. Congratulations! You can now use CALDERA securely by accessing the UI https://[YOUR_IP]:8443 and redeploying agents using the HTTPS service.
 
 ## Atomic
 
