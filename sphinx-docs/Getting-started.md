@@ -1,61 +1,99 @@
 Getting started
 ====================
 
-Before you start using CALDERA, you should determine how you'd like to use it. Because it is a cyber security 
-framework, there are several ways you can utilize it - from offensive (red) to defensive (blue).
+CALDERA, as a cybersecurity framework, can be used in several ways. For most users, it will be used to run either offensive (red) or defensive (blue) operations.
 
 Here are the most common use-cases and basic instructions on how to proceed. 
 
 ## Autonomous red-team engagements
 
-This is the original CALDERA use-case. You can use the framework to build a specific threat (adversary) 
-profile and launch it in a network to see where you may be susceptible. This is good for testing defenses
-and training blue teams on how to detect threats. 
+This is the original CALDERA use-case. You can use the framework to build a specific threat (adversary) profile and launch it in a network to see where you may be susceptible. This is good for testing defenses and training blue teams on how to detect threats. 
 
-To use this:
+The following steps will walk through logging in, deploying an agent, selecting an adversary, and running an operation:
 
-1) Log in as a red user
-2) Click into the Sandcat plugin and deploy an agent on any compromised host
-3) Review or build threat profiles in the Profiles tab. Hint: getting experienced red-team operators to build these
-profiles allows the blue team to re-run them anytime they want in the future.
-4) Launch an operation against your agents using any threat profile 
+1) Log in as a red user. By default, a "red" user is creating with a password found in the `conf/local.yml` file (or `conf/default.yml` if using insecure settings).
+1) Deploy an agent
+   - Navigate to the Agents page and click the "Click here to deploy an agent"
+   - Choose the Sandcat (54ndc47) agent and platform (victim operating system)
+   - Check that the value for `app.contact.http` matches the host and port the CALDERA server is listening on
+   - Run the generated command on the victim machine
+   - Ensure that a new agent appears in the table on the Agents page
+1) Choose an adversary profile
+   - Navigate to the Adversaries page
+   - Select an adversary from the dropdown and review abilities. The "Discovery" and "Hunter" adversaries from the Stockpile plugin are good starting profiles.
+1) Run an operation
+   - Navigate to the Operations page and add an operation by toggling the View/Add switch
+   - Type in a name for the operation
+   - Under the basic options, select a group that contains the recently deployed agent ("red" by default)
+   - Under the basic options, select the adversary profile chosen in the last step
+   - Click the start button to begin the operation
+1) Review the operation
+   - While the operation is running, abilities will be executed on the deployed agent. Click the stars next to run abilities to view the output.
 
-All built-in threat profiles are safe to use out-of-the-box. 
+Next steps may include:
 
-## Manual red-team engagements
-
-You can use CALDERA to perform manual red-team assessments by leveraging the terminal plugin. This is good for 
-replacing or appending existing offensive toolsets in a manual assessment, as the framework can be extended 
-with any custom tools you may have.
-
-To use this:
-
-1) Log in as a red user
-2) Click into the terminal plugin and deploy the Manx agent on any compromised host
-4) Use the created sessions inside the terminal emulator to perform manual commands
+- Running an operation with a different adversary profile
+- Creating a new adversary profile
+- Creating custom abilities and adding them to an adversary profile
+- Running an operation with a different planner (such as batch)
 
 ## Autonomous incident-response 
 
-You can leverage CALDERA to perform automated incident response on a given host. This is helpful for identifying 
-TTPs that other security tools may not see or block. 
+CALDERA can be used to perform automated incident response through deployed agents. This is helpful for identifying TTPs that other security tools may not see or block. 
 
-To use this:
+The following steps will walk through logging in to CALDERA blue, deploying a blue agent, selecting a defender, and running an operation:
 
-1) Log in as a blue user
-2) Click into the Sandcat plugin and deploy an agent on any host
-3) Review or build defender profiles in the Profiles tab
-4) Launch an operation against your agents using any defender profile 
+1) Log in as a blue user. By default, a "blue" user is creating with a password found in the `conf/local.yml` file (or `conf/default.yml` if using insecure settings).
+1) Deploy a blue agent
+   - Navigate to the Agents page and click the "Click here to deploy an agent"
+   - Choose the Sandcat (54ndc47) agent and platform (victim operating system)
+   - Check that the value for `app.contact.http` matches the host and port the CALDERA server is listening on
+   - Run the generated command on the victim machine
+   - Ensure that a new blue agent appears in the table on the Agents page
+1) Choose a defender profile
+   - Navigate to the Defenders page
+   - Select a defender from the dropdown and review abilities. The "Incident responder" defender is a good starting profile.
+1) Choose a fact source. Defender profiles utilize fact sources to determine good vs. bad on a given host.
+   - Navigate to the Sources page
+   - Select a fact source and review facts. Consider adding facts to match the environment (for example, add a fact with the `remote.port.unauthorized` trait and a value of `8000` to detect services running on port 8000)
+   - Save the source if any changes were made
+1) Run an operation
+   - Navigate to the Operations page and add an operation by toggling the View/Add switch
+   - Type in a name for the operation
+   - Under the basic options, select a group that contains the recently deployed agent ("blue" by default)
+   - Under the basic options, select the defender profile chosen previously
+   - Under the autonomous menu, select the fact source chosen previously
+   - Click the start button to begin the operation
+1) Review the operation
+   - While the operation is running, abilities will be executed on the deployed agent. Click the stars next to run abilities to view the output.
+   - Consider manually running commands (or [using an automated adversary](#autonomous-red-team-engagements)) which will trigger incident response actions (such as starting a service on an unauthorized port)
 
-Defender profiles utilize fact sources to determine good vs. bad on a given host.
+## Manual red-team engagements
+
+CALDERA can be used to perform manual red-team assessments using the Manx agent. This is good for replacing or appending existing offensive toolsets in a manual assessment, as the framework can be extended with any custom tools you may have.
+
+The following steps will walk through logging in, deploying a Manx agent, and running manual commands:
+
+1) Log in as a red user
+1) Deploy a Manx agent
+   - Navigate to the Agents page and click the "Click here to deploy an agent"
+   - Choose the Manx agent and platform (victim operating system)
+   - Check that the values for `app.contact.http`, `app.contact.tcp`, and `app.contact.udp` match the host and ports the CALDERA server is listening on
+   - Run the generated command on the victim machine
+   - Ensure that a new agent appears in the table on the Agents page
+1) Deploy a Manx agent
+   - Navigate to the Manx plugin
+   - Select the deployed agent in the session dropdown 
+   - Run manual commands in the terminal window
 
 ## Research on artificial intelligence
 
-You can ignore all red/blue and security aspects of CALDERA and instead use it to test artificial intelligence and
-other decision-making algorithms. 
+CALDERA can be used to test artificial intelligence and other decision-making algorithms using the [Mock plugin](https://github.com/mitre/mock). The plugin adds simulated agents and mock ability responses, which can be used to run simulate an entire operation.
 
-To use this:
+To use the mock plugin:
 
-1) Enable the mock plugin and restart the server. Log in as a red user.
-2) In the Campaigns -> Agents tab, review the simulated agents that have been spun up
-3) Run an operation using any adversary against your simulated agents. Note how the operation runs non-deterministically. You can now go into the batch.py planning module and adjust the logic which 
-makes decisions on what to do when to test out different theories. 
+1) With the server stopped, enable the mock plugin. Restart the server.
+1) Log in as a red user
+1) In the Agents modal, review the simulated agents that have been spun up
+1) Run an operation using any adversary against your simulated agents. Note how the operation runs non-deterministically.
+1) Adjust the decision logic in a planner, such as the `batch.py` planner in the Stockpile plugin, to test out different theories
