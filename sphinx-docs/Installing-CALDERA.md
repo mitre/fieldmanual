@@ -36,6 +36,29 @@ Once started, log in to http://localhost:8888 with the `red` using the password 
 
 To learn how to use CALDERA, navigate to the Training plugin and complete the capture-the-flag style course.
 
+## Docker Deployment
+
+CALDERA can be installed and run in a Docker container.
+
+Start by cloning the CALDERA repository recursively, passing the desired version/release in x.x.x format:
+
+```
+git clone https://github.com/mitre/caldera.git --recursive --branch x.x.x
+cd caldera
+```
+
+Next, build a container:
+
+```
+docker build . -t caldera:server
+```
+
+Finally, run the docker CALDERA server:
+
+```
+docker run -p 7010:7010 -p 7011:7011 -p 7012:7012 -p 8888:8888 caldera:server
+```
+
 ## Offline Installation
 
 It is possible to use `pip3` to install CALDERA on a server without internet access. Dependencies will be downloaded to a machine with internet access, then copied to the offline server and installed.
