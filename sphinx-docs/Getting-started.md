@@ -16,7 +16,7 @@ The following steps will walk through logging in, deploying an agent, selecting 
    - Navigate to the Agents page and click the "Click here to deploy an agent"
    - Choose the Sandcat (54ndc47) agent and platform (victim operating system)
    - Check that the value for `app.contact.http` matches the host and port the CALDERA server is listening on
-   - Run the generated command on the victim machine
+   - Run the generated command on the victim machine. Note that some abilities will require elevated privileges, which would require the agent to be deployed in an elevated shell.
    - Ensure that a new agent appears in the table on the Agents page
 1) Choose an adversary profile
    - Navigate to the Adversaries page
@@ -48,7 +48,7 @@ The following steps will walk through logging in to CALDERA blue, deploying a bl
    - Navigate to the Agents page and click the "Click here to deploy an agent"
    - Choose the Sandcat (54ndc47) agent and platform (victim operating system)
    - Check that the value for `app.contact.http` matches the host and port the CALDERA server is listening on
-   - Run the generated command on the victim machine
+   - Run the generated command on the victim machine. The blue agent should be deployed with elevated privileges in most cases.
    - Ensure that a new blue agent appears in the table on the Agents page
 1) Choose a defender profile
    - Navigate to the Defenders page
