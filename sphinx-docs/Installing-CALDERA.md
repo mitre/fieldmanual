@@ -62,11 +62,11 @@ docker run -p 7010:7010 -p 7011:7011 -p 7012:7012 -p 8888:8888 caldera:server
 
 ## Offline Installation
 
-It is possible to use `pip3` to install CALDERA on a server without internet access. Dependencies will be downloaded to a machine with internet access, then copied to the offline server and installed.
+It is possible to use pip to install CALDERA on a server without internet access. Dependencies will be downloaded to a machine with internet access, then copied to the offline server and installed.
 
 To minimize issues with this approach, the internet machine's platform and Python version should match the offline server. For example, if the offline server runs Python 3.6 on Ubuntu 20.04, then the machine with internet access should run Python 3.6 and Ubuntu 20.04.
 
-Run the following commands on the machine with internet access, passing the desired version/release in x.x.x format:
+Run the following commands on the machine with internet access. These commands will clone the CALDERA repository recursively (passing the desired version/release in x.x.x format) and download the dependencies using pip:
 
 ```
 git clone https://github.com/mitre/caldera.git --recursive --branch x.x.x
