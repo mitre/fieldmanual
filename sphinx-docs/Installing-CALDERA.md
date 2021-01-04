@@ -18,6 +18,7 @@ Start by cloning the CALDERA repository recursively, pulling all available plugi
 
 ```
 git clone https://github.com/mitre/caldera.git --recursive --branch x.x.x
+cd caldera
 ```
 
 Next, install the pip requirements:
