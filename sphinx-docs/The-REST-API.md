@@ -32,7 +32,7 @@ curl -H "key:$API_KEY" -X POST localhost:8888/plugin/access/abilities -d '{"paw"
 
 Execute a given ability against an agent, outside the scope of an operation. 
 ```
-curl -H "key:ADMIN123" -X POST localhost:8888/plugin/access/exploit -d '{"paw":"$PAW","ability_id":"$ABILITY_ID"}'```
+curl -H "key:ADMIN123" -X POST localhost:8888/plugin/access/exploit -d '{"paw":"$PAW","ability_id":"$ABILITY_ID","obfuscator":"plain-text"}'
 ```
 > You can optionally POST an obfuscator and/or a facts dictionary with key/value pairs to fill in any variables the chosen ability requires.
 ```
