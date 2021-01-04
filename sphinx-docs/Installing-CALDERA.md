@@ -4,29 +4,63 @@ Installing CALDERA
 ## Requirements
 
 * Linux or MacOS operating system
-* Python 3.6.1+ (with Pip3)
-* Google Chrome browser
-* Recommended hardware to run on is 8GB+ RAM and 2+ CPUs
+* Python 3.6.1+ (with pip3)
 
-### Optional
+### Recommended
 
 * GoLang 1.13+ (for optimal agent functionality)
+* Google Chrome browser 
+* Hardware: 8GB+ RAM and 2+ CPUs
 
 ## Installation
 
-Start by cloning this repository recursively, passing the desired version/release in x.x.x format. This will pull in all available plugins. If you clone master - or any non-release branch - you may experience bugs.
+Start by cloning the CALDERA repository recursively, pulling all available plugins. It is recommended to pass the desired [version/release](https://github.com/mitre/caldera/releases) (should be in x.x.x format). Cloning any non-release branch, including master, may result in bugs.
+
 ```
-git clone https://github.com/mitre/caldera.git --recursive --branch x.x.x 
+git clone https://github.com/mitre/caldera.git --recursive --branch x.x.x
 ```
 
-Next, install the PIP requirements:
-```
+Next, install the pip requirements:
+
+``` 
 sudo pip3 install -r requirements.txt
 ```
 
 Finally, start the server:
+
 ```
-python3 server.py --insecure
+python3 server.py
 ```
 
-Once started, you should log into http://localhost:8888 using the credentials red/admin. Then go into Plugins -> Training and complete the capture-the-flag style training course to learn how to use the framework.
+Once started, log in to http://localhost:8888 with the `red` using the password found in the `conf/local.yml` file (this file will be generated on server start).
+
+To learn how to use CALDERA, navigate to the Training plugin and complete the capture-the-flag style course.
+
+## Offline Installation
+
+It is possible to use `pip3` to install CALDERA on a server without internet access. Dependencies will be downloaded to a machine with internet access, then copied to the offline server and installed.
+
+To minimize issues with this approach, the internet machine's platform and Python version should match the offline server. For example, if the offline server runs Python 3.6 on Ubuntu 20.04, then the machine with internet access should run Python 3.6 and Ubuntu 20.04.
+
+Run the following commands on the machine with internet access, passing the desired version/release in x.x.x format:
+
+```
+git clone https://github.com/mitre/caldera.git --recursive --branch x.x.x
+mkdir caldera/python_deps
+pip3 download -r caldera/requirements.txt --dest caldera/python_deps
+```
+
+The `caldera` directory now needs to be copied to the offline server (via `scp`, sneakernet, etc).
+
+On the offline server, the dependencies can then be installed with `pip3`:
+
+```
+pip3 install -r caldera/requirements.txt --no-index --find-links caldera/python_deps
+```
+
+CALDERA can then be started as usual on the offline server:
+
+```
+cd caldera
+python3 server.py
+```
