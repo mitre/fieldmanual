@@ -61,13 +61,13 @@ $wc.DownloadFile($url,$output); # download
 
 The following features are included in the stock agent:
 - `HTTP` C2 contact protocol
-- `psh` powershell executor (Windows)
+- `psh` PowerShell executor (Windows)
+- `cmd` cmd.exe executor (Windows)
 - `sh` shell executor (Linux/Mac)
 
 Additional functionality can be found in the following gocat extensions:
 - `gist` extension provides the Github gist C2 contact protocol.
-- `shells` extension provides the `cmd` (Windows cmd), `osascript` (Mac Osascript), and 
-`pwsh` (Windows powershell core) executors.
+- `shells` extension provides the `osascript` (Mac Osascript) and `pwsh` (Windows powershell core) executors.
 - `shellcode` extension provides the shellcode executors.
 - `proxy_http` extension provides the `HTTP` peer-to-peer proxy receiver.
 - `proxy_smb_pipe` extension provides the `SmbPipe` peer-to-peer proxy client and receiver for Windows (peer-to-peer
