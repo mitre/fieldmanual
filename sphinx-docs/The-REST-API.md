@@ -57,7 +57,7 @@ curl -H "KEY:$API_KEY" 'http://localhost:8888/api/rest' -H 'Content-Type: applic
 
 Delete any operation. Operation ID must be a integer.
 ```bash
-curl -X DELETE http://localhost:8888/api/rest -d '{"index":"operations","id":"$operation_id"}'
+curl -H "KEY:$API_KEY" -X DELETE http://localhost:8888/api/rest -d '{"index":"operations","id":"$operation_id"}'
 ```
 
 #### POST
