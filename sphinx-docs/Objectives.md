@@ -1,5 +1,4 @@
-Objectives
-============
+# Objectives
 
 As part of ongoing efforts to increase the capabilities of CALDERA's Planners, the team has implemented 
 Objectives. Objectives are collections of fact targets, called Goals, which can be tied to Adversaries. 

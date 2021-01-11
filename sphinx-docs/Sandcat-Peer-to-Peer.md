@@ -1,5 +1,4 @@
-Peer-to-Peer Proxy Functionality for 54ndc47 Agents
-================
+# Peer-to-Peer Proxy Functionality for 54ndc47 Agents
 
 In certain scenarios, an agent may start on a machine that can't directly connect to the C2 server. 
 For instance, agent A may laterally move to a machine that is on an internal network and cannot beacon out to the C2.

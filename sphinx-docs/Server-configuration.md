@@ -1,5 +1,4 @@
-Server configuration
-============================
+# Server configuration
 
 Caldera's configuration file is located at `conf/default.yml`.
 

@@ -1,5 +1,4 @@
-Uninstall CALDERA
-=================
+# Uninstall CALDERA
 
 To uninstall CALDERA, navigate to the directory where CALDERA was installed and recursively remove the directory using the following command: 
 ```
