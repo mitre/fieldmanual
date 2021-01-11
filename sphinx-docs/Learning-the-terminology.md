@@ -5,12 +5,22 @@ Learning the terminology
 
 An agent is a simple software program - requiring no installation - which connects to CALDERA in order to get instructions. It then executes the instructions and sends the results back to the CALDERA server.
 
+Agents are identified by their paw - or paw print. Each agent's paw is unique. Deployed agents can run abilities based on which executors are available (ex: `sh` on Linux, `psh` or `cmd` on Windows).
+
+### Agent management
+
+To deploy an agent, navigate to the Agents tab and click the "Click here to deploy an agent" button. Choose an agent (Sandcat is a good one to start with), and choose a platform (operating system). Make sure the options match the expected host and port for the CALDERA server. Then, on the target machine, copy and paste the command into the terminal or command prompt and run. The new agent should appear in the table on the Agents tab. 
+
+To kill an agent, use the "Kill Agent" button under the agent-specific settings. The agent will terminate on its next beacon.
+
+### Types of agents
+
 CALDERA includes the following agents:
 * **Sandcat (54ndc47)**:  CALDERA's default agent, A GoLang agent that communicates through the HTTP contact.
 * **Manx**: A reverse-shell agent that communicates via the TCP contact
 * **Ragdoll**: A python agent that communicates via the HTML contact
 
-To deploy an agent, navigate to *Campaigns -> agents ->* and click 'Click here to deploy an agent' in the GUI. Next, select the agent, platform (operating system), and options, noting the group and C2 contact type. Then, copy and paste the command into the terminal or prompt on the target.
+### Agent settings
 
 Several configuration options are available for agents:
 
@@ -19,15 +29,12 @@ Several configuration options are available for agents:
 * **Untrusted Timer**: Set the number of seconds to wait before marking a missing agent as untrusted. Operations will not generate new links for untrusted agents. This is a global timer and will affect all running and newly-created agents.
 * **Implant Name**: The base name of newly-spawned agents. If necessary, an extension will be added when an agent is created (ex: `splunkd` will become `splunkd.exe` when spawning an agent on a Windows machine).
 * **Bootstrap Abilities**: A comma-separated list of ability IDs to be run on a new agent beacon. By default, this is set to run a command which clears command history.
-* **Deadman Abilities**: A comma-separated list of ability IDs to be run immediately prior to agent termination. The agent must support deadman abilities in order for them to run.
 
 Agents have a number of agent-specific settings that can be modified by clicking on the button under the 'PID' column for the agent:
 
 * **Group**: Agent group (for additional details, see [What is a group](#what-is-a-group))
 * **Sleep**: Beacon minimum and maximum sleep timers for this specific agent, separated by a forward slash (`/`)
 * **Watchdog**: The watchdog timer setting for this specific agent
-
-Agents can be killed using the "Kill Agent" button under the agent-specific settings. The agent will terminate on its next beacon.
 
 ## What is a group?
 
