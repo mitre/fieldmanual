@@ -1,5 +1,4 @@
-Dynamically-Compiled Payloads
-=============================
+# Dynamically-Compiled Payloads
 
 The [Builder](Plugin-library.html#builder) plugin can be used to create dynamically-compiled payloads. Currently, the plugin supports C#, C, C++, and Golang.
 

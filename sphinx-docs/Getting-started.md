@@ -1,5 +1,4 @@
-Getting started
-====================
+# Getting started
 
 CALDERA, as a cybersecurity framework, can be used in several ways. For most users, it will be used to run either offensive (red) or defensive (blue) operations.
 

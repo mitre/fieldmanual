@@ -1,5 +1,4 @@
-Learning the terminology
-============
+# Learning the terminology
 
 ## What is an agent?
 

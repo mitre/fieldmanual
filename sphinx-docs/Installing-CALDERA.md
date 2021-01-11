@@ -1,5 +1,4 @@
-Installing CALDERA
-================
+# Installing CALDERA
 
 ## Requirements
 

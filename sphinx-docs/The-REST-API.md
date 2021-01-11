@@ -1,5 +1,4 @@
-The REST API
-============
+# The REST API
 
 All REST API functionality can be viewed in the rest_api.py module in the source code.
 

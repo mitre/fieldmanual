@@ -1,5 +1,4 @@
-How CALDERA makes decisions
-=========================
+# How CALDERA makes decisions
 
 CALDERA makes decisions using parsers, which are optional blocks inside an ability.
 

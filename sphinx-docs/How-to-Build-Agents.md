@@ -1,5 +1,4 @@
-How to Build Agents
-================
+# How to Build Agents
 
 Building your own agent is a way to create a unique - or undetectable - footprint on compromised machines. Our
 default agent, 54ndc47, is a representation of what an agent can do. This agent is written in GoLang and offers

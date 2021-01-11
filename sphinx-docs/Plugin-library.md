@@ -1,5 +1,4 @@
-Plugin library
-==============
+# Plugin library
 
 Here you'll get a run-down of all open-source plugins, all of which can be found in the plugins/ directory as separate 
 GIT repositories. 
