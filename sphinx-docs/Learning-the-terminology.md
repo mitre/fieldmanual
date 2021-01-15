@@ -1,16 +1,25 @@
-Learning the terminology
-============
+# Learning the terminology
 
 ## What is an agent?
 
 An agent is a simple software program - requiring no installation - which connects to CALDERA in order to get instructions. It then executes the instructions and sends the results back to the CALDERA server.
+
+Agents are identified by their paw - or paw print. Each agent's paw is unique. Deployed agents can run abilities based on which executors are available (ex: `sh` on Linux, `psh` or `cmd` on Windows).
+
+### Agent management
+
+To deploy an agent, navigate to the Agents tab and click the "Click here to deploy an agent" button. Choose an agent (Sandcat is a good one to start with), and choose a platform (operating system). Make sure the options match the expected host and port for the CALDERA server. Then, on the target machine, copy and paste the command into the terminal or command prompt and run. The new agent should appear in the table on the Agents tab. 
+
+To kill an agent, use the "Kill Agent" button under the agent-specific settings. The agent will terminate on its next beacon.
+
+### Types of agents
 
 CALDERA includes the following agents:
 * **Sandcat (54ndc47)**:  CALDERA's default agent, A GoLang agent that communicates through the HTTP contact.
 * **Manx**: A reverse-shell agent that communicates via the TCP contact
 * **Ragdoll**: A python agent that communicates via the HTML contact
 
-To deploy an agent, navigate to *Campaigns -> agents ->* and click 'Click here to deploy an agent' in the GUI. Next, select the agent, platform (operating system), and options, noting the group and C2 contact type. Then, copy and paste the command into the terminal or prompt on the target.
+### Agent settings
 
 Several configuration options are available for agents:
 
@@ -19,14 +28,13 @@ Several configuration options are available for agents:
 * **Untrusted Timer**: Set the number of seconds to wait before marking a missing agent as untrusted. Operations will not generate new links for untrusted agents. This is a global timer and will affect all running and newly-created agents.
 * **Implant Name**: The base name of newly-spawned agents. If necessary, an extension will be added when an agent is created (ex: `splunkd` will become `splunkd.exe` when spawning an agent on a Windows machine).
 * **Bootstrap Abilities**: A comma-separated list of ability IDs to be run on a new agent beacon. By default, this is set to run a command which clears command history.
+* **Deadman Abilities**: A comma-separated list of ability IDs to be run immediately prior to agent termination. The agent must support deadman abilities in order for them to run.
 
 Agents have a number of agent-specific settings that can be modified by clicking on the button under the 'PID' column for the agent:
 
 * **Group**: Agent group (for additional details, see [What is a group](#what-is-a-group))
 * **Sleep**: Beacon minimum and maximum sleep timers for this specific agent, separated by a forward slash (`/`)
 * **Watchdog**: The watchdog timer setting for this specific agent
-
-Agents can be killed using the "Kill Agent" button under the agent-specific settings. The agent will terminate on its next beacon.
 
 ## What is a group?
 
@@ -75,8 +83,6 @@ Things to note:
 * Each ability requires a platforms list, which should contain at least 1 block for a supported operating system (platform). Currently, abilities can be created for darwin, linux or windows.
 * Abilities can be added to an adversary through the GUI with the 'add ability' button
 
-Bootstrap Abilities are abilities that run immediately after sending their first beacon in. A bootstrap ability can be added through the GUI by entering the ability id into the 'Bootstrap Abilities' field in the 'Agents' tab. Alternatively, you can edit the `conf/agents.yml` file and include the ability id in the bootstrap ability section of the file (ensure the server is turned off before editing any configuration files).
-
 For each platform, there should be a list of executors. Currently Darwin and Linux platforms can use sh and Windows can use psh (PowerShell), cmd (command prompt) or pwsh (open-source PowerShell core).
 
 Each platform block consists of a:
@@ -88,12 +94,12 @@ Each platform block consists of a:
 
 **Command**: A command can be 1-line or many and should contain the code you would like the ability to execute. The command can (optionally) contain variables, which are identified as #{variable}. In the example above, there is one variable used, #{files}. A variable means that you are letting CALDERA fill in the actual contents. CALDERA has a number of global variables:
 
-* #{server} references the FQDN of the CALDERA server itself. Because every agent may know the location of CALDERA differently, using the #{server} variable allows you to let the system determine the correct location of the server.
-* #{group} is the group a particular agent is a part of. This variable is mainly useful for lateral movement, where your command can start an agent within the context of the agent starting it. 
-* #{paw} is the unique identifier - or paw print - of the agent.
-* #{location} is the location of the agent on the client file system. 
-* #{exe_name} is the executable name of the agent.
-* #{origin_link_id} is the internal link ID associated with running this command used for agent tracking.
+* `#{server}` references the FQDN of the CALDERA server itself. Because every agent may know the location of CALDERA differently, using the #{server} variable allows you to let the system determine the correct location of the server.
+* `#{group}` is the group a particular agent is a part of. This variable is mainly useful for lateral movement, where your command can start an agent within the context of the agent starting it. 
+* `#{paw}` is the unique identifier - or paw print - of the agent.
+* `#{location}` is the location of the agent on the client file system. 
+* `#{exe_name}` is the executable name of the agent.
+* `#{origin_link_id}` is the internal link ID associated with running this command used for agent tracking.
 
 Global variables can be identified quickly because they will be single words.
 
@@ -107,6 +113,10 @@ Payloads can be stored as regular files or you can xor (encode) them so the anti
 
 > The payload_encoder.py file has a docstring which explains how to use the utility.
 
+Payloads also can be ran through a packer to obfuscate them further from detection on a host machine.  To do this you would put the packer module name in front of the filename followed by a colon ':'.  This non-filename character will be passed in the agent's call to the download endpoint, and the file will be packed before sending it back to the agent. UPX is currently the only supported packer, but adding addition packers is a simple task.
+
+> an example for setting up for a packer to be used would be editing the filename in the payload section of an ability file: - upx:Akagi64.exe
+
 **Cleanup**: An instruction that will reverse the result of the command. This is intended to put the computer back into the state it was before the ability was used. For example, if your command creates a file, you can use the cleanup to remove the file. Cleanup commands run after an operation, in the reverse order they were created. Cleaning up an operation is also optional, which means you can start an operation and instruct it to skip all cleanup instructions. 
 
 Cleanup is not needed for abilities, like above, which download files through the payload block. Upon an operation completing, all payload files will be removed from the client (agent) computers.
@@ -116,6 +126,29 @@ Cleanup is not needed for abilities, like above, which download files through th
 Abilities can also make use of two CALDERA REST API endpoints, file upload and download.
 
 **Requirements**: Required relationships of facts that need to be established before this ability can be used.
+
+
+### Bootstrap and Deadman Abilities 
+Bootstrap Abilities are abilities that run immediately after sending their first beacon in. A bootstrap ability can be added through the GUI by entering the ability id into the 'Bootstrap Abilities' field in the 'Agents' tab. Alternatively, you can edit the `conf/agents.yml` file and include the ability id in the bootstrap ability section of the file (ensure the server is turned off before editing any configuration files).
+
+Deadman Abilities are abilities that an agent runs just before graceful termination. When the Caldera server receives an initial beacon from an agent that supports deadman abilities, the server will immediately send the configured deadman abilities, along with any configured bootstrap abilities, to the agent. The agent will save the deadman abilities and execute them if terminated via the GUI or if self-terminating due to watchdog timer expiration or disconnection from the C2. Deadman abilities can be added through the GUI by entering a comma-separated list of ability IDs into the 'Deadman Abilities' field in the 'Agents' tab. Alternatively, you can edit the 'conf/agents.yml' file and include the ability ID in the 'deadman_abilities' section of the file (ensure the server is turned off before editing any configuration files).
+
+Below is an example `conf/agents.yml` file with configured bootstrap and deadman abilities:
+```
+bootstrap_abilities:
+- 43b3754c-def4-4699-a673-1d85648fda6a # Clear and avoid logs
+deadman_abilities:
+- 5f844ac9-5f24-4196-a70d-17f0bd44a934 # delete agent executable upon termination
+implant_name: splunkd
+sleep_max: 60
+sleep_min: 30
+untrusted_timer: 90
+watchdog: 0
+deployments:
+  - 2f34977d-9558-4c12-abad-349716777c6b #54ndc47
+  - 356d1722-7784-40c4-822b-0cf864b0b36d #Manx
+  - 0ab383be-b819-41bf-91b9-1bd4404d83bf #Ragdoll
+```
 
 ## What is an adversary?
 

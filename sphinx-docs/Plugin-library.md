@@ -1,5 +1,4 @@
-Plugin library
-==============
+# Plugin library
 
 Here you'll get a run-down of all open-source plugins, all of which can be found in the plugins/ directory as separate 
 GIT repositories. 
@@ -61,13 +60,13 @@ $wc.DownloadFile($url,$output); # download
 
 The following features are included in the stock agent:
 - `HTTP` C2 contact protocol
-- `psh` powershell executor (Windows)
+- `psh` PowerShell executor (Windows)
+- `cmd` cmd.exe executor (Windows)
 - `sh` shell executor (Linux/Mac)
 
 Additional functionality can be found in the following gocat extensions:
 - `gist` extension provides the Github gist C2 contact protocol.
-- `shells` extension provides the `cmd` (Windows cmd), `osascript` (Mac Osascript), and 
-`pwsh` (Windows powershell core) executors.
+- `shells` extension provides the `osascript` (Mac Osascript) and `pwsh` (Windows powershell core) executors.
 - `shellcode` extension provides the shellcode executors.
 - `proxy_http` extension provides the `HTTP` peer-to-peer proxy receiver.
 - `proxy_smb_pipe` extension provides the `SmbPipe` peer-to-peer proxy client and receiver for Windows (peer-to-peer
@@ -161,9 +160,25 @@ After loading this plugin and restarting, the ATT&CK website is available from t
 The SSL plugin adds HTTPS to CALDERA. 
 > This plugin only works if CALDERA is running on a Linux or MacOS machine. It requires HaProxy (>= 1.8) to be installed prior to using it.
 
-When this plugin has been loaded, CALDERA will start the HAProxy service on the machine and then serve CALDERA at hxxps://[YOUR_IP]:8443, instead of the normal hxxp://[YOUR_IP]:8888.
+When this plugin has been loaded, CALDERA will start the HAProxy service on the machine and serve CALDERA on all interfaces on port 8443, in addition to the normal http://[YOUR_IP]:8888 (based on the value of the `host` value in the CALDERA settings).
 
-CALDERA will **only** be available at https://[YOUR_IP]:8443 when using this plugin. All deployed agents should use the correct address to connect to CALDERA. 
+Plugins and agents will not automatically update to the service at https://[YOUR_IP]:8443. All agents will need to be redeployed using the HTTPS address to use the secure protocol. The address will not automatically populate in the agent deployment menu. If a self-signed certificate is used, deploying agents may require additional commands to disable SSL certificate checks.
+
+**Warning:** This plugin uses a default self-signed ssl certificate and key which should be replaced. In order to use this plugin securely, you need to generate your own certificate. The directions below show how to generate a new self-signed certificate.
+
+### Setup Instructions
+
+*Note: OpenSSL must be installed on your system to generate a new self-signed certificate*
+
+1. In the root CALDERA directory, navigate to `plugins/ssl`.
+1. Place a PEM file containing SSL public and private keys in `conf/certificate.pem`. Follow the instructions below to generate a new self-signed certificate:
+   - In a terminal, paste the command `openssl req -x509 -newkey rsa:4096  -out conf/certificate.pem -keyout conf/certificate.pem -nodes` and press enter.
+   - This will prompt you for identifying details. Enter your country code when prompted. You may leave the rest blank by pressing enter.
+1. Copy the file `haproxy.conf` from the `templates` directory to the `conf` directory.
+1. Open the file `conf/haproxy.conf` in a text editor. 
+1. On the line `bind *:8443 ssl crt plugins/ssl/conf/insecure_certificate.pem`, replace `insecure_certificate.pem` with `certificate.pem`.
+1. On the line `server caldera_main 127.0.0.1:8888 cookie caldera_main`, replace `127.0.0.1:8888` with the host and port defined in CALDERA's `conf/local.yml` file. This should not be required if CALDERA's configuration has not been changed.
+1. Save and close the file. Congratulations! You can now use CALDERA securely by accessing the UI https://[YOUR_IP]:8443 and redeploying agents using the HTTPS service.
 
 ## Atomic
 
@@ -222,7 +237,9 @@ Prerequisites:
 
 Within the `build-capabilities` tactic there is an ability called `Load Metasploit Abilities`. Run this ability with an agent and fact source as described above, which will add a new ability for each Metasploit exploit. These abilities can then be found under the `metasploit` tactic. Note that this process may take 15 minutes.
 
-If the exploit has options, you'll need to set them by adding a fact for it with the `msf.` prefix. For example, to set `RHOST`, add a fact called `msf.RHOST`.
+If the exploit has options you want to use, you'll need to customize the ability's `command` field. Start an operation in `manual` mode, and modify the `command` field before adding the potential link to the operation. For example, to set `RHOSTS` for the exploit, modify `command` to include `set RHOSTS <MY_RHOSTS_VALUE>;` between `use <EXPLOIT_NAME>;` and `run`.
+
+Alternatively, you can set options by adding a fact for each option with the `msf.` prefix. For example, to set `RHOST`, add a fact called `msf.RHOST`. Then in the ability's `command` field add `set RHOSTS \#{msf.RHOSTS};` between `use <EXPLOIT_NAME>;` and `run`.
 
 ## Builder
 

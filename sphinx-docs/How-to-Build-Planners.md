@@ -1,5 +1,4 @@
-How to Build Planners
-================
+# How to Build Planners
 
 For any desired planner decision logic not encapsulated in the default _batch_ planner (or any other existing planner), CALDERA requires that a new planner be implemented to encode such decision logic.
 
