@@ -280,6 +280,8 @@ CALDERA ships with a default planner, _atomic_. The _atomic_ planner operates by
 
 The _atomic_ planner can be found in the ```mitre/stockpile``` GitHub repository at ```app/atomic.py```
 
+> **WARNING:** Use of the atomic planner with profiles containing _repeatable_ abilities may result in the atomic planner looping infinitely on the repeatable ability. It is recommended to use the _batch planner_ when executing repeatable abilities.
+
 ### Custom Planners
 
 For any other planner behavior and functionality, a custom planner is required. CALDERA has open sourced some custom planners, to include the _batch_ and _buckets_ planners. From time to time, the CALDERA team will open source further planners as they become more widely used, publicly available, etc.
