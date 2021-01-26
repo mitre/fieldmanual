@@ -188,7 +188,10 @@ The Atomic plugin imports all Red Canary Atomic tests from their open-source Git
 ## GameBoard
 
 The GameBoard plugin allows you to monitor both red-and-blue team operations. The game tracks points for both sides
-and determines which one is "winning". 
+and determines which one is "winning". The scoring seeks to quantify the amount of true/false positives/negatives
+produced by the blue team. The blue team is rewarded points when they are able to catch the red team's actions, and the
+red team is rewarded when the blue team is not able to correctly do so. Additionally, abilities are rewarded different amounts of
+points depending on the tactic they fulfill.
 
 To begin a gameboard exercise, first log in as blue user and deploy an agent. The 'Auto-Collect' operation will execute automatically. Alternatively, you can begin a different operation with the blue agent if you desire. Log in as red user and begin another operation. Open up the gameboard plugin from the GUI and select these new respective red and blue operations to monitor points for each operation. 
 
