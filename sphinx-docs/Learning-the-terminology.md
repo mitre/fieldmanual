@@ -279,20 +279,22 @@ Planners are single module Python files. Planners utilize the core system’s pl
 CALDERA ships with a default planner, _atomic_. The _atomic_ planner operates by atomically sending a single ability command to each agent in the operation's group at a time, progressing through abilities as they are enumerated in the underyling adversary profile. When a new agent is added to the operation, the _atomic_ planner will start with the first ability in the adversary profile.
 
 The _atomic_ planner can be found in the ```mitre/stockpile``` GitHub repository at ```app/atomic.py```
-
-> **WARNING:** Use of the atomic planner with profiles containing _repeatable_ abilities may result in the atomic planner looping infinitely on the repeatable ability. It is recommended to use the _batch planner_ when executing repeatable abilities.
-
+ 
 ### Custom Planners
 
 For any other planner behavior and functionality, a custom planner is required. CALDERA has open sourced some custom planners, to include the _batch_ and _buckets_ planners. From time to time, the CALDERA team will open source further planners as they become more widely used, publicly available, etc.
 
-The _batch_ planner will retrieve all ability commands available and applicable for the operation and send them to the agents found in the operation's group. The _batch_ planner uses the planning service to retrieve ability commands based on the chosen advsersary and known agents in the operation. The abilities returned to the _batch_ planner are based on the agent matching the operating system (execution platform) of the ability and the ability command having no unsatisfied facts. The _batch_ planner will then send these ability commands to the agents and wait for them to be completed. After each batch of ability commands is completed, the _batch_ planner will again attempt to retrieve all ability commands available for the operation and attempt to repeat the cycle. This is required as once ability commands are executed, new additional ability commands may also become unlocked; e.g. required facts being present now, newly spawned agents, etc.
+The _batch_ planner will retrieve all ability commands available and applicable for the operation and send them to the agents found in the operation's group. The _batch_ planner uses the planning service to retrieve ability commands based on the chosen advsersary and known agents in the operation. The abilities returned to the _batch_ planner are based on the agent matching the operating system (execution platform) of the ability and the ability command having no unsatisfied facts. The _batch_ planner will then send these ability commands to the agents and wait for them to be completed. After each batch of ability commands is completed, the _batch_ planner will again attempt to retrieve all ability commands available for the operation and attempt to repeat the cycle. This is required as once ability commands are executed, new additional ability commands may also become unlocked; e.g. required facts being present now, newly spawned agents, etc. The _batch_ planner is the default planner used for profiles containing repeatable abilities.
 
 The _buckets_ planner is an example planner to demonstrate how to build a custom planner as well as the planning service utilities available to planners to aid in the formation decision logic.
 
 The _batch_ and _buckets_ planners can be found in the ```mitre/stockpile``` github repository at ```app/batch.py``` and ```app/buckets.py```.
 
 See [How to Build Planners](How-to-Build-Planners.md) for full walkthrough of how to build a custom planner and incorporate any custom decision logic that is desired.
+
+### Repeatable Abilities and Planners
+
+When creating a new operation, selecting a profile with repeatable abilities will disable both the _atomic_ and the _buckets_ planners. Due to the behavior and functionality of these planners, repeatable abilities will result in the planner looping infinitely on the repeatable ability. The default planner for profiles with repeatable abilities is the _batch_ planner, which will automatically be selected when a profile with repeatable abilities is selected.
 
 ## What is a plugin?
 

@@ -143,6 +143,8 @@ ignore_enforcement_modules: []
 
 This will create a planner in CALDERA which will call the module we've created at `plugins.stockpile.app.privileged_persistence`.
 
+*NOTE: For planners intended to be used with profiles containing repeatable abilities, `allow_repeatable_abilities: True` must be added to the planner YAML file. Otherwise, CALDERA will default the value to `False` and assume the planner does not support repeatable abilities.* 
+
 ### Using the Planner
 
 To use the planner, create an Operation and select the "Use privileged_persistence planner" option in the planner dropdown (under Autonomous). Any selected planner will use the abilities in the selected adversary profile during the operation. Since abilities are automatically added to buckets which correlate to MITRE ATT&CK tactics, any abilities with the following tactics will be executed by the privileged_persistence planner: _privilege_escalation_, _persistence_, _collection_, _discovery_, and _lateral_movement_.
