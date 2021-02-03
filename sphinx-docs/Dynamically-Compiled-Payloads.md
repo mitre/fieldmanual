@@ -167,7 +167,7 @@ The following ability references `SharpSploit.dll` and dumps logon passwords usi
 
 The `donut` gocat extension is required to execute donut shellcode.
 
-The `donut_amd64` executor combined with a `build_target` value ending with `.donut`, can be used to generate shellcode using [donut](https://github.com/TheWover/donut). Payloads will first be dynamically-compiled into .NET executables using Builder, then converted to donut shellcode by a Stockpile payload handler. The `.donut` file will be written to disk and injected into memory by the sandcat agent.
+The `donut_amd64` executor combined with a `build_target` value ending with `.donut`, can be used to generate shellcode using [donut](https://github.com/TheWover/donut). Payloads will first be dynamically-compiled into .NET executables using Builder, then converted to donut shellcode by a Stockpile payload handler. The `.donut` file is downloaded to memory and injected into a new process by the sandcat agent.
 
 The `command` field can, optionally, be used to supply command line arguments to the payload. In order for the sandcat agent to properly execute the payload, the `command` field must either begin with the `.donut` file name, or not exist.
 
