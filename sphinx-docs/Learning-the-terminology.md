@@ -88,6 +88,7 @@ For each platform, there should be a list of executors. Currently Darwin and Lin
 Each platform block consists of a:
 * command (required)
 * payload (optional)
+* uploads (optional)
 * cleanup (optional)
 * parsers (optional)
 * requirements (optional)
@@ -116,6 +117,32 @@ Payloads can be stored as regular files or you can xor (encode) them so the anti
 Payloads also can be ran through a packer to obfuscate them further from detection on a host machine.  To do this you would put the packer module name in front of the filename followed by a colon ':'.  This non-filename character will be passed in the agent's call to the download endpoint, and the file will be packed before sending it back to the agent. UPX is currently the only supported packer, but adding addition packers is a simple task.
 
 > an example for setting up for a packer to be used would be editing the filename in the payload section of an ability file: - upx:Akagi64.exe
+
+**Uploads**: A list of files which the agent will upload to the C2 server after running the ability command. The filepaths can be specified as local file paths or absolute paths. The ability assumes that these files will exist during the time of upload.
+
+Below is an example ability that uses the `uploads` keyword:
+```
+---
+
+- id: 22b9a90a-50c6-4f6a-a1a4-f13cb42a26fd
+  name: Upload file example
+  description: Example ability to upload files
+  tactic: exfiltration
+  technique:
+    attack_id: T1041
+    name: Exfiltration Over C2 Channel
+  platforms:
+    darwin,linux:
+      sh:
+        command: |
+          echo "test" > /tmp/absolutepath.txt;
+          echo "test2" > ./localpath.txt;
+        cleanup: |
+          rm -f /tmp/absolutepath.txt ./localpath.txt;
+        uploads:
+          - /tmp/absolutepath.txt
+          - ./localpath.txt
+```
 
 **Cleanup**: An instruction that will reverse the result of the command. This is intended to put the computer back into the state it was before the ability was used. For example, if your command creates a file, you can use the cleanup to remove the file. Cleanup commands run after an operation, in the reverse order they were created. Cleaning up an operation is also optional, which means you can start an operation and instruct it to skip all cleanup instructions. 
 
