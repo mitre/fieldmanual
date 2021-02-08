@@ -89,6 +89,7 @@ Looking at the previous response, you can see each instruction contains:
 * **executor**: The executor to run the command under
 * **timeout**: How long to let the command run before timing it out
 * **payload**: A payload file name which must be downloaded before running the command, if applicable
+* **uploads**: A list of file names that the agent must upload to the C2 server after running the command.
 
 Now, you'll want to revise your agent to loop through all the instructions, executing each command
 and POSTing the response back to the /beacon endpoint. You should pause after running each instruction, using the sleep time provided inside the instruction.
@@ -118,7 +119,11 @@ payload='some_file_name.txt"
 curl -X POST -H "file:$payload" http://localhost:8888/file/download > some_file_name.txt
 ```
 
-### Part #4
+### Part 4
+
+Inside each instruction, there is an optional **uploads** property that contains a list of filenames to upload to the C2 after running the instruction and submitting the execution results. To implement this, add a file upload capability to your agent. If using the HTTP contact, the file upload should hit the `/file/upload` upload endpoint of the server.
+
+### Part #5
 
 You should implement the watchdog configuration. This property, passed to the agent in every beacon, contains
 the number of seconds to allow a dead beacon before killing the agent. 
