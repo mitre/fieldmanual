@@ -7,10 +7,10 @@ Let's look at an example snippet of an ability that uses a parser:
     darwin:
       sh:
         command: |
-          find /Users -name '*.#{file.sensitive.extension}' -type f -not -path '*/\.*' 2>/dev/null
+          find /Users -name '*.#{file.sensitive.extension}' -type f -not -path '*/\.*' -size -500k 2>/dev/null | head -5
         parsers:
           plugins.stockpile.app.parsers.basic:
-            - source: host.file.sensitive
+            - source: host.file.path
               edge: has_extension
               target: file.sensitive.extension
 ```
