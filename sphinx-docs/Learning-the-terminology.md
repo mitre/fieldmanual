@@ -92,6 +92,7 @@ Each platform block consists of a:
 * cleanup (optional)
 * parsers (optional)
 * requirements (optional)
+* timeout (optional)
 
 **Command**: A command can be 1-line or many and should contain the code you would like the ability to execute. The command can (optionally) contain variables, which are identified as #{variable}. In the example above, there is one variable used, #{files}. A variable means that you are letting CALDERA fill in the actual contents. CALDERA has a number of global variables:
 
@@ -153,6 +154,8 @@ Cleanup is not needed for abilities, like above, which download files through th
 Abilities can also make use of two CALDERA REST API endpoints, file upload and download.
 
 **Requirements**: Required relationships of facts that need to be established before this ability can be used.
+
+**Timeout**: How many seconds to allow the command to run.
 
 
 ### Bootstrap and Deadman Abilities 
@@ -230,6 +233,7 @@ An operation can be started with a number of optional configurations:
 * **Autonomous**: Run autonomously or manually. Manual mode will ask the operator to approve or discard each command.
 * **Phases**: Run the adversary normally, abiding by phases, or smash all phases into a single one.
 * **Auto-close**: Automatically close the operation when there is nothing left to do. Alternatively, keep the operation forever.
+* **Cleanup timeout**: How many seconds to wait for each cleanup command to complete before continuing.
 * **Obfuscators**: Select an obfuscator to encode each command with, before they are sent to the agents.
 * **Jitter**: Agents normally check in with CALDERA every 60 seconds. Once they realize they are part of an active operation, agents will start checking in according to the jitter time, which is by default 2/8. This fraction tells the agents that they should pause between 2 and 8 seconds (picked at random each time an agent checks in) before using the next ability. 
 * **Visibility**: How visible should the operation be to the defense. Defaults to 51 because each ability defaults to a visibility of 50. Abilities with a higher visibility than the operation visibility will be skipped.
