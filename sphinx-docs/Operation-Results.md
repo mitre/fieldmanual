@@ -49,107 +49,107 @@ Below is an example operation report JSON:
   "name": "My Operation",
   "host_group": [
     {
-      "platform": "windows",
-      "pid": 7096,
-      "group": "red",
-      "display_name": "WORKSTATION1$BYZANTIUM\\Carlomagno",
-      "sleep_min": 5,
-      "proxy_receivers": {},
-      "watchdog": 0,
-      "origin_link_id": 0,
-      "proxy_chain": [],
-      "privilege": "Elevated",
-      "created": "2021-02-23 11:03:04",
-      "username": "BYZANTIUM\\Carlomagno",
       "contact": "HTTP",
-      "architecture": "amd64",
-      "deadman_enabled": true,
-      "sleep_max": 5,
+      "proxy_receivers": {},
+      "display_name": "WORKSTATION1$BYZANTIUM\\Carlomagno",
       "available_contacts": [
         "HTTP"
       ],
-      "ppid": 2624,
-      "last_seen": "2021-02-23 11:11:26",
-      "paw": "buuxxb",
-      "trusted": true,
-      "exe_name": "sandcat.exe",
-      "executors": [
-        "cmd",
-        "psh"
-      ],
+      "location": "C:\\Users\\Public\\sandcat.exe",
+      "pid": 5896,
+      "paw": "pertbn",
+      "server": "http://192.168.137.1:8888",
       "links": [
         {
-          "cleanup": 0,
-          "visibility": {
-            "adjustments": [],
-            "score": 50
-          },
-          "pid": "5080",
-          "facts": [],
-          "score": 0,
-          "collect": "2021-02-23 11:03:04",
-          "pin": 0,
-          "output": "False",
-          "finish": "2021-02-23 11:03:05",
-          "id": 471619,
-          "unique": "471619",
-          "command": "Q2xlYXItSGlzdG9yeTtDbGVhcg==",
           "status": 0,
-          "decide": "2021-02-23 11:03:04",
+          "visibility": {
+            "score": 50,
+            "adjustments": []
+          },
+          "pid": "1684",
+          "paw": "pertbn",
           "deadman": false,
-          "paw": "buuxxb",
-          "jitter": 0,
-          "host": "WORKSTATION1",
           "ability": {
-            "cleanup": [],
-            "platform": "windows",
-            "code": null,
-            "repeatable": false,
-            "name": "Avoid logs",
-            "technique_name": "Indicator Removal on Host: Clear Command History",
+            "access": {},
+            "payloads": [],
+            "executor": "psh",
+            "tactic": "defense-evasion",
             "singleton": false,
-            "build_target": null,
             "variations": [],
-            "technique_id": "T1070.003",
-            "privilege": null,
+            "timeout": 60,
+            "code": null,
+            "ability_id": "43b3754c-def4-4699-a673-1d85648fda6a",
+            "additional_info": {},
+            "uploads": [],
+            "description": "Stop terminal from logging history",
+            "language": null,
             "buckets": [
               "defense-evasion"
             ],
-            "access": {},
-            "parsers": [],
-            "tactic": "defense-evasion",
-            "additional_info": {},
-            "language": null,
-            "ability_id": "43b3754c-def4-4699-a673-1d85648fda6a",
-            "uploads": [],
-            "description": "Stop terminal from logging history",
-            "payloads": [],
+            "name": "Avoid logs",
             "requirements": [],
+            "build_target": null,
+            "privilege": null,
             "test": "Q2xlYXItSGlzdG9yeTtDbGVhcg==",
-            "executor": "psh",
-            "timeout": 60
-          }
+            "platform": "windows",
+            "technique_id": "T1070.003",
+            "cleanup": [],
+            "technique_name": "Indicator Removal on Host: Clear Command History",
+            "repeatable": false,
+            "parsers": []
+          },
+          "command": "Q2xlYXItSGlzdG9yeTtDbGVhcg==",
+          "score": 0,
+          "collect": "2021-02-23 11:48:33",
+          "host": "WORKSTATION1",
+          "output": "False",
+          "unique": "949138",
+          "pin": 0,
+          "id": 949138,
+          "decide": "2021-02-23 11:48:33",
+          "jitter": 0,
+          "facts": [],
+          "cleanup": 0,
+          "finish": "2021-02-23 11:48:34"
         }
       ],
-      "server": "http://192.168.137.1:8888",
+      "sleep_max": 5,
       "pending_contact": "HTTP",
+      "ppid": 2624,
+      "sleep_min": 5,
+      "origin_link_id": 0,
       "host": "WORKSTATION1",
-      "location": "C:\\Users\\Public\\sandcat.exe"
+      "trusted": true,
+      "group": "red",
+      "architecture": "amd64",
+      "deadman_enabled": true,
+      "privilege": "Elevated",
+      "created": "2021-02-23 11:48:33",
+      "username": "BYZANTIUM\\Carlomagno",
+      "platform": "windows",
+      "last_seen": "2021-02-23 11:54:37",
+      "proxy_chain": [],
+      "watchdog": 0,
+      "executors": [
+        "psh",
+        "cmd"
+      ],
+      "exe_name": "sandcat.exe"
     }
   ],
-  "start": "2021-02-23 11:10:42",
+  "start": "2021-02-23 11:50:12",
   "steps": {
-    "buuxxb": {
+    "pertbn": {
       "steps": [
         {
           "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
           "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLnBuZyAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
-          "delegated": "2021-02-23 11:10:42",
-          "run": "2021-02-23 11:10:46",
+          "delegated": "2021-02-23 11:50:12",
+          "run": "2021-02-23 11:50:14",
           "status": 0,
           "platform": "windows",
           "executor": "psh",
-          "pid": 5332,
+          "pid": 7016,
           "description": "Locate files deemed sensitive",
           "name": "Find files",
           "attack": {
@@ -161,12 +161,12 @@ Below is an example operation report JSON:
         {
           "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
           "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLnltbCAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
-          "delegated": "2021-02-23 11:10:47",
-          "run": "2021-02-23 11:10:52",
+          "delegated": "2021-02-23 11:50:17",
+          "run": "2021-02-23 11:50:21",
           "status": 0,
           "platform": "windows",
           "executor": "psh",
-          "pid": 4372,
+          "pid": 1048,
           "description": "Locate files deemed sensitive",
           "name": "Find files",
           "attack": {
@@ -178,12 +178,12 @@ Below is an example operation report JSON:
         {
           "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
           "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLndhdiAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
-          "delegated": "2021-02-23 11:10:52",
-          "run": "2021-02-23 11:10:57",
+          "delegated": "2021-02-23 11:50:22",
+          "run": "2021-02-23 11:50:27",
           "status": 0,
           "platform": "windows",
           "executor": "psh",
-          "pid": 7020,
+          "pid": 5964,
           "description": "Locate files deemed sensitive",
           "name": "Find files",
           "attack": {
@@ -195,29 +195,30 @@ Below is an example operation report JSON:
         {
           "ability_id": "6469befa-748a-4b9c-a96d-f191fde47d89",
           "command": "TmV3LUl0ZW0gLVBhdGggIi4iIC1OYW1lICJzdGFnZWQiIC1JdGVtVHlwZSAiZGlyZWN0b3J5IiAtRm9yY2UgfCBmb3JlYWNoIHskXy5GdWxsTmFtZX0gfCBTZWxlY3QtT2JqZWN0",
-          "delegated": "2021-02-23 11:10:57",
-          "run": "2021-02-23 11:11:02",
+          "delegated": "2021-02-23 11:50:32",
+          "run": "2021-02-23 11:50:37",
           "status": 0,
           "platform": "windows",
           "executor": "psh",
-          "pid": 4224,
+          "pid": 3212,
           "description": "create a directory for exfil staging",
           "name": "Create staging directory",
           "attack": {
             "tactic": "collection",
             "technique_name": "Data Staged: Local Data Staging",
             "technique_id": "T1074.001"
-          }
+          },
+          "output": "C:\\Users\\carlomagno\\staged"
         },
         {
           "ability_id": "6469befa-748a-4b9c-a96d-f191fde47d89",
           "command": "UmVtb3ZlLUl0ZW0gLVBhdGggInN0YWdlZCIgLXJlY3Vyc2U=",
-          "delegated": "2021-02-23 11:11:07",
-          "run": "2021-02-23 11:11:09",
+          "delegated": "2021-02-23 11:50:42",
+          "run": "2021-02-23 11:50:44",
           "status": 0,
           "platform": "windows",
           "executor": "psh",
-          "pid": 4948,
+          "pid": 6184,
           "description": "create a directory for exfil staging",
           "name": "Create staging directory",
           "attack": {
@@ -229,7 +230,7 @@ Below is an example operation report JSON:
       ]
     }
   },
-  "finish": "2021-02-23 11:11:10",
+  "finish": "2021-02-23 11:50:45",
   "planner": "atomic",
   "adversary": {
     "atomic_ordering": [
@@ -238,73 +239,74 @@ Below is an example operation report JSON:
       "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
       "6469befa-748a-4b9c-a96d-f191fde47d89"
     ],
-    "objective": "495a9828-cab1-44dd-a0ca-66e58177d8cc",
+    "description": "A collection adversary",
+    "has_repeatable_abilities": false,
+    "adversary_id": "5d3e170e-f1b8-49f9-9ee1-c51605552a08",
     "tags": [],
     "name": "Collection",
-    "description": "A collection adversary",
-    "adversary_id": "5d3e170e-f1b8-49f9-9ee1-c51605552a08"
+    "objective": "495a9828-cab1-44dd-a0ca-66e58177d8cc"
   },
   "jitter": "4/8",
   "objectives": {
-    "name": "default",
     "percentage": 0,
     "description": "This is a default objective that runs forever.",
+    "name": "default",
     "goals": [
       {
-        "count": 1048576,
-        "operator": "==",
-        "value": "complete",
         "target": "exhaustion",
-        "achieved": false
+        "count": 1048576,
+        "value": "complete",
+        "achieved": false,
+        "operator": "=="
       }
     ],
     "id": "495a9828-cab1-44dd-a0ca-66e58177d8cc"
   },
   "facts": [
     {
-      "trait": "file.sensitive.extension",
+      "score": 1,
+      "technique_id": "",
+      "collected_by": "",
       "value": "wav",
-      "technique_id": "",
-      "unique": "file.sensitive.extensionwav",
-      "score": 1,
-      "collected_by": ""
+      "trait": "file.sensitive.extension",
+      "unique": "file.sensitive.extensionwav"
     },
     {
-      "trait": "file.sensitive.extension",
+      "score": 1,
+      "technique_id": "",
+      "collected_by": "",
       "value": "yml",
-      "technique_id": "",
-      "unique": "file.sensitive.extensionyml",
-      "score": 1,
-      "collected_by": ""
-    },
-    {
       "trait": "file.sensitive.extension",
+      "unique": "file.sensitive.extensionyml"
+    },
+    {
+      "score": 1,
+      "technique_id": "",
+      "collected_by": "",
       "value": "png",
-      "technique_id": "",
-      "unique": "file.sensitive.extensionpng",
-      "score": 1,
-      "collected_by": ""
+      "trait": "file.sensitive.extension",
+      "unique": "file.sensitive.extensionpng"
     },
     {
-      "trait": "server.malicious.url",
+      "score": 1,
+      "technique_id": "",
+      "collected_by": "",
       "value": "keyloggedsite.com",
-      "technique_id": "",
-      "unique": "server.malicious.urlkeyloggedsite.com",
-      "score": 1,
-      "collected_by": ""
+      "trait": "server.malicious.url",
+      "unique": "server.malicious.urlkeyloggedsite.com"
     },
     {
-      "trait": "host.dir.staged",
-      "value": "C:\\Users\\carlomagno\\staged",
-      "technique_id": "T1074.001",
-      "unique": "host.dir.stagedC:\\Users\\carlomagno\\staged",
       "score": 1,
-      "collected_by": "buuxxb"
+      "technique_id": "T1074.001",
+      "collected_by": "pertbn",
+      "value": "C:\\Users\\carlomagno\\staged",
+      "trait": "host.dir.staged",
+      "unique": "host.dir.stagedC:\\Users\\carlomagno\\staged"
     }
   ],
   "skipped_abilities": [
     {
-      "buuxxb": [
+      "pertbn": [
         {
           "reason": "Wrong platform",
           "reason_id": 0,
