@@ -78,14 +78,13 @@ Caldera installation, then the extension will be included.
 #### Quickstart
 
 To enable an agent to be used as a proxy:
-  1. Include these headers in the download command
-    `-H "gocat-extensions:proxy_http" -H "includeProxyPeers:HTTP"`
-
+  1. Include this header in the download command `-H "gocat-extensions:proxy_http"`
   2. Run that agent with the `-listenP2P` flag
 
 To enable an agent to use the other proxy agents you've established:
-  1. Include these headers in the download command
-    `-H "gocat-extensions:proxy_http" -H "includeProxyPeers:HTTP"`
+  1. Include this header in the download command `-H "gocat-extensions:proxy_http"`
+  
+  Optional: This header can speed up the proxy finding process: `-H "includeProxyPeers:HTTP"`. It tells the server to include a list of known proxy peers in the executable. Now that sandcat has mDNS functionality to dynamically discover new peers it is no longer required but is still useful to decrease start-up time.
 
 
 #### Starting Receivers
