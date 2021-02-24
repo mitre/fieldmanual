@@ -75,6 +75,20 @@ Caldera installation, then the extension will be included.
 
 ### Command Line Options
 
+#### Quickstart
+
+To enable an agent to be used as a proxy:
+  1. Include these headers in the download command
+    ```
+    -H "gocat-extensions:proxy_http" -H "includeProxyPeers:HTTP"
+    ```
+  2. Run that agent with the '-listenP2P' flag
+To enable an agent to use the other proxy agents you've established:
+  1. Include these headers in the download command
+    ```
+    -H "gocat-extensions:proxy_http" -H "includeProxyPeers:HTTP"
+    ```
+
 #### Starting Receivers
 
 To start an agent with peer-to-peer proxy receivers, the `-listenP2P` commandline switch must be used (no
