@@ -14,7 +14,7 @@ An agent connects to the server through a *contact*, which is a specific connect
 
 Each contact is defined in an independent Python module and is registered with the contact_svc when the server starts.
 
-There are currently several built-in contacts available: http, tcp, udp and websocket. 
+There are currently several built-in contacts available: http, tcp, udp, websocket, gist (via Github), and dns. 
 
 ## Building an agent: HTTP contact
 

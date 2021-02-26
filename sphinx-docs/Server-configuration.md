@@ -26,6 +26,8 @@ api_key: ADMIN123
 exfil_dir: /tmp
 reports_dir: /tmp
 crypt_salt: REPLACE_WITH_RANDOM_VALUE
+app.contact.dns.domain: mycaldera.caldera
+app.contact.dns.socket: 0.0.0.0:53
 app.contact.http: http://0.0.0.0:8888
 app.contact.tcp: 0.0.0.0:7010
 app.contact.udp: 0.0.0.0:7011
@@ -40,6 +42,8 @@ A few key things to note:
 * **API_KEY**: a password to use when accessing CALDERA programmatically.
 * **Exfil_dir**: the directory to use when an ability exfiltrates files from the agent, sending them back to CALDERA. Any file(s) posted to the /file/upload endpoint will end up in this directory.
 * **Reports_dir**: the directory to save all reports when the server shuts down
+* **app.contact.dns.domain**: the domain name to use for DNS tunneling requests. The C2 server will respond with the NXDOMAIN response code for any other domain.
+* **app.contact.dns.socket**: the UDP socket for the C2 server to listen on for DNS requests. 
 * **app.contact.http**: the http location you want HTTP agents (like Sandcat) to connect to.
 * **app.contact.tcp**: the TCP socket you want reverse-shell agents (like Manx) to connect to.
 * **app.contact.udp**: the UDP socket you want UDP agents (like Manx) to connect to
