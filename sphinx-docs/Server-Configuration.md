@@ -14,9 +14,9 @@
 
 Caldera's configuration file is located at `conf/local.yml`, written on the first run. If the server is run with the `--insecure` option (not recommended), CALDERA will use the file located at `conf/default.yml`.
 
-The YAML configuration file contains all the configuration variables CALDERA requires to boot up and run.
+Configuration file changes must be made while the server is shut down. Any changes made to the configuration file while the server is running will be overwritten.
 
-A documented configuration file is below:
+The YAML configuration file contains all the configuration variables CALDERA requires to boot up and run. A documented configuration file is below:
 
 ```yaml
 ability_refresh: 60  # Interval at which ability YAML files will refresh from disk 
