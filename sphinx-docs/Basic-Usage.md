@@ -7,7 +7,7 @@
 
 To deploy an agent:
 
-1. Navigate to the Agents tab and click the "Click here to deploy an agent" button5 n  
+1. Navigate to the Agents tab and click the "Click here to deploy an agent" button
 1. Choose an agent (Sandcat is a good one to start with) and a platform (operating system)
 1. Make sure the agent options are correct (ex: ensure `app.contact.http` matches the expected host and port for the CALDERA server)
 1. Choose a command to execute on the target machine
@@ -106,7 +106,7 @@ Payloads can be stored as regular files or you can xor (encode) them so the anti
 
 Payloads also can be ran through a packer to obfuscate them further from detection on a host machine.  To do this you would put the packer module name in front of the filename followed by a colon ':'.  This non-filename character will be passed in the agent's call to the download endpoint, and the file will be packed before sending it back to the agent. UPX is currently the only supported packer, but adding addition packers is a simple task.
 
-> an example for setting up for a packer to be used would be editing the filename in the payload section of an ability file: - upx:Akagi64.exe
+> An example for setting up for a packer to be used would be editing the filename in the payload section of an ability file: - upx:Akagi64.exe
 
 **Uploads**: A list of files which the agent will upload to the C2 server after running the ability command. The filepaths can be specified as local file paths or absolute paths. The ability assumes that these files will exist during the time of upload.
 
@@ -306,7 +306,7 @@ When creating a new operation, selecting a profile with repeatable abilities wil
 
 CALDERA is built using a plugin architecture on top of the core system. Plugins are separate git repositories that plug new features into the core system. Each plugin resides in the plugins directory and is loaded into CALDERA by adding it to the local.yml file.
 
-PLugins can be added through the UI or in the configuration file (likely `conf/local.yml`). Changes to the configuration file while the server is shut down. The plugins will be enabled when the server restarts.
+Plugins can be added through the UI or in the configuration file (likely `conf/local.yml`). Changes to the configuration file while the server is shut down. The plugins will be enabled when the server restarts.
 
 Each plugin contains a single hook.py file in its root directory. This file should contain an initialize function, which gets called automatically for each loaded plugin when CALDERA boots. The initialize function contains the plugin logic that is getting "plugged into" the core system. This function takes a single parameter:
 
