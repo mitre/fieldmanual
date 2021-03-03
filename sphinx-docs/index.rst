@@ -24,12 +24,14 @@ If you're new to CALDERA, this is a good place to start.
    How-CALDERA-makes-decisions.md
    Objectives.md
    Initial-Access-Attacks.md
+   Lateral-Movement-Guide.md
    Dynamically-Compiled-Payloads.md
-   Install-CALDERA-offline.md
-   Docker-deployment.md
    CALDERA-2.0.md
    Uninstalling-CALDERA.md
    Common-problems.md
+   Exfiltration.md
+   Sandcat-Peer-to-Peer.md
+   resources
 
 The following section contains information intended to help developers
 understand the inner workings of the CALDERA adversary emulation tool, CALDERA

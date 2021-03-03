@@ -1,11 +1,17 @@
-Dynamically-Compiled Payloads
-=============================
+# Dynamically-Compiled Payloads
 
-The [Builder](Plugin-library.html#builder) plugin can be used to create dynamically-compiled payloads. Currently only C# is supported.
+The [Builder](Plugin-library.html#builder) plugin can be used to create dynamically-compiled payloads. Currently, the plugin supports C#, C, C++, and Golang.
 
-Code is compiled in a Docker container using Mono. The resulting executable, along with any additional references, will be copied to the remote machine and executed.
+Code is compiled in a Docker container. The resulting executable, along with any additional references, will be copied to the remote machine and executed.
 
-Note that the `code` section of an ability will be stripped of newlines before compilation, so all comments should be made into block comments. 
+Details for the available languages are below:
+
+- `csharp`: Compile C# executable using Mono
+- `cpp_windows_x64`: Compile 64-bit Windows C++ executable using MXE/MinGW-w64
+- `cpp_windows_x86`: Compile 64-bit Windows C++ executable using MXE/MinGW-w64
+- `c_windows_x64`: Compile 64-bit Windows C executable using MXE/MinGW-w64
+- `c_windows_x86`: Compile 64-bit Windows C executable using MXE/MinGW-w64
+- `go_windows`: Build Golang executable for Windows
 
 ### Basic Example
 
@@ -39,6 +45,26 @@ The following "Hello World" ability can be used as a template for C# ability dev
                   }
               }
           }
+```
+
+It is possible to reference a source code file as well. The source code file should be in the plugin's `payloads/` directory. This is shown in the example below:
+
+```yaml
+---
+
+- id: 096a4e60-e761-4c16-891a-3dc4eff02e74
+  name: Test C# Hello World
+  description: Dynamically compile HelloWorld.exe
+  tactic: execution
+  technique:
+    attack_id: T1059
+    name: Command-Line Interface
+  platforms:
+    windows:
+      psh,cmd:
+        build_target: HelloWorld.exe
+        language: csharp
+        code: HelloWorld.cs
 ```
 
 ### Advanced Examples
@@ -141,7 +167,7 @@ The following ability references `SharpSploit.dll` and dumps logon passwords usi
 
 The `donut` gocat extension is required to execute donut shellcode.
 
-The `donut_amd64` executor combined with a `build_target` value ending with `.donut`, can be used to generate shellcode using [donut](https://github.com/TheWover/donut). Payloads will first be dynamically-compiled into .NET executables using Builder, then converted to donut shellcode by a Stockpile payload handler. The `.donut` file will be written to disk and injected into memory by the sandcat agent.
+The `donut_amd64` executor combined with a `build_target` value ending with `.donut`, can be used to generate shellcode using [donut](https://github.com/TheWover/donut). Payloads will first be dynamically-compiled into .NET executables using Builder, then converted to donut shellcode by a Stockpile payload handler. The `.donut` file is downloaded to memory and injected into a new process by the sandcat agent.
 
 The `command` field can, optionally, be used to supply command line arguments to the payload. In order for the sandcat agent to properly execute the payload, the `command` field must either begin with the `.donut` file name, or not exist.
 

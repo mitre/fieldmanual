@@ -1,5 +1,4 @@
-Server configuration
-============================
+# Server configuration
 
 Caldera's configuration file is located at `conf/default.yml`.
 
@@ -76,7 +75,7 @@ For example:
 ldap:
   dn: cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org
   server: ldap://ipa.demo1.freeipa.org
-  userattr: uid
+  user_attr: uid
   group_attr: objectClass
   red_group: organizationalperson
 ```
@@ -85,6 +84,8 @@ This will allow the `employee` user to log in as `uid=employee,cn=users,cn=accou
 user has an `objectClass` attribute that contains the value `organizationalperson`, so they will be logged in as a red
 team user. In contrast, the `admin` user does not have an `objectClass` of `organizationalperson` so they will be logged
 in as a blue team user.
+
+Be sure to change these settings to match your specific LDAP environment.
 
 Note that adding the `ldap` section will disable any accounts listed in the `users` section of the config file;
 only LDAP will be used for logging in.

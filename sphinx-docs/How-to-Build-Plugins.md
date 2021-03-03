@@ -1,5 +1,4 @@
-How to Build Plugins
-================
+# How to Build Plugins
 
 Building your own plugin allows you to add custom functionality to CALDERA. 
 
@@ -13,6 +12,13 @@ Plugins are stored in the plugins directory. If a plugin is also listed in the l
 > however. These functions will be defined on the services' corresponding interface.
 > 2. Any c_object that implements the FirstClassObjectInterface. Only call the functions on this interface, as the others
 > are subject to changing.
+
+This guide is useful as it covers how to create a simple plugin from scratch. 
+However, if this is old news to you and you're looking for an even faster start, 
+consider trying out [Skeleton](https://github.com/mitre/skeleton)
+(a plugin for building other plugins). 
+Skeleton will generate a new plugin directory that contains all the standard
+boilerplate. 
 
 ## Creating the structure
 
@@ -81,7 +87,7 @@ Start by creating a "templates" directory inside your plugin directory (abilitie
         <div class="column" style="flex:75%;padding:15px;text-align: left">
             <div>
                 {% for a in abilities %}
-                    <pre style="color:white">{{ a }}</pre>
+                    <pre style="color:grey">{{ a }}</pre>
                     <hr>
                 {% endfor %}
             </div>
@@ -95,9 +101,12 @@ Then, back in your hook.py file, let's fill in the address variable and ensure w
 ```python
 from aiohttp_jinja2 import template, web
 
+from app.service.auth_svc import check_authorization
+
 name = 'Abilities'
 description = 'A sample plugin for demonstration purposes'
 address = '/plugin/abilities/gui'
+
 
 async def enable(services):
     app = services.get('app_svc').application
@@ -115,11 +124,12 @@ class AbilityFetcher:
         abilities = await self.services.get('data_svc').locate('abilities')
         return web.json_response(dict(abilities=[a.display for a in abilities]))
 
+    @check_authorization
     @template('abilities.html')
     async def splash(self, request):
-        await self.auth_svc.check_permissions(request)
         abilities = await self.services.get('data_svc').locate('abilities')
         return(dict(abilities=[a.display for a in abilities]))
+
 ```
 Restart CALDERA and navigate to the home page. Be sure to run ```server.py```
 with the ```--fresh``` flag to flush the previous object store database. 

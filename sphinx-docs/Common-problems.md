@@ -1,5 +1,4 @@
-Common problems
-===============
+# Common problems
 
 ### I'm getting an error starting the application!
 

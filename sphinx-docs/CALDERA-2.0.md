@@ -1,5 +1,4 @@
-CALDERA 2.0
-==========
+# CALDERA 2.0
 
 In April 2019, the CALDERA team pushed out several large changes to the core CALDERA code-base, effectively creating a "new" version of CALDERA: CALDERA 2.0. This new version of CALDERA featured a much more modular plugin-based architecture, many bug-fixes, a new GUI, and most importantly, the introduction of two operating modes: **adversary mode** and **chain mode**. 
 

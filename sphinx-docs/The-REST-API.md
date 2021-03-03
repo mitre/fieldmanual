@@ -1,5 +1,4 @@
-The REST API
-============
+# The REST API
 
 All REST API functionality can be viewed in the rest_api.py module in the source code.
 
@@ -20,19 +19,19 @@ Here are the available REST API functions:
 
 Delete any agent. 
 ```
-curl -H "key:$API_KEY" -X DELETE http://localhost:8888/api/rest -d '{"index":"agents","paw":"$agent_paw"}'
+curl -H "KEY:$API_KEY" -X DELETE http://localhost:8888/api/rest -d '{"index":"agents","paw":"$agent_paw"}'
 ```
 
 #### POST
 
 View the abilities a given agent could execute.
 ```
-curl -H "key:$API_KEY" -X POST localhost:8888/plugin/access/abilities -d '{"paw":"$PAW"}'
+curl -H "KEY:$API_KEY" -X POST localhost:8888/plugin/access/abilities -d '{"paw":"$PAW"}'
 ```
 
 Execute a given ability against an agent, outside the scope of an operation. 
 ```
-curl -H "key:ADMIN123" -X POST localhost:8888/plugin/access/exploit -d '{"paw":"$PAW","ability_id":"$ABILITY_ID"}'```
+curl -H "KEY:$API_KEY" -X POST localhost:8888/plugin/access/exploit -d '{"paw":"$PAW","ability_id":"$ABILITY_ID","obfuscator":"plain-text"}'
 ```
 > You can optionally POST an obfuscator and/or a facts dictionary with key/value pairs to fill in any variables the chosen ability requires.
 ```
@@ -43,12 +42,12 @@ curl -H "key:ADMIN123" -X POST localhost:8888/plugin/access/exploit -d '{"paw":"
 
 View all abilities for a specific adversary_id (the UUID of the adversary).
 ```
-curl -H 'KEY: ADMIN123' 'http://localhost:8888/api/rest' -H 'Content-Type: application/json' -d '{"index":"adversaries","adversary_id":"$adversary_id"}'
+curl -H "KEY:$API_KEY" 'http://localhost:8888/api/rest' -H 'Content-Type: application/json' -d '{"index":"adversaries","adversary_id":"$adversary_id"}'
 ```
 
 View all abilities for all adversaries.
 ```
-curl -H 'KEY: ADMIN123' 'http://localhost:8888/api/rest' -H 'Content-Type: application/json' -d '{"index":"adversaries"}'
+curl -H "KEY:$API_KEY" 'http://localhost:8888/api/rest' -H 'Content-Type: application/json' -d '{"index":"adversaries"}'
 ```
 
 ## Operations
@@ -57,14 +56,14 @@ curl -H 'KEY: ADMIN123' 'http://localhost:8888/api/rest' -H 'Content-Type: appli
 
 Delete any operation. Operation ID must be a integer.
 ```bash
-curl -X DELETE http://localhost:8888/api/rest -d '{"index":"operations","id":"$operation_id"}'
+curl -H "KEY:$API_KEY" -X DELETE http://localhost:8888/api/rest -d '{"index":"operations","id":"$operation_id"}'
 ```
 
 #### POST
 
 Change the state of any operation. In addition to finished, you can also use: paused, run_one_link or running.
 ```bash
-curl -X POST -H "KEY:ADMIN123" http://localhost:8888/api/rest -d '{"index":"operation", "op_id":123, "state":"finished"}'
+curl -X POST -H "KEY:$API_KEY" http://localhost:8888/api/rest -d '{"index":"operation", "op_id":123, "state":"finished"}'
 ```
 
 #### PUT
@@ -72,7 +71,7 @@ curl -X POST -H "KEY:ADMIN123" http://localhost:8888/api/rest -d '{"index":"oper
 Create a new operation. All that is required is the operation name, similar to creating a new operation
 in the browser.
 ```bash
-curl -X PUT -H "KEY:$KEY" http://127.0.0.1:8888/api/rest -d '{"index":"operations","name":"testoperation1"}'
+curl -X PUT -H "KEY:$API_KEY" http://127.0.0.1:8888/api/rest -d '{"index":"operations","name":"testoperation1"}'
 ```
 Optionally, you can include:
 
@@ -102,9 +101,9 @@ curl -F 'data=@path/to/file' http://localhost:8888/file/upload
 
 Files can be dowloaded from CALDERA through the /file/download endpoint. This endpoint requires an HTTP header called "file" with the file name as the value. When a file is requested, CALDERA will look inside each of the payload directories listed in the local.yml file until it finds a file matching the name.
 
-Files can also be downloaded indirectly through the [payload block of an ability](What-is-an-ability.md).
+Files can also be downloaded indirectly through the [payload block of an ability](Learning-the-terminology.md).
 
-> Additionally, the [54ndc47 plugin](Plugins-sandcat.md) delivery commands utilize the file download endpoint to drop the agent on a host
+> Additionally, the [54ndc47 plugin](Plugin-library.md) delivery commands utilize the file download endpoint to drop the agent on a host
 
 #### Example
 ```bash
