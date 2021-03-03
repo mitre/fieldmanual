@@ -45,6 +45,7 @@ won't know which ones are valid to send.
 * **pid**: The process identifier of the agent
 * **location**: The location of the agent on disk
 * **exe_name**: The name of the agent binary file
+* **host_ip_addrs**: A list of valid IPv4 addresses on the host
 
 At this point, you are ready to make a POST request with the profile to the /beacon endpoint. You should get back:
 
