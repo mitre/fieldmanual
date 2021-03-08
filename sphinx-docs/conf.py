@@ -30,7 +30,7 @@ setattr(CommonMarkParser, 'visit_document', visit_document)
 apidocs_argv = ['-o', '_generated', '--implicit-namespaces', '--force', str(caldera_root_dir / 'app')]
 apidoc.main(apidocs_argv)
 
-# Import plugin docs
+# Import documentation from plugins
 import_plugin_docs(caldera_root_dir)
 
 # Export csv info to csv:
