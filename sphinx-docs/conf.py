@@ -1,4 +1,3 @@
-import os
 import sys
 import pathlib
 
@@ -31,7 +30,8 @@ apidocs_argv = ['-o', '_generated', '--implicit-namespaces', '--force', str(cald
 apidoc.main(apidocs_argv)
 
 # Import documentation from plugins
-import_plugin_docs(caldera_root_dir)
+sphinx_root_dir = pathlib.Path.cwd()
+import_plugin_docs(caldera_root_dir, sphinx_root_dir)
 
 # Export csv info to csv:
 generate_ability_csv(caldera_root_dir, "_generated/abilities.csv")
