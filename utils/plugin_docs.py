@@ -9,6 +9,7 @@ PLUGIN_DOCS_DIR = 'docs'
 
 
 def import_plugin_docs(caldera_root_dir, sphinx_root_dir):
+    print(f'Importing plugin documentation')
     doc_paths = copy_plugin_docs(caldera_root_dir, sphinx_root_dir)
     create_index(sphinx_root_dir, doc_paths)
 
@@ -50,7 +51,7 @@ def create_index(sphinx_root_dir, plugin_doc_paths):
     :param sphinx_root_dir: Path to sphinx directory
     :param plugin_doc_paths: List of copied files to add to index
     """
-    env = Environment(loader=FileSystemLoader(searchpath=sphinx_root_dir))
+    env = Environment(loader=FileSystemLoader(searchpath=str(sphinx_root_dir)))
     index_template = env.get_template('index.rst.j2')
     index_content = index_template.render(plugin_docs=plugin_doc_paths)
 

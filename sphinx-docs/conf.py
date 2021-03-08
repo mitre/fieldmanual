@@ -31,6 +31,7 @@ apidoc.main(apidocs_argv)
 
 # Import documentation from plugins
 sphinx_root_dir = pathlib.Path.cwd()
+print(sphinx_root_dir)
 import_plugin_docs(caldera_root_dir, sphinx_root_dir)
 
 # Export csv info to csv:
