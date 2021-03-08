@@ -14,10 +14,13 @@ These files are sent from the agent to server_ip/file/upload at which point the 
 ## Accessing Exfiltrated Files
 
 The server stores all exfiltrated files inside the directory specified by [/conf/default.yml to key "exfil_dir"](Server-configuration.html#the-existing-default-yml). By default it is set to /tmp/caldera
+
 Files can be accessed by pulling them directly from that location when on the server and manually unencrypting the files.
 
 To simplify accessing exfiltrated files from a running caldera server, you can go the the advanced section in the CALDERA UI and click on the 'exfilled files' section.
+
 From there you can select an operation (or all) from the drop down to see a listing of all the files in the exfil folder corresponding to the operation (specifically works with sandcat agents or any other agent using the same naming scheme for file upload folder) or in the directory along with the option to select any number of files to download directly to your machine.
+
 All downloaded files will be unencrypted before passing along as a download.
 
 ## Accessing Operations Reports
