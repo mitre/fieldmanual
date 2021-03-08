@@ -238,6 +238,9 @@ An operation can be started with a number of optional configurations:
 * **Jitter**: Agents normally check in with CALDERA every 60 seconds. Once they realize they are part of an active operation, agents will start checking in according to the jitter time, which is by default 2/8. This fraction tells the agents that they should pause between 2 and 8 seconds (picked at random each time an agent checks in) before using the next ability. 
 * **Visibility**: How visible should the operation be to the defense. Defaults to 51 because each ability defaults to a visibility of 50. Abilities with a higher visibility than the operation visibility will be skipped.
 
+After starting an operation, users can export the operation report in JSON format by clicking the "Download report" button
+in the operation GUI modal. For more information on the operation report format, see the [Operation Result](Operation-Results.md) section.
+
 ## What is a fact?
 
 A fact is an identifiable piece of information about a given computer. Facts are directly related to variables, which can be used inside abilities. 
