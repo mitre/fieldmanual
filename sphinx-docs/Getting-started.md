@@ -28,6 +28,9 @@ The following steps will walk through logging in, deploying an agent, selecting 
    - Click the start button to begin the operation
 1) Review the operation
    - While the operation is running, abilities will be executed on the deployed agent. Click the stars next to run abilities to view the output.
+1) Export operation results
+   - Once the operation finishes, users can export operation reports in JSON format by clicking the "Download report"
+   button in the operation GUI modal. For more information on the report format, see the [Operation Result](Operation-Results.md) section.
 
 Next steps may include:
 
@@ -66,6 +69,10 @@ The following steps will walk through logging in to CALDERA blue, deploying a bl
 1) Review the operation
    - While the operation is running, abilities will be executed on the deployed agent. Click the stars next to run abilities to view the output.
    - Consider manually running commands (or [using an automated adversary](#autonomous-red-team-engagements)) which will trigger incident response actions (such as starting a service on an unauthorized port)
+1) Export operation results
+   - Once the operation finishes, users can export operation reports in JSON format by clicking the "Download report"
+   button in the operation GUI modal. For more information on the report format, see the [Operation Result](Operation-Results.md) section.
+
 
 ## Manual red-team engagements
 
