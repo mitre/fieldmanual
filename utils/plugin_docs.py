@@ -9,13 +9,12 @@ PLUGIN_DOCS_DIR = 'docs'
 
 
 def import_plugin_docs(caldera_root_dir, sphinx_root_dir):
-    print(f'Importing plugin documentation')
     doc_paths = copy_plugin_docs(caldera_root_dir, sphinx_root_dir)
     create_index(sphinx_root_dir, doc_paths)
 
 
 def copy_plugin_docs(caldera_root_dir, sphinx_root_dir):
-    """Copy docs from plugins to sphinx-docs/plugins/{plugin_name/
+    """Copy docs from plugins to sphinx-docs/plugins/{plugin_name}/
 
     :param caldera_root_dir: Path to CALDERA base directory
     :param sphinx_root_dir: Path to sphinx directory
