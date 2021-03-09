@@ -46,6 +46,7 @@ won't know which ones are valid to send.
 * **ppid**: The process identifier of the agent's parent process
 * **location**: The location of the agent on disk
 * **exe_name**: The name of the agent binary file
+* **host_ip_addrs**: A list of valid IPv4 addresses on the host
 * **proxy_receivers**: a dict (key: string, value: list of strings) that maps a peer-to-peer proxy protocol name to a list of addresses that the agent is listening on for peer-to-peer client requests.
 * **deadman_enabled**: a boolean that tells the C2 server whether or not this agent supports deadman abilities. If this value is not provided, the server assumes that the agent does not support deadman abilities.
 
