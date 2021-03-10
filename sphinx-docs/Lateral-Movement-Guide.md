@@ -87,6 +87,8 @@ adversary profile. This section will assume successful setup from the previous s
 a 54ndc47 agent has been spawned with administrative privileges to the remote target host. The full ability files used 
 in this adversary profile are included at the end of this guide.
 
+See the a video of the following steps [here](#video-walkthrough).
+
 1. Go to `navigate` pane > `Advanced` > `sources`. This should open a new sources modal in the web GUI.
 2. Click the toggle to create a new source. Enter "SC Source" as the source name. Then enter `remote.host.fqdn` as the 
 fact trait and the FQDN of the target host you are looking to move laterally to as the fact value. Click `Save` once 
@@ -182,3 +184,15 @@ drop down, try refreshing the page.
           Start-Sleep -s 15;
           Get-Process -ComputerName #{remote.host.fqdn} s4ndc4t;
 ```  
+
+
+### Video Walkthrough
+
+Download video [here](./_static/lm_guide.mp4).
+
+<video width="700" height="450" controls>
+  <source src="./_static/lm_guide.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+

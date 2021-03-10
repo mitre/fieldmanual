@@ -30,3 +30,4 @@ htmlcov/
 .coverage.*
 *,cover
 _*/
+!_static/
