@@ -84,7 +84,7 @@ To enable an agent to be used as a proxy:
 To enable an agent to use the other proxy agents you've established:
   1. Include this header in the download command `-H "gocat-extensions:proxy_http"`
   
-  Optional: This header can speed up the proxy finding process: `-H "includeProxyPeers:HTTP"`. It tells the server to include a list of known proxy peers in the executable. Now that sandcat has mDNS functionality to dynamically discover new peers it is no longer required but is still useful to decrease start-up time.
+  Optional: This header can speed up the proxy finding process: `-H "includeProxyPeers:HTTP"`. It tells the server to include a list of known proxy peers in the executable.
 
 
 #### Starting Receivers
