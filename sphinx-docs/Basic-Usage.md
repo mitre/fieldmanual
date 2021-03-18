@@ -90,6 +90,9 @@ Each platform block consists of a:
 * `#{paw}` is the unique identifier - or paw print - of the agent.
 * `#{location}` is the location of the agent on the client file system. 
 * `#{exe_name}` is the executable name of the agent.
+* `#{upstream_dest}` is the address of the immediate "next hop" that the agent uses to reach the CALDERA server. 
+For agents that directly connect to the server, this will be the same as the `#{server}` value. For agents
+that use peer-to-peer, this value will be the peer address used.
 * `#{origin_link_id}` is the internal link ID associated with running this command used for agent tracking.
 
 Global variables can be identified quickly because they will be single words.
