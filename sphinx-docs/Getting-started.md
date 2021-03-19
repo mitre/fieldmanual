@@ -30,7 +30,7 @@ The following steps will walk through logging in, deploying an agent, selecting 
    - While the operation is running, abilities will be executed on the deployed agent. Click the stars next to run abilities to view the output.
 1) Export operation results
    - Once the operation finishes, users can export operation reports in JSON format by clicking the "Download report"
-   button in the operation GUI modal. Users can also export operation event logs in JSONS format by clicking the "Download event logs"
+   button in the operation GUI modal. Users can also export operation event logs in JSON format by clicking the "Download event logs"
    button in the operations modal. For more information on the various export formats, see the [Operation Result](Operation-Results.md) section.
 
 Next steps may include:
@@ -72,7 +72,7 @@ The following steps will walk through logging in to CALDERA blue, deploying a bl
    - Consider manually running commands (or [using an automated adversary](#autonomous-red-team-engagements)) which will trigger incident response actions (such as starting a service on an unauthorized port)
 1) Export operation results
    - Once the operation finishes, users can export operation reports in JSON format by clicking the "Download report"
-   button in the operation GUI modal. Users can also export operation event logs in JSONS format by clicking the "Download event logs"
+   button in the operation GUI modal. Users can also export operation event logs in JSON format by clicking the "Download event logs"
    button in the operations modal. For more information on the various export formats, see the [Operation Result](Operation-Results.md) section.
    
 
