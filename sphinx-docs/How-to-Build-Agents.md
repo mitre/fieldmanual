@@ -49,6 +49,9 @@ won't know which ones are valid to send.
 * **host_ip_addrs**: A list of valid IPv4 addresses on the host
 * **proxy_receivers**: a dict (key: string, value: list of strings) that maps a peer-to-peer proxy protocol name to a list of addresses that the agent is listening on for peer-to-peer client requests.
 * **deadman_enabled**: a boolean that tells the C2 server whether or not this agent supports deadman abilities. If this value is not provided, the server assumes that the agent does not support deadman abilities.
+* **upstream_dest**: The "next hop" upstream destination address (e.g. IP or FQDN) that the agent uses to
+reach the C2 server. If the agent is using peer-to-peer communication to reach the C2, this value will contain
+the peer address rather than the C2 address.
 
 At this point, you are ready to make a POST request with the profile to the /beacon endpoint. You should get back:
 
