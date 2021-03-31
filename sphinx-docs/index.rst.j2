@@ -6,11 +6,31 @@
 Welcome to CALDERA's documentation!
 ===================================
 
-If you're new to CALDERA, this is a good place to start.
+CALDERA™ is a cyber security framework designed to easily run autonomous breach-and-simulation exercises. It can also
+be used to run manual red-team engagements or automated incident response. CALDERA is built on the
+`MITRE ATT&CK™ framework <https://attack.mitre.org>`_ and is an active research project at MITRE.
+
+The framework consists of two components:
+
+1. **The core system**. This is the framework code, including an asynchronous
+command-and-control (C2) server with a REST API and a web interface.
+
+2. **Plugins**. These are separate repositories that hang off of the core framework, providing additional
+functionality. Examples include agents, GUI interfaces, collections of TTPs and more.
+
+Visit `Installing CALDERA <Installing-CALDERA.html>`_ for installation information.
+
+For getting familiar with the project, visit `Getting started <Getting-started.html>`_, which documents step-by-step
+guides for the most common use cases of CALDERA, and `Basic usage <Basic-Usage.html>`_, which documents how to use
+some of the basic components in core CALDERA. Visit `Learning the terminology <Learning-the-terminology.html>`_ for
+in depth definitions of the terms used throughout the project.
+
+For information about CALDERA plugins, visit `Plugin Library <Plugin-library.html>`_ and
+`How to Build Plugins <How-to-Build-Plugins.html>`_ if you are interested in building your own.
 
 .. toctree::
-   :maxdepth: 3
-   :caption: Usage Guide
+   :maxdepth: 2
+   :caption: Usage Guides
 
    Installing-CALDERA.md
    Getting-started.md
@@ -18,20 +38,16 @@ If you're new to CALDERA, this is a good place to start.
    Basic-Usage.md
    Server-Configuration.md
    Plugin-library.md
-   The-REST-API.md
-   How-to-Build-Plugins.md
-   How-to-Build-Planners.md
-   How-to-Build-Agents.md
    How-CALDERA-makes-decisions.md
    Objectives.md
+   Operation-Results.md
    Initial-Access-Attacks.md
    Lateral-Movement-Guide.md
    Dynamically-Compiled-Payloads.md
+   Exfiltration.md
+   Sandcat-Peer-to-Peer.md
    Uninstalling-CALDERA.md
    Troubleshooting.md
-   Exfiltration.md
-   Operation-Results.md
-   Sandcat-Peer-to-Peer.md
    resources
 
 The following section contains documentation from installed plugins.
@@ -48,8 +64,17 @@ understand the inner workings of the CALDERA adversary emulation tool, CALDERA
 plugins, or new tools that interface with the CALDERA server.
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Developer Information
+
+   The-REST-API.md
+   How-to-Build-Plugins.md
+   How-to-Build-Planners.md
+   How-to-Build-Agents.md
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Core System API
 
    _generated/modules
 
