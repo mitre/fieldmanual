@@ -1,5 +1,6 @@
 import argparse
 import csv
+import os
 import pathlib
 import sys
 
@@ -42,17 +43,27 @@ def _transform_ability(ability_dict, plugin_name=''):
 def generate_ability_csv(caldera_dir, dest_file="abilities.csv"):
     dest_path = pathlib.Path(dest_file)
     caldera_path = pathlib.Path(caldera_dir).resolve()
+    caldera_data_backup_path = os.path.join(caldera_path, "data", "backup")
+
     print(f'Searching for and processing ability files in {caldera_path.absolute()}')
+
     with dest_path.open('w', newline='') as fle:
         writer = csv.DictWriter(fle, fieldnames=OUTPUT_COLUMNS)
         writer.writeheader()
         for i, ability_file in enumerate(caldera_path.glob("**/abilities/*/*.yml")):
+            # Running caldera with --fresh moves data files (including ability files)
+            # into a backup directory. We don't want those "removed" ability files
+            # to be discovered by fieldmanual.
+            if str(ability_file).startswith(caldera_data_backup_path):
+                continue
+
             raw_ability = ability_file.read_text()
+
             if not raw_ability:
                 continue
+
             ability = yaml.safe_load(ability_file.read_text())[0]
             output_ability = _transform_ability(ability, plugin_name=_parse_plugin_name(ability_file))
-
             writer.writerow(output_ability)
 
         print(f'Processed {i} ability files and wrote results to {dest_path.absolute()}.')
