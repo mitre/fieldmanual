@@ -31,7 +31,8 @@ The following steps will walk through logging in, deploying an agent, selecting 
 1) Export operation results
    - Once the operation finishes, users can export operation reports in JSON format by clicking the "Download report"
    button in the operation GUI modal. Users can also export operation event logs in JSON format by clicking the "Download event logs"
-   button in the operations modal. For more information on the various export formats, see the [Operation Result](Operation-Results.md) section.
+   button in the operations modal. The event logs will also be automatically written to disk when the operation finishes.
+   For more information on the various export formats and automatic/manual event log generation, see the [Operation Result page](Operation-Results.md).
 
 Next steps may include:
 
@@ -73,7 +74,8 @@ The following steps will walk through logging in to CALDERA blue, deploying a bl
 1) Export operation results
    - Once the operation finishes, users can export operation reports in JSON format by clicking the "Download report"
    button in the operation GUI modal. Users can also export operation event logs in JSON format by clicking the "Download event logs"
-   button in the operations modal. For more information on the various export formats, see the [Operation Result](Operation-Results.md) section.
+   button in the operations modal. The event logs will also be automatically written to disk when the operation finishes.
+   For more information on the various export formats and automatic/manual event log generation, see the [Operation Result page](Operation-Results.md).
    
 
 ## Manual red-team engagements
