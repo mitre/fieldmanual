@@ -6,9 +6,9 @@
 
 - `--log {DEBUG,INFO,WARNING,ERROR,CRITICAL}`: Sets the log option. The `DEBUG` option is useful for troubleshooting.
 - `--fresh`: Resets all non-plugin data including custom abilities and adversaries, operations, and the agent list.
-  This is accomplished by moving all non-plugin data to a `<caldera_root>/data/backup` directory. The contents of
-  this directory are cleared before moving files into it. This makes it possible to recover the server state after an
-  accidental `--fresh` startup by running `cp -R <caldera_root>/data/backup/ <caldera_root>/` before server startup.
+  A gzipped, tarball backup of the original content is stored in the `data/backup` directory. This makes it possible to 
+  recover the server state after an accidental `--fresh` startup by running `tar -zxvf data/backup/backup-<timestamp>.tar.gz`
+  from the root caldera directory before server startup.
 - `--environment ENVIRONMENT`: Sets a custom configuration file. See "Custom configuration files" below for additional details.
 - `--plugins PLUGINS`: Sets CALDERA to run only with the specified plugins
 - `--insecure`: Uses the `conf/default.yml` file for configuration, not recommended.

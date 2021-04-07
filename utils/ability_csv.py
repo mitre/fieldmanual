@@ -51,9 +51,7 @@ def generate_ability_csv(caldera_dir, dest_file="abilities.csv"):
         writer = csv.DictWriter(fle, fieldnames=OUTPUT_COLUMNS)
         writer.writeheader()
         for i, ability_file in enumerate(caldera_path.glob("**/abilities/*/*.yml")):
-            # Running caldera with --fresh moves data files (including ability files)
-            # into a backup directory. We don't want those "removed" ability files
-            # to be discovered by fieldmanual.
+            # Skip the backup directory in case someone opened up backup tar.gz file in there.
             if str(ability_file).startswith(caldera_data_backup_path):
                 continue
 
