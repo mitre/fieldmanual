@@ -33,6 +33,7 @@ app.contact.http: http://0.0.0.0:8888  # Server to connect to for the HTTP conta
 app.contact.tcp: 0.0.0.0:7010  # Listen host and port for the TCP contact server
 app.contact.udp: 0.0.0.0:7011  # Listen host and port for the UDP contact server
 app.contact.websocket: 0.0.0.0:7012  # Listen host and port for the Websocket contact server
+auth.login.handler.module: default  # Python import path for auth service login handler ("default" will use the default handler)
 crypt_salt: REPLACE_WITH_RANDOM_VALUE  # Salt for file encryption
 encryption_key: ADMIN123  # Encryption key for file encryption
 exfil_dir: /tmp  # The directory where files exfiltrated through the /file/upload endpoint will be stored
@@ -109,3 +110,46 @@ Be sure to change these settings to match your specific LDAP environment.
 
 Note that adding the `ldap` section will disable any accounts listed in the `users` section of the config file;
 only LDAP will be used for logging in.
+
+## Setting Custom Login Handlers
+By default, users authenticate to CALDERA by providing credentials (username and password) in the main login page.
+These credentials are verified using CALDERA's internal user mapping, or via LDAP if LDAP login is enabled for CALDERA.
+If users want to use a different login handler, such as one that handles SAML authentication or a login handler provided
+by a CALDERA plugin, the `auth.login.handler.module` keyword can be added to the CALDERA configuration value.
+The value must be either `default` (to use the default login handler) or a Python import path string corresponding
+to the custom login handler Python file, relative to the main CALDERA directory (e.g. `auth.login.handler.module: plugins.app.my_custom_handler`). 
+If the keyword is not provided, the default login handler will be used.
+
+The Python module referenced in the configuration file must implement the following method:
+```python
+def load_login_handler(services):
+    """Return Python object that extends LoginHandlerInterface from app.service.interfaces.i_login_handler"""
+    pass
+```
+
+When loading custom login handlers, CALDERA expects the referenced Python module to return an object that extends
+`LoginHandlerInterface` from `app.service.interfaces.i_login_handler`. This interface provides all of the methods
+that CALDERA's authentication service requires to handle logins. If an invalid login handler is referenced in
+the configuration file, then the server will exit with an error.
+
+An example login handler Python module may follow the following structure:
+```python
+from app.service.interfaces.i_login_handler import LoginHandlerInterface
+
+HANDLER_NAME = 'My Custom Login Handler'
+
+def load_login_handler(services):
+    return CustomLoginHandler(services, HANDLER_NAME)
+
+class CustomLoginHandler(LoginHandlerInterface):
+    def __init__(self, services, name):
+        super().__init__(services, name)
+
+    async def handle_login(self, request, **kwargs):
+        # Handle login
+        pass
+
+    async def handle_login_redirect(self, request, **kwargs):
+        # Handle login redirect
+        pass
+```
