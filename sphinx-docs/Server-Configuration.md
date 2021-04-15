@@ -115,7 +115,7 @@ only LDAP will be used for logging in.
 By default, users authenticate to CALDERA by providing credentials (username and password) in the main login page.
 These credentials are verified using CALDERA's internal user mapping, or via LDAP if LDAP login is enabled for CALDERA.
 If users want to use a different login handler, such as one that handles SAML authentication or a login handler provided
-by a CALDERA plugin, the `auth.login.handler.module` keyword can be added to the CALDERA configuration value.
+by a CALDERA plugin, the `auth.login.handler.module` keyword can be added to the CALDERA configuration file.
 The value must be either `default` (to use the default login handler) or a Python import path string corresponding
 to the custom login handler Python file, relative to the main CALDERA directory (e.g. `auth.login.handler.module: plugins.app.my_custom_handler`). 
 If the keyword is not provided, the default login handler will be used.
