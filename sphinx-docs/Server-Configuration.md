@@ -51,6 +51,7 @@ plugins:  # List of plugins to enable
 - training
 port: 8888  # Port the server will listen on
 reports_dir: /tmp  # The directory where reports are saved on server shutdown
+auth.login.handler.module: default  # Python import path for auth service login handler ("default" will use the default handler)
 requirements:  # CALDERA requirements
   go:
     command: go version
@@ -109,3 +110,46 @@ Be sure to change these settings to match your specific LDAP environment.
 
 Note that adding the `ldap` section will disable any accounts listed in the `users` section of the config file;
 only LDAP will be used for logging in.
+
+## Setting Custom Login Handlers
+By default, users authenticate to CALDERA by providing credentials (username and password) in the main login page.
+These credentials are verified using CALDERA's internal user mapping, or via LDAP if LDAP login is enabled for CALDERA.
+If users want to use a different login handler, such as one that handles SAML authentication or a login handler provided
+by a CALDERA plugin, the `auth.login.handler.module` keyword in the CALDERA configuration file
+must be changed from its value of `default`, which is used to load the default login handler.
+The configuration value, if not `default`, must be a Python import path string corresponding to the custom login handler relative to the main CALDERA directory (e.g. `auth.login.handler.module: plugins.customplugin.app.my_custom_handler`). 
+If the keyword is not provided, the default login handler will be used.
+
+The Python module referenced in the configuration file must implement the following method:
+```python
+def load_login_handler(services):
+    """Return Python object that extends LoginHandlerInterface from app.service.interfaces.i_login_handler"""
+    pass
+```
+
+When loading custom login handlers, CALDERA expects the referenced Python module to return an object that extends
+`LoginHandlerInterface` from `app.service.interfaces.i_login_handler`. This interface provides all of the methods
+that CALDERA's authentication service requires to handle logins. If an invalid login handler is referenced in
+the configuration file, then the server will exit with an error.
+
+An example login handler Python module may follow the following structure:
+```python
+from app.service.interfaces.i_login_handler import LoginHandlerInterface
+
+HANDLER_NAME = 'My Custom Login Handler'
+
+def load_login_handler(services):
+    return CustomLoginHandler(services, HANDLER_NAME)
+
+class CustomLoginHandler(LoginHandlerInterface):
+    def __init__(self, services, name):
+        super().__init__(services, name)
+
+    async def handle_login(self, request, **kwargs):
+        # Handle login
+        pass
+
+    async def handle_login_redirect(self, request, **kwargs):
+        # Handle login redirect
+        pass
+```
