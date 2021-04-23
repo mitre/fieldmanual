@@ -16,7 +16,7 @@ Each contact is defined in an independent Python module and is registered with t
 
 There are currently several built-in contacts available: http, tcp, udp, websocket, gist (via Github), and dns. 
 
-For additional stealth, supporting agents can use SSH tunneling to tunnel built-in contacts like HTTP, TCP, and UDP. For more information on SSH tunneling, see the [SSH tunneling section](SSH-Tunneling.md).
+For additional stealth, supporting agents can use communication tunnels to tunnel built-in contacts like HTTP, TCP, and UDP. For more information on C2 communication tunneling, see the [C2 tunneling section](C2-Tunneling.md).
 
 ## Building an agent: HTTP contact
 
