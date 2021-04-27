@@ -83,21 +83,21 @@ Each platform block consists of a:
 * requirements (optional)
 * timeout (optional)
 
-**Command**: A command can be 1-line or many and should contain the code you would like the ability to execute. Newlines in the command will be deleted before execution. The command can (optionally) contain variables, which are identified as #{variable}. In the example above, there is one variable used, #{files}. A variable means that you are letting CALDERA fill in the actual contents. CALDERA has a number of global variables:
+**Command**: A command can be 1-line or many and should contain the code you would like the ability to execute. Newlines in the command will be deleted before execution. The command can (optionally) contain variables, which are identified as `#{variable}`.
 
-* `#{server}` references the FQDN of the CALDERA server itself. Because every agent may know the location of CALDERA differently, using the #{server} variable allows you to let the system determine the correct location of the server.
-* `#{group}` is the group a particular agent is a part of. This variable is mainly useful for lateral movement, where your command can start an agent within the context of the agent starting it. 
+Prior to execution of a command, CALDERA will search for variables within the command and attempt to replace them with values. The values used for substitution depend on the type of the variable in the command: user-defined or global variable. User-defined variables are associated with facts can be filled in with fact values from fact sources or parser output, while _global  variables_ are filled in by CALDERA internally and cannot be substituted with fact values.
+
+The following global variables are defined within CALDERA:
+
+* `#{server}` references the FQDN of the CALDERA server itself. Because every agent may know the location of CALDERA differently, using the `#{server}` variable allows you to let the system determine the correct location of the server.
+* `#{group}` is the group a particular agent is a part of. This variable is mainly useful for lateral movement, where your command can start an agent within the context of the agent starting it.
 * `#{paw}` is the unique identifier - or paw print - of the agent.
-* `#{location}` is the location of the agent on the client file system. 
+* `#{location}` is the location of the agent on the client file system.
 * `#{exe_name}` is the executable name of the agent.
-* `#{upstream_dest}` is the address of the immediate "next hop" that the agent uses to reach the CALDERA server. 
-For agents that directly connect to the server, this will be the same as the `#{server}` value. For agents
-that use peer-to-peer, this value will be the peer address used.
+* `#{upstream_dest}` is the address of the immediate "next hop" that the agent uses to reach the CALDERA server. For agents that directly connect to the server, this will be the same as the `#{server}` value. For agents that use peer-to-peer, this value will be the peer address used.
 * `#{origin_link_id}` is the internal link ID associated with running this command used for agent tracking.
-
-Global variables can be identified quickly because they will be single words.
-
-You can use these global variables freely and they will be filled in before the ability is used. Alternatively, you can write in your own variables and supply CALDERA with facts to fill them in. 
+* `#{payload}` and `#{payload:<uuid>}` are used primarily in cleanup commands to denote a payload file downloaded by an agent.
+* `#{app.*}` are configuration items found in your main CALDERA configuration (e.g., `conf/default.yml`) with a prefix of `app.`. Variables starting with `app.` that are not found in the CALDERA configuration are not treated as global variables and can be subject to fact substitution.
 
 **Payload**: A comma-separated list of files which the ability requires in order to run. In the windows executor above, the payload is wifi.ps1. This means, before the ability is used, the agent will download wifi.ps1 from CALDERA. If the file already exists, it will not download it. You can store any type of file in the payload directories of any plugin.
 
