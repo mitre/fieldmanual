@@ -83,21 +83,21 @@ Each platform block consists of a:
 * requirements (optional)
 * timeout (optional)
 
-**Command**: A command can be 1-line or many and should contain the code you would like the ability to execute. Newlines in the command will be deleted before execution. The command can (optionally) contain variables, which are identified as #{variable}. In the example above, there is one variable used, #{files}. A variable means that you are letting CALDERA fill in the actual contents. CALDERA has a number of global variables:
+**Command**: A command can be 1-line or many and should contain the code you would like the ability to execute. Newlines in the command will be deleted before execution. The command can (optionally) contain variables, which are identified as `#{variable}`.
 
-* `#{server}` references the FQDN of the CALDERA server itself. Because every agent may know the location of CALDERA differently, using the #{server} variable allows you to let the system determine the correct location of the server.
-* `#{group}` is the group a particular agent is a part of. This variable is mainly useful for lateral movement, where your command can start an agent within the context of the agent starting it. 
+Prior to execution of a command, CALDERA will search for variables within the command and attempt to replace them with values. The values used for substitution depend on the type of the variable in the command: user-defined or global variable. User-defined variables are associated with facts can be filled in with fact values from fact sources or parser output, while _global  variables_ are filled in by CALDERA internally and cannot be substituted with fact values.
+
+The following global variables are defined within CALDERA:
+
+* `#{server}` references the FQDN of the CALDERA server itself. Because every agent may know the location of CALDERA differently, using the `#{server}` variable allows you to let the system determine the correct location of the server.
+* `#{group}` is the group a particular agent is a part of. This variable is mainly useful for lateral movement, where your command can start an agent within the context of the agent starting it.
 * `#{paw}` is the unique identifier - or paw print - of the agent.
-* `#{location}` is the location of the agent on the client file system. 
+* `#{location}` is the location of the agent on the client file system.
 * `#{exe_name}` is the executable name of the agent.
-* `#{upstream_dest}` is the address of the immediate "next hop" that the agent uses to reach the CALDERA server. 
-For agents that directly connect to the server, this will be the same as the `#{server}` value. For agents
-that use peer-to-peer, this value will be the peer address used.
+* `#{upstream_dest}` is the address of the immediate "next hop" that the agent uses to reach the CALDERA server. For agents that directly connect to the server, this will be the same as the `#{server}` value. For agents that use peer-to-peer, this value will be the peer address used.
 * `#{origin_link_id}` is the internal link ID associated with running this command used for agent tracking.
-
-Global variables can be identified quickly because they will be single words.
-
-You can use these global variables freely and they will be filled in before the ability is used. Alternatively, you can write in your own variables and supply CALDERA with facts to fill them in. 
+* `#{payload}` and `#{payload:<uuid>}` are used primarily in cleanup commands to denote a payload file downloaded by an agent.
+* `#{app.*}` are configuration items found in your main CALDERA configuration (e.g., `conf/default.yml`) with a prefix of `app.`. Variables starting with `app.` that are not found in the CALDERA configuration are not treated as global variables and can be subject to fact substitution.
 
 **Payload**: A comma-separated list of files which the ability requires in order to run. In the windows executor above, the payload is wifi.ps1. This means, before the ability is used, the agent will download wifi.ps1 from CALDERA. If the file already exists, it will not download it. You can store any type of file in the payload directories of any plugin.
 
@@ -214,17 +214,17 @@ After starting an operation, users can export the operation report in JSON forma
 
 ## Facts
 
-A fact is an identifiable piece of information about a given computer. Facts are directly related to variables, which can be used inside abilities. 
+A fact is an identifiable piece of information about a given computer. Facts can be used to perform variable assignment within abilities.
 
-Facts are composed of a:
+Facts are composed of the following:
 
-* **trait**: a 3-part descriptor which identifies the type of fact. An example is host.user.name. A fact with this trait tells me that it is a user name. This format allows you to specify the major (host) minor (user) and specific (name) components of each fact.
-* **value**: any arbitrary string. An appropriate value for a host.user.name may be "Administrator" or "John". 
-* **score**: an integer which associates a relative importance for the fact. Every fact, by default, gets a score of 1. If a host.user.password fact is important or has a high chance of success if used, you may assign it a score of 5. When an ability uses a fact to fill in a variable, it will use those with the highest scores first. If a fact has a score of 0, it will be blacklisted - meaning it cannot be used in the operation.
+* **trait**: a descriptor which identifies the type of the fact and can be used for variable names within abilities. Example: `host.user.name`. Note that CALDERA 3.1.0 and earlier required traits to be formatted as `major.minor.specific` but this is no longer a requirement.
+* **value**: any arbitrary string. An appropriate value for a `host.user.name` may be "Administrator" or "John".
+* **score**: an integer which associates a relative importance for the fact. Every fact, by default, gets a score of 1. If a `host.user.password` fact is important or has a high chance of success if used, you may assign it a score of 5. When an ability uses a fact to fill in a variable, it will use those with the highest scores first. If a fact has a score of 0, it will be blocklisted - meaning it cannot be used in the operation.
 
-> If a property has a major component = host (e.g., host.user.name) that fact will only be used by the host that collected it.
+> If a property has a prefix of `host.` (e.g., `host.user.name`) that fact will only be used by the host that collected it.
 
-As hinted above, when CALDERA runs abilities, it scans the command and cleanup instructions for variables. When it finds one, it then looks at the facts it has and sees if it can replace the variables with matching facts (based on the property). It will then create new variants of each command/cleanup instruction for each possible combination of facts it has collected. Each variant will be scored based on the cumulative score of all facts inside the command. The highest scored variants will be executed first. 
+As hinted above, when CALDERA runs abilities, it scans the command and cleanup instructions for variables. When it finds one, it then looks at the facts it has and sees if it can replace the variables with matching facts (based on the property). It will then create new variants of each command/cleanup instruction for each possible combination of facts it has collected. Each variant will be scored based on the cumulative score of all facts inside the command. The highest scored variants will be executed first.
 
 Facts can be added or modified through the GUI by navigating to *Advanced -> Sources* and clicking on '+ add row'. 
 
