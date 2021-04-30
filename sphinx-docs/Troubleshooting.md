@@ -8,6 +8,10 @@
 1. Run the CALDERA server with the `--log DEBUG` parameter to see if there is additional output.
 1. Consider removing the `conf/local.yml` and letting CALDERA recreate the file when the server runs again.
 
+## Stopping CALDERA
+
+CALDERA has a backup, cleanup, and save procedure that runs when the key combination `CTRL+C` is pressed. This is the recommended method to ensure proper shutdown of the server. If the Python process executing CALDERA is halted abruptly (for example SIGKILL) it can cause information from plugins to get lost or configuration settings to not reflect on a server restart. 
+
 ## Agent Deployment
 
 ### Downloading the agent
