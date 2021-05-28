@@ -23,7 +23,7 @@ The operation report JSON consists of a single dictionary with the following key
         - `technique_name`: Full ATT&CK technique name for the command.
         - `technique_id`: ATT&CK technique ID for the command (e.g. `T1005`)
     - `output`: optional field. Contains the output generated when running the command. Only appears if the user selected the `include agent output` option when downloading the report.
-    - `agent_reported_time`: String representing the time at which the execution was ran by the agent in YYYY-MM-DD HH:MM:SS format.
+    - `agent_reported_time`: Timestamp string representing the time at which the execution was ran by the agent in YYYY-MM-DD HH:MM:SS format. This field will not be present if the agent does not support reporting the command execution time.
 - `finish`: Timestamp string in YYYY-MM-DD HH:MM:SS format that indicates when the operation finished.
 - `planner`: Name of the planner used for the operation.
 - `adversary`: JSON dict containing information about the adversary used in the operation
@@ -370,7 +370,7 @@ The event dictionary has the following keys and values:
     - `technique_id`
     - `technique_name`
 - `output`: if the user selected `include agent output` when downloading the operation event logs, this field will contain the agent-provided output from running the link command.
-- `agent_reported_time`: String representing the time at which the execution was ran by the agent in YYYY-MM-DD HH:MM:SS format.
+- `agent_reported_time`: Timestamp string representing the time at which the execution was ran by the agent in YYYY-MM-DD HH:MM:SS format. This field will not be present if the agent does not support reporting the command execution time.
 
 Below is a sample output for operation event logs:
 ```json
