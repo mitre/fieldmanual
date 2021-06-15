@@ -23,6 +23,7 @@ The operation report JSON consists of a single dictionary with the following key
         - `technique_name`: Full ATT&CK technique name for the command.
         - `technique_id`: ATT&CK technique ID for the command (e.g. `T1005`)
     - `output`: optional field. Contains the output generated when running the command. Only appears if the user selected the `include agent output` option when downloading the report.
+    - `agent_reported_time`: Timestamp string representing the time at which the execution was ran by the agent in YYYY-MM-DD HH:MM:SS format. This field will not be present if the agent does not support reporting the command execution time.
 - `finish`: Timestamp string in YYYY-MM-DD HH:MM:SS format that indicates when the operation finished.
 - `planner`: Name of the planner used for the operation.
 - `adversary`: JSON dict containing information about the adversary used in the operation
@@ -156,7 +157,8 @@ Below is an example operation report JSON:
             "tactic": "collection",
             "technique_name": "Data from Local System",
             "technique_id": "T1005"
-          }
+          },
+          "agent_reported_time": "2021-02-23 11:50:16"
         },
         {
           "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
@@ -173,7 +175,8 @@ Below is an example operation report JSON:
             "tactic": "collection",
             "technique_name": "Data from Local System",
             "technique_id": "T1005"
-          }
+          },
+          "agent_reported_time": "2021-02-23 11:50:23"
         },
         {
           "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
@@ -190,7 +193,8 @@ Below is an example operation report JSON:
             "tactic": "collection",
             "technique_name": "Data from Local System",
             "technique_id": "T1005"
-          }
+          },
+          "agent_reported_time": "2021-02-23 11:50:30"
         },
         {
           "ability_id": "6469befa-748a-4b9c-a96d-f191fde47d89",
@@ -208,7 +212,8 @@ Below is an example operation report JSON:
             "technique_name": "Data Staged: Local Data Staging",
             "technique_id": "T1074.001"
           },
-          "output": "C:\\Users\\carlomagno\\staged"
+          "output": "C:\\Users\\carlomagno\\staged",
+          "agent_reported_time": "2021-02-23 11:50:40"
         },
         {
           "ability_id": "6469befa-748a-4b9c-a96d-f191fde47d89",
@@ -225,7 +230,8 @@ Below is an example operation report JSON:
             "tactic": "collection",
             "technique_name": "Data Staged: Local Data Staging",
             "technique_id": "T1074.001"
-          }
+          },
+          "agent_reported_time": "2021-02-23 11:50:46"
         }
       ]
     }
@@ -364,6 +370,7 @@ The event dictionary has the following keys and values:
     - `technique_id`
     - `technique_name`
 - `output`: if the user selected `include agent output` when downloading the operation event logs, this field will contain the agent-provided output from running the link command.
+- `agent_reported_time`: Timestamp string representing the time at which the execution was ran by the agent in YYYY-MM-DD HH:MM:SS format. This field will not be present if the agent does not support reporting the command execution time.
 
 Below is a sample output for operation event logs:
 ```json
@@ -404,7 +411,8 @@ Below is a sample output for operation event logs:
       "tactic": "collection",
       "technique_name": "Data from Local System",
       "technique_id": "T1005"
-    }
+    },
+    "agent_reported_time": "2021-02-23 11:50:13"
   },
   {
     "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLnltbCAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
@@ -442,7 +450,8 @@ Below is a sample output for operation event logs:
       "tactic": "collection",
       "technique_name": "Data from Local System",
       "technique_id": "T1005"
-    }
+    },
+    "agent_reported_time": "2021-02-23 11:50:18"
   },
   {
     "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLndhdiAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
@@ -480,7 +489,8 @@ Below is a sample output for operation event logs:
       "tactic": "collection",
       "technique_name": "Data from Local System",
       "technique_id": "T1005"
-    }
+    },
+    "agent_reported_time": "2021-02-23 11:50:25"
   },
   {
     "command": "TmV3LUl0ZW0gLVBhdGggIi4iIC1OYW1lICJzdGFnZWQiIC1JdGVtVHlwZSAiZGlyZWN0b3J5IiAtRm9yY2UgfCBmb3JlYWNoIHskXy5GdWxsTmFtZX0gfCBTZWxlY3QtT2JqZWN0",
@@ -519,7 +529,8 @@ Below is a sample output for operation event logs:
       "technique_name": "Data Staged: Local Data Staging",
       "technique_id": "T1074.001"
     },
-    "output": "C:\\Users\\carlomagno\\staged"
+    "output": "C:\\Users\\carlomagno\\staged",
+    "agent_reported_time": "2021-02-23 11:50:33"
   },
   {
     "command": "UmVtb3ZlLUl0ZW0gLVBhdGggInN0YWdlZCIgLXJlY3Vyc2U=",
@@ -557,7 +568,8 @@ Below is a sample output for operation event logs:
       "tactic": "collection",
       "technique_name": "Data Staged: Local Data Staging",
       "technique_id": "T1074.001"
-    }
+    },
+    "agent_reported_time": "2021-02-23 11:50:43"
   }
 ]
 ```
