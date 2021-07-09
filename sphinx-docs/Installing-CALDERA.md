@@ -56,7 +56,7 @@ docker build . -t caldera:server
 Finally, run the docker CALDERA server:
 
 ```
-docker run -p 7010:7010 -p 7011:7011 -p 7012:7012 -p 8888:8888 caldera:server
+docker run -p 7010:7010 -p 7011:7011/udp -p 7012:7012 -p 8888:8888 caldera:server
 ```
 
 ## Offline Installation
