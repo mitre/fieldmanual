@@ -61,7 +61,7 @@ requirements:  # CALDERA requirements
     attr: version
     module: sys
     type: python_module
-    version: 3.6.1
+    version: 3.7.0
 users:  # User list for CALDERA blue and CALDERA red
   blue:
     blue: admin  # Username and password

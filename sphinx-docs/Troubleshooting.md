@@ -3,7 +3,7 @@
 ## Starting CALDERA
 
 1. Ensure that CALDERA has been cloned recursively. Plugins are stored in submodules and must be cloned along with the core code.
-1. Check that Python 3.6.1+ is installed and being used. 
+1. Check that Python 3.7+ is installed and being used. 
 1. Confirm that all `pip` requirements have been fulfilled.
 1. Run the CALDERA server with the `--log DEBUG` parameter to see if there is additional output.
 1. Consider removing the `conf/local.yml` and letting CALDERA recreate the file when the server runs again.
