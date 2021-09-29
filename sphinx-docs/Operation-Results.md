@@ -274,7 +274,7 @@ Below is an example operation report JSON:
       "technique_id": "",
       "collected_by": "",
       "value": "wav",
-      "trait": "file.sensitive.extension",
+      "name": "file.sensitive.extension",
       "unique": "file.sensitive.extensionwav"
     },
     {
@@ -282,7 +282,7 @@ Below is an example operation report JSON:
       "technique_id": "",
       "collected_by": "",
       "value": "yml",
-      "trait": "file.sensitive.extension",
+      "name": "file.sensitive.extension",
       "unique": "file.sensitive.extensionyml"
     },
     {
@@ -290,7 +290,7 @@ Below is an example operation report JSON:
       "technique_id": "",
       "collected_by": "",
       "value": "png",
-      "trait": "file.sensitive.extension",
+      "name": "file.sensitive.extension",
       "unique": "file.sensitive.extensionpng"
     },
     {
@@ -298,7 +298,7 @@ Below is an example operation report JSON:
       "technique_id": "",
       "collected_by": "",
       "value": "keyloggedsite.com",
-      "trait": "server.malicious.url",
+      "name": "server.malicious.url",
       "unique": "server.malicious.urlkeyloggedsite.com"
     },
     {
@@ -306,7 +306,7 @@ Below is an example operation report JSON:
       "technique_id": "T1074.001",
       "collected_by": "pertbn",
       "value": "C:\\Users\\carlomagno\\staged",
-      "trait": "host.dir.staged",
+      "name": "host.dir.staged",
       "unique": "host.dir.stagedC:\\Users\\carlomagno\\staged"
     }
   ],

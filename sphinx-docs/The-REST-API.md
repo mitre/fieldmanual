@@ -35,7 +35,7 @@ curl -H "KEY:$API_KEY" -X POST localhost:8888/plugin/access/exploit -d '{"paw":"
 ```
 > You can optionally POST an obfuscator and/or a facts dictionary with key/value pairs to fill in any variables the chosen ability requires.
 ```
-{"paw":"$PAW","ability_id":"$ABILITY_ID","obfuscator":"base64","facts":[{"trait":"username","value":"admin"},{"trait":"password", "value":"123"}]}
+{"paw":"$PAW","ability_id":"$ABILITY_ID","obfuscator":"base64","facts":[{"name":"username","value":"admin"},{"name":"password", "value":"123"}]}
 ```
 
 ## Adversaries
