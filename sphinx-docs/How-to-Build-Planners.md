@@ -231,31 +231,25 @@ The following methods are available from the Knowledge Service:
 ```python
 app.objects.secondclass.c_fact
 ```
-| method | description |
-|:-------|:------------|
-|`KnowledgeService.add_fact(fact)`| Add a fact to the Knowledge Service's datastore. The `fact` argument must be an already instantiated `Fact()` object.|
-|`KnowledgeService.delete_fact(criteria)`| Remove matching facts from the datastore. The `criteria` argument should be a dictionary with fields to match existing facts against for selection.|
-|`KnowledgeService.get_facts(criteria)`| Retrieve matching facts from the datastore. The `criteria` argument should be a dictionary with fields to match existing facts against for selection.|
-|`KnowledgeService.update_fact(criteria, updates)`| Update an existing fact in the datastore. The `criteria` argument should be a dictionary with fields to match existing facts against for selection, and `updates` should be a dictionary with fields to change and their new values.|
-|`KnowledgeService.get_fact_origin(fact)`| Identifies the location/source of a provided fact. The `fact` argument can be either a name to search for or a full blown Fact object. The return is a tuple of the ID corresponding to the origin object for this fact, and the type of origin object.|
+* `KnowledgeService.add_fact(fact)` - Add a fact to the Knowledge Service's datastore. The `fact` argument must be an already instantiated `Fact()` object.
+* `KnowledgeService.delete_fact(criteria)` - Remove matching facts from the datastore. The `criteria` argument should be a dictionary with fields to match existing facts against for selection.
+* `KnowledgeService.get_facts(criteria)` - Retrieve matching facts from the datastore. The `criteria` argument should be a dictionary with fields to match existing facts against for selection.
+* `KnowledgeService.update_fact(criteria, updates)` - Update an existing fact in the datastore. The `criteria` argument should be a dictionary with fields to match existing facts against for selection, and `updates` should be a dictionary with fields to change and their new values.
+* `KnowledgeService.get_fact_origin(fact)` - Identifies the location/source of a provided fact. The `fact` argument can be either a name to search for or a full blown Fact object. The return is a tuple of the ID corresponding to the origin object for this fact, and the type of origin object.
 
 ```python 
 app.objects.secondclass.c_relationship
 ```
-| method | description |
-|:-------|:------------|
-|`KnowledgeService.add_relationship(relationship)` | Add a relationship to the datastore. The `relationship` argument must be an already instantiated `Relationship()` object.|
-|`KnowledgeService.delete_relationship(criteria)` | Remove a relationship from the datastore. The `criteria` argument should be a dictionary containing fields to match relationships against.|
-|`KnowledgeService.get_relationships(criteria)` | Retrieve a relationship from the datastore. The `criteria` argument should be a dictionary containing fields to match relationships against, and can contain further dictionaries to match facts in relationships against.|
-|`KnowledgeService.update_relationship(criteria, updates)` | Update an existing relationship in the datastore. The `criteria` argument should be a dictionary containing files to match relationships and their component facts against, while the `updates` argument should be dictionary of similar form, containing the values to update.|
+* `KnowledgeService.add_relationship(relationship)` - Add a relationship to the datastore. The `relationship` argument must be an already instantiated `Relationship()` object.
+* `KnowledgeService.delete_relationship(criteria)` - Remove a relationship from the datastore. The `criteria` argument should be a dictionary containing fields to match relationships against.
+* `KnowledgeService.get_relationships(criteria)` - Retrieve a relationship from the datastore. The `criteria` argument should be a dictionary containing fields to match relationships against, and can contain further dictionaries to match facts in relationships against.
+* `KnowledgeService.update_relationship(criteria, updates)` - Update an existing relationship in the datastore. The `criteria` argument should be a dictionary containing files to match relationships and their component facts against, while the `updates` argument should be dictionary of similar form, containing the values to update.
 
 ```python
 app.objects.secondclass.c_rule
 ```
-| method | description |
-|:-------|:------------|
-|`KnowledgeService.add_rule(rule)` | Add a rule to the datastore. The `rule` argument must be an already existing `Rule()` object.|
-|`KnowledgeService.delete_rule(criteria)` | Remove a rule from the datastore. The `criteria` argument should be a dictionary containing fields and values to match existing rules against.|
-|`KnowledgeService.get_rules(criteria)` | Retrieve matching rules from the datastore. The `criteria` argument should be a dictionary containing files to match existing rules against.|
+* `KnowledgeService.add_rule(rule)` - Add a rule to the datastore. The `rule` argument must be an already existing `Rule()` object.
+* `KnowledgeService.delete_rule(criteria)` - Remove a rule from the datastore. The `criteria` argument should be a dictionary containing fields and values to match existing rules against.
+* `KnowledgeService.get_rules(criteria)` - Retrieve matching rules from the datastore. The `criteria` argument should be a dictionary containing files to match existing rules against.
 
 All objects added to the Knowledge service are checked against existing objects in order to enforce de-duplication, with one caveat. As origin is tracked for facts generated by links in the current implementation, this means duplicate facts created during different operations can exist in the fact store simultaneously. Facts/Relationships are usually automatically added to the fact store by `Link` objects as part of the process of parsing output, though they can be added manually should the need arise.
