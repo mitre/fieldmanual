@@ -186,13 +186,4 @@ drop down, try refreshing the page.
 ```  
 
 
-### Video Walkthrough
-
-Download video [here](./_static/lm_guide.mp4).
-
-<video width="700" height="450" controls>
-  <source src="./_static/lm_guide.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-
 
