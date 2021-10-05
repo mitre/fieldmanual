@@ -59,7 +59,7 @@ The following steps will walk through logging in to CALDERA blue, deploying a bl
    - Select a defender from the dropdown and review abilities. The "Incident responder" defender is a good starting profile.
 1) Choose a fact source. Defender profiles utilize fact sources to determine good vs. bad on a given host.
    - Navigate to the Sources page
-   - Select a fact source and review facts. Consider adding facts to match the environment (for example, add a fact with the `remote.port.unauthorized` trait and a value of `8000` to detect services running on port 8000)
+   - Select a fact source and review facts. Consider adding facts to match the environment (for example, add a fact with the `remote.port.unauthorized` name and a value of `8000` to detect services running on port 8000)
    - Save the source if any changes were made
 1) Run an operation
    - Navigate to the Operations page and add an operation by toggling the View/Add switch

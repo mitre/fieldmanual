@@ -218,7 +218,7 @@ A fact is an identifiable piece of information about a given computer. Facts can
 
 Facts are composed of the following:
 
-* **trait**: a descriptor which identifies the type of the fact and can be used for variable names within abilities. Example: `host.user.name`. Note that CALDERA 3.1.0 and earlier required traits to be formatted as `major.minor.specific` but this is no longer a requirement.
+* **name**: a descriptor which identifies the type of the fact and can be used for variable names within abilities. Example: `host.user.name`. Note that CALDERA 3.1.0 and earlier required fact names/traits to be formatted as `major.minor.specific` but this is no longer a requirement.
 * **value**: any arbitrary string. An appropriate value for a `host.user.name` may be "Administrator" or "John".
 * **score**: an integer which associates a relative importance for the fact. Every fact, by default, gets a score of 1. If a `host.user.password` fact is important or has a high chance of success if used, you may assign it a score of 5. When an ability uses a fact to fill in a variable, it will use those with the highest scores first. If a fact has a score of 0, it will be blocklisted - meaning it cannot be used in the operation.
 
@@ -226,7 +226,7 @@ Facts are composed of the following:
 
 As hinted above, when CALDERA runs abilities, it scans the command and cleanup instructions for variables. When it finds one, it then looks at the facts it has and sees if it can replace the variables with matching facts (based on the property). It will then create new variants of each command/cleanup instruction for each possible combination of facts it has collected. Each variant will be scored based on the cumulative score of all facts inside the command. The highest scored variants will be executed first.
 
-Facts can be added or modified through the GUI by navigating to *Advanced -> Sources* and clicking on '+ add row'. 
+Facts can be added or modified through the GUI by navigating to *Advanced -> Sources* and clicking on '+ add row'.
 
 ## Fact sources
 
