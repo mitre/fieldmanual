@@ -1,5 +1,9 @@
 # The REST API
 
+*Note: The original REST API has been deprecated. The new REST API v2 has been released, with [documentation
+available here after server startup](/api/docs). Alternatively, this can be viewed by scrolling
+to the bottom of the CALDERA navigation menu and selecting "api docs."*
+
 All REST API functionality can be viewed in the rest_api.py module in the source code.
 
 ### /api/rest
