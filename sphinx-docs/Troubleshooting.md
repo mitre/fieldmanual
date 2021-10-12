@@ -1,5 +1,12 @@
 # Troubleshooting
 
+## Installing CALDERA
+
+If `donut-shellcode` installation fails, ensure that prerequisite packages are installed
+  - Amazon Linux 2:
+    - `gcc`
+    - `python3-devel`
+
 ## Starting CALDERA
 
 1. Ensure that CALDERA has been cloned recursively. Plugins are stored in submodules and must be cloned along with the core code.
