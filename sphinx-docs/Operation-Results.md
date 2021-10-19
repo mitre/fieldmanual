@@ -118,7 +118,7 @@ Below is an example operation report JSON:
       "pending_contact": "HTTP",
       "ppid": 2624,
       "sleep_min": 5,
-      "origin_link_id": 0,
+      "origin_link_id": "",
       "host": "WORKSTATION1",
       "trusted": true,
       "group": "red",
