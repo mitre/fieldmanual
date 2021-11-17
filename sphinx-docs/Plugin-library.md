@@ -63,6 +63,7 @@ The following features are included in the stock agent:
 - `psh` PowerShell executor (Windows)
 - `cmd` cmd.exe executor (Windows)
 - `sh` shell executor (Linux/Mac)
+- `proc` executor to directly spawn processes from executables without needing to invoke a shell (Windows/Linux/Mac)
 
 Additional functionality can be found in the following gocat extensions:
 - `gist` extension provides the Github gist C2 contact protocol.
