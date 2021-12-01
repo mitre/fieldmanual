@@ -101,17 +101,17 @@ Below is an example operation report JSON:
           },
           "command": "Q2xlYXItSGlzdG9yeTtDbGVhcg==",
           "score": 0,
-          "collect": "2021-02-23 11:48:33",
+          "collect": "2021-02-23T11:48:33Z",
           "host": "WORKSTATION1",
           "output": "False",
           "unique": "949138",
           "pin": 0,
           "id": 949138,
-          "decide": "2021-02-23 11:48:33",
+          "decide": "2021-02-23T11:48:33Z",
           "jitter": 0,
           "facts": [],
           "cleanup": 0,
-          "finish": "2021-02-23 11:48:34"
+          "finish": "2021-02-23T11:48:34Z"
         }
       ],
       "sleep_max": 5,
@@ -125,10 +125,10 @@ Below is an example operation report JSON:
       "architecture": "amd64",
       "deadman_enabled": true,
       "privilege": "Elevated",
-      "created": "2021-02-23 11:48:33",
+      "created": "2021-02-23T11:48:33Z",
       "username": "BYZANTIUM\\Carlomagno",
       "platform": "windows",
-      "last_seen": "2021-02-23 11:54:37",
+      "last_seen": "2021-02-23T11:54:37Z",
       "proxy_chain": [],
       "watchdog": 0,
       "executors": [
@@ -138,15 +138,15 @@ Below is an example operation report JSON:
       "exe_name": "sandcat.exe"
     }
   ],
-  "start": "2021-02-23 11:50:12",
+  "start": "2021-02-23T11:50:12Z",
   "steps": {
     "pertbn": {
       "steps": [
         {
           "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
           "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLnBuZyAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
-          "delegated": "2021-02-23 11:50:12",
-          "run": "2021-02-23 11:50:14",
+          "delegated": "2021-02-23T11:50:12Z",
+          "run": "2021-02-23T11:50:14Z",
           "status": 0,
           "platform": "windows",
           "executor": "psh",
@@ -158,13 +158,13 @@ Below is an example operation report JSON:
             "technique_name": "Data from Local System",
             "technique_id": "T1005"
           },
-          "agent_reported_time": "2021-02-23 11:50:16"
+          "agent_reported_time": "2021-02-23T11:50:16Z"
         },
         {
           "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
           "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLnltbCAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
-          "delegated": "2021-02-23 11:50:17",
-          "run": "2021-02-23 11:50:21",
+          "delegated": "2021-02-23T11:50:17Z",
+          "run": "2021-02-23T11:50:21Z",
           "status": 0,
           "platform": "windows",
           "executor": "psh",
@@ -176,13 +176,13 @@ Below is an example operation report JSON:
             "technique_name": "Data from Local System",
             "technique_id": "T1005"
           },
-          "agent_reported_time": "2021-02-23 11:50:23"
+          "agent_reported_time": "2021-02-23T11:50:23Z"
         },
         {
           "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
           "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLndhdiAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
-          "delegated": "2021-02-23 11:50:22",
-          "run": "2021-02-23 11:50:27",
+          "delegated": "2021-02-23T11:50:22Z",
+          "run": "2021-02-23T11:50:27Z",
           "status": 0,
           "platform": "windows",
           "executor": "psh",
@@ -194,13 +194,13 @@ Below is an example operation report JSON:
             "technique_name": "Data from Local System",
             "technique_id": "T1005"
           },
-          "agent_reported_time": "2021-02-23 11:50:30"
+          "agent_reported_time": "2021-02-23T11:50:30Z"
         },
         {
           "ability_id": "6469befa-748a-4b9c-a96d-f191fde47d89",
           "command": "TmV3LUl0ZW0gLVBhdGggIi4iIC1OYW1lICJzdGFnZWQiIC1JdGVtVHlwZSAiZGlyZWN0b3J5IiAtRm9yY2UgfCBmb3JlYWNoIHskXy5GdWxsTmFtZX0gfCBTZWxlY3QtT2JqZWN0",
-          "delegated": "2021-02-23 11:50:32",
-          "run": "2021-02-23 11:50:37",
+          "delegated": "2021-02-23T11:50:32Z",
+          "run": "2021-02-23T11:50:37Z",
           "status": 0,
           "platform": "windows",
           "executor": "psh",
@@ -213,13 +213,13 @@ Below is an example operation report JSON:
             "technique_id": "T1074.001"
           },
           "output": "C:\\Users\\carlomagno\\staged",
-          "agent_reported_time": "2021-02-23 11:50:40"
+          "agent_reported_time": "2021-02-23T11:50:40Z"
         },
         {
           "ability_id": "6469befa-748a-4b9c-a96d-f191fde47d89",
           "command": "UmVtb3ZlLUl0ZW0gLVBhdGggInN0YWdlZCIgLXJlY3Vyc2U=",
-          "delegated": "2021-02-23 11:50:42",
-          "run": "2021-02-23 11:50:44",
+          "delegated": "2021-02-23T11:50:42Z",
+          "run": "2021-02-23T11:50:44Z",
           "status": 0,
           "platform": "windows",
           "executor": "psh",
@@ -231,12 +231,12 @@ Below is an example operation report JSON:
             "technique_name": "Data Staged: Local Data Staging",
             "technique_id": "T1074.001"
           },
-          "agent_reported_time": "2021-02-23 11:50:46"
+          "agent_reported_time": "2021-02-23T11:50:46Z"
         }
       ]
     }
   },
-  "finish": "2021-02-23 11:50:45",
+  "finish": "2021-02-23T11:50:45Z",
   "planner": "atomic",
   "adversary": {
     "atomic_ordering": [
@@ -377,9 +377,9 @@ Below is a sample output for operation event logs:
 [
   {
     "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLnBuZyAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
-    "delegated_timestamp": "2021-02-23 11:50:12",
-    "collected_timestamp": "2021-02-23 11:50:14",
-    "finished_timestamp": "2021-02-23 11:50:14",
+    "delegated_timestamp": "2021-02-23T11:50:12Z",
+    "collected_timestamp": "2021-02-23T11:50:14Z",
+    "finished_timestamp": "2021-02-23T11:50:14Z",
     "status": 0,
     "platform": "windows",
     "executor": "psh",
@@ -395,7 +395,7 @@ Below is a sample output for operation event logs:
       "privilege": "Elevated",
       "host": "WORKSTATION1",
       "contact": "HTTP",
-      "created": "2021-02-23 11:48:33"
+      "created": "2021-02-23T11:48:33Z"
     },
     "ability_metadata": {
       "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
@@ -404,7 +404,7 @@ Below is a sample output for operation event logs:
     },
     "operation_metadata": {
       "operation_name": "My Operation",
-      "operation_start": "2021-02-23 11:50:12",
+      "operation_start": "2021-02-23T11:50:12Z",
       "operation_adversary": "Collection"
     },
     "attack_metadata": {
@@ -412,13 +412,13 @@ Below is a sample output for operation event logs:
       "technique_name": "Data from Local System",
       "technique_id": "T1005"
     },
-    "agent_reported_time": "2021-02-23 11:50:13"
+    "agent_reported_time": "2021-02-23T11:50:13Z"
   },
   {
     "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLnltbCAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
-    "delegated_timestamp": "2021-02-23 11:50:17",
-    "collected_timestamp": "2021-02-23 11:50:21",
-    "finished_timestamp": "2021-02-23 11:50:21",
+    "delegated_timestamp": "2021-02-23T11:50:17Z",
+    "collected_timestamp": "2021-02-23T11:50:21Z",
+    "finished_timestamp": "2021-02-23T11:50:21Z",
     "status": 0,
     "platform": "windows",
     "executor": "psh",
@@ -434,7 +434,7 @@ Below is a sample output for operation event logs:
       "privilege": "Elevated",
       "host": "WORKSTATION1",
       "contact": "HTTP",
-      "created": "2021-02-23 11:48:33"
+      "created": "2021-02-23T11:48:33Z"
     },
     "ability_metadata": {
       "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
@@ -443,7 +443,7 @@ Below is a sample output for operation event logs:
     },
     "operation_metadata": {
       "operation_name": "My Operation",
-      "operation_start": "2021-02-23 11:50:12",
+      "operation_start": "2021-02-23T11:50:12Z",
       "operation_adversary": "Collection"
     },
     "attack_metadata": {
@@ -451,13 +451,13 @@ Below is a sample output for operation event logs:
       "technique_name": "Data from Local System",
       "technique_id": "T1005"
     },
-    "agent_reported_time": "2021-02-23 11:50:18"
+    "agent_reported_time": "2021-02-23T11:50:18Z"
   },
   {
     "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLndhdiAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
-    "delegated_timestamp": "2021-02-23 11:50:22",
-    "collected_timestamp": "2021-02-23 11:50:27",
-    "finished_timestamp": "2021-02-23 11:50:27",
+    "delegated_timestamp": "2021-02-23T11:50:22Z",
+    "collected_timestamp": "2021-02-23T11:50:27Z",
+    "finished_timestamp": "2021-02-23T11:50:27Z",
     "status": 0,
     "platform": "windows",
     "executor": "psh",
@@ -473,7 +473,7 @@ Below is a sample output for operation event logs:
       "privilege": "Elevated",
       "host": "WORKSTATION1",
       "contact": "HTTP",
-      "created": "2021-02-23 11:48:33"
+      "created": "2021-02-23T11:48:33Z"
     },
     "ability_metadata": {
       "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
@@ -482,7 +482,7 @@ Below is a sample output for operation event logs:
     },
     "operation_metadata": {
       "operation_name": "My Operation",
-      "operation_start": "2021-02-23 11:50:12",
+      "operation_start": "2021-02-23T11:50:12Z",
       "operation_adversary": "Collection"
     },
     "attack_metadata": {
@@ -490,13 +490,13 @@ Below is a sample output for operation event logs:
       "technique_name": "Data from Local System",
       "technique_id": "T1005"
     },
-    "agent_reported_time": "2021-02-23 11:50:25"
+    "agent_reported_time": "2021-02-23T11:50:25Z"
   },
   {
     "command": "TmV3LUl0ZW0gLVBhdGggIi4iIC1OYW1lICJzdGFnZWQiIC1JdGVtVHlwZSAiZGlyZWN0b3J5IiAtRm9yY2UgfCBmb3JlYWNoIHskXy5GdWxsTmFtZX0gfCBTZWxlY3QtT2JqZWN0",
-    "delegated_timestamp": "2021-02-23 11:50:32",
-    "collected_timestamp": "2021-02-23 11:50:37",
-    "finished_timestamp": "2021-02-23 11:50:37",
+    "delegated_timestamp": "2021-02-23T11:50:32Z",
+    "collected_timestamp": "2021-02-23T11:50:37Z",
+    "finished_timestamp": "2021-02-23T11:50:37Z",
     "status": 0,
     "platform": "windows",
     "executor": "psh",
@@ -512,7 +512,7 @@ Below is a sample output for operation event logs:
       "privilege": "Elevated",
       "host": "WORKSTATION1",
       "contact": "HTTP",
-      "created": "2021-02-23 11:48:33"
+      "created": "2021-02-23T11:48:33Z"
     },
     "ability_metadata": {
       "ability_id": "6469befa-748a-4b9c-a96d-f191fde47d89",
@@ -521,7 +521,7 @@ Below is a sample output for operation event logs:
     },
     "operation_metadata": {
       "operation_name": "My Operation",
-      "operation_start": "2021-02-23 11:50:12",
+      "operation_start": "2021-02-23T11:50:12Z",
       "operation_adversary": "Collection"
     },
     "attack_metadata": {
@@ -530,13 +530,13 @@ Below is a sample output for operation event logs:
       "technique_id": "T1074.001"
     },
     "output": "C:\\Users\\carlomagno\\staged",
-    "agent_reported_time": "2021-02-23 11:50:33"
+    "agent_reported_time": "2021-02-23T11:50:33Z"
   },
   {
     "command": "UmVtb3ZlLUl0ZW0gLVBhdGggInN0YWdlZCIgLXJlY3Vyc2U=",
-    "delegated_timestamp": "2021-02-23 11:50:42",
-    "collected_timestamp": "2021-02-23 11:50:44",
-    "finished_timestamp": "2021-02-23 11:50:44",
+    "delegated_timestamp": "2021-02-23T11:50:42Z",
+    "collected_timestamp": "2021-02-23T11:50:44Z",
+    "finished_timestamp": "2021-02-23T11:50:44Z",
     "status": 0,
     "platform": "windows",
     "executor": "psh",
@@ -552,7 +552,7 @@ Below is a sample output for operation event logs:
       "privilege": "Elevated",
       "host": "WORKSTATION1",
       "contact": "HTTP",
-      "created": "2021-02-23 11:48:33"
+      "created": "2021-02-23T11:48:33Z"
     },
     "ability_metadata": {
       "ability_id": "6469befa-748a-4b9c-a96d-f191fde47d89",
@@ -561,7 +561,7 @@ Below is a sample output for operation event logs:
     },
     "operation_metadata": {
       "operation_name": "My Operation",
-      "operation_start": "2021-02-23 11:50:12",
+      "operation_start": "2021-02-23T11:50:12Z",
       "operation_adversary": "Collection"
     },
     "attack_metadata": {
@@ -569,7 +569,7 @@ Below is a sample output for operation event logs:
       "technique_name": "Data Staged: Local Data Staging",
       "technique_id": "T1074.001"
     },
-    "agent_reported_time": "2021-02-23 11:50:43"
+    "agent_reported_time": "2021-02-23T11:50:43Z"
   }
 ]
 ```
