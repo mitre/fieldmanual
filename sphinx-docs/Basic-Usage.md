@@ -71,6 +71,8 @@ Things to note:
 * Each ability requires a name, description, ATT&CK tactic and technique information
 * Each ability requires a platforms list, which should contain at least 1 block for a supported operating system (platform). Currently, abilities can be created for Windows, Linux, and Darwin (MacOS).
 * Abilities can be added to an adversary through the GUI with the 'add ability' button
+* The singleton field (optional, placed at the top level, expects True or False) specifies that the ability should only be run successfully once - after it succeeds, it should not be run again in the same operation.
+* The repeatable field (optional, placed at the top level, expects True or False) specifies that the ability can be repeated as many times as the planner desires. 
 
 For each platform, there should be a list of executors. In the default Sandcat deployment, Darwin and Linux platforms can use sh and Windows can use psh (PowerShell) or cmd (command prompt).
 
