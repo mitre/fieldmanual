@@ -7,8 +7,8 @@
 
 ### Recommended
 
-* GoLang 1.13+ (for optimal agent functionality)
-* Google Chrome browser 
+* GoLang 1.17+ (for optimal agent functionality)
+* Google Chrome browser
 * Hardware: 8GB+ RAM and 2+ CPUs
 
 ## Installation
@@ -22,7 +22,7 @@ cd caldera
 
 Next, install the pip requirements:
 
-``` 
+```
 sudo pip3 install -r requirements.txt
 ```
 
