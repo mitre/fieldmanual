@@ -8,6 +8,15 @@
 1. Run the CALDERA server with the `--log DEBUG` parameter to see if there is additional output.
 1. Consider removing the `conf/local.yml` and letting CALDERA recreate the file when the server runs again.
 
+### Module Not Found Error
+
+If you get an error like `ModuleNotFoundError: No module named 'plugins.manx.app'` when starting CALDERA:
+1. Check to see if the `plugins/manx` folder is empty
+   1. Ensure that CALDERA has been cloned recursively. Plugins are stored in submodules and must be cloned along with the core code.
+   1. Alternatively, from the plugins folder, you can run `git clone https://github.com/mitre/manx.git` to grab only the manx repo.
+1. Check your `conf/local.yml` to make sure manx is enabled
+
+
 ## Stopping CALDERA
 
 CALDERA has a backup, cleanup, and save procedure that runs when the key combination `CTRL+C` is pressed. This is the recommended method to ensure proper shutdown of the server. If the Python process executing CALDERA is halted abruptly (for example SIGKILL) it can cause information from plugins to get lost or configuration settings to not reflect on a server restart. 
