@@ -33,6 +33,7 @@ app.contact.http: http://0.0.0.0:8888  # Server to connect to for the HTTP conta
 app.contact.tcp: 0.0.0.0:7010  # Listen host and port for the TCP contact server
 app.contact.udp: 0.0.0.0:7011  # Listen host and port for the UDP contact server
 app.contact.websocket: 0.0.0.0:7012  # Listen host and port for the Websocket contact server
+objects.planners.default: atomic  # Specify which planner should be used by default (works for all objects, just replace `planners` with the appropriate object type name)
 crypt_salt: REPLACE_WITH_RANDOM_VALUE  # Salt for file encryption
 encryption_key: ADMIN123  # Encryption key for file encryption
 exfil_dir: /tmp  # The directory where files exfiltrated through the /file/upload endpoint will be stored
