@@ -7,17 +7,17 @@ To enable a plugin, add it to the `default.yml` file in the `conf/` directory. M
 
 Plugins can also be enabled through the GUI. Go to *Advanced -> Configuration* and then click on the 'enable' button for the plugin you would like to enable.
 
-## Sandcat (54ndc47)
+## Sandcat
 
-The Sandcat plugin, otherwise known as 54ndc47, is the default agent that CALDERA ships with. 
-54ndc47 is written in GoLang for cross-platform compatibility. 
+The Sandcat plugin contains the default agent that CALDERA ships with. 
+Sandcat is written in GoLang for cross-platform compatibility. 
 
-54ndc47 agents require network connectivity to CALDERA at port 8888.
+Sandcat agents require network connectivity to CALDERA at port 8888.
 
 ### Deploy 
 
-To deploy 54ndc47, use one of the built-in delivery commands which allows you to run the agent on any operating system. 
-Each of these commands downloads the compiled 54ndc47 executable from CALDERA and runs it immediately. Find
+To deploy Sandcat, use one of the built-in delivery commands which allows you to run the agent on any operating system. 
+Each of these commands downloads the compiled Sandcat executable from CALDERA and runs it immediately. Find
 the commands on the Sandcat plugin tab.
 
 Once the agent is running, it should show log messages when it beacons into CALDERA.
@@ -28,14 +28,14 @@ hash (MD5) and a random name that blends into the operating system. This will he
 
 ### Options
 
-When deploying a 54ndc47 agent, there are optional parameters you can use when you start the executable:
+When deploying a Sandcat agent, there are optional parameters you can use when you start the executable:
 
 * **Server**: This is the location of CALDERA. The agent must have connectivity to this host/port. 
 * **Group**: This is the group name that you would like the agent to join when it starts. The group does not have to exist. A default group of my_group will be used if none is passed in.
 * **v**: Use `-v` to see verbose output from sandcat.  Otherwise, sandcat will run silently.
 
 ### Extensions
-In order to keep the agent code lightweight, the default 54ndc47 agent binary ships with limited basic functionality.
+In order to keep the agent code lightweight, the default Sandcat agent binary ships with limited basic functionality.
 Users can dynamically compile additional features, referred to as "gocat extensions". Each extension adds to the 
 existing `gocat` module code to provide functionality such as peer-to-peer proxy implementations, additional
 executors, and additional C2 contact protocols. 
@@ -74,7 +74,7 @@ Additional functionality can be found in the following gocat extensions:
 communication via SMB named pipes).
 - `donut` extension provides the Donut functionality to execute various assemblies in memory. 
 See https://github.com/TheWover/donut for additional information.
-- `shared` extension provides the C sharing functionality for 54ndc47.
+- `shared` extension provides the C sharing functionality for Sandcat.
 
 #### Customizing Default Options & Execution Without CLI Options
 

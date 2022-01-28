@@ -2,7 +2,7 @@
 
 Building your own plugin allows you to add custom functionality to CALDERA. 
 
-A plugin can be nearly anything, from a RAT/agent (like 54ndc47) to a new GUI or a collection of abilities that you want to keep in "closed-source". 
+A plugin can be nearly anything, from a RAT/agent (like Sandcat) to a new GUI or a collection of abilities that you want to keep in "closed-source". 
 
 Plugins are stored in the plugins directory. If a plugin is also listed in the local.yml file, it will be loaded into CALDERA each time the server starts. A plugin is loaded through its hook.py file, which is "hooked" into the core system via the server.py (main) module.
 

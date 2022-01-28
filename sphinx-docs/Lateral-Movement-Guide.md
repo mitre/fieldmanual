@@ -74,7 +74,7 @@ host, which moved laterally to the `VAGRANTDC` machine via successful execution 
 ![Debrief Attack Path Example](/img/debrief_attack_path.png)    
 
 This capability relies on the `origin_link_id` field to be populated within the agent profile upon first
-check-in and is currently implemented for the default agent, 54ndc47. For more information about the `#{origin_link_id}`
+check-in and is currently implemented for the default agent, Sandcat. For more information about the `#{origin_link_id}`
 global variable, see the explanation of **Command** in the [What is an Ability?](/docs/Learning-the-Terminology.html#what-is-an-ability)
 section of the Learning the Terminology guide. For more information about how lateral movement tracking is implemented 
 in agents to be used with CALDERA, see the [Lateral Movement Tracking](/docs/How-to-Build-Agents.html#lateral-movement-tracking) 
@@ -84,7 +84,7 @@ section of the How to Build Agents guide.
 ## Example Lateral Movement Profile
 This section will walkthrough the necessary steps for proper execution of the Service Creation Lateral Movement
 adversary profile. This section will assume successful setup from the previous sections mentioned in this guide and that
-a 54ndc47 agent has been spawned with administrative privileges to the remote target host. The full ability files used 
+a Sandcat agent has been spawned with administrative privileges to the remote target host. The full ability files used 
 in this adversary profile are included at the end of this guide.
 
 See a video of the following steps [here](#video-walkthrough).
@@ -129,8 +129,8 @@ drop down, try refreshing the page.
 
 ```
 - id: 65048ec1-f7ca-49d3-9410-10813e472b30
-  name: Copy 54ndc47 (SMB)
-  description: Copy 54ndc47 to remote host (SMB)
+  name: Copy Sandcat (SMB)
+  description: Copy Sandcat to remote host (SMB)
   tactic: lateral-movement
   technique:
     attack_id: T1021.002
@@ -165,7 +165,7 @@ drop down, try refreshing the page.
 ```
 - id: 95727b87-175c-4a69-8c7a-a5d82746a753
   name: Service Creation
-  description: Create a service named "sandsvc" to execute remote 54ndc57 binary named "s4ndc4t.exe"
+  description: Create a service named "sandsvc" to execute remote Sandcat binary named "s4ndc4t.exe"
   tactic: execution
   technique:
     attack_id: T1569.002
