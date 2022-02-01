@@ -13,7 +13,7 @@ The following steps will walk through logging in, deploying an agent, selecting 
 1) Log in as a red user. By default, a "red" user is creating with a password found in the `conf/local.yml` file (or `conf/default.yml` if using insecure settings).
 1) Deploy an agent
    - Navigate to the Agents page and click the "Click here to deploy an agent"
-   - Choose the Sandcat (54ndc47) agent and platform (victim operating system)
+   - Choose the Sandcat agent and platform (victim operating system)
    - Check that the value for `app.contact.http` matches the host and port the CALDERA server is listening on
    - Run the generated command on the victim machine. Note that some abilities will require elevated privileges, which would require the agent to be deployed in an elevated shell.
    - Ensure that a new agent appears in the table on the Agents page
@@ -50,7 +50,7 @@ The following steps will walk through logging in to CALDERA blue, deploying a bl
 1) Log in as a blue user. By default, a "blue" user is creating with a password found in the `conf/local.yml` file (or `conf/default.yml` if using insecure settings).
 1) Deploy a blue agent
    - Navigate to the Agents page and click the "Click here to deploy an agent"
-   - Choose the Sandcat (54ndc47) agent and platform (victim operating system)
+   - Choose the Sandcat agent and platform (victim operating system)
    - Check that the value for `app.contact.http` matches the host and port the CALDERA server is listening on
    - Run the generated command on the victim machine. The blue agent should be deployed with elevated privileges in most cases.
    - Ensure that a new blue agent appears in the table on the Agents page
