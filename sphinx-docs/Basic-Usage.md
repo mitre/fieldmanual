@@ -7,9 +7,12 @@
 
 To deploy an agent:
 
-1. Navigate to the Agents tab and click the "Click here to deploy an agent" button
-1. Choose an agent (Sandcat is a good one to start with) and a platform (operating system)
+1. Navigate to the Agents tab and click the "Deploy an agent" button
+1. Choose an agent (Sandcat is a good one to start with) and a platform (target operating system)
 1. Make sure the agent options are correct (ex: ensure `app.contact.http` matches the expected host and port for the CALDERA server)
+    - You can also provide a comma-separated list of agent extensions in the `agent.extensions` text box.
+    This will instruct the C2 server to compile the agent binary with the requested extensions, if they exist.
+    See [Sandcat extension documentation](plugins/sandcat/Sandcat-Details.html#extensions) for more information.
 1. Choose a command to execute on the target machine
 1. On the target machine, paste the command into the terminal or command prompt and run
 1. The new agent should appear in the table on the Agents tab (if the agent does not appear, check the [Agent Deployment section of the Troubleshooting page](Troubleshooting.html#agent-deployment))
