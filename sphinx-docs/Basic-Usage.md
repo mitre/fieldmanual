@@ -71,6 +71,7 @@ Things to note:
 * Each ability requires a name, description, ATT&CK tactic and technique information
 * Each ability requires a platforms list, which should contain at least 1 block for a supported operating system (platform). Currently, abilities can be created for Windows, Linux, and Darwin (MacOS).
 * Abilities can be added to an adversary through the GUI with the 'add ability' button
+* The delete_payload field (optional, placed at the top level, expects True or False) specifies whether the agent should remove the payload from the filesystem after the ability completes. The default value, if not provided, is True.
 * The singleton field (optional, placed at the top level, expects True or False) specifies that the ability should only be run successfully once - after it succeeds, it should not be run again in the same operation. The default value, if not provided, is False.
 * The repeatable field (optional, placed at the top level, expects True or False) specifies that the ability can be repeated as many times as the planner desires. The default value, if not provided, is False.
 
