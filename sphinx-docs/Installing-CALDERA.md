@@ -3,7 +3,7 @@
 ## Requirements
 
 * Linux or MacOS operating system
-* Python 3.7+ (with pip3)
+* Python 3.7, 3.8, or 3.9 (with pip3)
 
 ### Recommended
 
@@ -26,7 +26,7 @@ Next, install the pip requirements:
 sudo pip3 install -r requirements.txt
 ```
 
-Finally, start the server:
+Finally, start the server (optionally with startup [flags](Server-Configuration.html#startup-parameters) for additional logging):
 
 ```
 python3 server.py
@@ -44,19 +44,35 @@ Start by cloning the CALDERA repository recursively, passing the desired version
 
 ```
 git clone https://github.com/mitre/caldera.git --recursive --branch x.x.x
+```
+
+Next, build the docker image, changing the image tag as desired.
+
+```
 cd caldera
+docker build . -t --build-arg WIN_BUILD=true caldera:server
 ```
 
-Next, build a container:
+Alternatively, you can use the `docker-compose.yml` file by running:
 
 ```
-docker build . -t caldera:server
+docker-compose build
 ```
 
-Finally, run the docker CALDERA server:
+Finally, run the docker CALDERA server, changing port forwarding as required.  More information on CALDERA's configuration is [available here](Server-Configuration.html#configuration-file).
 
 ```
 docker run -p 7010:7010 -p 7011:7011/udp -p 7012:7012 -p 8888:8888 caldera:server
+```
+
+To gracefully terminate your docker container, do the following:
+
+```
+# Find the container ID for your docker container running CALDERA
+docker ps
+
+# Send interrupt signal, e.g. "docker kill --signal=SIGINT 5b9220dd9c0f"
+docker kill --signal=SIGINT [container ID]
 ```
 
 ## Offline Installation
