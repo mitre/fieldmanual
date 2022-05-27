@@ -8,7 +8,7 @@ Installed agents appear in the UI in the Agents dialog. Agents are identified by
 
 CALDERA includes a number of agent programs, each adding unique functionality. A few examples are listed below:
 
-- Sandcat: A GoLang agent which communicates through HTTP, Git, or P2P over SMB contacts
+- Sandcat: A GoLang agent which can communicate through various C2 channels, such as HTTP, Github GIST, or DNS tunneling.
 - Manx: A GoLang agent which communicates via the TCP contact and functions as a reverse-shell
 - Ragdoll: A Python agent which communicates via the HTML contact
 

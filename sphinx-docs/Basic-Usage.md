@@ -7,12 +7,23 @@
 
 To deploy an agent:
 
-1. Navigate to the Agents tab and click the "Click here to deploy an agent" button
-1. Choose an agent (Sandcat is a good one to start with) and a platform (operating system)
-1. Make sure the agent options are correct (ex: ensure `app.contact.http` matches the expected host and port for the CALDERA server)
-1. Choose a command to execute on the target machine
-1. On the target machine, paste the command into the terminal or command prompt and run
-1. The new agent should appear in the table on the Agents tab (if the agent does not appear, check the [Agent Deployment section of the Troubleshooting page](Troubleshooting.html#agent-deployment))
+1. Navigate to the Agents module in the side menu under "Campaigns" and click the "Deploy an agent" button
+1. Choose an agent (Sandcat is a good one to start with) and a platform (target operating system)
+1. Make sure the agent options are correct (e.g. ensure `app.contact.http` matches the expected host and port for the CALDERA server)
+    - `app.contact.http` represents the HTTP endpoint (including the IP/hostname and port) that the C2 server is listening on for
+    agent requests and beacons. Examples: `http://localhost:8888`, `https://10.1.2.3`, `http://myc2domain.com:8080`
+    - `agents.implant_name` represents the base name of the agent binary. 
+    For Windows agents, `.exe` will be automatically appended to the base name (e.g. `splunkd` will become `splunkd.exe`).
+    - `agent.extensions` takes in a comma-separated list of agent extensions to compile with your agent binary.
+    When selecting the associated deployment command, this will instruct the C2 server to compile the agent binary with the 
+    requested extensions, if they exist. If you just want a basic agent without extensions, leave this field blank.
+    See [Sandcat extension documentation](plugins/sandcat/Sandcat-Details.html#extensions) for more information on Sandcat
+    extensions.
+1. Choose a command to execute on the target machine. If you want your agent to be compiled with the
+ extensions from `agent.extensions`, you must select the associated deployment command below: 
+ `Compile red-team agent with a comma-separated list of extensions (requires GoLang).`
+1. On the target machine, paste the command into the terminal or PowerShell window and execute it
+1. The new agent should appear in the table in the Agents tab (if the agent does not appear, check the [Agent Deployment section of the Troubleshooting page](Troubleshooting.html#agent-deployment))
 
 To kill an agent, use the "Kill Agent" button under the agent-specific settings. The agent will terminate on its next beacon.
 
@@ -25,7 +36,7 @@ Several configuration options are available for agents:
 * **Beacon Timers**: Set the minimum and maximum seconds the agent will take to beacon home. These timers are applied to all newly-created agents.
 * **Watchdog Timer**: Set the number of seconds to wait, once the server is unreachable, before killing an agent. This timer is applied to all newly-created agents.
 * **Untrusted Timer**: Set the number of seconds to wait before marking a missing agent as untrusted. Operations will not generate new links for untrusted agents. This is a global timer and will affect all running and newly-created agents.
-* **Implant Name**: The base name of newly-spawned agents. If necessary, an extension will be added when an agent is created (ex: `splunkd` will become `splunkd.exe` when spawning an agent on a Windows machine).
+* **Implant Name**: The base name of newly-spawned agents. If necessary, an extension will be added when an agent is created (e.g. `splunkd` will become `splunkd.exe` when spawning an agent on a Windows machine).
 * **Bootstrap Abilities**: A comma-separated list of ability IDs to be run on a new agent beacon. By default, this is set to run a command which clears command history.
 * **Deadman Abilities**: A comma-separated list of ability IDs to be run immediately prior to agent termination. The agent must support deadman abilities in order for them to run.
 
