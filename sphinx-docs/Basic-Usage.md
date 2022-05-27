@@ -13,11 +13,13 @@ To deploy an agent:
     - `app.contact.http` represents the HTTP endpoint (including the IP/hostname and port) that the C2 server is listening on for
     agent requests and beacons. Examples: `http://localhost:8888`, `https://10.1.2.3`, `http://myc2domain.com:8080`
     - `agents.implant_name` represents the base name of the agent binary. 
-    For Windows agents, `.exe` will be appended to the base name (e.g. `splunkd` will become `splunkd.exe`).
+    For Windows agents, `.exe` will be automatically appended to the base name (e.g. `splunkd` will become `splunkd.exe`).
     - `agent.extensions` takes in a comma-separated list of agent extensions to compile with your agent binary.
-    This will instruct the C2 server to compile the agent binary with the requested extensions, if they exist.
-    See [Sandcat extension documentation](plugins/sandcat/Sandcat-Details.html#extensions) for more information.
-    If you just want a basic agent without extensions, leave this field blank.
+    When selecting the associated deployment command, this will instruct the C2 server to compile the agent binary with the 
+    requested extensions, if they exist. If you just want a basic agent without extensions, leave this field blank.
+    Note that you must select the associated deployment command below: `Compile red-team agent with a comma-separated list of extensions (requires GoLang).`
+    See [Sandcat extension documentation](plugins/sandcat/Sandcat-Details.html#extensions) for more information on Sandcat
+    extensions.
 1. Choose a command to execute on the target machine
 1. On the target machine, paste the command into the terminal or command prompt and execute it
 1. The new agent should appear in the table in the Agents tab (if the agent does not appear, check the [Agent Deployment section of the Troubleshooting page](Troubleshooting.html#agent-deployment))
