@@ -9,7 +9,7 @@ Plugins can also be enabled through the GUI. Go to *Advanced -> Configuration* a
 
 ## Sandcat
 
-The Sandcat plugin contains CALDERA's the default agent, which is written in GoLang for
+The Sandcat plugin contains CALDERA's default agent, which is written in GoLang for
 cross-platform compatibility. 
 
 The agent will periodically beacon to the C2 server to receive instructions, execute instructions
