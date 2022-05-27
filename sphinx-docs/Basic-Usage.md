@@ -7,7 +7,7 @@
 
 To deploy an agent:
 
-1. Navigate to the Agents tab and click the "Deploy an agent" button
+1. Navigate to the Agents module in the side menu under "Campaigns" and click the "Deploy an agent" button
 1. Choose an agent (Sandcat is a good one to start with) and a platform (target operating system)
 1. Make sure the agent options are correct (e.g. ensure `app.contact.http` matches the expected host and port for the CALDERA server)
     - `app.contact.http` represents the HTTP endpoint (including the IP/hostname and port) that the C2 server is listening on for
