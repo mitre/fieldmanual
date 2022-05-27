@@ -17,11 +17,12 @@ To deploy an agent:
     - `agent.extensions` takes in a comma-separated list of agent extensions to compile with your agent binary.
     When selecting the associated deployment command, this will instruct the C2 server to compile the agent binary with the 
     requested extensions, if they exist. If you just want a basic agent without extensions, leave this field blank.
-    Note that you must select the associated deployment command below: `Compile red-team agent with a comma-separated list of extensions (requires GoLang).`
     See [Sandcat extension documentation](plugins/sandcat/Sandcat-Details.html#extensions) for more information on Sandcat
     extensions.
-1. Choose a command to execute on the target machine
-1. On the target machine, paste the command into the terminal or command prompt and execute it
+1. Choose a command to execute on the target machine. If you want your agent to be compiled with the
+ extensions from `agent.extensions`, you must select the associated deployment command below: 
+ `Compile red-team agent with a comma-separated list of extensions (requires GoLang).`
+1. On the target machine, paste the command into the terminal or PowerShell window and execute it
 1. The new agent should appear in the table in the Agents tab (if the agent does not appear, check the [Agent Deployment section of the Troubleshooting page](Troubleshooting.html#agent-deployment))
 
 To kill an agent, use the "Kill Agent" button under the agent-specific settings. The agent will terminate on its next beacon.
