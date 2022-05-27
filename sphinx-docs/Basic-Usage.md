@@ -14,8 +14,8 @@ To deploy an agent:
     This will instruct the C2 server to compile the agent binary with the requested extensions, if they exist.
     See [Sandcat extension documentation](plugins/sandcat/Sandcat-Details.html#extensions) for more information.
 1. Choose a command to execute on the target machine
-1. On the target machine, paste the command into the terminal or command prompt and run
-1. The new agent should appear in the table on the Agents tab (if the agent does not appear, check the [Agent Deployment section of the Troubleshooting page](Troubleshooting.html#agent-deployment))
+1. On the target machine, paste the command into the terminal or command prompt and execute it
+1. The new agent should appear in the table in the Agents tab (if the agent does not appear, check the [Agent Deployment section of the Troubleshooting page](Troubleshooting.html#agent-deployment))
 
 To kill an agent, use the "Kill Agent" button under the agent-specific settings. The agent will terminate on its next beacon.
 

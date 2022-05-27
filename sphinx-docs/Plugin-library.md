@@ -15,7 +15,7 @@ cross-platform compatibility.
 The agent will periodically beacon to the C2 server to receive instructions, execute instructions
 on the target host, and then send results back to the C2 server.
 The agent also supports payload downloads, file uploads, and a variety of execution and C2 communication options.
-For more details, see the [Sandcat plugin details](plugins/sandcat/Sandcat-Details.md)
+For more details, see the [Sandcat plugin documentation](plugins/sandcat/Sandcat-Details.md)
 
 ### Deploy 
 
