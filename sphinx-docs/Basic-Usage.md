@@ -9,7 +9,7 @@ To deploy an agent:
 
 1. Navigate to the Agents tab and click the "Deploy an agent" button
 1. Choose an agent (Sandcat is a good one to start with) and a platform (target operating system)
-1. Make sure the agent options are correct (ex: ensure `app.contact.http` matches the expected host and port for the CALDERA server)
+1. Make sure the agent options are correct (e.g. ensure `app.contact.http` matches the expected host and port for the CALDERA server)
     - You can also provide a comma-separated list of agent extensions in the `agent.extensions` text box.
     This will instruct the C2 server to compile the agent binary with the requested extensions, if they exist.
     See [Sandcat extension documentation](plugins/sandcat/Sandcat-Details.html#extensions) for more information.
@@ -28,7 +28,7 @@ Several configuration options are available for agents:
 * **Beacon Timers**: Set the minimum and maximum seconds the agent will take to beacon home. These timers are applied to all newly-created agents.
 * **Watchdog Timer**: Set the number of seconds to wait, once the server is unreachable, before killing an agent. This timer is applied to all newly-created agents.
 * **Untrusted Timer**: Set the number of seconds to wait before marking a missing agent as untrusted. Operations will not generate new links for untrusted agents. This is a global timer and will affect all running and newly-created agents.
-* **Implant Name**: The base name of newly-spawned agents. If necessary, an extension will be added when an agent is created (ex: `splunkd` will become `splunkd.exe` when spawning an agent on a Windows machine).
+* **Implant Name**: The base name of newly-spawned agents. If necessary, an extension will be added when an agent is created (e.g. `splunkd` will become `splunkd.exe` when spawning an agent on a Windows machine).
 * **Bootstrap Abilities**: A comma-separated list of ability IDs to be run on a new agent beacon. By default, this is set to run a command which clears command history.
 * **Deadman Abilities**: A comma-separated list of ability IDs to be run immediately prior to agent termination. The agent must support deadman abilities in order for them to run.
 
