@@ -1,6 +1,10 @@
 # Operation Results
 
-After an operation runs, you can export the results in two different JSON formats: an operation report or operation event logs.
+The "Operations" tab enables users to view past operations, create new operations, and export operation reports in `JSON` or `csv` format.  When starting a new operation, the "Operations" tab UI provides information on which commands are executed, their status as recorded by the CALDERA C2 server, and the captured `stdout` and `stderr` as applicable.
+
+After completing an operation, you can explore the operations setup, progress, and execution graph using the "Debrief" plugin. Debrief also provides executive-level overviews of the operations progress and the attacks success as a `PDF` report.
+
+After an operation runs, you can export the results in two different JSON formats: an operation report or operation event logs.  The operation report is a rich source of information on the technical specifics of which commands were executed against which hosts, at what time, and with what result.
 
 ## Operation Report
 The operation report JSON consists of a single dictionary with the following keys and values:
