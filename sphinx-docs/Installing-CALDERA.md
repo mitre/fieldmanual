@@ -1,17 +1,38 @@
 # Installing CALDERA
 
+CALDERA can be installed in four commands using the [concise installation instructions](###concise) and, optionally, be installed and run using a [docker container](##docker-deployment).
+
 ## Requirements
+
+CALDERA aims to support a wide range of target systems, the core requirements are listed below:
 
 * Linux or MacOS operating system
 * Python 3.7, 3.8, or 3.9 (with pip3)
+* A modern browser (Google Chrome is recommended)
+* The packages listed in the [requirements file](https://github.com/mitre/caldera/requirements.txt)
 
 ### Recommended
 
+To set up a development environment for CALDERA, and to dynamically compile agents, the following is recommended:
+
 * GoLang 1.17+ (for optimal agent functionality)
-* Google Chrome browser
 * Hardware: 8GB+ RAM and 2+ CPUs
+* The packages listed in the [dev requirements file](https://github.com/mitre/caldera/requirements-dev.txt)
 
 ## Installation
+
+### Concise
+
+CALDERA can be installed quickly by executing the following 4 commands in your terminal.
+
+```sh
+git clone https://github.com/mitre/caldera.git --recursive
+cd caldera
+pip3 install -r requirements.txt
+python3 server.py --insecure
+```
+
+### Step-by-step Explanation
 
 Start by cloning the CALDERA repository recursively, pulling all available plugins. It is recommended to pass the desired [version/release](https://github.com/mitre/caldera/releases) (should be in x.x.x format). Cloning any non-release branch, including master, may result in bugs.
 
