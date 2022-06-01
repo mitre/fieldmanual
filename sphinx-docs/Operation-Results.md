@@ -7,6 +7,7 @@ After completing an operation, you can explore the operations setup, progress, a
 After an operation runs, you can export the results in two different JSON formats: an operation report or operation event logs.  The operation report is a rich source of information on the technical specifics of which commands were executed against which hosts, at what time, and with what result.
 
 ## Operation Report
+
 The operation report JSON consists of a single dictionary with the following keys and values:
 - `name`: String representing the name of the operation
 - `host_group`: JSON list of dictionary objects containing information about an agent in the operation. 
@@ -871,5 +872,6 @@ Below is a sample output for operation event logs:
 ]
 ```
 
-## Automatic Event Log Generation
+### Automatic Event Log Generation
+
 When an operation terminates, the corresponding event logs will be written to disk in the same format as if they were manually requested for download. These event logs will contain command output and will be unencrypted on disk. Each operation will have its own event logs written to a separate file in the directory `$reports_dir/event_logs`, where `$reports_dir` is the `reports_dir` entry in the CALDERA configuration file. The filename will be of the format `operation_$id.json`, where `$id` is the unique ID of the operation.
