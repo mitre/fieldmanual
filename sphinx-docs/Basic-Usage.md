@@ -158,7 +158,7 @@ Below is an example ability that uses the `uploads` keyword:
 
 Cleanup is not needed for abilities, like above, which download files through the payload block. Upon an operation completing, all payload files will be removed from the client (agent) computers.
 
-**Parsers**: A list of parsing modules which can parse the output of the command into new facts. Interested in this topic? Check out [how CALDERA makes decisions](How-CALDERA-makes-decisions.md) which goes into detail about parsers. 
+**Parsers**: A list of parsing modules which can parse the output of the command into new facts. Interested in this topic? Check out [how CALDERA parses facts](Parsers.md) which goes into detail about parsers. 
 
 Abilities can also make use of two CALDERA REST API endpoints, file upload and download.
 
