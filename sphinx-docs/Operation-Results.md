@@ -626,5 +626,250 @@ Below is an example operation report JSON:
 }
 ```
 
+## Operation Event Logs
+
+The operation event logs JSON file can be downloaded via the `Download event logs` button on the operations modal after selecting an operation from the drop-down menu. To include command output, users should select the `include agent output` option. Operation event logs will also be automatically written to disk when an operation completes - see the section on [automatic event log generation](#automatic-event-log-generation).
+
+The event logs JSON is a list of dictionary objects, where each dictionary represents an event that occurred during the operation (i.e. each link/command). Users can think of this as a "flattened" version of the operation steps displayed in the traditional report JSON format. However, not all of the operation or agent metadata from the operation report is included in the operation event logs. The event logs do not include operation facts, nor do they include operation links/commands that were skipped either manually or because certain requirements were not met (e.g. missing facts or insufficient privileges). The event log JSON format makes it more convenient to import into databases or SIEM tools.
+
+The event dictionary has the following keys and values:
+- `command`: base64-encoded command that was executed
+- `delegated_timestamp`: Timestamp string in YYYY-MM-DD HH:MM:SS format that indicates when the operation made the link available for collection
+- `collected_timestamp`: Timestamp in YYYY-MM-DD HH:MM:SS format that indicates when the agent collected the link available for collection
+- `finished_timestamp`: Timestamp in YYYY-MM-DD HH:MM:SS format that indicates when the agent submitted the link execution results to the C2 server.
+- `status`: link execution status
+- `platform`: target platform for the agent running the link (e.g. "windows")
+- `executor`: executor used to run the link command (e.g. "psh" for powershell)
+- `pid`: process ID for the link
+- `agent_metadata`: dictionary containing the following information for the agent that ran the link:
+    - `paw`
+    - `group`
+    - `architecture`
+    - `username`
+    - `location`
+    - `pid`
+    - `ppid`
+    - `privilege`
+    - `host`
+    - `contact`
+    - `created`
+- `ability_metadata`: dictionary containing the following information about the link ability:
+    - `ability_id`
+    - `ability_name`
+    - `ability_description`
+- `operation_metadata`: dictionary containing the following information about the operation that generated the link event:
+    - `operation_name`
+    - `operation_start`: operation start time in YYYY-MM-DD HH:MM:SS format
+    - `operation_adversary`: name of the adversary used in the operation
+- `attack_metadata`: dictionary containing the following ATT&CK information for the ability associated with the link:
+    - `tactic`
+    - `technique_id`
+    - `technique_name`
+- `output`: if the user selected `include agent output` when downloading the operation event logs, this field will contain the agent-provided output from running the link command.
+- `agent_reported_time`: Timestamp string representing the time at which the execution was ran by the agent in YYYY-MM-DD HH:MM:SS format. This field will not be present if the agent does not support reporting the command execution time.
+
+Below is a sample output for operation event logs:
+
+```json
+[
+  {
+    "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLnBuZyAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
+    "delegated_timestamp": "2021-02-23T11:50:12Z",
+    "collected_timestamp": "2021-02-23T11:50:14Z",
+    "finished_timestamp": "2021-02-23T11:50:14Z",
+    "status": 0,
+    "platform": "windows",
+    "executor": "psh",
+    "pid": 7016,
+    "agent_metadata": {
+      "paw": "pertbn",
+      "group": "red",
+      "architecture": "amd64",
+      "username": "BYZANTIUM\\Carlomagno",
+      "location": "C:\\Users\\Public\\sandcat.exe",
+      "pid": 5896,
+      "ppid": 2624,
+      "privilege": "Elevated",
+      "host": "WORKSTATION1",
+      "contact": "HTTP",
+      "created": "2021-02-23T11:48:33Z"
+    },
+    "ability_metadata": {
+      "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
+      "ability_name": "Find files",
+      "ability_description": "Locate files deemed sensitive"
+    },
+    "operation_metadata": {
+      "operation_name": "My Operation",
+      "operation_start": "2021-02-23T11:50:12Z",
+      "operation_adversary": "Collection"
+    },
+    "attack_metadata": {
+      "tactic": "collection",
+      "technique_name": "Data from Local System",
+      "technique_id": "T1005"
+    },
+    "agent_reported_time": "2021-02-23T11:50:13Z"
+  },
+  {
+    "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLnltbCAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
+    "delegated_timestamp": "2021-02-23T11:50:17Z",
+    "collected_timestamp": "2021-02-23T11:50:21Z",
+    "finished_timestamp": "2021-02-23T11:50:21Z",
+    "status": 0,
+    "platform": "windows",
+    "executor": "psh",
+    "pid": 1048,
+    "agent_metadata": {
+      "paw": "pertbn",
+      "group": "red",
+      "architecture": "amd64",
+      "username": "BYZANTIUM\\Carlomagno",
+      "location": "C:\\Users\\Public\\sandcat.exe",
+      "pid": 5896,
+      "ppid": 2624,
+      "privilege": "Elevated",
+      "host": "WORKSTATION1",
+      "contact": "HTTP",
+      "created": "2021-02-23T11:48:33Z"
+    },
+    "ability_metadata": {
+      "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
+      "ability_name": "Find files",
+      "ability_description": "Locate files deemed sensitive"
+    },
+    "operation_metadata": {
+      "operation_name": "My Operation",
+      "operation_start": "2021-02-23T11:50:12Z",
+      "operation_adversary": "Collection"
+    },
+    "attack_metadata": {
+      "tactic": "collection",
+      "technique_name": "Data from Local System",
+      "technique_id": "T1005"
+    },
+    "agent_reported_time": "2021-02-23T11:50:18Z"
+  },
+  {
+    "command": "R2V0LUNoaWxkSXRlbSBDOlxVc2VycyAtUmVjdXJzZSAtSW5jbHVkZSAqLndhdiAtRXJyb3JBY3Rpb24gJ1NpbGVudGx5Q29udGludWUnIHwgZm9yZWFjaCB7JF8uRnVsbE5hbWV9IHwgU2VsZWN0LU9iamVjdCAtZmlyc3QgNTtleGl0IDA7",
+    "delegated_timestamp": "2021-02-23T11:50:22Z",
+    "collected_timestamp": "2021-02-23T11:50:27Z",
+    "finished_timestamp": "2021-02-23T11:50:27Z",
+    "status": 0,
+    "platform": "windows",
+    "executor": "psh",
+    "pid": 5964,
+    "agent_metadata": {
+      "paw": "pertbn",
+      "group": "red",
+      "architecture": "amd64",
+      "username": "BYZANTIUM\\Carlomagno",
+      "location": "C:\\Users\\Public\\sandcat.exe",
+      "pid": 5896,
+      "ppid": 2624,
+      "privilege": "Elevated",
+      "host": "WORKSTATION1",
+      "contact": "HTTP",
+      "created": "2021-02-23T11:48:33Z"
+    },
+    "ability_metadata": {
+      "ability_id": "90c2efaa-8205-480d-8bb6-61d90dbaf81b",
+      "ability_name": "Find files",
+      "ability_description": "Locate files deemed sensitive"
+    },
+    "operation_metadata": {
+      "operation_name": "My Operation",
+      "operation_start": "2021-02-23T11:50:12Z",
+      "operation_adversary": "Collection"
+    },
+    "attack_metadata": {
+      "tactic": "collection",
+      "technique_name": "Data from Local System",
+      "technique_id": "T1005"
+    },
+    "agent_reported_time": "2021-02-23T11:50:25Z"
+  },
+  {
+    "command": "TmV3LUl0ZW0gLVBhdGggIi4iIC1OYW1lICJzdGFnZWQiIC1JdGVtVHlwZSAiZGlyZWN0b3J5IiAtRm9yY2UgfCBmb3JlYWNoIHskXy5GdWxsTmFtZX0gfCBTZWxlY3QtT2JqZWN0",
+    "delegated_timestamp": "2021-02-23T11:50:32Z",
+    "collected_timestamp": "2021-02-23T11:50:37Z",
+    "finished_timestamp": "2021-02-23T11:50:37Z",
+    "status": 0,
+    "platform": "windows",
+    "executor": "psh",
+    "pid": 3212,
+    "agent_metadata": {
+      "paw": "pertbn",
+      "group": "red",
+      "architecture": "amd64",
+      "username": "BYZANTIUM\\Carlomagno",
+      "location": "C:\\Users\\Public\\sandcat.exe",
+      "pid": 5896,
+      "ppid": 2624,
+      "privilege": "Elevated",
+      "host": "WORKSTATION1",
+      "contact": "HTTP",
+      "created": "2021-02-23T11:48:33Z"
+    },
+    "ability_metadata": {
+      "ability_id": "6469befa-748a-4b9c-a96d-f191fde47d89",
+      "ability_name": "Create staging directory",
+      "ability_description": "create a directory for exfil staging"
+    },
+    "operation_metadata": {
+      "operation_name": "My Operation",
+      "operation_start": "2021-02-23T11:50:12Z",
+      "operation_adversary": "Collection"
+    },
+    "attack_metadata": {
+      "tactic": "collection",
+      "technique_name": "Data Staged: Local Data Staging",
+      "technique_id": "T1074.001"
+    },
+    "output": "C:\\Users\\carlomagno\\staged",
+    "agent_reported_time": "2021-02-23T11:50:33Z"
+  },
+  {
+    "command": "UmVtb3ZlLUl0ZW0gLVBhdGggInN0YWdlZCIgLXJlY3Vyc2U=",
+    "delegated_timestamp": "2021-02-23T11:50:42Z",
+    "collected_timestamp": "2021-02-23T11:50:44Z",
+    "finished_timestamp": "2021-02-23T11:50:44Z",
+    "status": 0,
+    "platform": "windows",
+    "executor": "psh",
+    "pid": 6184,
+    "agent_metadata": {
+      "paw": "pertbn",
+      "group": "red",
+      "architecture": "amd64",
+      "username": "BYZANTIUM\\Carlomagno",
+      "location": "C:\\Users\\Public\\sandcat.exe",
+      "pid": 5896,
+      "ppid": 2624,
+      "privilege": "Elevated",
+      "host": "WORKSTATION1",
+      "contact": "HTTP",
+      "created": "2021-02-23T11:48:33Z"
+    },
+    "ability_metadata": {
+      "ability_id": "6469befa-748a-4b9c-a96d-f191fde47d89",
+      "ability_name": "Create staging directory",
+      "ability_description": "create a directory for exfil staging"
+    },
+    "operation_metadata": {
+      "operation_name": "My Operation",
+      "operation_start": "2021-02-23T11:50:12Z",
+      "operation_adversary": "Collection"
+    },
+    "attack_metadata": {
+      "tactic": "collection",
+      "technique_name": "Data Staged: Local Data Staging",
+      "technique_id": "T1074.001"
+    },
+    "agent_reported_time": "2021-02-23T11:50:43Z"
+  }
+]
+```
+
 ## Automatic Event Log Generation
 When an operation terminates, the corresponding event logs will be written to disk in the same format as if they were manually requested for download. These event logs will contain command output and will be unencrypted on disk. Each operation will have its own event logs written to a separate file in the directory `$reports_dir/event_logs`, where `$reports_dir` is the `reports_dir` entry in the CALDERA configuration file. The filename will be of the format `operation_$id.json`, where `$id` is the unique ID of the operation.
