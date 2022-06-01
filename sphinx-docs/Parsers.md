@@ -3,8 +3,8 @@
 CALDERA uses parsers to extract facts from command output. A common use case is to allow
 operations to take gathered information and feed it into future abilities and decisions -
 for example, a discovery ability that looks for sensitive files can output file paths, which
-will then be parsed into file path facts, and a subsequent ability can take those file paths
-and use them to stage the sensitive files in a staging directory.
+will then be parsed into file path facts, and a subsequent ability can use those file paths
+to stage the sensitive files in a staging directory.
 
 Parsers can also be used to create facts with relationships linked between them - this allows
 users to associate facts together, such as username and password facts. 
@@ -59,11 +59,11 @@ Each mapping consists of the following:
 
 - **Edge** (optional): A relationship between the source and target. This should be a string.
 
-- **Target** (optional): A fact to create which the source connects too.
+- **Target** (optional): A fact to create which the source connects to.
 
 In the above example, the `basic` parser will take each line of output from the `find` command,
 save it as a `host.file.path` fact, and link it to the `file.sensitive.extension` fact used in 
-the command with the `has_extension` link. For instance, if the command was run using a 
+the command with the `has_extension` edge. For instance, if the command was run using a 
 `file.sensitive.extension` value of `docx` and the `find` command returned `/path/to/mydoc.docx`
 and `/path/to/sensitive.docx`, the parser would generate the following facts and relationships:
 - `/path/to/mydoc.docx` <- `has_extension` -> `docx`
@@ -101,10 +101,10 @@ information.
         - invoke-mimi.ps1
 ```
 
-This time, we are using the `plugins.stockpile.app.parsers.katz`, which will take the output
+This time, we are using `plugins.stockpile.app.parsers.katz`, which will take the output
 from the `Invoke-Mimikatz -DumpCreds` command and apply the 3 specified mappings when parsing
 the output. Note that in all 3 mappings, the source fact is the same: `domain.user.name`, but
-the relationships and target facts are all different, based on what kind of information we
+the relationship edges and target facts are all different, based on what kind of information we
 want to save. The resulting facts, assuming the command was successful and provided the desired
 information, will include the username, password, NTLM hash, and SHA1 hash, all linked together
 with the appropriate relationship edges.
