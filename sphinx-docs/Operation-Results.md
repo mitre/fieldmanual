@@ -4,7 +4,7 @@ The "Operations" tab enables users to view past operations, create new operation
 
 After completing an operation, you can explore the operations setup, progress, and execution graph using the "Debrief" plugin. Debrief also provides executive-level overviews of the operations progress and the attacks success as a `PDF` report.
 
-After an operation runs, you can export the results in two different JSON formats: an operation report or operation event logs.  The operation report is a rich source of information on the technical specifics of which commands were executed against which hosts, at what time, and with what result.
+After an operation runs, you can export the results in two different `JSON` formats: an operation report or operation event logs.  Both are rich sources of information on the technical specifics of which commands were executed, at what time, and with what result.  The event logs report ability-level execution records, while the operation report covers a broader range of target, contact, and planning information.  The structures of each are compared in the [Operation Report](#operation-report) and [Event Logs](#operation-event-logs) sections.
 
 ## Operation Report
 
@@ -66,6 +66,9 @@ The operation report JSON consists of a single dictionary with the following key
 To download an operation report manually, users can click the "Download Report" button under the operation drop-down list in the operation modal. To include the command output, select the `include agent output` checkbox.
 
 Below is an example operation report JSON:
+
+### Sample Operation Report
+
 ```json
 {
   "adversary": {
@@ -670,6 +673,8 @@ The event dictionary has the following keys and values:
 - `agent_reported_time`: Timestamp string representing the time at which the execution was ran by the agent in YYYY-MM-DD HH:MM:SS format. This field will not be present if the agent does not support reporting the command execution time.
 
 Below is a sample output for operation event logs:
+
+### Sample Event Logs
 
 ```json
 [
