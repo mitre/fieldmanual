@@ -1,6 +1,6 @@
 # Installing CALDERA
 
-CALDERA can be installed in four commands using the [concise installation instructions](###concise) and, optionally, be installed and run using a [docker container](##docker-deployment).
+CALDERA can be installed in four commands using the [concise installation instructions](#concise) and, optionally, be installed and run using a [docker container](#docker-deployment).
 
 ## Requirements
 
@@ -36,20 +36,35 @@ python3 server.py --insecure
 
 Start by cloning the CALDERA repository recursively, pulling all available plugins. It is recommended to pass the desired [version/release](https://github.com/mitre/caldera/releases) (should be in x.x.x format). Cloning any non-release branch, including master, may result in bugs.
 
+In general, the `git clone` command takes the form:
+
+```sh
+git clone https://github.com/mitre/caldera.git
+--recursive --branch x.x.x
 ```
-git clone https://github.com/mitre/caldera.git --recursive --branch x.x.x
+
+To install version 4.0.0, one would execute:
+
+```sh
+git clone https://github.com/mitre/caldera.git
+--recursive --branch 4.0.0
+```
+
+Once the clone completes, we can jump in to the new `caldera` directory:
+
+```sh
 cd caldera
 ```
 
 Next, install the pip requirements:
 
-```
+```sh
 sudo pip3 install -r requirements.txt
 ```
 
 Finally, start the server (optionally with startup [flags](Server-Configuration.html#startup-parameters) for additional logging):
 
-```
+```sh
 python3 server.py
 ```
 
@@ -63,26 +78,26 @@ CALDERA can be installed and run in a Docker container.
 
 Start by cloning the CALDERA repository recursively, passing the desired version/release in x.x.x format:
 
-```
+```sh
 git clone https://github.com/mitre/caldera.git --recursive --branch x.x.x
 ```
 
 Next, build the docker image, changing the image tag as desired.
 
-```
+```sh
 cd caldera
-docker build . -t --build-arg WIN_BUILD=true caldera:server
+docker build --build-arg WIN_BUILD=true . -t caldera:server
 ```
 
 Alternatively, you can use the `docker-compose.yml` file by running:
 
-```
+```sh
 docker-compose build
 ```
 
 Finally, run the docker CALDERA server, changing port forwarding as required.  More information on CALDERA's configuration is [available here](Server-Configuration.html#configuration-file).
 
-```
+```sh
 docker run -p 7010:7010 -p 7011:7011/udp -p 7012:7012 -p 8888:8888 caldera:server
 ```
 
@@ -104,7 +119,7 @@ To minimize issues with this approach, the internet machine's platform and Pytho
 
 Run the following commands on the machine with internet access. These commands will clone the CALDERA repository recursively (passing the desired version/release in x.x.x format) and download the dependencies using pip:
 
-```
+```sh
 git clone https://github.com/mitre/caldera.git --recursive --branch x.x.x
 mkdir caldera/python_deps
 pip3 download -r caldera/requirements.txt --dest caldera/python_deps
@@ -114,13 +129,13 @@ The `caldera` directory now needs to be copied to the offline server (via `scp`,
 
 On the offline server, the dependencies can then be installed with `pip3`:
 
-```
+```sh
 pip3 install -r caldera/requirements.txt --no-index --find-links caldera/python_deps
 ```
 
 CALDERA can then be started as usual on the offline server:
 
-```
+```sh
 cd caldera
 python3 server.py
 ```
