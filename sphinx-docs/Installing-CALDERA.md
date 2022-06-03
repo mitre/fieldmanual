@@ -9,7 +9,7 @@ CALDERA aims to support a wide range of target systems, the core requirements ar
 * Linux or MacOS operating system
 * Python 3.7, 3.8, or 3.9 (with pip3)
 * A modern browser (Google Chrome is recommended)
-* The packages listed in the [requirements file](https://github.com/mitre/caldera/requirements.txt)
+* The packages listed in the [requirements file](https://github.com/mitre/caldera/blob/master/requirements.txt)
 
 ### Recommended
 
@@ -17,7 +17,7 @@ To set up a development environment for CALDERA, and to dynamically compile agen
 
 * GoLang 1.17+ (for optimal agent functionality)
 * Hardware: 8GB+ RAM and 2+ CPUs
-* The packages listed in the [dev requirements file](https://github.com/mitre/caldera/requirements-dev.txt)
+* The packages listed in the [dev requirements file](https://github.com/mitre/caldera/blob/master/requirements-dev.txt)
 
 ## Installation
 
