@@ -162,7 +162,7 @@ Cleanup is not needed for abilities, like above, which download files through th
 
 Abilities can also make use of two CALDERA REST API endpoints, file upload and download.
 
-**Requirements**: Required relationships of facts that need to be established before this ability can be used.
+**Requirements**: Required relationships of facts that need to be established before this ability can be used. See [Requirements](Requirements.md) for more information.
 
 **Timeout**: How many seconds to allow the command to run.
 
