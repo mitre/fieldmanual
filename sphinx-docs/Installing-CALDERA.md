@@ -62,7 +62,7 @@ Next, install the pip requirements:
 sudo pip3 install -r requirements.txt
 ```
 
-Finally, start the server (optionally with startup [flags](Server-Configuration.html#startup-parameters) for additional logging):
+Finally, start the server (optionally with startup [flags](Server-Configuration#startup-parameters) for additional logging):
 
 ```sh
 python3 server.py
