@@ -44,8 +44,19 @@ Let's look at the **Impersonate User** ability from Stockpile as an example.
 
 Notice in the ability command, two facts `host.user.name` and `host.user.password` will be used. The `paw_provenance`
 requirement enforces that only `host.user.name` facts that were discovered by the agent running the ability can be used
-(i.e. fact originated from the same `paw`). Additionally, the `basic` requirement enforces that only `host.user.name`
-facts with an existing `has_password` relationship to an existing `host.user.password` fact may be used.
+(i.e. fact originated from the same `paw`). In the scenario this ability is run against two agents on two different
+hosts where multiple `host.user.name` and `host.user.password` facts were discovered, the `paw_provenance` prevents
+`host.user.name` and `host.user.password` facts discovered by the second agent on the second host from being used by
+the first agent on the first host. Thus, the agent would only be able to use the `host.user.name` and
+`host.user.password` facts that it discovered itself, emulating the natural operation flow of an adversary (they would
+not be able to use information that they did not discover themselves).
 
-The combined effect these requirements have ensures that the CALDERA operation will not arbitrarily attempt all
-combinations of `host.user.name` and `host.user.password` facts available.
+Additionally, the `basic` requirement enforces that only `host.user.name` facts with an existing `has_password`
+relationship to an existing `host.user.password` fact may be used. Brute forcing all available combinations of
+`host.user.name` facts and `host.user.password` facts could result in high numbers of failed login attempts or locking
+out an account entirely. The `basic` requirement ensures that the user and password combination used has a high chance
+of success since the combination's relationship has already been established by a previous ability.
+
+The combined effect these requirements have ensures that the CALDERA operation will only attempt reliable combinations
+of `host.user.name` and `host.user.password` facts specific to the agent running the ability, instead of arbitrarily
+attempting all possible combinations of `host.user.name` and `host.user.password` facts available to the agent.
