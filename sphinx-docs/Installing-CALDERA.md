@@ -39,15 +39,13 @@ Start by cloning the CALDERA repository recursively, pulling all available plugi
 In general, the `git clone` command takes the form:
 
 ```sh
-git clone https://github.com/mitre/caldera.git
---recursive --branch x.x.x
+git clone https://github.com/mitre/caldera.git --recursive --branch x.x.x
 ```
 
 To install version 4.0.0, one would execute:
 
 ```sh
-git clone https://github.com/mitre/caldera.git
---recursive --branch 4.0.0
+git clone https://github.com/mitre/caldera.git --recursive --branch 4.0.0
 ```
 
 Once the clone completes, we can jump in to the new `caldera` directory:
