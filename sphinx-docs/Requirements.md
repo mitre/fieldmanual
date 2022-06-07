@@ -50,7 +50,8 @@ facts discovered by the first agent on the first host from being used by the sec
 ensures facts discovered locally on one host are only used on the host where those facts would apply, such as in the
 scenario the `host.user.name` is a local account that only exists on the host it was discovered on. Other possible
 usages could apply the `paw_provenance` requirement to files discovered, file paths, and running processes, all of
-which would be discovered information that should only be used by the host they were discovered on.
+which would be discovered information that should only be used by the host they were discovered on and not globally by
+other agents running on other hosts in an operation.
 
 Additionally, the `basic` requirement enforces that only `host.user.name` facts with an existing `has_password`
 relationship to an existing `host.user.password` fact may be used. Brute forcing all available combinations of
