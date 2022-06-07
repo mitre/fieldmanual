@@ -46,10 +46,11 @@ Notice in the ability command, two facts `host.user.name` and `host.user.passwor
 requirement enforces that only `host.user.name` facts that were discovered by the agent running the ability can be used
 (i.e. fact originated from the same `paw`). In the scenario this ability is run against two agents on two different
 hosts where multiple `host.user.name` and `host.user.password` facts were discovered, the `paw_provenance` prevents
-`host.user.name` and `host.user.password` facts discovered by the second agent on the second host from being used by
-the first agent on the first host. Thus, the agent would only be able to use the `host.user.name` and
-`host.user.password` facts that it discovered itself, emulating the natural operation flow of an adversary (they would
-not be able to use information that they did not discover themselves).
+facts discovered by the first agent on the first host from being used by the second agent on the second host. This
+ensures facts discovered locally on one host are only used on the host where those facts would apply, such as in the
+scenario the `host.user.name` is a local account that only exists on the host it was discovered on. Other possible
+usages could apply the `paw_provenance` requirement to files discovered, file paths, and running processes, all of
+which would be discovered information that should only be used by the host they were discovered on.
 
 Additionally, the `basic` requirement enforces that only `host.user.name` facts with an existing `has_password`
 relationship to an existing `host.user.password` fact may be used. Brute forcing all available combinations of
