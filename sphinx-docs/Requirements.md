@@ -9,6 +9,9 @@ Requirements are defined in a Python module and are then referenced inside an ab
 at least a `source` fact to enforce the defined requirement on. Depending on the requirement module, a requirement
 module may also need an `edge` value and a `target` fact to be provided as arguments to enforce the defined requirement.
 
+See [Relationships](Relationships.md) for more information on relationship `source`, `edge`, and `target` values.
+
+
 ## Example
 
 Let's look at the **Impersonate User** ability from Stockpile as an example.
