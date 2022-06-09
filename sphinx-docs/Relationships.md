@@ -2,9 +2,9 @@
 
 Many CALDERA abilities require input variables called "facts" to be provided before the ability can be run. These facts can either be provided manually through the CALDERA server GUI, or they can be discovered by a previous ability. 
 
-## Creating relationships using Abilities
+## Creating Relationships using Abilities
 
-###Example
+### Example
 
 As an example, the following printer discovery ability will create two variables called `host.print.file` and `host.print.size`:
 
@@ -27,10 +27,10 @@ As an example, the following printer discovery ability will create two variables
             target: host.print.size
 ```
 
-This ability will view the printer queue using the command `lpq -a`. The result of `lpq -a` will be parsed into two facts: `host.print.file` (the source) and `host.print.size` (the target). These two facts are dependent on each other, and it will be helpful to understand their connection in order to use them. Therefore, we use the "edge" variable to explain the relationship between the source and the target. In this case, the edge is `has_size`, because `host.print.size` is the file size of `host.print.file`. All together, the `source`, `edge`, and `target` comprise a "relationship". To learn more about how the parser file creates a relationship, refer to [Parsers.md](https://github.com/mitre/fieldmanual/blob/master/sphinx-docs/Parsers.md)
+This ability will view the printer queue using the command `lpq -a`. The result of `lpq -a` will be parsed into two facts: `host.print.file` (the `source`) and `host.print.size` (the `target`). These two facts are dependent on each other, and it will be helpful to understand their connection in order to use them. Therefore, we use the `edge` variable to explain the relationship between the `source` and the `target`. In this case, the `edge` is `has_size`, because `host.print.size` is the file size of `host.print.file`. All together, the `source`, `edge`, and `target` comprise a "relationship". To learn more about how the parser file creates a relationship, refer to [Parsers](https://github.com/mitre/fieldmanual/blob/master/sphinx-docs/Parsers.md).
 
 ### Multiple Instances of a Fact
-Storing the relationship between the source and the target in the edge allows CALDERA to save several instances of each fact while maintaining the connection between facts. For example, if the printer discovery ability (shown above) is run, and several files are discovered in the printer queue, the following facts may be created. 
+Storing the relationship between the `source` and the `target` in the `edge` allows CALDERA to save several instances of each fact while maintaining the connection between facts. For example, if the printer discovery ability (shown above) is run, and several files are discovered in the printer queue, the following facts may be created. 
 
 | host.print.file | host.print.size (bytes) | 
 | --------------- | ----------------------- | 
@@ -45,6 +45,6 @@ Note that the `edge` and the `target` are optional. You can create a `source` as
 
 
 ## Creating Relationships using CALDERA Server
-Relationships can also be created in the CALDERA Server GUI. Use the left sidebar to navigate to "fact sources." Then, click "relationships" followed by "new relationship." You can fill in the edge, source, and target the same way that you would in an ability file. Then click "Save" to finish!
+Relationships can also be created in the CALDERA Server GUI. Use the left sidebar to navigate to "fact sources." Then, click "relationships" followed by "new relationship." You can fill in the `edge`, `source`, and `target` the same way that you would in an ability file. Then click "Save" to finish!
 
 ![fact relationships](img/fact_relationships.png)
