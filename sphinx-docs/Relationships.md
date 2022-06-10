@@ -45,6 +45,6 @@ Note that the `edge` and the `target` are optional. You can create a `source` as
 
 
 ## Creating Relationships using CALDERA Server
-Relationships can also be created in the CALDERA Server GUI. Use the left sidebar to navigate to "fact sources." Then, click "relationships" followed by "new relationship." You can fill in the `edge`, `source`, and `target` the same way that you would in an ability file. Then click "Save" to finish!
+Relationships can also be created in the CALDERA Server GUI. Use the left sidebar to navigate to "fact sources." Then, click "relationships" followed by "new relationship." You can fill in  values for the `edge`, `source`, and `target` to be used in future operations. Then click "Save" to finish!
 
 ![fact relationships](img/fact_relationships.png)
