@@ -38,6 +38,11 @@ Storing the relationship between the `source` and the `target` in the `edge` all
 | image-1.png     | 635000                  |
 | Flier.pdf       | 85300                   | 
 ```
+The table above shows how each `host.print.file` value is associated with exactly one `host.print.size` value. This demonstrates the importance of the `edge`; it maintains the association between each pair of `source` and `target` values. Without the `edge`, we would just have a list of values but no information about their relationships, similar to the following:
+
+- `host.print.file`: `essay.docx`, `image-1.png`, `Flier.pdf`
+- `host.print.size`: `12288`, `635000`, `85300`
+
 
 ### Optional Components
 
