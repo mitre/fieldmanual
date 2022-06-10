@@ -39,7 +39,7 @@ Storing the relationship between the `source` and the `target` in the `edge` all
 | Flier.pdf       | 85300                   | 
 ```
 
-### Optional Facts
+### Optional Components
 
 Note that the `edge` and the `target` are optional. You can create a `source` as an independent fact without needing to connect it to a `target`. 
 
