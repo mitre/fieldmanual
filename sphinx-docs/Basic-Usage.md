@@ -311,7 +311,7 @@ Fact source adjustments allow for dynamic adjustment specific ability's `visibil
           offset: 3
 ```
 
-In this example, if in the process of executing an operation, a `host.installed.av` fact was found with either the value `symantec` or `mcafee`, ability `1b4fb81c-8090-426c-93ab-0a633e7a16a7` (Sniff network traffic) would have the status `HIGH_VIZ`.  This framework allows dynamic adjustments to expected ability visibility based on captured facts (in this example the presence of anti-virus software on the target) which may impact our desire to run the ability, as it might be more easily detected in this environment.
+In this example, if in the process of executing an operation, a `host.installed.av` fact was found with either the value `symantec` or `mcafee`, ability `1b4fb81c-8090-426c-93ab-0a633e7a16a7` (Sniff network traffic) would have its visibility score raised and the status `HIGH_VIZ`.  This framework allows dynamic adjustments to expected ability visibility based on captured facts (in this example the presence of anti-virus software on the target) which may impact our desire to run the ability, as it might be more easily detected in this environment.
 
 When the "Sniff network traffic" ability is run, its visibility is *only* adjusted if, at the time of execution, the fact source has a `host.installed.av` fact with either the value `symantec` or `mcafee`.  If one or both of these facts are present, each execution of "Sniff network traffic" will have `3` (the value of it's `offset`) added to its visibility score.  This visibility adjustment is recorded in the operation report.
 
