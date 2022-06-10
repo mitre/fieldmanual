@@ -295,6 +295,28 @@ In this example, the rules would permit CALDERA to only operate within the 10.24
 
 Rules can be added or modified through the GUI by navigating to *Advanced -> Sources* and clicking on '+ view rules'.
 
+### Fact Source Adjustments
+
+Fact source adjustments allow for dynamic adjustment specific ability's `visibility` in the context of an operation.
+
+**Adjustment Example (`basic` fact source)**
+
+```
+  adjustments:
+    1b4fb81c-8090-426c-93ab-0a633e7a16a7:
+      host.installed.av:
+        - value: symantec
+          offset: 3
+        - value: mcafee
+          offset: 3
+```
+
+In this example, if in the process of executing an operation, a `host.installed.av` fact was found with either the value `symantec` or `mcafee`, ability `1b4fb81c-8090-426c-93ab-0a633e7a16a7` (Sniff network traffic) would have the status `HIGH_VIZ`.  This framework allows dynamic adjustments to expected ability visibility based on captured facts (in this example the presence of anti-virus software on the target) which may impact our desire to run the ability, as it might be more easily detected in this environment.
+
+When the "Sniff network traffic" ability is run, its visibility is *only* adjusted if, at the time of execution, the fact source has a `host.installed.av` fact with either the value `symantec` or `mcafee`.  If one or both of these facts are present, each execution of "Sniff network traffic" will have `3` (the value of it's `offset`) added to its visibility score.  This visibility adjustment is recorded in the operation report.
+
+Adjustments must be added or modified through the fact source's `.yml` file, with the exception of new fact sources created using the Swagger documentation and a `PUT` request.
+
 ## Planners
 
 A planner is a module within CALDERA which contains logic for how a running operation should make decisions about which abilities to use and in what order.
