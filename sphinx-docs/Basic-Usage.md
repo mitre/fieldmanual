@@ -315,7 +315,7 @@ In this example, if in the process of executing an operation, a `host.installed.
 
 When the "Sniff network traffic" ability is run, its visibility is *only* adjusted if, at the time of execution, the fact source has a `host.installed.av` fact with either the value `symantec` or `mcafee`.  If one or both of these facts are present, each execution of "Sniff network traffic" will have `3` (the value of it's `offset`) added to its visibility score.  This visibility adjustment is recorded in the operation report.
 
-Adjustments must be added or modified through the fact source's `.yml` file, with the exception of new fact sources created using the Swagger documentation and a `PUT` request.
+Adjustments must be added or modified through the fact source's `.yml` file, with the exception of new fact sources created using the REST API's `sources` endpoint with a well-formed `PUT` request.
 
 ## Planners
 
