@@ -2,14 +2,14 @@
 
 Exercising Caldera's lateral movement and remote execution abilities allows you to test how easily an adversary can move
 within your network. This guide will walk you through some of the necessary setup steps to get started with testing 
-lateral movement in a Windows environment.  
+lateral movement in a Windows environment.
 
 ## Setup
 
 ### Firewall Exceptions and Enabling File and Printer Sharing
 
 The firewall of the target host should not be blocking UDP ports 137 and 138 and TCP ports 139 and 445. The firewall
-should also allow inbound file and printer sharing. 
+should also allow inbound file and printer sharing.
 
 ```
 netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
@@ -30,7 +30,7 @@ account. The example walkthrough in this guide should not be impacted by these d
 ## Lateral Movement Using CALDERA
 Lateral movement can be a combination of two steps. The first requires confirmation of remote access to the next target 
 host and the movement or upload of the remote access tool (RAT) executable to the host. The second part requires 
-*execution* of the binary, which upon callback of the RAT on the new host would complete the lateral movement. 
+*execution* of the binary, which upon callback of the RAT on the new host would complete the lateral movement.
 
 Most of CALDERA's lateral movement and execution abilities found in Stockpile have fact or relationship requirements 
 that must be satisfied. This information may be passed to the operation in two ways:
@@ -40,7 +40,7 @@ an operation, open the "**AUTONOMOUS**" drop down section and select "Use [inser
 operation that it should take in fact and relationship information from the selected source.
 2. The fact and relationship information can be discovered by an operation. This requires additional abilities to be run
 prior to the lateral movement and execution abilities to collect the necessary fact and relationship information 
-necessary to satisfy the ability requirements. 
+necessary to satisfy the ability requirements.
 
 ### Moving the Binary
 There are several ways a binary can be moved or uploaded from one host to another. Some example methods used in 
@@ -59,7 +59,7 @@ CALDERA's Stockpile execution abilities relevant to lateral movement mainly use 
 additional execution methods include modifications to Windows services and scheduled tasks. The example in this guide 
 will use the creation of a service to remotely start the binary (ability file included at the end of this guide).
 
-See ATT&CK's [Execution](https://attack.mitre.org/tactics/TA0002/) tactic page for more details on execution methods. 
+See ATT&CK's [Execution](https://attack.mitre.org/tactics/TA0002/) tactic page for more details on execution methods.
 
 ### Displaying Lateral Movement in Debrief
 Using the adversary profile in this guide and CALDERA's Debrief plugin, you can view the path an adversary took through 
@@ -75,9 +75,9 @@ host, which moved laterally to the `VAGRANTDC` machine via successful execution 
 
 This capability relies on the `origin_link_id` field to be populated within the agent profile upon first
 check-in and is currently implemented for the default agent, Sandcat. For more information about the `#{origin_link_id}`
-global variable, see the explanation of **Command** in the [What is an Ability?](/docs/Learning-the-Terminology.html#what-is-an-ability)
+global variable, see the explanation of **Command** in the [What is an Ability?](Learning-the-terminology.html#abilities-and-adversaries)
 section of the Learning the Terminology guide. For more information about how lateral movement tracking is implemented 
-in agents to be used with CALDERA, see the [Lateral Movement Tracking](/docs/How-to-Build-Agents.html#lateral-movement-tracking) 
+in agents to be used with CALDERA, see the [Lateral Movement Tracking](How-to-Build-Agents.html#lateral-movement-tracking) 
 section of the How to Build Agents guide.
 
 
@@ -86,8 +86,6 @@ This section will walkthrough the necessary steps for proper execution of the Se
 adversary profile. This section will assume successful setup from the previous sections mentioned in this guide and that
 a Sandcat agent has been spawned with administrative privileges to the remote target host. The full ability files used 
 in this adversary profile are included at the end of this guide.
-
-See a video of the following steps [here](#video-walkthrough).
 
 1. Go to `navigate` pane > `Advanced` > `sources`. This should open a new sources modal in the web GUI.
 2. Click the toggle to create a new source. Enter "SC Source" as the source name. Then enter `remote.host.fqdn` as the 
@@ -100,7 +98,7 @@ drop down, try refreshing the page.
 4. Once operation configurations have been completed, click `Start` to start the operation.
 5. Check the agents list for a new agent on the target host.
 
-### Ability Files Used 
+### Ability Files Used
 ```
 - id: deeac480-5c2a-42b5-90bb-41675ee53c7e
   name: View remote shares
@@ -183,7 +181,5 @@ drop down, try refreshing the page.
           sc.exe \\#{remote.host.fqdn} start sandsvc;
           Start-Sleep -s 15;
           Get-Process -ComputerName #{remote.host.fqdn} s4ndc4t;
-```  
-
-
+```
 
