@@ -31,13 +31,13 @@ This ability will view the printer queue using the command `lpq -a`. The result 
 
 ### Multiple Instances of a Fact
 Storing the relationship between the `source` and the `target` in the `edge` allows CALDERA to save several instances of each fact while maintaining the connection between facts. For example, if the printer discovery ability (shown above) is run, and several files are discovered in the printer queue, the following facts may be created. 
-```
-| host.print.file | host.print.size (bytes) | 
-| --------------- | ----------------------- | 
-| essay.docx      | 12288                   | 
+
+| host.print.file | host.print.size (bytes) |
+| --------------- | ----------------------- |
+| essay.docx      | 12288                   |
 | image-1.png     | 635000                  |
-| Flier.pdf       | 85300                   | 
-```
+| Flier.pdf       | 85300                   |
+
 The table above shows how each `host.print.file` value is associated with exactly one `host.print.size` value. This demonstrates the importance of the `edge`; it maintains the association between each pair of `source` and `target` values. Without the `edge`, we would just have a list of values but no information about their relationships, similar to the following:
 
 - `host.print.file`: `essay.docx`, `image-1.png`, `Flier.pdf`
