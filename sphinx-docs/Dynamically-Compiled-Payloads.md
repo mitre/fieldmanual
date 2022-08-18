@@ -1,6 +1,6 @@
 # Dynamically-Compiled Payloads
 
-The [Builder](Plugin-library.html#builder) plugin can be used to create dynamically-compiled payloads. Currently, the plugin supports C#, C, C++, and Golang.
+The [Builder](Plugin-library.md#builder) plugin can be used to create dynamically-compiled payloads. Currently, the plugin supports C#, C, C++, and Golang.
 
 Code is compiled in a Docker container. The resulting executable, along with any additional references, will be copied to the remote machine and executed.
 

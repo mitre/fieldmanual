@@ -60,7 +60,7 @@ Next, install the pip requirements:
 sudo pip3 install -r requirements.txt
 ```
 
-Finally, start the server (optionally with startup [flags](Server-Configuration.html#startup-parameters) for additional logging):
+Finally, start the server (optionally with startup [flags](Server-Configuration.md#startup-parameters) for additional logging):
 
 ```sh
 python3 server.py
@@ -93,7 +93,7 @@ Alternatively, you can use the `docker-compose.yml` file by running:
 docker-compose build
 ```
 
-Finally, run the docker CALDERA server, changing port forwarding as required.  More information on CALDERA's configuration is [available here](Server-Configuration.html#configuration-file).
+Finally, run the docker CALDERA server, changing port forwarding as required.  More information on CALDERA's configuration is [available here](Server-Configuration.md#configuration-file).
 
 ```sh
 docker run -p 7010:7010 -p 7011:7011/udp -p 7012:7012 -p 8888:8888 caldera:server

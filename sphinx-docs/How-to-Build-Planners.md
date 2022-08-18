@@ -172,7 +172,7 @@ class LogicalPlanner:
 
 ## Advanced Fact Usage
 
-In addition to the basic (name, value) information present in facts and documented in [Basic Usage](Basic-Usage.html#facts), there are some additional fields that may prove useful when developing and working with planners.
+In addition to the basic (name, value) information present in facts and documented in [Basic Usage](Basic-Usage.md#facts), there are some additional fields that may prove useful when developing and working with planners.
 
 #### Fact Origins
 

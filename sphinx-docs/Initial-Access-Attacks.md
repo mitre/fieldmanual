@@ -1,6 +1,6 @@
 # Initial Access Attacks
 
-CALDERA allows for easy initial access attacks, by leveraging the [Access](Plugin-library.html#access) plugin. This guide will walk you through how
+CALDERA allows for easy initial access attacks, by leveraging the [Access](Plugin-library.md#access) plugin. This guide will walk you through how
 to fire off an initial access attack, as well as how to build your own. 
 
 ## Run an initial access technique
