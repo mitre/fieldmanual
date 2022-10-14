@@ -28,8 +28,9 @@ The operation report JSON consists of a single dictionary with the following key
         - `tactic`: ATT&CK tactic for the command ability.
         - `technique_name`: Full ATT&CK technique name for the command.
         - `technique_id`: ATT&CK technique ID for the command (e.g. `T1005`)
-    - `output`: optional field. Contains the output generated when running the command. Only appears if the user selected the `include agent output` option when downloading the report.
-    - `agent_reported_time`: Timestamp string representing the time at which the execution was ran by the agent in YYYY-MM-DD HH:MM:SS format. This field will not be present if the agent does not support reporting the command execution time.
+    - `output`: optional field. JSON dict containing the output generated when running the command. Only appears if the user selected the `include agent output` option when downloading the report.
+        - `stdout`: Standard output from the command that was run.
+        - `stderr`: Standard error from the command that was run.
 - `finish`: Timestamp string in YYYY-MM-DD HH:MM:SS format that indicates when the operation finished.
 - `planner`: Name of the planner used for the operation.
 - `adversary`: JSON dict containing information about the adversary used in the operation
@@ -347,7 +348,10 @@ Below is an example operation report JSON:
           "host": "TARGET-PC",
           "id": "be6db169-f88d-46f5-8375-ace0e0b2a0df",
           "jitter": 0,
-          "output": "False",
+          "output": {
+            "stdout": "False",
+            "stderr": ""
+          },
           "paw": "vrgirx",
           "pid": "14441",
           "pin": 0,
@@ -422,7 +426,10 @@ Below is an example operation report JSON:
           "executor": "sh",
           "link_id": "d52a51ff-b7af-44a1-a2f8-2f2fa68b5c73",
           "name": "Create staging directory",
-          "output": "/Users/foo/staged",
+          "output": {
+            "stdout": "/Users/foo/staged",
+            "stderr": ""
+          },
           "pid": 56272,
           "platform": "darwin",
           "run": "2022-05-11T22:07:20Z",
@@ -442,7 +449,10 @@ Below is an example operation report JSON:
           "executor": "sh",
           "link_id": "719378af-2f64-4902-9b51-fb506166032f",
           "name": "Find files",
-          "output": "/Users/foo/bar/PyTorch\\ Models/myModel.pt",
+          "output": {
+            "stdout": "/Users/foo/bar/PyTorch\\ Models/myModel.pt",
+            "stderr": ""
+          },
           "pid": 56376,
           "platform": "darwin",
           "run": "2022-05-11T22:08:56Z",
@@ -462,7 +472,10 @@ Below is an example operation report JSON:
           "executor": "sh",
           "link_id": "ddf2aa96-24a1-4e71-8360-637a821b0781",
           "name": "Find files",
-          "output": "/Users/foo/bar/credentials.yml",
+          "output": {
+            "stdout": "/Users/foo/bar/credentials.yml",
+            "stderr": ""
+          },
           "pid": 56562,
           "platform": "darwin",
           "run": "2022-05-11T22:09:07Z",
@@ -482,7 +495,10 @@ Below is an example operation report JSON:
           "executor": "sh",
           "link_id": "fa7ac865-004d-4296-9d68-fd425a481b5e",
           "name": "Find files",
-          "output": "/Users/foo/bar/sensitive.sql",
+          "output": {
+            "stdout": "/Users/foo/bar/sensitive.sql",
+            "stderr": ""
+          },
           "pid": 56809,
           "platform": "darwin",
           "run": "2022-05-11T22:10:45Z",
@@ -502,7 +518,10 @@ Below is an example operation report JSON:
           "executor": "sh",
           "link_id": "4a55c2c9-eb9d-4e31-b2b6-8bb4b4ab2950",
           "name": "Stage sensitive files",
-          "output": "cp: /Users/foo/bar/PyTorch\\ Models/myModel.pt: No such file or directory",
+          "output": {
+            "stdout": "",
+            "stderr": "cp: /Users/foo/bar/PyTorch\\ Models/myModel.pt: No such file or directory"
+          },
           "pid": 57005,
           "platform": "darwin",
           "run": "2022-05-11T22:10:55Z",
@@ -560,7 +579,10 @@ Below is an example operation report JSON:
           "executor": "sh",
           "link_id": "795b4b12-1355-49ea-96e8-f6d3d045334d",
           "name": "Compress staged directory",
-          "output": "/Users/foo/staged.tar.gz",
+          "output": {
+            "stdout": "/Users/foo/staged.tar.gz",
+            "stderr": ""
+          },
           "pid": 57383,
           "platform": "darwin",
           "run": "2022-05-11T22:13:02Z",
@@ -580,7 +602,10 @@ Below is an example operation report JSON:
           "executor": "sh",
           "link_id": "bda3e573-d751-420b-8740-d4a36cee1f9d",
           "name": "Exfil staged directory",
-          "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current                                 Dload  Upload   Total   Spent    Left  Speed\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100  1357    0     0  100  1357      0   441k --:--:-- --:--:-- --:--:--  441k",
+          "output": {
+            "stdout": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current                                 Dload  Upload   Total   Spent    Left  Speed\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100  1357    0     0  100  1357      0   441k --:--:-- --:--:-- --:--:--  441k",
+            "stderr": ""
+          },
           "pid": 57568,
           "platform": "darwin",
           "run": "2022-05-11T22:14:02Z",
@@ -669,7 +694,9 @@ The event dictionary has the following keys and values:
     - `tactic`
     - `technique_id`
     - `technique_name`
-- `output`: if the user selected `include agent output` when downloading the operation event logs, this field will contain the agent-provided output from running the link command.
+- `output`: if the user selected `include agent output` when downloading the operation event logs, this field will contain a dictionary of the agent-provided output from running the link command.
+    - `stdout`
+    - `stderr`
 - `agent_reported_time`: Timestamp string representing the time at which the execution was ran by the agent in YYYY-MM-DD HH:MM:SS format. This field will not be present if the agent does not support reporting the command execution time.
 
 Below is a sample output for operation event logs:
@@ -832,7 +859,10 @@ Below is a sample output for operation event logs:
       "technique_name": "Data Staged: Local Data Staging",
       "technique_id": "T1074.001"
     },
-    "output": "C:\\Users\\carlomagno\\staged",
+    "output": {
+      "stdout": "C:\\Users\\carlomagno\\staged",
+      "stderr": ""
+    },
     "agent_reported_time": "2021-02-23T11:50:33Z"
   },
   {
