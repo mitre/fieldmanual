@@ -75,8 +75,8 @@ host, which moved laterally to the `VAGRANTDC` machine via successful execution 
 
 This capability relies on the `origin_link_id` field to be populated within the agent profile upon first
 check-in and is currently implemented for the default agent, Sandcat. For more information about the `#{origin_link_id}`
-global variable, see the explanation of **Command** in the [What is an Ability?](Learning-the-terminology.md#abilities-and-adversaries)
-section of the Learning the Terminology guide. For more information about how lateral movement tracking is implemented 
+global variable, see the explanation of **Command** in the [Abilities](Basic-Usage.md#abilities)
+section of the Basic Usage guide. For more information about how lateral movement tracking is implemented 
 in agents to be used with CALDERA, see the [Lateral Movement Tracking](How-to-Build-Agents.md#lateral-movement-tracking) 
 section of the How to Build Agents guide.
 
