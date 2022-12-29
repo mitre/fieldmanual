@@ -526,8 +526,8 @@ Below is an example operation report JSON:
           "name": "Stage sensitive files",
           "output": {
             "stdout": "",
-            "stderr": "cp: /Users/foo/bar/PyTorch\\ Models/myModel.pt: No such file or directory"
-            "exit_code": "1",
+            "stderr": "cp: /Users/foo/bar/PyTorch\\ Models/myModel.pt: No such file or directory",
+            "exit_code": "1"
           },
           "pid": 57005,
           "platform": "darwin",
