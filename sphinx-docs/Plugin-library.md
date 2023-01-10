@@ -79,6 +79,23 @@ communication via SMB named pipes).
 See https://github.com/TheWover/donut for additional information.
 - `shared` extension provides the C sharing functionality for Sandcat.
 
+#### Exit Codes
+
+Exit codes returned from Sandcat vary across executors. Typical shell executors will return the exit code provided by the shell. Certain executor extensions will return values hard-coded in Sandcat.
+
+Sandcat includes general exit codes which may be utilized by executors, overriden by executors, or used in error cases. The following values describe general Sandcat exit codes:
+- `-1`: Error (e.g., cannot decode command, payload not available)
+- `0`: Success
+
+The following values describe exit codes utilized by specific executors:
+- `shells`: Returns the exit code provided by the OS/shell.
+- `shellcode`: Utilizes the general Sandcat exit codes.
+- `native` and `native_aws`:
+    - `0`: Success
+    - `1`: Process error (e.g., error while executing code)
+    - `2`: Input error (e.g., invalid parameters)
+- `donut`: Returns the exit code provided by the OS/shell.
+
 #### Customizing Default Options & Execution Without CLI Options
 
 It's possible to customize the default values of these options when pulling Sandcat from the CALDERA server.  
