@@ -31,6 +31,7 @@ The operation report JSON consists of a single dictionary with the following key
     - `output`: optional field. JSON dict containing the output generated when running the command. Only appears if the user selected the `include agent output` option when downloading the report.
         - `stdout`: Standard output from the command that was run.
         - `stderr`: Standard error from the command that was run.
+        - `exit_code`: Exit code returned from the command that was run.
 - `finish`: Timestamp string in YYYY-MM-DD HH:MM:SS format that indicates when the operation finished.
 - `planner`: Name of the planner used for the operation.
 - `adversary`: JSON dict containing information about the adversary used in the operation
@@ -350,7 +351,8 @@ Below is an example operation report JSON:
           "jitter": 0,
           "output": {
             "stdout": "False",
-            "stderr": ""
+            "stderr": "",
+            "exit_code": "0"
           },
           "paw": "vrgirx",
           "pid": "14441",
@@ -428,7 +430,8 @@ Below is an example operation report JSON:
           "name": "Create staging directory",
           "output": {
             "stdout": "/Users/foo/staged",
-            "stderr": ""
+            "stderr": "",
+            "exit_code": "0"
           },
           "pid": 56272,
           "platform": "darwin",
@@ -451,7 +454,8 @@ Below is an example operation report JSON:
           "name": "Find files",
           "output": {
             "stdout": "/Users/foo/bar/PyTorch\\ Models/myModel.pt",
-            "stderr": ""
+            "stderr": "",
+            "exit_code": "0"
           },
           "pid": 56376,
           "platform": "darwin",
@@ -474,7 +478,8 @@ Below is an example operation report JSON:
           "name": "Find files",
           "output": {
             "stdout": "/Users/foo/bar/credentials.yml",
-            "stderr": ""
+            "stderr": "",
+            "exit_code": "0"
           },
           "pid": 56562,
           "platform": "darwin",
@@ -497,7 +502,8 @@ Below is an example operation report JSON:
           "name": "Find files",
           "output": {
             "stdout": "/Users/foo/bar/sensitive.sql",
-            "stderr": ""
+            "stderr": "",
+            "exit_code": "0"
           },
           "pid": 56809,
           "platform": "darwin",
@@ -520,7 +526,8 @@ Below is an example operation report JSON:
           "name": "Stage sensitive files",
           "output": {
             "stdout": "",
-            "stderr": "cp: /Users/foo/bar/PyTorch\\ Models/myModel.pt: No such file or directory"
+            "stderr": "cp: /Users/foo/bar/PyTorch\\ Models/myModel.pt: No such file or directory",
+            "exit_code": "1"
           },
           "pid": 57005,
           "platform": "darwin",
@@ -581,7 +588,8 @@ Below is an example operation report JSON:
           "name": "Compress staged directory",
           "output": {
             "stdout": "/Users/foo/staged.tar.gz",
-            "stderr": ""
+            "stderr": "",
+            "exit_code": "0"
           },
           "pid": 57383,
           "platform": "darwin",
@@ -604,7 +612,8 @@ Below is an example operation report JSON:
           "name": "Exfil staged directory",
           "output": {
             "stdout": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current                                 Dload  Upload   Total   Spent    Left  Speed\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100  1357    0     0  100  1357      0   441k --:--:-- --:--:-- --:--:--  441k",
-            "stderr": ""
+            "stderr": "",
+            "exit_code": "0"
           },
           "pid": 57568,
           "platform": "darwin",
@@ -697,6 +706,7 @@ The event dictionary has the following keys and values:
 - `output`: if the user selected `include agent output` when downloading the operation event logs, this field will contain a dictionary of the agent-provided output from running the link command.
     - `stdout`
     - `stderr`
+    - `exit_code`
 - `agent_reported_time`: Timestamp string representing the time at which the execution was ran by the agent in YYYY-MM-DD HH:MM:SS format. This field will not be present if the agent does not support reporting the command execution time.
 
 Below is a sample output for operation event logs:
@@ -861,7 +871,8 @@ Below is a sample output for operation event logs:
     },
     "output": {
       "stdout": "C:\\Users\\carlomagno\\staged",
-      "stderr": ""
+      "stderr": "",
+      "exit_code": "0"
     },
     "agent_reported_time": "2021-02-23T11:50:33Z"
   },
