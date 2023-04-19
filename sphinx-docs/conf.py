@@ -1,5 +1,6 @@
-import sys
+import datetime
 import pathlib
+import sys
 
 import sphinx.ext.apidoc as apidoc
 
@@ -32,7 +33,7 @@ generate_ability_csv(caldera_root_dir, "_generated/abilities.csv")
 # -- Project information -----------------------------------------------------
 
 project = 'caldera'
-copyright = '2020, The MITRE Corporation'
+copyright = f'{datetime.date.today().year}, The MITRE Corporation'
 author = 'The MITRE Corporation'
 master_doc = 'index'
 
