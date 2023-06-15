@@ -238,7 +238,7 @@ Facts are composed of the following:
 * **value**: any arbitrary string. An appropriate value for a `host.user.name` may be "Administrator" or "John".
 * **score**: an integer which associates a relative importance for the fact. Every fact, by default, gets a score of 1. If a `host.user.password` fact is important or has a high chance of success if used, you may assign it a score of 5. When an ability uses a fact to fill in a variable, it will use those with the highest scores first. If a fact has a score of 0, it will be blocklisted - meaning it cannot be used in the operation.
 
-> If a property has a prefix of `host.` (e.g., `host.user.name`) that fact will only be used by the host that collected it.
+> If a property has a prefix of `host.` (e.g., `host.user.name`) you can ensure that the fact will only be used by the host that collected it if you add the `plugins.stockpile.app.requirements.paw_provenance` requirement to the ability using the fact.
 
 As hinted above, when CALDERA runs abilities, it scans the command and cleanup instructions for variables. When it finds one, it then looks at the facts it has and sees if it can replace the variables with matching facts (based on the property). It will then create new variants of each command/cleanup instruction for each possible combination of facts it has collected. Each variant will be scored based on the cumulative score of all facts inside the command. The highest scored variants will be executed first.
 
