@@ -269,7 +269,7 @@ When adding an ability to an operation there is a `Fact Help` button in the top 
 
 The format of fact_description.yml is a simple
 ```yaml
-fact.name
+fact.name:
     default: "text"
     description: "text"
 ```
