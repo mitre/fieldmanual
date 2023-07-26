@@ -7,7 +7,7 @@ CALDERA can be installed in four commands using the [concise installation instru
 CALDERA aims to support a wide range of target systems, the core requirements are listed below:
 
 * Linux or MacOS operating system
-* Python 3.7, 3.8, or 3.9 (with pip3)
+* Python 3.8 or later (with pip3)
 * A modern browser (Google Chrome is recommended)
 * The packages listed in the [requirements file](https://github.com/mitre/caldera/blob/master/requirements.txt)
 
