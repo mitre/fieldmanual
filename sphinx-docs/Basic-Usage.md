@@ -12,15 +12,15 @@ To deploy an agent:
 1. Make sure the agent options are correct (e.g. ensure `app.contact.http` matches the expected host and port for the CALDERA server)
     - `app.contact.http` represents the HTTP endpoint (including the IP/hostname and port) that the C2 server is listening on for
     agent requests and beacons. Examples: `http://localhost:8888`, `https://10.1.2.3`, `http://myc2domain.com:8080`
-    - `agents.implant_name` represents the base name of the agent binary.
+    - `agents.implant_name` represents the base name of the agent binary. 
     For Windows agents, `.exe` will be automatically appended to the base name (e.g. `splunkd` will become `splunkd.exe`).
     - `agent.extensions` takes in a comma-separated list of agent extensions to compile with your agent binary.
-    When selecting the associated deployment command, this will instruct the C2 server to compile the agent binary with the
+    When selecting the associated deployment command, this will instruct the C2 server to compile the agent binary with the 
     requested extensions, if they exist. If you just want a basic agent without extensions, leave this field blank.
     See [Sandcat extension documentation](plugins/sandcat/Sandcat-Details.md#extensions) for more information on Sandcat
     extensions.
 1. Choose a command to execute on the target machine. If you want your agent to be compiled with the
- extensions from `agent.extensions`, you must select the associated deployment command below:
+ extensions from `agent.extensions`, you must select the associated deployment command below: 
  `Compile red-team agent with a comma-separated list of extensions (requires GoLang).`
 1. On the target machine, paste the command into the terminal or PowerShell window and execute it
 1. The new agent should appear in the table in the Agents tab (if the agent does not appear, check the [Agent Deployment section of the Troubleshooting page](Troubleshooting.md#agent-deployment))
@@ -69,11 +69,6 @@ Here is a sample ability:
       sh:
         command: |
           ./wifi.sh scan
-        alt_command:
-          './wifi.sh modify'
-        labels:
-          - scan
-          - modify
         payload: wifi.sh
     windows:
       psh:
@@ -103,8 +98,6 @@ Each platform block consists of a:
 * parsers (optional)
 * requirements (optional)
 * timeout (optional)
-* alt_command (optional)
-* labels (optional)
 
 **Command**: A command can be 1-line or many and should contain the code you would like the ability to execute. Newlines in the command will be deleted before execution. The command can (optionally) contain variables, which are identified as `#{variable}`.
 
@@ -161,11 +154,11 @@ Below is an example ability that uses the `uploads` keyword:
           - ./localpath.txt
 ```
 
-**Cleanup**: An instruction that will reverse the result of the command. This is intended to put the computer back into the state it was before the ability was used. For example, if your command creates a file, you can use the cleanup to remove the file. Cleanup commands run after an operation, in the reverse order they were created. Cleaning up an operation is also optional, which means you can start an operation and instruct it to skip all cleanup instructions.
+**Cleanup**: An instruction that will reverse the result of the command. This is intended to put the computer back into the state it was before the ability was used. For example, if your command creates a file, you can use the cleanup to remove the file. Cleanup commands run after an operation, in the reverse order they were created. Cleaning up an operation is also optional, which means you can start an operation and instruct it to skip all cleanup instructions. 
 
 Cleanup is not needed for abilities, like above, which download files through the payload block. Upon an operation completing, all payload files will be removed from the client (agent) computers.
 
-**Parsers**: A list of parsing modules which can parse the output of the command into new facts. Interested in this topic? Check out [how CALDERA parses facts](Parsers.md), which goes into detail about parsers.
+**Parsers**: A list of parsing modules which can parse the output of the command into new facts. Interested in this topic? Check out [how CALDERA parses facts](Parsers.md), which goes into detail about parsers. 
 
 Abilities can also make use of two CALDERA REST API endpoints, file upload and download.
 
@@ -173,11 +166,7 @@ Abilities can also make use of two CALDERA REST API endpoints, file upload and d
 
 **Timeout**: How many seconds to allow the command to run.
 
-**Alt Command**: A second command listed in the same ability. This generates a "toggle" UI element which lets a user switch between 'command' and 'alt_command' within the same ability choice. This is recommended for abilities which accomplish similar goals but have different commands that may be confusing or require a great deal of documentation to explain.
-
-**Labels**: A list of 2 strings that are the labels for the toggle added by the Alt Command field.
-
-### Bootstrap and Deadman Abilities
+### Bootstrap and Deadman Abilities 
 
 Bootstrap Abilities are abilities that run immediately after sending their first beacon in. A bootstrap ability can be added through the GUI by entering the ability id into the 'Bootstrap Abilities' field in the 'Agents' tab. Alternatively, you can edit the `conf/agents.yml` file and include the ability id in the bootstrap ability section of the file (ensure the server is turned off before editing any configuration files).
 
@@ -234,7 +223,7 @@ An operation can be started with a number of optional configurations:
 * **Fact source**: You can attach a source of facts to an operation. This means the operation will start with "pre-knowledge" of the facts, which it can use to fill in variables inside the abilities.
 * **Cleanup timeout**: How many seconds to wait for each cleanup command to complete before continuing.
 * **Obfuscators**: Select an obfuscator to encode each command with, before they are sent to the agents.
-* **Jitter**: Agents normally check in with CALDERA every 60 seconds. Once they realize they are part of an active operation, agents will start checking in according to the jitter time, which is by default 2/8. This fraction tells the agents that they should pause between 2 and 8 seconds (picked at random each time an agent checks in) before using the next ability.
+* **Jitter**: Agents normally check in with CALDERA every 60 seconds. Once they realize they are part of an active operation, agents will start checking in according to the jitter time, which is by default 2/8. This fraction tells the agents that they should pause between 2 and 8 seconds (picked at random each time an agent checks in) before using the next ability. 
 * **Visibility**: How visible should the operation be to the defense. Defaults to 51 because each ability defaults to a visibility of 50. Abilities with a higher visibility than the operation visibility will be skipped.
 
 After starting an operation, users can export the operation report in JSON format by clicking the "Download report" button in the operation GUI modal. For more information on the operation report format, see the [Operation Result](Operation-Results.md) section.
@@ -257,23 +246,9 @@ Facts can be added or modified through the GUI by navigating to *Advanced -> Sou
 
 ## Fact sources
 
-A fact source is a collection of facts that you have grouped together. A fact source can be applied to an operation when you start it, which gives the operation facts to fill in variables with.
-
-The `default` fact source is created on server startup by loading `fact_description.yml` files in each plugin folder
+A fact source is a collection of facts that you have grouped together. A fact source can be applied to an operation when you start it, which gives the operation facts to fill in variables with. 
 
 Fact sources can be added or modified through the GUI by navigating to *Advanced -> Sources*.
-
-## Fact Descriptions in Operations
-
-When adding an ability to an operation there is a `Fact Help` button in the top right which opens a sidebar containing abilities fields and descriptions. These descriptions are populated from the `fact_description.yml` file in the plugin folder. When an ability is changed, or a new plugin is created you can run `./initialize_plugin_facts.py` to create/update `fact_description.yml` files for every plugin in the plugin folder.
-
-The format of fact_description.yml is a simple
-```yaml
-fact.name:
-    default: "text"
-    description: "text"
-```
-
 
 ## Rules
 
@@ -353,7 +328,7 @@ Planners are single module Python files. Planners utilize the core system’s pl
 CALDERA ships with a default planner, _atomic_. The _atomic_ planner operates by atomically sending a single ability command to each agent in the operation's group at a time, progressing through abilities as they are enumerated in the underyling adversary profile. When a new agent is added to the operation, the _atomic_ planner will start with the first ability in the adversary profile.
 
 The _atomic_ planner can be found in the `mitre/stockpile` GitHub repository at `app/atomic.py`.
-
+ 
 ### Custom Planners
 
 For any other planner behavior and functionality, a custom planner is required. CALDERA has open sourced some custom planners, to include the _batch_ and _buckets_ planners. From time to time, the CALDERA team will open source further planners as they become more widely used, publicly available, etc.
@@ -378,8 +353,8 @@ Plugins can be added through the UI or in the configuration file (likely `conf/l
 
 Each plugin contains a single hook.py file in its root directory. This file should contain an initialize function, which gets called automatically for each loaded plugin when CALDERA boots. The initialize function contains the plugin logic that is getting "plugged into" the core system. This function takes a single parameter:
 
-- **services**: a list of core services that live inside the core system.
+- **services**: a list of core services that live inside the core system. 
 
-A plugin can add nearly any new functionality/features to CALDERA by using the two objects above.
+A plugin can add nearly any new functionality/features to CALDERA by using the two objects above. 
 
 A list of plugins included with CALDERA can be found on the [Plugin library](Plugin-library.md) page.
