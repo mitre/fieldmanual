@@ -1,6 +1,13 @@
 Resources
 ---------
 
+Summary Sheets
+==============
+
+- :download:`Caldera Summary Sheet <./_static/Caldera_Summary.pdf>`
+- :download:`Use Cases Sheet <./_static/Caldera_Use_Cases.pdf>`
+- :download:`Instructor Guide Sheet <./_static/Caldera_Instructor_Guide.pdf>`
+
 Ability List
 ============
 
