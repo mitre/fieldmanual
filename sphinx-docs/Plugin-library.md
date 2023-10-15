@@ -108,6 +108,10 @@ instead of `http://localhost:8888`.
 ```
 curl -sk -X POST -H 'file:sandcat.go' -H 'platform:linux' -H 'server:http://10.0.0.2:8888' http://localhost:8888/file/download > sandcat.sh
 ```
+## Caldera for OT
+
+The Caldera for OT plugins extend Caldera by providing support for common industrial protocols. Each plugin contains a collection of abilities unique to an operational technology (OT) protocol.
+To install the plugins and learn more about which protocols are currently supported, visit: [https://github.com/mitre/caldera-ot](https://github.com/mitre/caldera-ot).
 
 ## Mock 
 
@@ -276,3 +280,4 @@ See [Dynamically-Compiled Payloads](Dynamically-Compiled-Payloads.md) for exampl
 The Debrief plugin provides a method for gathering overall campaign information and analytics for a selected set of operations. It provides a centralized view of operation metadata and graphical displays of the operations, the techniques and tactics used, and the facts discovered by the operations. 
 
 The plugin additionally supports the export of campaign information and analytics in PDF format.
+
