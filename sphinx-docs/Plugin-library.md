@@ -183,7 +183,7 @@ The SSL plugin adds HTTPS to CALDERA.
 
 When this plugin has been loaded, CALDERA will start the HAProxy service on the machine and serve CALDERA on all interfaces on port 8443, in addition to the normal http://[YOUR_IP]:8888 (based on the value of the `host` value in the CALDERA settings).
 
-Plugins and agents will not automatically update to the service at https://[YOUR_IP]:8443. All agents will need to be redeployed using the HTTPS address to use the secure protocol. The address will not automatically populate in the agent deployment menu. If a self-signed certificate is used, deploying agents may require additional commands to disable SSL certificate checks.
+Plugins and agents will not automatically update to the service at https://[YOUR_IP]:8443. All agents will need to be redeployed using the HTTPS address to use the secure protocol. The address will not automatically populate in the agent deployment menu. If a self-signed certificate is used, deploying agents may require additional commands to disable SSL certificate checks (such as using the `--insecure` flag to bypass SSL certificate checks in the initial `curl` request when downloading the new agents).
 
 **Warning:** This plugin uses a default self-signed ssl certificate and key which should be replaced. In order to use this plugin securely, you need to generate your own certificate. The directions below show how to generate a new self-signed certificate. If you are unable to connect to CALDERA using the self-signed certificate, verify that your system trusts the certificate.
 
