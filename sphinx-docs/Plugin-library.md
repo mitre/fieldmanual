@@ -199,23 +199,25 @@ The SSL plugin adds HTTPS to Caldera.
 
 When this plugin has been loaded, Caldera will start the HAProxy service on the machine and serve Caldera on all interfaces on port 8443, in addition to the normal http://[YOUR_IP]:8888 (based on the value of the `host` value in the Caldera settings).
 
-Plugins and agents will not automatically update to the service at https://[YOUR_IP]:8443. All agents will need to be redeployed using the HTTPS address to use the secure protocol. The address will not automatically populate in the agent deployment menu. If a self-signed certificate is used, deploying agents may require additional commands to disable SSL certificate checks.
+Plugins and agents will not automatically update to the service at https://[YOUR_IP]:8443. All agents will need to be redeployed using the HTTPS address to use the secure protocol. The address will not automatically populate in the agent deployment menu. If a self-signed certificate is used, deploying agents may require additional commands to disable SSL certificate checks (such as using the `--insecure` flag to bypass SSL certificate checks in the initial `curl` request when downloading the new agents).
 
-**Warning:** This plugin uses a default self-signed ssl certificate and key which should be replaced. In order to use this plugin securely, you need to generate your own certificate. The directions below show how to generate a new self-signed certificate.
+**Warning:** This plugin uses a default self-signed ssl certificate and key which should be replaced. In order to use this plugin securely, you need to generate your own certificate. The directions below show how to generate a new self-signed certificate. If you are unable to connect to CALDERA using the self-signed certificate, verify that your system trusts the certificate.
 
 ### Setup Instructions
 
 *Note: OpenSSL must be installed on your system to generate a new self-signed certificate*
 
-1. In the root Caldera directory, navigate to `plugins/ssl`.
-1. Place a PEM file containing SSL public and private keys in `conf/certificate.pem`. Follow the instructions below to generate a new self-signed certificate:
+1. install haproxy >= 1.8 using `brew install haproxy` (MacOS) or `sudo apt-get install haproxy` (Linux).
+2. In the root CALDERA directory, navigate to `plugins/ssl`.
+3. Place a PEM file containing SSL public and private keys in `conf/certificate.pem`. Follow the instructions below to generate a new self-signed certificate:
    - In a terminal, paste the command `openssl req -x509 -newkey rsa:4096  -out conf/certificate.pem -keyout conf/certificate.pem -nodes` and press enter.
    - This will prompt you for identifying details. Enter your country code when prompted. You may leave the rest blank by pressing enter.
-1. Copy the file `haproxy.conf` from the `templates` directory to the `conf` directory.
-1. Open the file `conf/haproxy.conf` in a text editor. 
-1. On the line `bind *:8443 ssl crt plugins/ssl/conf/insecure_certificate.pem`, replace `insecure_certificate.pem` with `certificate.pem`.
-1. On the line `server caldera_main 127.0.0.1:8888 cookie caldera_main`, replace `127.0.0.1:8888` with the host and port defined in Caldera's `conf/local.yml` file. This should not be required if Caldera's configuration has not been changed.
-1. Save and close the file. Congratulations! You can now use Caldera securely by accessing the UI https://[YOUR_IP]:8443 and redeploying agents using the HTTPS service.
+4. Copy the file `haproxy.conf` from the `templates` directory to the `conf` directory.
+5. Open the file `conf/haproxy.conf` in a text editor.
+6. On the line `bind *:8443 ssl crt plugins/ssl/conf/insecure_certificate.pem`, replace `insecure_certificate.pem` with `certificate.pem`.
+7. On the line `server caldera_main 127.0.0.1:8888 cookie caldera_main`, replace `127.0.0.1:8888` with the host and port defined in CALDERA's `conf/local.yml` file. This should not be required if CALDERA's configuration has not been changed.
+8. Save and close the file. Congratulations! You can now use Caldera securely by accessing the UI https://[YOUR_IP]:8443 and redeploying agents using the HTTPS service.
+
 
 ## Atomic
 
