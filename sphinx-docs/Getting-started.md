@@ -1,12 +1,12 @@
 # Getting started
 
-CALDERA, as a cybersecurity framework, can be used in several ways. For most users, it will be used to run either offensive (red) or defensive (blue) operations.
+MITRE Caldera, as an adversary emulation platform, can be used in several ways. For most users, it will be used to run either offensive (red) or defensive (blue) operations.
 
 Here are the most common use-cases and basic instructions on how to proceed. 
 
 ## Autonomous red-team engagements
 
-This is the original CALDERA use-case. You can use the framework to build a specific threat (adversary) profile and launch it in a network to see where you may be susceptible. This is good for testing defenses and training blue teams on how to detect threats. 
+This is the original Caldera use-case. You can use the framework to build a specific threat (adversary) profile and launch it in a network to see where you may be susceptible. This is good for testing defenses and training blue teams on how to detect threats. 
 
 The following steps will walk through logging in, deploying an agent, selecting an adversary, and running an operation:
 
@@ -14,7 +14,7 @@ The following steps will walk through logging in, deploying an agent, selecting 
 1) Deploy an agent
    - Navigate to the Agents page and click the "Click here to deploy an agent"
    - Choose the Sandcat agent and platform (victim operating system)
-   - Check that the value for `app.contact.http` matches the host and port the CALDERA server is listening on
+   - Check that the value for `app.contact.http` matches the host and port the Caldera server is listening on
    - Run the generated command on the victim machine. Note that some abilities will require elevated privileges, which would require the agent to be deployed in an elevated shell.
    - Ensure that a new agent appears in the table on the Agents page
 1) Choose an adversary profile
@@ -43,15 +43,15 @@ Next steps may include:
 
 ## Autonomous incident-response 
 
-CALDERA can be used to perform automated incident response through deployed agents. This is helpful for identifying TTPs that other security tools may not see or block. 
+Caldera can be used to perform automated incident response through deployed agents. This is helpful for identifying TTPs that other security tools may not see or block. 
 
-The following steps will walk through logging in to CALDERA blue, deploying a blue agent, selecting a defender, and running an operation:
+The following steps will walk through logging in to Caldera blue, deploying a blue agent, selecting a defender, and running an operation:
 
 1) Log in as a blue user. By default, a "blue" user is creating with a password found in the `conf/local.yml` file (or `conf/default.yml` if using insecure settings).
 1) Deploy a blue agent
    - Navigate to the Agents page and click the "Click here to deploy an agent"
    - Choose the Sandcat agent and platform (victim operating system)
-   - Check that the value for `app.contact.http` matches the host and port the CALDERA server is listening on
+   - Check that the value for `app.contact.http` matches the host and port the Caldera server is listening on
    - Run the generated command on the victim machine. The blue agent should be deployed with elevated privileges in most cases.
    - Ensure that a new blue agent appears in the table on the Agents page
 1) Choose a defender profile
@@ -80,7 +80,7 @@ The following steps will walk through logging in to CALDERA blue, deploying a bl
 
 ## Manual red-team engagements
 
-CALDERA can be used to perform manual red-team assessments using the Manx agent. This is good for replacing or appending existing offensive toolsets in a manual assessment, as the framework can be extended with any custom tools you may have.
+Caldera can be used to perform manual red-team assessments using the Manx agent. This is good for replacing or appending existing offensive toolsets in a manual assessment, as the framework can be extended with any custom tools you may have.
 
 The following steps will walk through logging in, deploying a Manx agent, and running manual commands:
 
@@ -88,7 +88,7 @@ The following steps will walk through logging in, deploying a Manx agent, and ru
 1) Deploy a Manx agent
    - Navigate to the Agents page and click the "Click here to deploy an agent"
    - Choose the Manx agent and platform (victim operating system)
-   - Check that the values for `app.contact.http`, `app.contact.tcp`, and `app.contact.udp` match the host and ports the CALDERA server is listening on
+   - Check that the values for `app.contact.http`, `app.contact.tcp`, and `app.contact.udp` match the host and ports the Caldera server is listening on
    - Run the generated command on the victim machine
    - Ensure that a new agent appears in the table on the Agents page
 1) Deploy a Manx agent
@@ -98,7 +98,7 @@ The following steps will walk through logging in, deploying a Manx agent, and ru
 
 ## Research on artificial intelligence
 
-CALDERA can be used to test artificial intelligence and other decision-making algorithms using the [Mock plugin](https://github.com/mitre/mock). The plugin adds simulated agents and mock ability responses, which can be used to run simulate an entire operation.
+Caldera can be used to test artificial intelligence and other decision-making algorithms using the [Mock plugin](https://github.com/mitre/mock). The plugin adds simulated agents and mock ability responses, which can be used to run simulate an entire operation.
 
 To use the mock plugin:
 

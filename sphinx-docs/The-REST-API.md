@@ -2,13 +2,13 @@
 
 *Note: The original REST API has been deprecated. The new REST API v2 has been released, with [documentation
 available here after server startup](/api/docs). Alternatively, this can be viewed by scrolling
-to the bottom of the CALDERA navigation menu and selecting "api docs."*
+to the bottom of the Caldera navigation menu and selecting "api docs."*
 
 All REST API functionality can be viewed in the rest_api.py module in the source code.
 
 ### /api/rest
 
-You can interact with all parts of CALDERA through the core REST API endpoint /api/rest. If you
+You can interact with all parts of Caldera through the core REST API endpoint /api/rest. If you
 send requests to "localhost" - you are not required to pass a key header. If you send requests to
 127.0.0.1 or any other IP addresses, the key header is required. You can set the API key in the 
 conf/default.yml file. Some examples below will use the header, others will not, for example.
@@ -94,7 +94,7 @@ To learn more about these options, read the "What is an operation?" documentatio
 
 ## /file/upload
 
-Files can be uploaded to CALDERA by POST'ing a file to the /file/upload endpoint. Uploaded files will be put in the exfil_dir location specified in the default.yml file.
+Files can be uploaded to Caldera by POST'ing a file to the /file/upload endpoint. Uploaded files will be put in the exfil_dir location specified in the default.yml file.
 
 #### Example
 ```bash
@@ -103,7 +103,7 @@ curl -F 'data=@path/to/file' http://localhost:8888/file/upload
 
 ## /file/download
 
-Files can be dowloaded from CALDERA through the /file/download endpoint. This endpoint requires an HTTP header called "file" with the file name as the value. When a file is requested, CALDERA will look inside each of the payload directories listed in the local.yml file until it finds a file matching the name.
+Files can be dowloaded from Caldera through the /file/download endpoint. This endpoint requires an HTTP header called "file" with the file name as the value. When a file is requested, Caldera will look inside each of the payload directories listed in the local.yml file until it finds a file matching the name.
 
 Files can also be downloaded indirectly through the [payload block of an ability](Learning-the-terminology.md).
 

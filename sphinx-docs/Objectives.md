@@ -1,6 +1,6 @@
 # Objectives
 
-As part of ongoing efforts to increase the capabilities of CALDERA's Planners, the team has implemented 
+As part of ongoing efforts to increase the capabilities of Caldera's Planners, the team has implemented 
 Objectives. Objectives are collections of fact targets, called Goals, which can be tied to Adversaries. 
 When an Operation starts, the Operation will store a copy of the Objective linked to the chosen Adversary, 
 defaulting to a base Goal of "running until no more steps can be run" if no Objective can be found. During 
@@ -22,7 +22,7 @@ Objective objects utilize four attributes, documented below:
 > For an Objective to be considered complete, all Goals associated with it must be achieved during an 
 Operation
 
-At the moment, Objectives can be added to CALDERA by creating Objective YAML files, such as the one 
+At the moment, Objectives can be added to Caldera by creating Objective YAML files, such as the one 
 shown below, or through Objectives web UI modal:
 
 ```yaml
@@ -63,7 +63,7 @@ to infinity (2^20)
     * **`*`**: Wildcard - Matches on existence of `target`, regardless of `value`
     * **`==`**: Equal to        
 
-Goals can be input to CALDERA either through the Objectives web UI modal, or through Objective YAML files,
+Goals can be input to Caldera either through the Objectives web UI modal, or through Objective YAML files,
  where they can be added as list entries under goals. In the example of this below, the Objective 
  references two Goals, one that targets the specific username of `test`, and the other that is satisfied 
  by any two acquired usernames:

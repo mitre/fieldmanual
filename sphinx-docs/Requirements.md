@@ -1,7 +1,7 @@
 # Requirements
 
-Requirements are a mechanism used by CALDERA to determine whether an ability should be run in the course of an
-operation. By default, CALDERA supplies several requirements [within the Stockpile plugin](https://github.com/mitre/stockpile/tree/master/app/requirements)
+Requirements are a mechanism used by Caldera to determine whether an ability should be run in the course of an
+operation. By default, Caldera supplies several requirements [within the Stockpile plugin](https://github.com/mitre/stockpile/tree/master/app/requirements)
 that can be used by an ability to ensure the ability only runs when the facts being used by the ability command meet
 certain criteria.
 
@@ -62,6 +62,6 @@ relationship to an existing `host.user.password` fact may be used. Brute forcing
 out an account entirely. The `basic` requirement ensures that the user and password combination used has a high chance
 of success since the combination's relationship has already been established by a previous ability.
 
-The combined effect these requirements have ensures that the CALDERA operation will only attempt reliable combinations
+The combined effect these requirements have ensures that the Caldera operation will only attempt reliable combinations
 of `host.user.name` and `host.user.password` facts specific to the agent running the ability, instead of arbitrarily
 attempting all possible combinations of `host.user.name` and `host.user.password` facts available to the agent.

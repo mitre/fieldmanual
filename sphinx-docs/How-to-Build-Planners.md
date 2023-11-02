@@ -1,16 +1,16 @@
 # How to Build Planners
 
-For any desired planner decision logic not encapsulated in the default _batch_ planner (or any other existing planner), CALDERA requires that a new planner be implemented to encode such decision logic.
+For any desired planner decision logic not encapsulated in the default _batch_ planner (or any other existing planner), Caldera requires that a new planner be implemented to encode such decision logic.
 
 ## Buckets
 
-The cornerstone of how planners make decisions is centered on a concept we call 'buckets'. Buckets denote the planner's state machine and are intended to correspond to _buckets_ of CALDERA abilities. Within a planner, macro level decision control is encoded by specifying which buckets (i.e. states) follow other buckets, thus forming a bucket state machine. Micro level decisions are made within the buckets, by specifying any logic detailing which abilities to send to agents and when to do so.
+The cornerstone of how planners make decisions is centered on a concept we call 'buckets'. Buckets denote the planner's state machine and are intended to correspond to _buckets_ of Caldera abilities. Within a planner, macro level decision control is encoded by specifying which buckets (i.e. states) follow other buckets, thus forming a bucket state machine. Micro level decisions are made within the buckets, by specifying any logic detailing which abilities to send to agents and when to do so.
 
-CALDERA abilities are also tagged by the buckets they are in. By default, when abilities are loaded by CALDERA, they are tagged with the bucket of the ATT&CK technique they belong to. CALDERA abilities can also be tagged/untagged at will by any planner as well, before starting the operation or at any point in it. The intent is for buckets to work with the abilities that have been tagged for that bucket, but this is by no means enforced.
+Caldera abilities are also tagged by the buckets they are in. By default, when abilities are loaded by Caldera, they are tagged with the bucket of the ATT&CK technique they belong to. Caldera abilities can also be tagged/untagged at will by any planner as well, before starting the operation or at any point in it. The intent is for buckets to work with the abilities that have been tagged for that bucket, but this is by no means enforced.
 
 ## Creating a Planner
 
-Let's dive into creating a planner to see the power and flexibility of the CALDERA planner component. For this example, we will implement a planner that will carry out the following state machine:
+Let's dive into creating a planner to see the power and flexibility of the Caldera planner component. For this example, we will implement a planner that will carry out the following state machine:
 
 ![privileged persistence sm screenshot](img/privileged_persistence_state_machine.png)
 
@@ -126,7 +126,7 @@ Lets look at each of the bucket methods in detail:
 
 ### Creating the Planner Object
 
-In order to use this planner inside CALDERA, we will create the following YAML file at `plugins/stockpile/data/planners/80efdb6c-bb82-4f16-92ae-6f9d855bfb0e.yml`:
+In order to use this planner inside Caldera, we will create the following YAML file at `plugins/stockpile/data/planners/80efdb6c-bb82-4f16-92ae-6f9d855bfb0e.yml`:
 
 ```yaml
 ---
@@ -141,9 +141,9 @@ params: {}
 ignore_enforcement_modules: []
 ```
 
-This will create a planner in CALDERA which will call the module we've created at `plugins.stockpile.app.privileged_persistence`.
+This will create a planner in Caldera which will call the module we've created at `plugins.stockpile.app.privileged_persistence`.
 
-*NOTE: For planners intended to be used with profiles containing repeatable abilities, `allow_repeatable_abilities: True` must be added to the planner YAML file. Otherwise, CALDERA will default the value to `False` and assume the planner does not support repeatable abilities.* 
+*NOTE: For planners intended to be used with profiles containing repeatable abilities, `allow_repeatable_abilities: True` must be added to the planner YAML file. Otherwise, Caldera will default the value to `False` and assume the planner does not support repeatable abilities.* 
 
 ### Using the Planner
 
@@ -151,7 +151,7 @@ To use the planner, create an Operation and select the "Use privileged_persisten
 
 ## A Minimal Planner
 
-Custom planners do not have to use the buckets approach to work with the CALDERA operation interface if not desired. Here is a minimal planner that will still work with the operation interface.
+Custom planners do not have to use the buckets approach to work with the Caldera operation interface if not desired. Here is a minimal planner that will still work with the operation interface.
 
 ```python
 
