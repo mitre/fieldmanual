@@ -1,6 +1,6 @@
 # Relationships
 
-Many CALDERA abilities require input variables called "facts" to be provided before the ability can be run. These facts can be provided through fact sources, or they can be discovered by a previous ability.
+Many Caldera abilities require input variables called "facts" to be provided before the ability can be run. These facts can be provided through fact sources, or they can be discovered by a previous ability.
 
 ## Creating Relationships using Abilities
 
@@ -30,7 +30,7 @@ As an example, the following printer discovery ability will create two facts cal
 This ability will view the printer queue using the command `lpq -a`. The result of `lpq -a` will be parsed into two facts: `host.print.file` (the `source`) and `host.print.size` (the `target`). These two facts are dependent on each other, and it will be helpful to understand their connection in order to use them. Therefore, we use the `edge` variable to explain the relationship between the `source` and the `target`. In this case, the `edge` is `has_size`, because `host.print.size` is the file size of `host.print.file`. All together, the `source`, `edge`, and `target` comprise a "relationship". To learn more about how the parser file creates a relationship, refer to [Parsers](Parsers.md).
 
 ### Multiple Instances of a Fact
-Storing the relationship between the `source` and the `target` in the `edge` allows CALDERA to save several instances of each fact while maintaining the connection between facts. For example, if the printer discovery ability (shown above) is run, and several files are discovered in the printer queue, the following facts may be created. 
+Storing the relationship between the `source` and the `target` in the `edge` allows Caldera to save several instances of each fact while maintaining the connection between facts. For example, if the printer discovery ability (shown above) is run, and several files are discovered in the printer queue, the following facts may be created. 
 
 | host.print.file | host.print.size (bytes) |
 | --------------- | ----------------------- |
@@ -49,7 +49,7 @@ The table above shows how each `host.print.file` value is associated with exactl
 Note that the `edge` and the `target` are optional. You can create a `source` as an independent fact without needing to connect it to a `target`. 
 
 
-## Creating Relationships using CALDERA Server
-Relationships can also be created in the CALDERA Server GUI. Use the left sidebar to navigate to "fact sources." Then, click "relationships" followed by "new relationship." You can fill in  values for the `edge`, `source`, and `target` to be used in future operations. Then click "Save" to finish!
+## Creating Relationships using Caldera Server
+Relationships can also be created in the Caldera Server GUI. Use the left sidebar to navigate to "fact sources." Then, click "relationships" followed by "new relationship." You can fill in  values for the `edge`, `source`, and `target` to be used in future operations. Then click "Save" to finish!
 
 ![fact relationships](img/fact_relationships.png)

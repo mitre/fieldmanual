@@ -17,7 +17,7 @@ netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=
 
 ### User with Administrative Privileges
 
-This guide will assume a user *with administrative privileges to the target host* has been compromised and that a CALDERA
+This guide will assume a user *with administrative privileges to the target host* has been compromised and that a Caldera
 agent has been spawned with this user's privileges. Some methods of lateral movement may depend on whether (1) the user 
 has administrative privileges but is not a domain account or (2) the user has administrative privileges and is a domain 
 account. The example walkthrough in this guide should not be impacted by these distinctions.
@@ -27,12 +27,12 @@ account. The example walkthrough in this guide should not be impacted by these d
 1. Ensure GPO/SRP or antivirus is not blocking remote access to shares.
 2. Ensure at least ADMIN$, C$, and IPC$ shares exist on the target host.
 
-## Lateral Movement Using CALDERA
+## Lateral Movement Using Caldera
 Lateral movement can be a combination of two steps. The first requires confirmation of remote access to the next target 
 host and the movement or upload of the remote access tool (RAT) executable to the host. The second part requires 
 *execution* of the binary, which upon callback of the RAT on the new host would complete the lateral movement.
 
-Most of CALDERA's lateral movement and execution abilities found in Stockpile have fact or relationship requirements 
+Most of Caldera's lateral movement and execution abilities found in Stockpile have fact or relationship requirements 
 that must be satisfied. This information may be passed to the operation in two ways:
 1. The fact and relationship information may be added to an operation's source. A new source can be created or this
 information can be added to an already existing source as long as that source is used by the operation. When configuring
@@ -44,7 +44,7 @@ necessary to satisfy the ability requirements.
 
 ### Moving the Binary
 There are several ways a binary can be moved or uploaded from one host to another. Some example methods used in 
-CALDERA's lateral movement abilities include:
+Caldera's lateral movement abilities include:
 1. WinRM
 2. SCP
 3. wmic
@@ -55,14 +55,14 @@ Based on the tool used, additional permissions may need to be changed in order f
 remotely.
 
 ### Execution of the Binary
-CALDERA's Stockpile execution abilities relevant to lateral movement mainly use wmic to remotely start the binary. Some 
+Caldera's Stockpile execution abilities relevant to lateral movement mainly use wmic to remotely start the binary. Some 
 additional execution methods include modifications to Windows services and scheduled tasks. The example in this guide 
 will use the creation of a service to remotely start the binary (ability file included at the end of this guide).
 
 See ATT&CK's [Execution](https://attack.mitre.org/tactics/TA0002/) tactic page for more details on execution methods.
 
 ### Displaying Lateral Movement in Debrief
-Using the adversary profile in this guide and CALDERA's Debrief plugin, you can view the path an adversary took through 
+Using the adversary profile in this guide and Caldera's Debrief plugin, you can view the path an adversary took through 
 the network via lateral movement attempts. In the Debrief modal, select the operation where lateral movement was 
 attempted then select the Attack Path view from the upper right hand corner of graph views. This graph displays the 
 originating C2 server and agent nodes connected by the execution command linking the originating agent to the newly
@@ -77,7 +77,7 @@ This capability relies on the `origin_link_id` field to be populated within the 
 check-in and is currently implemented for the default agent, Sandcat. For more information about the `#{origin_link_id}`
 global variable, see the explanation of **Command** in the [Abilities](Basic-Usage.md#abilities)
 section of the Basic Usage guide. For more information about how lateral movement tracking is implemented 
-in agents to be used with CALDERA, see the [Lateral Movement Tracking](How-to-Build-Agents.md#lateral-movement-tracking) 
+in agents to be used with Caldera, see the [Lateral Movement Tracking](How-to-Build-Agents.md#lateral-movement-tracking) 
 section of the How to Build Agents guide.
 
 

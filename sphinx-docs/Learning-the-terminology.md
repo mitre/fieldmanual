@@ -2,11 +2,11 @@
 
 ## Agents
 
-Agents are software programs that connect back to CALDERA at certain intervals to get instructions. Agents communicate with the CALDERA server via a _contact_ method, initially defined at agent install.
+Agents are software programs that connect back to Caldera at certain intervals to get instructions. Agents communicate with the Caldera server via a _contact_ method, initially defined at agent install.
 
 Installed agents appear in the UI in the Agents dialog. Agents are identified by their unique _paw_ - or paw print.
 
-CALDERA includes a number of agent programs, each adding unique functionality. A few examples are listed below:
+Caldera includes a number of agent programs, each adding unique functionality. A few examples are listed below:
 
 - Sandcat: A GoLang agent which can communicate through various C2 channels, such as HTTP, Github GIST, or DNS tunneling.
 - Manx: A GoLang agent which communicates via the TCP contact and functions as a reverse-shell
@@ -18,7 +18,7 @@ The group determines whether an agent is a "red agent" or a "blue agent". Any ag
 
 ## Abilities and Adversaries 
 
-An ability is a specific ATT&CK tactic/technique implementation which can be executed on running agents. Abilities will include the command(s) to run, the _platforms_ / _executors_ the commands can run on (ex: Windows / PowerShell), payloads to include, and a reference to a module to parse the output on the CALDERA server.
+An ability is a specific ATT&CK tactic/technique implementation which can be executed on running agents. Abilities will include the command(s) to run, the _platforms_ / _executors_ the commands can run on (ex: Windows / PowerShell), payloads to include, and a reference to a module to parse the output on the Caldera server.
 
 Adversary profiles are groups of abilities, representing the tactics, techniques, and procedures (TTPs) available to a threat actor. Adversary profiles are used when running an operation to determine which abilities will be executed. 
 
@@ -26,7 +26,7 @@ Adversary profiles are groups of abilities, representing the tactics, techniques
 
 Operations run abilities on agent groups. Adversary profiles are used to determine which abilities will be run and agent groups are used to determine which agents the abilities will be run on.
 
-The order in which abilities are run is determined by the _planner_. A few examples of planners included, by default, in CALDERA are listed below:
+The order in which abilities are run is determined by the _planner_. A few examples of planners included, by default, in Caldera are listed below:
 
 - atomic: Run abilities in the adversary profile according to the adversary's atomic ordering 
 - batch: Run all abilities in the adversary profile at once
@@ -44,16 +44,16 @@ Link commands can be _obfuscated_, depending on the stealth settings of the oper
 
 Generated links are added to the operation _chain_. The chain contains all links created for the operation.
 
-When an agents checks in, it will collect its instructions. The instructions are then run, depending on the _executor_ used, and results are sent back to the CALDERA server.
+When an agents checks in, it will collect its instructions. The instructions are then run, depending on the _executor_ used, and results are sent back to the Caldera server.
 
-Then the results are received, CALDERA will use a _parser_ to add any collected facts to the operation. Parsers analyze the output of an ability to extract potential facts. If potential facts are allowed through the _fact rules_, the fact is added to the operation for use in future links. 
+Then the results are received, Caldera will use a _parser_ to add any collected facts to the operation. Parsers analyze the output of an ability to extract potential facts. If potential facts are allowed through the _fact rules_, the fact is added to the operation for use in future links. 
 
 ## Plugins
 
-CALDERA is a framework extended by _plugins_. These plugins provide CALDERA with extra functionality in some way.
+Caldera is a framework extended by _plugins_. These plugins provide Caldera with extra functionality in some way.
 
-Multiple plugins are included by default in CALDERA. A few noteworthy examples are below, though a more complete and detailed list can be found on the [Plugin Library](Plugin-library.md) page:
+Multiple plugins are included by default in Caldera. A few noteworthy examples are below, though a more complete and detailed list can be found on the [Plugin Library](Plugin-library.md) page:
 
 - Sandcat: The Sandcat agent is the recommended agent for new users
-- Stockpile: This plugin holds the majority of open-source abilities, adversaries, planners, and obfuscators created by the CALDERA team
-- Training: The training plugin walks users through most of CALDERA's functionality -- recommended for new users
+- Stockpile: This plugin holds the majority of open-source abilities, adversaries, planners, and obfuscators created by the Caldera team
+- Training: The training plugin walks users through most of Caldera's functionality -- recommended for new users

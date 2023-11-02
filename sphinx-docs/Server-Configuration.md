@@ -10,21 +10,21 @@
   recover the server state after an accidental `--fresh` startup by running `tar -zxvf data/backup/backup-<timestamp>.tar.gz`
   from the root caldera directory before server startup.
 - `--environment ENVIRONMENT`: Sets a custom configuration file. See "Custom configuration files" below for additional details.
-- `--plugins PLUGINS`: Sets CALDERA to run only with the specified plugins
+- `--plugins PLUGINS`: Sets Caldera to run only with the specified plugins
 - `--insecure`: Uses the `conf/default.yml` file for configuration, not recommended.
 
 ## Configuration file
 
-Caldera's configuration file is located at `conf/local.yml`, written on the first run. If the server is run with the `--insecure` option (not recommended), CALDERA will use the file located at `conf/default.yml`.
+Caldera's configuration file is located at `conf/local.yml`, written on the first run. If the server is run with the `--insecure` option (not recommended), Caldera will use the file located at `conf/default.yml`.
 
 Configuration file changes must be made while the server is shut down. Any changes made to the configuration file while the server is running will be overwritten.
 
-The YAML configuration file contains all the configuration variables CALDERA requires to boot up and run. A documented configuration file is below:
+The YAML configuration file contains all the configuration variables Caldera requires to boot up and run. A documented configuration file is below:
 
 ```yaml
 ability_refresh: 60  # Interval at which ability YAML files will refresh from disk 
-api_key_blue: BLUEADMIN123  # API key which grants access to CALDERA blue
-api_key_red: ADMIN123  # API key which grants access to CALDERA red
+api_key_blue: BLUEADMIN123  # API key which grants access to Caldera blue
+api_key_red: ADMIN123  # API key which grants access to Caldera red
 app.contact.dns.domain: mycaldera.caldera  # Domain for the DNS contact server
 app.contact.dns.socket: 0.0.0.0:53  # Listen host and port for the DNS contact server
 app.contact.gist: API_KEY  # API key for the GIST contact
@@ -53,7 +53,7 @@ plugins:  # List of plugins to enable
 port: 8888  # Port the server will listen on
 reports_dir: /tmp  # The directory where reports are saved on server shutdown
 auth.login.handler.module: default  # Python import path for auth service login handler ("default" will use the default handler)
-requirements:  # CALDERA requirements
+requirements:  # Caldera requirements
   go:
     command: go version
     type: installed_program
@@ -63,7 +63,7 @@ requirements:  # CALDERA requirements
     module: sys
     type: python_module
     version: 3.8.0
-users:  # User list for CALDERA blue and CALDERA red
+users:  # User list for Caldera blue and Caldera red
   blue:
     blue: admin  # Username and password
   red:
@@ -77,13 +77,13 @@ Custom configuration files can be created with a new file in the `conf/` directo
 
 Caldera will choose the configuration file to use in the following order:
 
-1. A config specified with the `-E` or `--environment` command-line options.  For instance, if started with `python caldera.py -E foo`, CALDERA will load it's configuration from `conf/foo.yml`.
+1. A config specified with the `-E` or `--environment` command-line options.  For instance, if started with `python caldera.py -E foo`, Caldera will load it's configuration from `conf/foo.yml`.
 2. `conf/local.yml`: Caldera will prefer the local configuration file if no other options are specified.
-3. `conf/default.yml`: If no config is specified with the `-E` option and it cannot find a `conf/local.yml` configuration file, CALDERA will use its default configuration options.
+3. `conf/default.yml`: If no config is specified with the `-E` option and it cannot find a `conf/local.yml` configuration file, Caldera will use its default configuration options.
 
 ## Enabling LDAP login
 
-CALDERA can be configured to allow users to log in using LDAP. To do so add an `ldap` section to the config with the following fields:
+Caldera can be configured to allow users to log in using LDAP. To do so add an `ldap` section to the config with the following fields:
 
 * **dn**: the base DN under which to search for the user
 * **server**: the URL of the LDAP server, optionally including the scheme and port
@@ -113,12 +113,12 @@ Note that adding the `ldap` section will disable any accounts listed in the `use
 only LDAP will be used for logging in.
 
 ## Setting Custom Login Handlers
-By default, users authenticate to CALDERA by providing credentials (username and password) in the main login page.
-These credentials are verified using CALDERA's internal user mapping, or via LDAP if LDAP login is enabled for CALDERA.
+By default, users authenticate to Caldera by providing credentials (username and password) in the main login page.
+These credentials are verified using Caldera's internal user mapping, or via LDAP if LDAP login is enabled for Caldera.
 If users want to use a different login handler, such as one that handles SAML authentication or a login handler provided
-by a CALDERA plugin, the `auth.login.handler.module` keyword in the CALDERA configuration file
+by a Caldera plugin, the `auth.login.handler.module` keyword in the Caldera configuration file
 must be changed from its value of `default`, which is used to load the default login handler.
-The configuration value, if not `default`, must be a Python import path string corresponding to the custom login handler relative to the main CALDERA directory (e.g. `auth.login.handler.module: plugins.customplugin.app.my_custom_handler`). 
+The configuration value, if not `default`, must be a Python import path string corresponding to the custom login handler relative to the main Caldera directory (e.g. `auth.login.handler.module: plugins.customplugin.app.my_custom_handler`). 
 If the keyword is not provided, the default login handler will be used.
 
 The Python module referenced in the configuration file must implement the following method:
@@ -128,9 +128,9 @@ def load_login_handler(services):
     pass
 ```
 
-When loading custom login handlers, CALDERA expects the referenced Python module to return an object that extends
+When loading custom login handlers, Caldera expects the referenced Python module to return an object that extends
 `LoginHandlerInterface` from `app.service.interfaces.i_login_handler`. This interface provides all of the methods
-that CALDERA's authentication service requires to handle logins. If an invalid login handler is referenced in
+that Caldera's authentication service requires to handle logins. If an invalid login handler is referenced in
 the configuration file, then the server will exit with an error.
 
 An example login handler Python module may follow the following structure:

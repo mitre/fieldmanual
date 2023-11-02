@@ -1,6 +1,6 @@
 # Operation Results
 
-The "Operations" tab enables users to view past operations, create new operations, and export operation reports in `JSON` or `csv` format.  When starting a new operation, the "Operations" tab UI provides information on which commands are executed, their status as recorded by the CALDERA C2 server, and the captured `stdout` and `stderr` as applicable.
+The "Operations" tab enables users to view past operations, create new operations, and export operation reports in `JSON` or `csv` format.  When starting a new operation, the "Operations" tab UI provides information on which commands are executed, their status as recorded by the Caldera C2 server, and the captured `stdout` and `stderr` as applicable.
 
 After completing an operation, you can explore the operations setup, progress, and execution graph using the "Debrief" plugin. Debrief also provides executive-level overviews of the operations progress and the attacks success as a `PDF` report.
 
@@ -920,4 +920,4 @@ Below is a sample output for operation event logs:
 
 ### Automatic Event Log Generation
 
-When an operation terminates, the corresponding event logs will be written to disk in the same format as if they were manually requested for download. These event logs will contain command output and will be unencrypted on disk. Each operation will have its own event logs written to a separate file in the directory `$reports_dir/event_logs`, where `$reports_dir` is the `reports_dir` entry in the CALDERA configuration file. The filename will be of the format `operation_$id.json`, where `$id` is the unique ID of the operation.
+When an operation terminates, the corresponding event logs will be written to disk in the same format as if they were manually requested for download. These event logs will contain command output and will be unencrypted on disk. Each operation will have its own event logs written to a separate file in the directory `$reports_dir/event_logs`, where `$reports_dir` is the `reports_dir` entry in the Caldera configuration file. The filename will be of the format `operation_$id.json`, where `$id` is the unique ID of the operation.

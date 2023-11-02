@@ -1,6 +1,6 @@
 # Parsers
 
-CALDERA uses parsers to extract facts from command output. A common use case is to allow
+Caldera uses parsers to extract facts from command output. A common use case is to allow
 operations to take gathered information and feed it into future abilities and decisions -
 for example, a discovery ability that looks for sensitive files can output file paths, which
 will then be parsed into file path facts, and a subsequent ability can use those file paths
@@ -10,23 +10,23 @@ Parsers can also be used to create facts with relationships linked between them 
 users to associate facts together, such as username and password facts. 
 
 Under the hood, parsers are python modules that get called when the agent sends command output 
-to the CALDERA server and certain conditions are met:
+to the Caldera server and certain conditions are met:
 - If the corresponding ability has a specified parser associated with the command, 
 the parser module will be loaded and used to parse out any facts from the output.
 This will occur even if the agent ran the command outside of an operation
 - If the agent ran the command as part of an operation, but the corresponding ability does not 
-have any specified parsers associated with the command, CALDERA will check if the operation
-was configured to use default parsers. If so, any default parsers loaded within CALDERA will
+have any specified parsers associated with the command, Caldera will check if the operation
+was configured to use default parsers. If so, any default parsers loaded within Caldera will
 be used to parse out facts from the output. Otherwise, no parsing occurs.
 - If the agent ran the command outside of an operation, but the corresponding ability does not
-have any specified parsers associated with the command, CALDERA will use its default parsers
+have any specified parsers associated with the command, Caldera will use its default parsers
 to parse the output.
 
 Non-default Parser python modules are typically stored in individual plugins, such as `stockpile`, in the
 plugin's `app/parsers/` directory. For instance, if you look in `plugins/stockpile/app/parsers`, 
 you can see a variety of parsers that are provided out-of-the-box.
 
-Default parsers are located in the core CALDERA repo, under `app/learning`. 
+Default parsers are located in the core Caldera repo, under `app/learning`. 
 Two example modules are `p_ip.py` and `p_path.py`, which are used to parse IP addresses and file
 paths, respectively. Note that the default parsers have a different location due to their
 association with the learning service.
