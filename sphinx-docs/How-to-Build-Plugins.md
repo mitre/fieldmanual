@@ -1,10 +1,10 @@
 # How to Build Plugins
 
-Building your own plugin allows you to add custom functionality to CALDERA. 
+Building your own plugin allows you to add custom functionality to Caldera. 
 
 A plugin can be nearly anything, from a RAT/agent (like Sandcat) to a new GUI or a collection of abilities that you want to keep in "closed-source". 
 
-Plugins are stored in the plugins directory. If a plugin is also listed in the local.yml file, it will be loaded into CALDERA each time the server starts. A plugin is loaded through its hook.py file, which is "hooked" into the core system via the server.py (main) module.
+Plugins are stored in the plugins directory. If a plugin is also listed in the local.yml file, it will be loaded into Caldera each time the server starts. A plugin is loaded through its hook.py file, which is "hooked" into the core system via the server.py (main) module.
 
 > When constructing your own plugins, you should avoid importing modules from the core code base, as these can change. 
 > There are two exceptions to this rule
@@ -22,7 +22,7 @@ boilerplate.
 
 ## Creating the structure
 
-Start by creating a new directory called "abilities" in CALDERA's plugins directory. In this directory, create a hook.py file and ensure it looks like this:
+Start by creating a new directory called "abilities" in Caldera's plugins directory. In this directory, create a hook.py file and ensure it looks like this:
 ```python
 name = 'Abilities'
 description = 'A sample plugin for demonstration purposes'
@@ -37,9 +37,9 @@ The name should always be a single word, the description a phrase, and the addre
 
 ## The _enable_ function
 
-The enable function is what gets hooked into CALDERA at boot time. This function accepts one parameter:
+The enable function is what gets hooked into Caldera at boot time. This function accepts one parameter:
 
-1. **services**: a list of core services that CALDERA creates at boot time, which allow you to interact with the core system in a safe manner. 
+1. **services**: a list of core services that Caldera creates at boot time, which allow you to interact with the core system in a safe manner. 
 
 Core services can be found in the app/services directory.
 
@@ -70,7 +70,7 @@ class AbilityFetcher:
         return web.json_response(dict(abilities=[a.display for a in abilities]))
 ```
 
-Now that our initialize function is filled in, let's add the plugin to the default.yml file and restart CALDERA. Once running, in a browser or via cURL, navigate to 127.0.0.1:8888/get/abilities. If all worked, you should get a JSON response back, with all the abilities within CALDERA. 
+Now that our initialize function is filled in, let's add the plugin to the default.yml file and restart Caldera. Once running, in a browser or via cURL, navigate to 127.0.0.1:8888/get/abilities. If all worked, you should get a JSON response back, with all the abilities within Caldera. 
 
 ## Making it visual
 
@@ -131,7 +131,7 @@ class AbilityFetcher:
         return(dict(abilities=[a.display for a in abilities]))
 
 ```
-Restart CALDERA and navigate to the home page. Be sure to run ```server.py```
+Restart Caldera and navigate to the home page. Be sure to run ```server.py```
 with the ```--fresh``` flag to flush the previous object store database. 
 
 You should see a new "abilities" tab at the top, clicking on this should navigate you to the new abilities.html page you created. 

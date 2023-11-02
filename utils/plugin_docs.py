@@ -16,7 +16,7 @@ def import_plugin_docs(caldera_root_dir, sphinx_root_dir):
 def copy_plugin_docs(caldera_root_dir, sphinx_root_dir):
     """Copy docs from plugins to sphinx-docs/plugins/{plugin_name}/
 
-    :param caldera_root_dir: Path to CALDERA base directory
+    :param caldera_root_dir: Path to Caldera base directory
     :param sphinx_root_dir: Path to sphinx directory
     :return: List of copied Markdown and reStructuredText files
     """

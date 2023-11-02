@@ -9,7 +9,7 @@ Plugins can also be enabled through the GUI. Go to *Advanced -> Configuration* a
 
 ## Sandcat
 
-The Sandcat plugin contains CALDERA's default agent, which is written in GoLang for
+The Sandcat plugin contains Caldera's default agent, which is written in GoLang for
 cross-platform compatibility. 
 
 The agent will periodically beacon to the C2 server to receive instructions, execute instructions
@@ -20,12 +20,12 @@ For more details, see the [Sandcat plugin documentation](plugins/sandcat/Sandcat
 ### Deploy 
 
 To deploy Sandcat, use one of the built-in delivery commands which allows you to run the agent on any operating system. 
-Each of these commands downloads the compiled Sandcat executable from CALDERA and runs it immediately. Find
+Each of these commands downloads the compiled Sandcat executable from Caldera and runs it immediately. Find
 the commands on the Sandcat plugin tab.
 
-Once the agent is running, it should show log messages when it beacons into CALDERA.
+Once the agent is running, it should show log messages when it beacons into Caldera.
 
-> If you have GoLang installed on the CALDERA server, each time you run one of the delivery commands above, 
+> If you have GoLang installed on the Caldera server, each time you run one of the delivery commands above, 
 the agent will re-compile itself dynamically and it will change it's source code so it gets a different file 
 hash (MD5) and a random name that blends into the operating system. This will help bypass file-based signature detections.
 
@@ -33,7 +33,7 @@ hash (MD5) and a random name that blends into the operating system. This will he
 
 When deploying a Sandcat agent, there are optional parameters you can use when you start the executable:
 
-* **Server**: This is the location of CALDERA. The agent must have connectivity to this host/port. 
+* **Server**: This is the location of Caldera. The agent must have connectivity to this host/port. 
 * **Group**: This is the group name that you would like the agent to join when it starts. The group does not have to exist. A default group of my_group will be used if none is passed in.
 * **v**: Use `-v` to see verbose output from sandcat.  Otherwise, sandcat will run silently.
 
@@ -98,7 +98,7 @@ The following values describe exit codes utilized by specific executors:
 
 #### Customizing Default Options & Execution Without CLI Options
 
-It's possible to customize the default values of these options when pulling Sandcat from the CALDERA server.  
+It's possible to customize the default values of these options when pulling Sandcat from the Caldera server.  
 This is useful if you want to hide the parameters from the process tree. You can do this by passing the values
 in as headers instead of as parameters.
 
@@ -127,7 +127,7 @@ The Modbus plugin leverages the [pyModbus Library](https://github.com/pymodbus-d
 
 ## Mock 
 
-The Mock plugin adds a set of simulated agents to CALDERA and allows you to run complete operations without hooking any other computers up to your server. 
+The Mock plugin adds a set of simulated agents to Caldera and allows you to run complete operations without hooking any other computers up to your server. 
 
 These agents are created inside the `conf/agents.yml` file. They can be edited and you can create as many as you'd like. A sample agent looks like:
 ```
@@ -146,11 +146,11 @@ These agents are created inside the `conf/agents.yml` file. They can be edited a
     - psh
 ```
 
-After you load the mock plugin and restart CALDERA, all simulated agents will appear as normal agents in the Chain plugin GUI and can be used in any operation.
+After you load the mock plugin and restart Caldera, all simulated agents will appear as normal agents in the Chain plugin GUI and can be used in any operation.
 
 ## Manx
 
-The terminal plugin adds reverse-shell capability to CALDERA, along with a TCP-based agent called Manx.
+The terminal plugin adds reverse-shell capability to Caldera, along with a TCP-based agent called Manx.
 
 When this plugin is loaded, you'll get access to a new GUI page which allows you to drop reverse-shells on target hosts 
 and interact manually with the hosts. 
@@ -159,7 +159,7 @@ You can use the terminal emulator on the Terminal GUI page to interact with your
 
 ## Stockpile
 
-The stockpile plugin adds a few components to CALDERA:
+The stockpile plugin adds a few components to Caldera:
 
 * Abilities
 * Adversaries
@@ -188,16 +188,16 @@ Compass leverages ATT&CK Navigator, for more information see: [https://github.co
 
 ## Caltack
 
-The caltack plugin adds the public MITRE ATT&CK website to CALDERA. This is useful for deployments of CALDERA where an operator cannot access the Internet to reference the MITRE ATT&CK matrix.
+The caltack plugin adds the public MITRE ATT&CK website to Caldera. This is useful for deployments of Caldera where an operator cannot access the Internet to reference the MITRE ATT&CK matrix.
 
-After loading this plugin and restarting, the ATT&CK website is available from the CALDERA home page. Not all parts of the ATT&CK website will be available - but we aim to keep those pertaining to tactics and techniques accessible.
+After loading this plugin and restarting, the ATT&CK website is available from the Caldera home page. Not all parts of the ATT&CK website will be available - but we aim to keep those pertaining to tactics and techniques accessible.
 
 ## SSL
 
-The SSL plugin adds HTTPS to CALDERA. 
-> This plugin only works if CALDERA is running on a Linux or MacOS machine. It requires HaProxy (>= 1.8) to be installed prior to using it.
+The SSL plugin adds HTTPS to Caldera. 
+> This plugin only works if Caldera is running on a Linux or MacOS machine. It requires HaProxy (>= 1.8) to be installed prior to using it.
 
-When this plugin has been loaded, CALDERA will start the HAProxy service on the machine and serve CALDERA on all interfaces on port 8443, in addition to the normal http://[YOUR_IP]:8888 (based on the value of the `host` value in the CALDERA settings).
+When this plugin has been loaded, Caldera will start the HAProxy service on the machine and serve Caldera on all interfaces on port 8443, in addition to the normal http://[YOUR_IP]:8888 (based on the value of the `host` value in the Caldera settings).
 
 Plugins and agents will not automatically update to the service at https://[YOUR_IP]:8443. All agents will need to be redeployed using the HTTPS address to use the secure protocol. The address will not automatically populate in the agent deployment menu. If a self-signed certificate is used, deploying agents may require additional commands to disable SSL certificate checks.
 
@@ -207,15 +207,15 @@ Plugins and agents will not automatically update to the service at https://[YOUR
 
 *Note: OpenSSL must be installed on your system to generate a new self-signed certificate*
 
-1. In the root CALDERA directory, navigate to `plugins/ssl`.
+1. In the root Caldera directory, navigate to `plugins/ssl`.
 1. Place a PEM file containing SSL public and private keys in `conf/certificate.pem`. Follow the instructions below to generate a new self-signed certificate:
    - In a terminal, paste the command `openssl req -x509 -newkey rsa:4096  -out conf/certificate.pem -keyout conf/certificate.pem -nodes` and press enter.
    - This will prompt you for identifying details. Enter your country code when prompted. You may leave the rest blank by pressing enter.
 1. Copy the file `haproxy.conf` from the `templates` directory to the `conf` directory.
 1. Open the file `conf/haproxy.conf` in a text editor. 
 1. On the line `bind *:8443 ssl crt plugins/ssl/conf/insecure_certificate.pem`, replace `insecure_certificate.pem` with `certificate.pem`.
-1. On the line `server caldera_main 127.0.0.1:8888 cookie caldera_main`, replace `127.0.0.1:8888` with the host and port defined in CALDERA's `conf/local.yml` file. This should not be required if CALDERA's configuration has not been changed.
-1. Save and close the file. Congratulations! You can now use CALDERA securely by accessing the UI https://[YOUR_IP]:8443 and redeploying agents using the HTTPS service.
+1. On the line `server caldera_main 127.0.0.1:8888 cookie caldera_main`, replace `127.0.0.1:8888` with the host and port defined in Caldera's `conf/local.yml` file. This should not be required if Caldera's configuration has not been changed.
+1. Save and close the file. Congratulations! You can now use Caldera securely by accessing the UI https://[YOUR_IP]:8443 and redeploying agents using the HTTPS service.
 
 ## Atomic
 
@@ -238,11 +238,11 @@ red actions by Caldera. Each human is built for a specific operating system and 
 OS applications to perform a variety of tasks.  Additionally, these humans can have various aspects of their behavior "tuned"
 to add randomization to the behaviors on the target system.
 
-On the CALDERA server, there are additional python packages required in order to use the Human plugin.
+On the Caldera server, there are additional python packages required in order to use the Human plugin.
 These python packages can be installed by navigating to the `plugins/human/` directory and running the command `pip3 install -r requirements.txt`
 
 With the python package installed and the plugin enabled in the configuration file, the Human plugin is ready for use.
-When opening the plugin within CALDERA, there are a few actions that the human can perform.
+When opening the plugin within Caldera, there are a few actions that the human can perform.
 Check the box for each action you would like the human to perform. 
 Once the actions are selected, then "Generate" the human.
 
@@ -253,13 +253,13 @@ Before deploying the human on a target machine, there are 3 requirements:
 2. Install the python package `virtualenv` on the target machine
 3. Install Google Chrome on the target machine
 
-Once the requirements above are met, then copy the human deployment command from the CALDERA server and run it on the target machine.
-The deployment command downloads a tar file from the CALDERA server, un-archives it, and starts the human using python.
+Once the requirements above are met, then copy the human deployment command from the Caldera server and run it on the target machine.
+The deployment command downloads a tar file from the Caldera server, un-archives it, and starts the human using python.
 The human runs in a python virtual environment to ensure there are no package conflicts with pre-existing packages.
 
 ## Training
 
-This plugin allows a user to gain a "User Certificate" which proves their ability to use CALDERA. This is the first of several certificates planned in the future. The plugin takes you through a capture-the-flag style certification course, covering all parts CALDERA.
+This plugin allows a user to gain a "User Certificate" which proves their ability to use Caldera. This is the first of several certificates planned in the future. The plugin takes you through a capture-the-flag style certification course, covering all parts Caldera.
 
 ## Access
 
@@ -272,8 +272,8 @@ The Access plugin also allows for the easy creation of abilities for Metasploit 
 Prerequisites:
 
 * An agent running on a host that has Metasploit installed and initialized (run it once to set up Metasploit's database)
-* The `app.contact.http` option in CALDERA's configuration includes `http://`
-* A fact source that includes a `app.api_key.red` fact with a value equal to the `api_key_red` option in CALDERA's configuration
+* The `app.contact.http` option in Caldera's configuration includes `http://`
+* A fact source that includes a `app.api_key.red` fact with a value equal to the `api_key_red` option in Caldera's configuration
 
 Within the `build-capabilities` tactic there is an ability called `Load Metasploit Abilities`. Run this ability with an agent and fact source as described above, which will add a new ability for each Metasploit exploit. These abilities can then be found under the `metasploit` tactic. Note that this process may take 15 minutes.
 
@@ -283,7 +283,7 @@ Alternatively, you can set options by adding a fact for each option with the `ms
 
 ## Builder
 
-The Builder plugin enables CALDERA to dynamically compile code segments into payloads that can be executed as abilities by implants. Currently, only C# is supported. 
+The Builder plugin enables Caldera to dynamically compile code segments into payloads that can be executed as abilities by implants. Currently, only C# is supported. 
 
 See [Dynamically-Compiled Payloads](Dynamically-Compiled-Payloads.md) for examples on how to create abilities that leverage these payloads.
 

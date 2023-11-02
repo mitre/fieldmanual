@@ -81,7 +81,7 @@ profile=$(echo '{"server":"http://127.0.0.1:8888","platform":"darwin","executors
 time you call the /beacon endpoint without this paw, a new agent will be created on the server - so you should ensure
 that future beacons include it.
 
-You can now navigate to the CALDERA UI, click into the agents tab and view your new agent. 
+You can now navigate to the Caldera UI, click into the agents tab and view your new agent. 
 
 ### Part #2
 
@@ -138,7 +138,7 @@ the number of seconds to allow a dead beacon before killing the agent.
 
 ## Lateral Movement Tracking
 
-Additionally, you may want to take advantage of CALDERA's lateral movement tracking capabilities. CALDERA's current 
+Additionally, you may want to take advantage of Caldera's lateral movement tracking capabilities. Caldera's current 
 implementation for tracking lateral movement depends on passing the ID of the Link spawning the agent as 
 an argument to the agent's spawn command and upon the agent's check in, for this Link ID to be returned as part of the
 agent's profile. The following section explains how lateral movement tracking has been enabled for the default agent,
@@ -151,15 +151,15 @@ and included below for reference:
 ```
 C:\Users\Public\s4ndc4t.exe -server #{server} -originLinkID #{origin_link_id}
 ```
-If the CALDERA server is running on `http://192.168.0.1:8888` and the ID of the Link with the spawn command is `cd63fdbb-0f3a-49ea-b4eb-306a3ff40f81`,
+If the Caldera server is running on `http://192.168.0.1:8888` and the ID of the Link with the spawn command is `cd63fdbb-0f3a-49ea-b4eb-306a3ff40f81`,
 the populated command will appear as:
 ```
 C:\Users\Public\s4ndc4t.exe -server http://192.168.0.1:8888 -originLinkID cd63fdbb-0f3a-49ea-b4eb-306a3ff40f81
 ```
-The Sandcat agent stores the value of this global variable in its profile, which is then returned to the CALDERA server
-upon first check-in as a key\value pair `origin_link_id : cd63fdbb-0f3a-49ea-b4eb-306a3ff40f81` in the JSON dictionary. The CALDERA server will 
+The Sandcat agent stores the value of this global variable in its profile, which is then returned to the Caldera server
+upon first check-in as a key\value pair `origin_link_id : cd63fdbb-0f3a-49ea-b4eb-306a3ff40f81` in the JSON dictionary. The Caldera server will 
 automatically store this pair when creating the Agent object and use it when generating the Attack Path graph in the
 Debrief plugin.
 
-**NOTE: The `origin_link_id` key is optional and not required for the CALDERA server to register and use new agents as
+**NOTE: The `origin_link_id` key is optional and not required for the Caldera server to register and use new agents as
  expected. It is only required to take advantage of the lateral movement tracking in the Debrief plugin.**  
