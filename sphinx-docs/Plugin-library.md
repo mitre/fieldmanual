@@ -125,6 +125,10 @@ The DNP3 plugin leverages the [openDNP3 Library](https://github.com/dnp3/opendnp
 
 The Modbus plugin leverages the [pyModbus Library](https://github.com/pymodbus-dev/pymodbus/) to expose native functionality of the Modbus protocol to Caldera.
 
+### Profinet
+
+The Profinet plugin leverages the [pnio_dcp Library](https://gitlab.com/pyshacks/pnio_dcp/) to expose native functionality of the Profinet protocol to Caldera.
+
 ## Mock 
 
 The Mock plugin adds a set of simulated agents to Caldera and allows you to run complete operations without hooking any other computers up to your server. 
