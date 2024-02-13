@@ -6,7 +6,7 @@ to the bottom of the Caldera navigation menu and selecting "api docs."*
 
 All REST API functionality can be viewed in the rest_api.py module in the source code.
 
-** ---`Below documentation is deprecated. ---`**
+**`Below documentation is deprecated.`**
 
 ### /api/rest
 
