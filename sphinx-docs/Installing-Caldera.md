@@ -8,6 +8,7 @@ Caldera aims to support a wide range of target systems, the core requirements ar
 
 * Linux or MacOS operating system
 * Python 3.8 or later (with pip3)
+* NodeJS v16 or later (for Caldera v5)
 * A modern browser (Google Chrome is recommended)
 * The packages listed in the [requirements file](https://github.com/mitre/caldera/blob/master/requirements.txt)
 
@@ -29,7 +30,7 @@ Caldera can be installed quickly by executing the following 4 commands in your t
 git clone https://github.com/mitre/caldera.git --recursive
 cd caldera
 pip3 install -r requirements.txt
-python3 server.py --insecure
+python3 server.py --insecure --build
 ```
 
 ### Step-by-step Explanation
@@ -42,10 +43,10 @@ In general, the `git clone` command takes the form:
 git clone https://github.com/mitre/caldera.git --recursive --branch x.x.x
 ```
 
-To install version 4.0.0, one would execute:
+To install version 5.0.0, one would execute:
 
 ```sh
-git clone https://github.com/mitre/caldera.git --recursive --branch 4.0.0
+git clone https://github.com/mitre/caldera.git --recursive --branch 5.0.0
 ```
 
 Once the clone completes, we can jump in to the new `caldera` directory:
@@ -63,8 +64,10 @@ sudo pip3 install -r requirements.txt
 Finally, start the server (optionally with startup [flags](Server-Configuration.md#startup-parameters) for additional logging):
 
 ```sh
-python3 server.py
+python3 server.py --build
 ```
+
+The `--build` argument is only required on the first boot of the Caldera server, or when latest changes are pulled.
 
 Once started, log in to http://localhost:8888 with the `red` using the password found in the `conf/local.yml` file (this file will be generated on server start).
 
@@ -135,5 +138,5 @@ Caldera can then be started as usual on the offline server:
 
 ```sh
 cd caldera
-python3 server.py
+python3 server.py --build
 ```
