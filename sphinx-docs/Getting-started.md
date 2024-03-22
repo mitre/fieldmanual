@@ -10,7 +10,7 @@ This is the original Caldera use-case. You can use the framework to build a spec
 
 The following steps will walk through logging in, deploying an agent, selecting an adversary, and running an operation:
 
-1) Log in as a red user. By default, a "red" user is creating with a password found in the `conf/local.yml` file (or `conf/default.yml` if using insecure settings).
+1) Log in as a red user. By default, a "red" user is created with a password found in the `conf/local.yml` file (or `conf/default.yml` if using insecure settings).
 1) Deploy an agent
    - Navigate to the Agents page and click the "Click here to deploy an agent"
    - Choose the Sandcat agent and platform (victim operating system)
@@ -47,7 +47,7 @@ Caldera can be used to perform automated incident response through deployed agen
 
 The following steps will walk through logging in to Caldera blue, deploying a blue agent, selecting a defender, and running an operation:
 
-1) Log in as a blue user. By default, a "blue" user is creating with a password found in the `conf/local.yml` file (or `conf/default.yml` if using insecure settings).
+1) Log in as a blue user. By default, a "blue" user is created with a password found in the `conf/local.yml` file (or `conf/default.yml` if using insecure settings).
 1) Deploy a blue agent
    - Navigate to the Agents page and click the "Click here to deploy an agent"
    - Choose the Sandcat agent and platform (victim operating system)
