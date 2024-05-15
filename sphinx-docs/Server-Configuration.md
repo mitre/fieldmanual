@@ -19,6 +19,8 @@ Caldera's configuration file is located at `conf/local.yml`, written on the firs
 
 Configuration file changes must be made while the server is shut down. Any changes made to the configuration file while the server is running will be overwritten.
 
+The values used for `host` and `port` are used to configure the Caldera v5 Vue UI when the Caldera server is started with the `--build` flag. It has been observed that in some situations the default configuration values can cause the UI to appear unresponsive due to misrouted requests. This mainly occurs when the server is running on a host different than the UI is being accessed from. In these cases, the `host` and `port` values should be changed to the appropriate domain name or IP address for the UI to route requests to.
+
 The YAML configuration file contains all the configuration variables Caldera requires to boot up and run. A documented configuration file is below:
 
 ```yaml
