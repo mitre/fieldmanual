@@ -19,7 +19,7 @@ Caldera's configuration file is located at `conf/local.yml`, written on the firs
 
 Configuration file changes must be made while the server is shut down. Any changes made to the configuration file while the server is running will be overwritten.
 
-The values used for `host` and `port` are used to configure the Caldera v5 Vue UI when the Caldera server is started with the `--build` flag. It has been observed that in some situations the default configuration values can cause the UI to appear unresponsive due to misrouted requests. This mainly occurs when the server is running on a host different than the UI is being accessed from. In these cases, the `host` and `port` values should be changed to the appropriate domain name or IP address for the UI to route requests to.
+The value set for `app.frontend.api_base_url` is used to configure the Caldera v5 Vue UI when the Caldera server is started with the `--build` flag. It has been observed that in some situations the default configuration values can cause the UI to appear unresponsive due to misrouted requests. This mainly occurs when the server is running on a host different than the UI is being accessed from. In these cases, the value should be changed to the appropriate URL for the UI to route requests to.
 
 The YAML configuration file contains all the configuration variables Caldera requires to boot up and run. A documented configuration file is below:
 
@@ -35,6 +35,7 @@ app.contact.http: http://0.0.0.0:8888  # Server to connect to for the HTTP conta
 app.contact.tcp: 0.0.0.0:7010  # Listen host and port for the TCP contact server
 app.contact.udp: 0.0.0.0:7011  # Listen host and port for the UDP contact server
 app.contact.websocket: 0.0.0.0:7012  # Listen host and port for the Websocket contact server
+app.frontend.api_base_url: http://localhost:8888
 objects.planners.default: atomic  # Specify which planner should be used by default (works for all objects, just replace `planners` with the appropriate object type name)
 crypt_salt: REPLACE_WITH_RANDOM_VALUE  # Salt for file encryption
 encryption_key: ADMIN123  # Encryption key for file encryption
