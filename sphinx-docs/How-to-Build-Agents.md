@@ -144,6 +144,35 @@ an argument to the agent's spawn command and upon the agent's check in, for this
 agent's profile. The following section explains how lateral movement tracking has been enabled for the default agent,
 Sandcat.  
 
+## Compiling Sandcat Agent
+
+To create a standalone Sandcat agent executable without supplying CLI options or header values, you need to recompile the Sandcat agent with your Caldera server IP address and port number. 
+
+Start by locating the `sandcat.go` file in the Sandcat plugin directory. The full path is `caldera\plugins\sandcat\gocat\sandcat.go`. This file contains default values that can be hardcoded. To create an agent with hardcoded credentials for your Caldera server, adjust the `server` variable to
+ `"http://<YourCalderaServerIP>:<YourCalderaServerPort>"`. 
+
+After modifying the file, recompile the Sandcat agent with your server configuration. Run the appropriate command from the `caldera\plugins\sandcat\gocat` directory, depending on the operating system in which the agent will be running:
+
+- Windows\
+`GOOS=windows go build -o ../payloads/sandcat.go-windows -ldflags="-s -w" sandcat.go`
+
+- Linux\
+`GOOS=linux go build -o ../payloads/sandcat.go-linux -ldflags="-s -w" sandcat.go`
+
+- Mac/Unix\
+`GOOS=darwin go build -o ../payloads/sandcat.go-darwin -ldflags="-s -w" sandcat.go`
+
+If Go isn't installed in your Sandcat agent's environment, you can change the file extension of the agent before recompiling it. For instance:
+
+- Windows\
+`GOOS=windows go build -o ../payloads/sandcat.exe -ldflags="-s -w" sandcat.go`
+
+- Linux\
+`GOOS=linux go build -o ../payloads/sandcat.bin -ldflags="-s -w" sandcat.go`
+
+- Mac/Unix\
+`GOOS=darwin go build -o ../payloads/sandcat.app -ldflags="-s -w" sandcat.go`
+
 ### Sandcat
 
 An example Sandcat spawn command has been copied from the [Service Creation ability](https://github.com/mitre/stockpile/blob/master/data/abilities/execution/95727b87-175c-4a69-8c7a-a5d82746a753.yml)
