@@ -144,7 +144,7 @@ an argument to the agent's spawn command and upon the agent's check in, for this
 agent's profile. The following section explains how lateral movement tracking has been enabled for the default agent,
 Sandcat.  
 
-## Compiling Sandcat Agent
+## Manually Compiling Sandcat Agent
 
 To create a standalone Sandcat agent executable without supplying CLI options or header values, you need to recompile the Sandcat agent with your Caldera server IP address and port number. 
 
