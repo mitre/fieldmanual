@@ -10,7 +10,7 @@ class CalderaCommandLexer(RegexLexer):
     tokens = {
         "root": [
             # Match the executable
-            (r"(?:\./|\.\\)[\w-]+(?:\.[\w]+)?", Name.Function),
+            (r'(?:\./|\.\\)(?:[\w-]+(?:/[\w-]+)*/?)(?:[\w-]+(?:\.[\w]+)?)', Name.Function),
 
             # Match the #{fact} pattern
             (r"(\#\{)([^\}]+)(\})", bygroups(Punctuation, Keyword, Punctuation)),
