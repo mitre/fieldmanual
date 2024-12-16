@@ -3,13 +3,15 @@ import pathlib
 import sys
 
 import sphinx.ext.apidoc as apidoc
+from sphinx.highlighting import lexers
+
 
 caldera_root_dir = pathlib.Path('../../..').absolute()
 sys.path.insert(0, str(caldera_root_dir))
 
 from plugins.fieldmanual.utils.plugin_docs import import_plugin_docs
 from plugins.fieldmanual.utils.ability_csv import generate_ability_csv
-
+from plugins.fieldmanual.utils.command_lexer import CalderaCommandLexer
 
 def visit_document(*_):
     pass
@@ -47,6 +49,8 @@ extensions = [
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_static_path = ['_static']
+
+lexers['caldera'] = CalderaCommandLexer()
 
 # -- Options for HTML output -------------------------------------------------
 
