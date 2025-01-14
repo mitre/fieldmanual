@@ -200,7 +200,7 @@ You can use a myriad of criteria to determine which abilities or specific execut
 
 ``` python
 #myplugin_svc.py -> see add your logic here
-ability.additional_info.hook == "myspecialhook" 
+ability.additional_info['hook'] == "myspecialhook" 
 ```
 
 ```yaml
@@ -208,6 +208,5 @@ ability.additional_info.hook == "myspecialhook"
 - id: 1811b7f2-3a73-11eb-adc1-0242ac120103
   name: my awesome ability
   plugin: myplugin
-  additional_info:
-    hook: myspecialhook
+  hook: myspecialhook
 ```
