@@ -79,8 +79,9 @@ plugins, or new tools that interface with the Caldera server.
 .. toctree::
    :maxdepth: 3
    :caption: Core System API
+   :glob:
 
-   _generated/modules
+   _generated/*
 
 
 Indices and tables
