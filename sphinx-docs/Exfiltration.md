@@ -1,6 +1,6 @@
 # Exfiltration
 
-After completing an operation a user may want to review the data retreived from the target system. This data is automatically stored on the Caldera server in a directory specified in [/conf/default.yml](Server-Configuration.md#configuration-file).
+After completing an operation a user may want to review the data retrieved from the target system. This data is automatically stored on the Caldera server in a directory specified in [/conf/default.yml](Server-Configuration.md#configuration-file).
 
 ## Exfiltrating Files
 

@@ -177,7 +177,7 @@ These components are all loaded through the `plugins/stockpile/data/*` directory
 The response plugin is an autonomous incident response plugin, which can fight back against adversaries
 on a compromised host.
 
-Similar to the stockpile plugin, it contains adversaries, abilties, and facts intended for incident response. These components are all loaded through the `plugins/response/data/*` directory.
+Similar to the stockpile plugin, it contains adversaries, abilities, and facts intended for incident response. These components are all loaded through the `plugins/response/data/*` directory.
 
 ## Compass
 

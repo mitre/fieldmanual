@@ -325,7 +325,7 @@ Planners are single module Python files. Planners utilize the core system’s pl
 
 ### The Atomic planner
 
-Caldera ships with a default planner, _atomic_. The _atomic_ planner operates by atomically sending a single ability command to each agent in the operation's group at a time, progressing through abilities as they are enumerated in the underyling adversary profile. When a new agent is added to the operation, the _atomic_ planner will start with the first ability in the adversary profile.
+Caldera ships with a default planner, _atomic_. The _atomic_ planner operates by atomically sending a single ability command to each agent in the operation's group at a time, progressing through abilities as they are enumerated in the underlying adversary profile. When a new agent is added to the operation, the _atomic_ planner will start with the first ability in the adversary profile.
 
 The _atomic_ planner can be found in the `mitre/stockpile` GitHub repository at `app/atomic.py`.
  

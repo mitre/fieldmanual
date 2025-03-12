@@ -1,6 +1,5 @@
 import argparse
 import csv
-import os
 import pathlib
 import sys
 
@@ -70,7 +69,7 @@ def generate_ability_csv(caldera_dir, dest_file="abilities.csv"):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--caldera-dir', dest='caldera_dir', default='',
-                        help='The path to the root caldera directory, the scirpt will recursively search here'
+                        help='The path to the root caldera directory, the script will recursively search here'
                              'for ability files.')
     parser.add_argument('--dest-file', dest='dest_file', default='abilities.csv',
                         help='The output path. A csv file will be written to this path.')
