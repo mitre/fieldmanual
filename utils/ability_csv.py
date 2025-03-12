@@ -43,7 +43,7 @@ def _transform_ability(ability_dict, plugin_name=''):
 def generate_ability_csv(caldera_dir, dest_file="abilities.csv"):
     dest_path = pathlib.Path(dest_file)
     caldera_path = pathlib.Path(caldera_dir).resolve()
-    caldera_data_backup_path = os.path.join(caldera_path, "data", "backup")
+    caldera_data_backup_path = caldera_path / "data" / "backup"
 
     print(f'Searching for and processing ability files in {caldera_path.absolute()}')
 
@@ -52,7 +52,7 @@ def generate_ability_csv(caldera_dir, dest_file="abilities.csv"):
         writer.writeheader()
         for i, ability_file in enumerate(caldera_path.glob("**/abilities/*/*.yml")):
             # Skip the backup directory in case someone opened up backup tar.gz file in there.
-            if str(ability_file).startswith(caldera_data_backup_path):
+            if caldera_data_backup_path in ability_file.parents:
                 continue
 
             raw_ability = ability_file.read_text()

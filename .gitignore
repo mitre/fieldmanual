@@ -1,7 +1,6 @@
 
 # Plugin docs
 
-sphinx-docs/index.rst
 sphinx-docs/plugins/*
 sphinx-docs/plugins/*/
 !sphinx-docs/plugins/.gitkeep
