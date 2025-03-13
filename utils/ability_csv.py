@@ -46,10 +46,11 @@ def generate_ability_csv(caldera_dir, dest_file="abilities.csv"):
 
     print(f'Searching for and processing ability files in {caldera_path.absolute()}')
 
+    ability_count = 0
     with dest_path.open('w', newline='') as fle:
         writer = csv.DictWriter(fle, fieldnames=OUTPUT_COLUMNS)
         writer.writeheader()
-        for i, ability_file in enumerate(caldera_path.glob("**/abilities/*/*.yml")):
+        for ability_file in caldera_path.glob("**/abilities/*/*.yml"):
             # Skip the backup directory in case someone opened up backup tar.gz file in there.
             if caldera_data_backup_path in ability_file.parents:
                 continue
@@ -62,8 +63,9 @@ def generate_ability_csv(caldera_dir, dest_file="abilities.csv"):
             ability = yaml.safe_load(ability_file.read_text())[0]
             output_ability = _transform_ability(ability, plugin_name=_parse_plugin_name(ability_file))
             writer.writerow(output_ability)
+            ability_count += 1
 
-        print(f'Processed {i} ability files and wrote results to {dest_path.absolute()}.')
+    print(f'Processed {ability_count} abilities and wrote results to {dest_path.absolute()}.')
 
 
 if __name__ == '__main__':
