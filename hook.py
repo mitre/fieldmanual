@@ -37,7 +37,7 @@ def _run_sphinx_build():
     sys.stdout = out
     sys.stderr = err
 
-    argv = ["-M", "html", str(sphinx_docs_root), str(sphinx_build_dir)]
+    argv = ['-M', 'html', str(sphinx_docs_root), str(sphinx_build_dir)]
 
     sphinx.cmd.build.main(argv)
 
@@ -52,7 +52,7 @@ async def build_docs(loop=None):
         try:
             out, err = await loop.run_in_executor(pool, _run_sphinx_build)
         except Exception:
-            logger.warning("Encountered problem while building documentation.", exc_info=True)
+            logger.warning('Encountered problem while building documentation.', exc_info=True)
 
         if 'build succeeded' in out and err:
             logger.info(f'Docs built successfully with the following warnings\n{err}')

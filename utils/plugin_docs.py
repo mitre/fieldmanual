@@ -2,7 +2,7 @@ import pathlib
 import shutil
 
 # Directory in plugin to pull documentation from
-PLUGIN_DOCS_DIR = "docs"
+PLUGIN_DOCS_DIR = 'docs'
 
 
 def import_plugin_docs(caldera_root_dir, sphinx_root_dir):
@@ -16,8 +16,8 @@ def import_plugin_docs(caldera_root_dir, sphinx_root_dir):
     :return: List of copied Markdown and reStructuredText files
     """
 
-    sphinx_plugins_dir = pathlib.Path(sphinx_root_dir).resolve() / "plugins"
-    caldera_plugins_dir = pathlib.Path(caldera_root_dir).resolve() / "plugins"
+    sphinx_plugins_dir = pathlib.Path(sphinx_root_dir).resolve() / 'plugins'
+    caldera_plugins_dir = pathlib.Path(caldera_root_dir).resolve() / 'plugins'
 
     # Clear sphinx plugin documentation directory
     for f in sphinx_plugins_dir.iterdir():
