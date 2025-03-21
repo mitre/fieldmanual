@@ -113,22 +113,6 @@ curl -sk -X POST -H 'file:sandcat.go' -H 'platform:linux' -H 'server:http://10.0
 The Caldera for OT plugins extend Caldera by providing support for common industrial protocols. Each plugin contains a collection of abilities unique to an operational technology (OT) protocol.
 To install the plugins and learn more about which protocols are currently supported, visit: [https://github.com/mitre/caldera-ot](https://github.com/mitre/caldera-ot).
 
-### BACnet
-
-The BACnet plugin leverages the [BACnet Stack Library](https://github.com/bacnet-stack/bacnet-stack/) to expose native functionality of the BACnet protocol to Caldera.
-
-### DNP3
-
-The DNP3 plugin leverages the [openDNP3 Library](https://github.com/dnp3/opendnp3/) to expose native functionality of the DNP3 protocol to Caldera.
-
-### Modbus
-
-The Modbus plugin leverages the [pyModbus Library](https://github.com/pymodbus-dev/pymodbus/) to expose native functionality of the Modbus protocol to Caldera.
-
-### Profinet
-
-The Profinet plugin leverages the [pnio_dcp Library](https://gitlab.com/pyshacks/pnio_dcp/) to expose native functionality of the Profinet protocol to Caldera.
-
 ## Mock 
 
 The Mock plugin adds a set of simulated agents to Caldera and allows you to run complete operations without hooking any other computers up to your server. 
@@ -177,7 +161,7 @@ These components are all loaded through the `plugins/stockpile/data/*` directory
 The response plugin is an autonomous incident response plugin, which can fight back against adversaries
 on a compromised host.
 
-Similar to the stockpile plugin, it contains adversaries, abilties, and facts intended for incident response. These components are all loaded through the `plugins/response/data/*` directory.
+Similar to the stockpile plugin, it contains adversaries, abilities, and facts intended for incident response. These components are all loaded through the `plugins/response/data/*` directory.
 
 ## Compass
 

@@ -1,6 +1,5 @@
 import argparse
 import csv
-import os
 import pathlib
 import sys
 
@@ -40,19 +39,20 @@ def _transform_ability(ability_dict, plugin_name=''):
     }
 
 
-def generate_ability_csv(caldera_dir, dest_file="abilities.csv"):
+def generate_ability_csv(caldera_dir, dest_file='abilities.csv'):
     dest_path = pathlib.Path(dest_file)
     caldera_path = pathlib.Path(caldera_dir).resolve()
-    caldera_data_backup_path = os.path.join(caldera_path, "data", "backup")
+    caldera_data_backup_path = caldera_path / 'data' / 'backup'
 
     print(f'Searching for and processing ability files in {caldera_path.absolute()}')
 
+    ability_count = 0
     with dest_path.open('w', newline='') as fle:
         writer = csv.DictWriter(fle, fieldnames=OUTPUT_COLUMNS)
         writer.writeheader()
-        for i, ability_file in enumerate(caldera_path.glob("**/abilities/*/*.yml")):
+        for ability_file in caldera_path.glob('**/abilities/*/*.yml'):
             # Skip the backup directory in case someone opened up backup tar.gz file in there.
-            if str(ability_file).startswith(caldera_data_backup_path):
+            if caldera_data_backup_path in ability_file.parents:
                 continue
 
             raw_ability = ability_file.read_text()
@@ -63,14 +63,15 @@ def generate_ability_csv(caldera_dir, dest_file="abilities.csv"):
             ability = yaml.safe_load(ability_file.read_text())[0]
             output_ability = _transform_ability(ability, plugin_name=_parse_plugin_name(ability_file))
             writer.writerow(output_ability)
+            ability_count += 1
 
-        print(f'Processed {i} ability files and wrote results to {dest_path.absolute()}.')
+    print(f'Processed {ability_count} abilities and wrote results to {dest_path.absolute()}.')
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--caldera-dir', dest='caldera_dir', default='',
-                        help='The path to the root caldera directory, the scirpt will recursively search here'
+                        help='The path to the root caldera directory, the script will recursively search here'
                              'for ability files.')
     parser.add_argument('--dest-file', dest='dest_file', default='abilities.csv',
                         help='The output path. A csv file will be written to this path.')

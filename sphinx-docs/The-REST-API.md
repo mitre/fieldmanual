@@ -1,12 +1,8 @@
 # The REST API
 
-*`NOTE`: The original REST API has been deprecated. The new REST API v2 has been released, with [documentation
-available here after server startup](/api/docs). Alternatively, this can be viewed by scrolling
-to the bottom of the Caldera navigation menu and selecting "api docs."*
-
-All REST API functionality can be viewed in the rest_api.py module in the source code.
-
-**`Below documentation is deprecated.`**
+```{warning}
+The original REST API has been deprecated. The new REST API v2 documentation can be found in the CORE SYSTEM API section or by scrolling to the bottom of the Caldera navigation menu and selecting "api docs."
+```
 
 ### /api/rest
 
@@ -105,7 +101,7 @@ curl -F 'data=@path/to/file' http://localhost:8888/file/upload
 
 ## /file/download
 
-Files can be dowloaded from Caldera through the /file/download endpoint. This endpoint requires an HTTP header called "file" with the file name as the value. When a file is requested, Caldera will look inside each of the payload directories listed in the local.yml file until it finds a file matching the name.
+Files can be downloaded from Caldera through the /file/download endpoint. This endpoint requires an HTTP header called "file" with the file name as the value. When a file is requested, Caldera will look inside each of the payload directories listed in the local.yml file until it finds a file matching the name.
 
 Files can also be downloaded indirectly through the [payload block of an ability](Learning-the-terminology.md).
 

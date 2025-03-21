@@ -1,14 +1,14 @@
-.. caldera documentation master file, created by
-   sphinx-quickstart on Tue Jan  7 13:46:39 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. caldera documentation master file
+
+.. |TM| unicode:: U+2122
+   :ltrim:
 
 Welcome to MITRE Caldera's documentation!
 =========================================
 
-Caldera™ is an adversary emulation platform designed to easily run autonomous breach-and-attack simulation exercises. It can also
+Caldera |TM| is an adversary emulation platform designed to easily run autonomous breach-and-attack simulation exercises. It can also
 be used to run manual red-team engagements or automated incident response. Caldera is built on the
-`MITRE ATT&CK™ framework <https://attack.mitre.org>`_ and is an active research project at MITRE.
+`MITRE ATT&CK <https://attack.mitre.org>`_ |TM| framework and is an active research project at MITRE.
 
 The framework consists of two components:
 
@@ -58,9 +58,10 @@ The following section contains documentation from installed plugins.
 .. toctree::
    :maxdepth: 3
    :caption: Plugin Documentation
-{% for plugin_doc in plugin_docs %}
-   {{ plugin_doc }}
-{% endfor %}
+   :glob:
+
+   plugins/**/*
+
 
 The following section contains information intended to help developers
 understand the inner workings of the Caldera adversary emulation tool, Caldera
@@ -78,8 +79,9 @@ plugins, or new tools that interface with the Caldera server.
 .. toctree::
    :maxdepth: 3
    :caption: Core System API
+   :glob:
 
-   _generated/modules
+   _generated/*
 
 
 Indices and tables

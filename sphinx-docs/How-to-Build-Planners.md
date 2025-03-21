@@ -103,7 +103,7 @@ It is also important to note that a planner may define any required variables th
         if lateral_movement_unlocked:
             self.next_bucket = await self.planning_svc.default_next_bucket('discovery', self.state_machine)
         else:
-            # planner will transtion from this bucket to being done
+            # planner will transition from this bucket to being done
             self.next_bucket = None
 
     async def lateral_movement(self):
@@ -121,7 +121,7 @@ Lets look at each of the bucket methods in detail:
 
 **_Additional Notes on Privileged Persistence Planner_**
 
-- You may have noticed that the _privileged_persistence_ planner is only notionally more sophisticated than running certain default adversary profiles. This is correct. If you can find or create an adversary profile whose ability enumeration (i.e. order) can carry out your desired operational progression between abilities and can be executed in batch (by the default _batch_ planner) or in a sequentially atomic order (by _atmomic_ planner), it is advised to go that route. However, any decision logic above those simple planners will have to be implemented in a new planner.
+- You may have noticed that the _privileged_persistence_ planner is only notionally more sophisticated than running certain default adversary profiles. This is correct. If you can find or create an adversary profile whose ability enumeration (i.e. order) can carry out your desired operational progression between abilities and can be executed in batch (by the default _batch_ planner) or in a sequentially atomic order (by _atomic_ planner), it is advised to go that route. However, any decision logic above those simple planners will have to be implemented in a new planner.
 - The _privileged persistence_ planner did not have explicit logic to handle multiple agents. We just assumed the planner buckets would only have to handle a single active agent given the available ability links returned from the planning service. 
 
 ### Creating the Planner Object
