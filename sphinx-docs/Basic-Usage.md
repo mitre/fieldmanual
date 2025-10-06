@@ -69,6 +69,11 @@ Here is a sample ability:
       sh:
         command: |
           ./wifi.sh scan
+        alt_command:
+          './wifi.sh modify'
+        labels:
+          - scan
+          - modify
         payload: wifi.sh
     windows:
       psh:
@@ -98,6 +103,8 @@ Each platform block consists of a:
 * parsers (optional)
 * requirements (optional)
 * timeout (optional)
+* alt_command (optional)
+* labels (optional)
 
 **Command**: A command can be 1-line or many and should contain the code you would like the ability to execute. Newlines in the command will be deleted before execution. The command can (optionally) contain variables, which are identified as `#{variable}`.
 
@@ -165,6 +172,10 @@ Abilities can also make use of two Caldera REST API endpoints, file upload and d
 **Requirements**: Required relationships of facts that need to be established before this ability can be used. See [Requirements](Requirements.md) for more information.
 
 **Timeout**: How many seconds to allow the command to run.
+
+**Alt Command**: A second command listed in the same ability. This generates a "toggle" UI element which lets a user switch between 'command' and 'alt_command' within the same ability choice. This is recommended for abilities which accomplish similar goals but have different commands that may be confusing or require a great deal of documentation to explain. 
+
+**Labels**: A list of 2 strings that are the labels for the toggle added by the Alt Command field.
 
 ### Bootstrap and Deadman Abilities 
 
