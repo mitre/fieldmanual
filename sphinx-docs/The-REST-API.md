@@ -94,9 +94,11 @@ To learn more about these options, read the "What is an operation?" documentatio
 
 Files can be uploaded to Caldera by POST'ing a file to the /file/upload endpoint. Uploaded files will be put in the exfil_dir location specified in the default.yml file.
 
-#### Example
+The `X-Request-Id` header should be set to `<agent_hostname>-<agent_paw_print>`. 
+
+#### Example (linux)
 ```bash
-curl -F 'data=@path/to/file' http://localhost:8888/file/upload
+curl -F 'data=@path/to/file' --header "X-Request-Id:`hostname`-#{paw}" http://localhost:8888/file/upload
 ```
 
 ## /file/download
