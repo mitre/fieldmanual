@@ -41,7 +41,7 @@ generate_ability_csv(caldera_root_dir, sphinx_root_dir / '_generated' / 'abiliti
 
 # -- Project information -----------------------------------------------------
 
-project = 'caldera'
+project = 'Apache Caldera (Incubating)'
 copyright = f'{datetime.date.today().year}, The MITRE Corporation'
 author = 'The MITRE Corporation'
 master_doc = 'index'
