@@ -1,4 +1,4 @@
-# Installing MITRE Caldera
+# Installing Apache Caldera
 
 Caldera can be installed in four commands using the [concise installation instructions](#concise) and, optionally, be installed and run using a [docker container](#docker-deployment).
 

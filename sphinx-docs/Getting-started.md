@@ -1,6 +1,6 @@
 # Getting started
 
-MITRE Caldera, as an adversary emulation platform, can be used in several ways. For most users, it will be used to run either offensive (red) or defensive (blue) operations.
+Apache Caldera, as an adversary emulation platform, can be used in several ways. For most users, it will be used to run either offensive (red) or defensive (blue) operations.
 
 Here are the most common use-cases and basic instructions on how to proceed. 
 

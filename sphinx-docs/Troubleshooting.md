@@ -1,6 +1,6 @@
 # Troubleshooting
 
-## Installing MITRE Caldera
+## Installing Apache Caldera
 
 If `donut-shellcode` installation fails, ensure that prerequisite packages are installed
   - Amazon Linux 2:

@@ -1,4 +1,4 @@
-# Uninstall MITRE Caldera
+# Uninstall Apache Caldera
 
 To uninstall Caldera, navigate to the directory where Caldera was installed and recursively remove the directory using the following command: 
 ```
