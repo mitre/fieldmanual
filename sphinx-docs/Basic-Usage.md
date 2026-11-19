@@ -295,6 +295,25 @@ In this example, the rules would permit Caldera to only operate within the 10.24
 
 Rules can be added or modified through the GUI by navigating to *Advanced -> Sources* and clicking on '+ view rules'.
 
+### IP Addresses
+
+When the match is an IPv4 address or subnet and the fact's value is an IPv4 address, the rule compares addresses instead of applying the match as a regex. An address matches only the same address, and a subnet matches the addresses inside it.
+
+**IP Address Example**
+
+```
+  - action: DENY
+    fact: my.host.ip
+    match: .*
+  - action: ALLOW
+    fact: my.host.ip
+    match: 10.245.112.10
+```
+
+In this example, Caldera may use 10.245.112.10, but not 10.245.112.100 or 10.245.112.101. Earlier versions also applied an address match as a regex, so `10.245.112.10` also matched longer addresses that start with it, and a DENY for 127.0.0.1 also denied 127.0.0.10. To match addresses by prefix, write an explicit regex, for example `10\.245\.112\.10\d*`.
+
+Facts whose value is a subnet, such as 10.245.112.10/32, are still matched against address rules as a regex, so a DENY for an address also denies a subnet fact written with that address.
+
 ### Fact Source Adjustments
 
 Fact source adjustments allow for dynamic adjustment specific ability's `visibility` in the context of an operation.
